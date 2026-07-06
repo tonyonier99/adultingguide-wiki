@@ -94,7 +94,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
              border-radius:99px; margin-bottom:0.4rem; }
 /* 分類大卡（首頁，用剪紙頭圖當封面）*/
-.cat-grid { margin-top:1.6rem; }
+.cat-grid { margin-top:1rem; display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; }
+@media (min-width:680px) { .cat-grid { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
+.cat-grid .cat-card { margin-top:0; }
+.cat-grid .cat-card .cover { aspect-ratio:16/10; }
+.cat-grid .cat-card h3 { font-size:1.08rem; }
+.cat-grid .cat-card .cc-body { padding:0.85rem 1rem 1rem; }
+.cat-grid .cat-card .cc-sub { font-size:0.82rem;
+                              display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
 .cat-card { display:block; background:#fff; border-radius:18px; overflow:hidden; margin-top:1rem;
             color:var(--ink); box-shadow:0 1px 3px rgba(69,63,58,0.05);
             transition:box-shadow 0.25s cubic-bezier(.645,.045,.355,1),
