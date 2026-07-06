@@ -60,13 +60,20 @@ article li::marker { color:var(--cat); }
 .callout { background:var(--cat-bg); border-radius:12px; padding:0.95rem 1.1rem;
            margin:1.2rem 0; font-size:1rem; border-left:3px solid var(--cat); }
 section.sources { margin-top:3rem; border-top:1px solid var(--line); padding-top:1.4rem; }
-section.sources h3 { font-size:1rem; margin-bottom:0.7rem; font-weight:700; }
-section.sources ul { list-style:none; }
-section.sources li { font-size:0.92rem; line-height:1.7; margin:0.5rem 0; padding-left:1rem;
-                     position:relative; }
-section.sources li::before { content:""; position:absolute; left:0; top:0.68em;
-                             width:6px; height:6px; border-radius:50%; background:var(--cat); }
-section.sources .org { color:var(--sub); margin-right:0.4rem; }
+section.sources h3 { font-size:1rem; margin-bottom:0.8rem; font-weight:700; }
+/* 來源按鈕（照 App「查看完整說明」）*/
+.src-btn { display:flex; align-items:center; justify-content:space-between; gap:0.8rem;
+           background:#fff; border:1px solid var(--line); border-radius:12px;
+           padding:0.85rem 1.1rem; margin-top:0.6rem; color:var(--ink);
+           box-shadow:0 1px 2px rgba(69,63,58,0.04);
+           transition:border-color 0.2s cubic-bezier(.645,.045,.355,1),
+                      box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
+                      transform 0.2s cubic-bezier(.645,.045,.355,1); }
+.src-btn:hover { text-decoration:none; border-color:var(--cat); transform:translateY(-1px);
+                 box-shadow:0 4px 14px rgba(69,63,58,0.07); }
+.src-btn .src-txt { font-size:0.92rem; font-weight:600; line-height:1.5; }
+.src-btn .src-org { color:var(--sub); font-weight:500; margin-right:0.5rem; }
+.src-btn .src-arrow { color:var(--cat); font-weight:800; font-size:1.05rem; flex:none; }
 .cta { margin-top:2.8rem; background:var(--cream); border-radius:18px; padding:1.4rem 1.5rem;
        display:flex; gap:1.1rem; align-items:center; }
 .cta .cta-txt { flex:1; }
@@ -215,8 +222,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <aside class="callout">重點：選身份就是在選「責任」和「課稅」。行號（含個人接案）欠債用你全部財產扛、稅併進你個人綜所；有限公司只賠到出資額，但公司要繳 20% 營所稅、錢拿出來再課一次。一個人就能開有限公司；純網路賣東西月銷貨 10 萬、勞務 5 萬要辦稅籍登記。</aside>
 </article>
 <section class="sources">
-  <h3>本文查證來源</h3>
-  <ul><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=2" rel="noopener">公司法第2條（有限公司一人以上、有限責任）</a></li><li><span class="org">財政部稅務入口網</span><a href="https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/national/profit-seeking-enterprise-income-tax/7KLMbzD" rel="noopener">慎選營利事業組織型態（獨資合夥107年度起併入綜所稅）</a></li><li><span class="org">財政部臺北國稅局</span><a href="https://www.ntbt.gov.tw/singlehtml/0baa381b53034993a08862dfde2243b9?cntId=08f87d2104c04266a40e67c00d7c5c5a" rel="noopener">營利事業所得稅（稅率20%、課稅所得12萬以下免徵）</a></li><li><span class="org">經濟部一站式線上申請作業</span><a href="https://onestop.nat.gov.tw/" rel="noopener">公司與商業設立登記、規費</a></li><li><span class="org">財政部</span><a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=4e040848cb7044ce8d2c8540bd628f5f" rel="noopener">自114年1月1日起調高小規模營業人營業稅起徵點（貨物10萬／勞務5萬）</a></li></ul>
+  <h3>官方來源</h3>
+  <a class="src-btn" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080001&flno=2" rel="noopener"><span class="src-txt"><span class="src-org">全國法規資料庫</span>公司法第2條（有限公司一人以上、有限責任）</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/national/profit-seeking-enterprise-income-tax/7KLMbzD" rel="noopener"><span class="src-txt"><span class="src-org">財政部稅務入口網</span>慎選營利事業組織型態（獨資合夥107年度起併入綜所稅）</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.ntbt.gov.tw/singlehtml/0baa381b53034993a08862dfde2243b9?cntId=08f87d2104c04266a40e67c00d7c5c5a" rel="noopener"><span class="src-txt"><span class="src-org">財政部臺北國稅局</span>營利事業所得稅（稅率20%、課稅所得12萬以下免徵）</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://onestop.nat.gov.tw/" rel="noopener"><span class="src-txt"><span class="src-org">經濟部一站式線上申請作業</span>公司與商業設立登記、規費</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=4e040848cb7044ce8d2c8540bd628f5f" rel="noopener"><span class="src-txt"><span class="src-org">財政部</span>自114年1月1日起調高小規模營業人營業稅起徵點（貨物10萬／勞務5萬）</span><span class="src-arrow">↗</span></a>
 </section>
 <div class="cta">
   <div class="cta-txt">

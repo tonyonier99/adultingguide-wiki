@@ -60,13 +60,20 @@ article li::marker { color:var(--cat); }
 .callout { background:var(--cat-bg); border-radius:12px; padding:0.95rem 1.1rem;
            margin:1.2rem 0; font-size:1rem; border-left:3px solid var(--cat); }
 section.sources { margin-top:3rem; border-top:1px solid var(--line); padding-top:1.4rem; }
-section.sources h3 { font-size:1rem; margin-bottom:0.7rem; font-weight:700; }
-section.sources ul { list-style:none; }
-section.sources li { font-size:0.92rem; line-height:1.7; margin:0.5rem 0; padding-left:1rem;
-                     position:relative; }
-section.sources li::before { content:""; position:absolute; left:0; top:0.68em;
-                             width:6px; height:6px; border-radius:50%; background:var(--cat); }
-section.sources .org { color:var(--sub); margin-right:0.4rem; }
+section.sources h3 { font-size:1rem; margin-bottom:0.8rem; font-weight:700; }
+/* 來源按鈕（照 App「查看完整說明」）*/
+.src-btn { display:flex; align-items:center; justify-content:space-between; gap:0.8rem;
+           background:#fff; border:1px solid var(--line); border-radius:12px;
+           padding:0.85rem 1.1rem; margin-top:0.6rem; color:var(--ink);
+           box-shadow:0 1px 2px rgba(69,63,58,0.04);
+           transition:border-color 0.2s cubic-bezier(.645,.045,.355,1),
+                      box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
+                      transform 0.2s cubic-bezier(.645,.045,.355,1); }
+.src-btn:hover { text-decoration:none; border-color:var(--cat); transform:translateY(-1px);
+                 box-shadow:0 4px 14px rgba(69,63,58,0.07); }
+.src-btn .src-txt { font-size:0.92rem; font-weight:600; line-height:1.5; }
+.src-btn .src-org { color:var(--sub); font-weight:500; margin-right:0.5rem; }
+.src-btn .src-arrow { color:var(--cat); font-weight:800; font-size:1.05rem; flex:none; }
 .cta { margin-top:2.8rem; background:var(--cream); border-radius:18px; padding:1.4rem 1.5rem;
        display:flex; gap:1.1rem; align-items:center; }
 .cta .cta-txt { flex:1; }
@@ -216,8 +223,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <aside class="callout">重點：18 歲隔年起就列入役男。先等兵籍調查與徵兵檢查通知，按「調查→檢查→抽籤→徵集」走；在學可緩徵，出國要先申請。役期依出生年次不同（94 年後出生為 1 年），一切以役政署公告為準。</aside>
 </article>
 <section class="sources">
-  <h3>本文查證來源</h3>
-  <ul><li><span class="org">內政部</span><a href="https://www.moi.gov.tw/News_Content.aspx?n=9&sms=9009&s=277146" rel="noopener">各年次役男服役役期</a></li><li><span class="org">內政部役政司</span><a href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=84&id=258" rel="noopener">徵兵四部曲</a></li><li><span class="org">內政部役政司</span><a href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=84&id=257" rel="noopener">服役須知（役別）</a></li><li><span class="org">內政部役政署</span><a href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=239&id=11722" rel="noopener">什麼年齡叫做役齡男子（役男）？</a></li><li><span class="org">內政部役政署</span><a href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=85&id=6648" rel="noopener">役齡男子出境的申請事由及其限制為何？</a></li><li><span class="org">外交部領事事務局</span><a href="https://www.boca.gov.tw/cp-56-4721-3c62e-1.html" rel="noopener">108年4月29日起取消役男護照加蓋兵役管制章戳，役男出境前仍應事先申請核准</a></li></ul>
+  <h3>官方來源</h3>
+  <a class="src-btn" href="https://www.moi.gov.tw/News_Content.aspx?n=9&sms=9009&s=277146" rel="noopener"><span class="src-txt"><span class="src-org">內政部</span>各年次役男服役役期</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=84&id=258" rel="noopener"><span class="src-txt"><span class="src-org">內政部役政司</span>徵兵四部曲</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=84&id=257" rel="noopener"><span class="src-txt"><span class="src-org">內政部役政司</span>服役須知（役別）</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=239&id=11722" rel="noopener"><span class="src-txt"><span class="src-org">內政部役政署</span>什麼年齡叫做役齡男子（役男）？</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://dca.moi.gov.tw/chaspx/Faq_Detail.aspx?web=85&id=6648" rel="noopener"><span class="src-txt"><span class="src-org">內政部役政署</span>役齡男子出境的申請事由及其限制為何？</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.boca.gov.tw/cp-56-4721-3c62e-1.html" rel="noopener"><span class="src-txt"><span class="src-org">外交部領事事務局</span>108年4月29日起取消役男護照加蓋兵役管制章戳，役男出境前仍應事先申請核准</span><span class="src-arrow">↗</span></a>
 </section>
 <div class="cta">
   <div class="cta-txt">

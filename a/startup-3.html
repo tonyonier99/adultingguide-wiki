@@ -60,13 +60,20 @@ article li::marker { color:var(--cat); }
 .callout { background:var(--cat-bg); border-radius:12px; padding:0.95rem 1.1rem;
            margin:1.2rem 0; font-size:1rem; border-left:3px solid var(--cat); }
 section.sources { margin-top:3rem; border-top:1px solid var(--line); padding-top:1.4rem; }
-section.sources h3 { font-size:1rem; margin-bottom:0.7rem; font-weight:700; }
-section.sources ul { list-style:none; }
-section.sources li { font-size:0.92rem; line-height:1.7; margin:0.5rem 0; padding-left:1rem;
-                     position:relative; }
-section.sources li::before { content:""; position:absolute; left:0; top:0.68em;
-                             width:6px; height:6px; border-radius:50%; background:var(--cat); }
-section.sources .org { color:var(--sub); margin-right:0.4rem; }
+section.sources h3 { font-size:1rem; margin-bottom:0.8rem; font-weight:700; }
+/* 來源按鈕（照 App「查看完整說明」）*/
+.src-btn { display:flex; align-items:center; justify-content:space-between; gap:0.8rem;
+           background:#fff; border:1px solid var(--line); border-radius:12px;
+           padding:0.85rem 1.1rem; margin-top:0.6rem; color:var(--ink);
+           box-shadow:0 1px 2px rgba(69,63,58,0.04);
+           transition:border-color 0.2s cubic-bezier(.645,.045,.355,1),
+                      box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
+                      transform 0.2s cubic-bezier(.645,.045,.355,1); }
+.src-btn:hover { text-decoration:none; border-color:var(--cat); transform:translateY(-1px);
+                 box-shadow:0 4px 14px rgba(69,63,58,0.07); }
+.src-btn .src-txt { font-size:0.92rem; font-weight:600; line-height:1.5; }
+.src-btn .src-org { color:var(--sub); font-weight:500; margin-right:0.5rem; }
+.src-btn .src-arrow { color:var(--cat); font-weight:800; font-size:1.05rem; flex:none; }
 .cta { margin-top:2.8rem; background:var(--cream); border-radius:18px; padding:1.4rem 1.5rem;
        display:flex; gap:1.1rem; align-items:center; }
 .cta .cta-txt { flex:1; }
@@ -211,8 +218,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <aside class="callout">重點：營業稅看三段——未達起徵點（貨10萬/勞5萬）免、到20萬前按 1% 查定、20 萬以上開發票 5%。起徵點（分業別）跟發票門檻（一律 20 萬）是兩回事。公司另繳 20% 營所稅，行號和個人接案併你綜所。</aside>
 </article>
 <section class="sources">
-  <h3>本文查證來源</h3>
-  <ul><li><span class="org">財政部全球資訊網</span><a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=4e040848cb7044ce8d2c8540bd628f5f" rel="noopener">起徵點公告</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=13" rel="noopener">加值型及非加值型營業稅法第 13 條</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=10" rel="noopener">加值型及非加值型營業稅法第 10 條</a></li><li><span class="org">財政部全球資訊網</span><a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=3ee59a0b82a94e35a7cfc684d8e12d0d" rel="noopener">免用統一發票說明</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=5" rel="noopener">所得稅法第 5 條</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=71" rel="noopener">所得稅法第 71 條</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340028&flno=13" rel="noopener">各類所得扣繳率標準第 13 條</a></li><li><span class="org">財政部稅務入口網</span><a href="https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/withheld-rule/rule/a7BB6R9" rel="noopener">執行業務扣繳</a></li><li><span class="org">財政部電子發票整合服務平台</span><a href="https://www.einvoice.nat.gov.tw/" rel="noopener">財政部電子發票整合服務平台</a></li><li><span class="org">財政部臺北國稅局</span><a href="https://www.ntbt.gov.tw/singlehtml/0baa381b53034993a08862dfde2243b9?cntId=08f87d2104c04266a40e67c00d7c5c5a" rel="noopener">營利事業所得稅（稅率20%、課稅所得12萬以下免徵）</a></li></ul>
+  <h3>官方來源</h3>
+  <a class="src-btn" href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=4e040848cb7044ce8d2c8540bd628f5f" rel="noopener"><span class="src-txt"><span class="src-org">財政部全球資訊網</span>起徵點公告</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=13" rel="noopener"><span class="src-txt"><span class="src-org">全國法規資料庫</span>加值型及非加值型營業稅法第 13 條</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=10" rel="noopener"><span class="src-txt"><span class="src-org">全國法規資料庫</span>加值型及非加值型營業稅法第 10 條</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=3ee59a0b82a94e35a7cfc684d8e12d0d" rel="noopener"><span class="src-txt"><span class="src-org">財政部全球資訊網</span>免用統一發票說明</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=5" rel="noopener"><span class="src-txt"><span class="src-org">全國法規資料庫</span>所得稅法第 5 條</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=71" rel="noopener"><span class="src-txt"><span class="src-org">全國法規資料庫</span>所得稅法第 71 條</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340028&flno=13" rel="noopener"><span class="src-txt"><span class="src-org">全國法規資料庫</span>各類所得扣繳率標準第 13 條</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/withheld-rule/rule/a7BB6R9" rel="noopener"><span class="src-txt"><span class="src-org">財政部稅務入口網</span>執行業務扣繳</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.einvoice.nat.gov.tw/" rel="noopener"><span class="src-txt"><span class="src-org">財政部電子發票整合服務平台</span>財政部電子發票整合服務平台</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.ntbt.gov.tw/singlehtml/0baa381b53034993a08862dfde2243b9?cntId=08f87d2104c04266a40e67c00d7c5c5a" rel="noopener"><span class="src-txt"><span class="src-org">財政部臺北國稅局</span>營利事業所得稅（稅率20%、課稅所得12萬以下免徵）</span><span class="src-arrow">↗</span></a>
 </section>
 <div class="cta">
   <div class="cta-txt">

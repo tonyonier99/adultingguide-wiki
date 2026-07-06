@@ -60,13 +60,20 @@ article li::marker { color:var(--cat); }
 .callout { background:var(--cat-bg); border-radius:12px; padding:0.95rem 1.1rem;
            margin:1.2rem 0; font-size:1rem; border-left:3px solid var(--cat); }
 section.sources { margin-top:3rem; border-top:1px solid var(--line); padding-top:1.4rem; }
-section.sources h3 { font-size:1rem; margin-bottom:0.7rem; font-weight:700; }
-section.sources ul { list-style:none; }
-section.sources li { font-size:0.92rem; line-height:1.7; margin:0.5rem 0; padding-left:1rem;
-                     position:relative; }
-section.sources li::before { content:""; position:absolute; left:0; top:0.68em;
-                             width:6px; height:6px; border-radius:50%; background:var(--cat); }
-section.sources .org { color:var(--sub); margin-right:0.4rem; }
+section.sources h3 { font-size:1rem; margin-bottom:0.8rem; font-weight:700; }
+/* 來源按鈕（照 App「查看完整說明」）*/
+.src-btn { display:flex; align-items:center; justify-content:space-between; gap:0.8rem;
+           background:#fff; border:1px solid var(--line); border-radius:12px;
+           padding:0.85rem 1.1rem; margin-top:0.6rem; color:var(--ink);
+           box-shadow:0 1px 2px rgba(69,63,58,0.04);
+           transition:border-color 0.2s cubic-bezier(.645,.045,.355,1),
+                      box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
+                      transform 0.2s cubic-bezier(.645,.045,.355,1); }
+.src-btn:hover { text-decoration:none; border-color:var(--cat); transform:translateY(-1px);
+                 box-shadow:0 4px 14px rgba(69,63,58,0.07); }
+.src-btn .src-txt { font-size:0.92rem; font-weight:600; line-height:1.5; }
+.src-btn .src-org { color:var(--sub); font-weight:500; margin-right:0.5rem; }
+.src-btn .src-arrow { color:var(--cat); font-weight:800; font-size:1.05rem; flex:none; }
 .cta { margin-top:2.8rem; background:var(--cream); border-radius:18px; padding:1.4rem 1.5rem;
        display:flex; gap:1.1rem; align-items:center; }
 .cta .cta-txt { flex:1; }
@@ -290,7 +297,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A8C6A1">咩</span><span class="who">咩</span></div>
   <div class="p-title">下大雨撐傘</div>
   <div class="p-excerpt">下大雨時把書包背前面再撐傘，人跟書包都比較不容易濕</div>
-  <div class="p-meta">0 則補充 · 35 讚</div>
+  <div class="p-meta">0 則補充 · 36 讚</div>
 </a>
 <a class="pcard" href="p/746f0406-5de7-4d87-a019-12540a693b3b.html" style="animation-delay:0.18s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
@@ -302,7 +309,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A0C4D8">水</span><span class="who">水蜜頭罐桃舒芙蕾</span></div>
   <div class="p-title">當性私密影像被外流，你該怎麼辦？四個步驟保護自己</div>
   <div class="p-excerpt">首先，無論性別，在遇到性私密影像被外流的情況下，請先記得一件事： 被外流不是你的錯。 錯的是偷拍、威脅、散布、轉傳、保存、販售，以及消費觀看的人。 在事件發生的當下，請先深呼吸，跟著以下步驟保護自己。 ⸻ 🛑【步驟一：發生當下的緊急應變】 1. 不要單獨面對加害者 如果對方威脅、勒索、要求付錢、要求見面，或要求你再傳更多照片： 不要付款。 不要再傳新的照片或影片。 不要答應單獨見面。 不要刪除對話紀錄。 絕對不要因為害怕而刪除證據，或答應對方提出的條件。 留存證據是後續申請下架、報案與追查的重要依據。 如果你現在有人身安全危險，請立刻撥打 110。 2. 立刻找信任的人陪你 可以是朋友、家人、老師、社工、伴侶、同事，或任何你信任的人。 這時候很容易陷入崩潰、羞恥與恐慌，請不要一個人硬撐。 如果你不知道怎麼開口，可以直接把這篇文章傳給對方，請他陪你一起處理下一步。 ⸻ 📸【步驟二：冷靜蒐證】 看見自己的影像被外流，可能會讓人痛苦到想立刻關掉頁面。 但如果可以，請盡量讓信任的人陪你一起，以「截圖」或「螢幕錄影」保存以下資訊： 1. 外流網址，包含完整 URL 2. 網站名稱、群組名稱、社團名稱，例如 Telegram 群組名、論壇看板名 3. 發文者的帳號、暱稱、ID、頭像 4. 發布時間、留言內容、轉傳紀錄 5. 對方威脅、勒索、要求金錢或要求見面的對話紀錄 6. 對方承認持有、散布、販售、威脅公開影像的訊息 7. 若知道對方身分，請保存其姓名、電話、銀行帳戶、LINE ID、IG 帳號等資訊 提醒： 如果影像涉及未滿 18 歲，請不要下載、保存、轉傳影像，也不要把影像傳給其他人「幫忙確認」。 請保留網址、帳號、頁面資訊後，盡快向警方、113 或性影像處理中心求助。 ⸻ ⚖️【步驟三：申請下架與報案】 1. 向「性影像處理中心」線上申訴，申請下架 台灣目前設有衛福部的「性影像處理中心」，可以協助受理性影像案件申訴，並通知平台業者限制瀏覽或移除影像。 只要手上有外流網址與相關事證，不論是否已報案，都可以先提出線上申訴。 申訴時通常需要準備： 1. 可聯絡的電子信箱 2. 申訴原因 3. 具體訴求，例如要求下架、移除、限制瀏覽 4. 外流網址 5. 相關事證，例如截圖、對話紀錄、帳號資訊 如果真的不知道該如何填寫，也可以在報案時請警方協助，或先聯絡性影像處理中心諮詢。 衛福部性影像處理中心 服務專線：(02)6605-7373 服務時間：9:00–22:00 2. 前往警察局報案 報案時，可以將蒐集好的證據臨櫃提供，並向警方說明： 「我要報案，我的性私密影像被未經同意散布／被威脅散布。 我已經保存網址、截圖、帳號與對話紀錄，希望警方協助受理並保全證據。」 如果當下不好意思口頭說明，也可以用文字向警方敘述，或請信任的朋友陪同協助說明。 重要提醒： 報案結束後，請記得向警方索取「受（處）理案件證明單」，確保案件有正式受理紀錄。 偵查時間可能需要數月至一年以上。 期間若感到不安，或想了解案件狀態，可以致電原報案分局，找當時承辦的員警詢問進度。實際承辦單位也可能依案件狀況、居住地或管轄地調整。 ⸻ 🛡️【步驟四：加強個人社群防護】 在等候警方調查與下架處理的期間，為了避免後續騷擾、威脅或帳號被入侵，請盡快調高所有通訊與社群軟體的隱私設定： 1. 將 IG、FB、Threads、X、TikTok 等社群帳號改為私人帳號 2. 關閉陌生人私訊 3. 移除可疑追蹤者 4. 更換帳號密碼 5. 開啟雙重驗證，2FA 6. 檢查雲端相簿、Google Drive、iCloud、LINE Keep 7. 檢查是否有異常裝置登入紀錄 8. 提醒親近的朋友：「如果收到我的相關影像或連結，請不要點開、不要轉傳，請直接截圖回報給我。」 ⸻ 🚫【給加害者與轉傳者的法律提醒】 在台灣，侵害性隱私可能涉及刑事犯罪： 未經同意偷拍： 可能涉及《刑法》第 319-1 條。未經同意攝錄他人性影像，可處 3 年以下有期徒刑。 未經同意散布： 即使當初是合意拍攝，只要未經同意重製、散布、播送、交付、公然陳列，或用其他方式讓他人觀看性影像，可能涉及《刑法》第 319-3 條，最重可處 5 年以下有期徒刑。 AI 換臉／Deepfake： 意圖散布而製作，或散布不實性影像，可能涉及《刑法》第 319-4 條。若意圖營利，刑度可能更高。 下載、購買、保存、轉傳： 請不要下載、保存、購買、轉傳或散布他人的非自願性影像。 如果內容涉及兒少性影像，散布、販售，或意圖散布而持有，都可能涉及更嚴重的刑事責任。 實際法律責任仍會依個案狀況判斷，建議同時尋求警方、法律扶助或專業律師協助。 ⸻ 💗【最後，想對你說】 私密影像被外流，不代表你做錯了什麼。 真正錯的人，是那些未經同意保存、威脅、散布、轉傳、觀看與販售的人。 請先保護自己，保存證據，找信任的人陪你。 你也可以撥打 113 保護專線，或向 性影像處理中心 求助。 你不是一個人。 這件事可以被處理，也有人會陪你一起處理。</div>
-  <div class="p-meta">0 則補充 · 28 讚</div>
+  <div class="p-meta">0 則補充 · 29 讚</div>
 </a>
 <a class="pcard" href="p/8afd8936-1d58-4be9-8633-b3fe2bb0782a.html" style="animation-delay:0.24s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">M</span><span class="who">Muaa</span></div>
@@ -593,29 +600,29 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-excerpt">第一次要出國這麼久，初級大人這幾天一直在想有什麼東西要帶的，怕沒有帶到，因為有些東西怕出國買也很麻煩（藥之類的），所以想請教經驗豐富的大家！</div>
   <div class="p-meta">4 則回答 · 5 讚</div>
 </a>
-<a class="pcard" href="p/06475c21-debb-4744-ae81-b92cf813c3e5.html" style="animation-delay:0.36s">
+<a class="pcard" href="p/b8df5580-6c24-42fd-be4f-1ae8350a41d4.html" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小女孩</span></div>
+  <div class="p-title">打工</div>
+  <div class="p-excerpt">想請問各位大大打工有什麼要注意的事項🙇🏻‍♀️🙇🏻‍♀️</div>
+  <div class="p-meta">2 則回答 · 4 讚</div>
+</a>
+<a class="pcard" href="p/06475c21-debb-4744-ae81-b92cf813c3e5.html" style="animation-delay:0.39s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">喵</span><span class="who">喵嗚</span></div>
   <div class="p-title">面試時怎麼跟HR或主管談到理想的薪資</div>
   <div class="p-excerpt">面試時怎麼跟HR或主管談到理想的薪資呢？ 通常都會遇到被砍價，該怎麼溝通才能有比較好的結果？ 有相關工作經驗並有多年資歷，但實際上只要想跳槽面試就幾乎都會被當作是0經驗新人壓低薪水。</div>
   <div class="p-meta">1 則回答 · 4 讚</div>
 </a>
-<a class="pcard" href="p/64ae1367-0a7d-4f7a-98fc-46a4a7ded8cc.html" style="animation-delay:0.39s">
+<a class="pcard" href="p/64ae1367-0a7d-4f7a-98fc-46a4a7ded8cc.html" style="animation-delay:0.42s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">哈</span><span class="who">哈姆</span></div>
   <div class="p-title">好奇高級大人的人際關係</div>
   <div class="p-excerpt">想問高級大人怎麼處理人際關係的呢？像是建立同事之間界線，與他人說話的溝通方式、技巧，剛入職場覺得跟同事，尤其上司相處有些彆扭</div>
   <div class="p-meta">2 則回答 · 4 讚</div>
 </a>
-<a class="pcard" href="p/d57851d3-b648-4559-9358-20002035b240.html" style="animation-delay:0.42s">
+<a class="pcard" href="p/d57851d3-b648-4559-9358-20002035b240.html" style="animation-delay:0.45s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">邪</span><span class="who">邪惡豬排博士</span></div>
   <div class="p-title">什麼情況要補繳稅？</div>
   <div class="p-excerpt">工作四五年了，每次報稅大部分都是退稅給我，好像在手機上登入送出後就沒我的事一樣，會有什麼情況是我要多填資料或是要補繳稅的</div>
   <div class="p-meta">4 則回答 · 4 讚</div>
-</a>
-<a class="pcard" href="p/b8df5580-6c24-42fd-be4f-1ae8350a41d4.html" style="animation-delay:0.45s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小女孩</span></div>
-  <div class="p-title">打工</div>
-  <div class="p-excerpt">想請問各位大大打工有什麼要注意的事項🙇🏻‍♀️🙇🏻‍♀️</div>
-  <div class="p-meta">2 則回答 · 3 讚</div>
 </a>
 <a class="pcard" href="p/d5f972da-3dde-4492-9c1d-9b9ea2b814d3.html" style="animation-delay:0.48s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">阿</span><span class="who">阿魚</span></div>
