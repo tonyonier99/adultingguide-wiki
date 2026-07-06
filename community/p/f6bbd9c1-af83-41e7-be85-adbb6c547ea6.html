@@ -6,6 +6,8 @@
 <title>機車購買｜初級大人手冊 社群</title>
 <meta name="description" content="最近剛學會騎機車，想問問看大家買機車的時候性能的部分需要特別注意什麼嗎，想參考大家比較推薦的品牌！
 （如果可以也想請教立中柱的方法⋯⋯不確定是力氣太小還是發力點">
+<link rel="icon" type="image/png" href="../../assets/app-icon.png">
+<link rel="apple-touch-icon" href="../../assets/app-icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "機車購買", "text": "最近剛學會騎機車，想問問看大家買機車的時候性能的部分需要特別注意什麼嗎，想參考大家比較推薦的品牌！\n（如果可以也想請教立中柱的方法⋯⋯不確定是力氣太小還是發力點不對，一直沒有辦法成功qq）", "answerCount": 3, "acceptedAnswer": {"@type": "Answer", "text": "我是女生 沒什麼運動所以力氣比較沒那麼大\n我立中柱都是把全身重量壓在踩中柱的那個腳站上去 \n同時抓車頭的那隻手往後拉、放車尾的那隻手往後往下壓 看起來有點像是全身往車尾方向拉車\n用全身的力量通常95%一次就立起來了\n剩下的5%我是多往車尾晃兩三次才立起來\n（機車品牌我沒有研究）"}}}</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
@@ -22,7 +24,10 @@ a:hover { text-decoration:underline; }
 header.site { border-bottom:1px solid var(--line); padding:0.7rem 0; background:var(--paper);
               position:sticky; top:0; z-index:10; }
 header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
-.brand { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.brand { display:flex; flex-direction:row; align-items:center; gap:0.55rem; min-width:0; }
+.brand:hover { text-decoration:none; }
+.logo-icon { width:34px; height:34px; border-radius:8px; flex:none; }
+.brand-txt { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .logo { font-weight:800; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
 .logo span { color:var(--orange); }
 .brand-sub { font-size:0.68rem; color:var(--sub); line-height:1.35; }
@@ -233,8 +238,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <div class="brand"><a class="logo" href="../../index.html">初級大人<span>手冊</span></a>
-    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></div>
+  <a class="brand" href="../../index.html"><img class="logo-icon" src="../../assets/app-icon.png" alt="">
+    <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
+    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
   <nav class="site-nav"><a href="../../index.html" class="">百科</a><a href="../../community/index.html" class="on">社群</a></nav>
 </div></header>
 <main><div class="wrap">

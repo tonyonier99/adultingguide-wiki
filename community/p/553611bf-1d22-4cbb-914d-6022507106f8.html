@@ -7,6 +7,8 @@
 <meta name="description" content="下週要第一次自己出國 ，中途會在機場過夜7個小時，不曉得要如何度過這個晚上，如果想睡的話可以直接找個地方躺嗎（？）
 
 另外機票是在報到時就會拿到兩張了嗎，還是說">
+<link rel="icon" type="image/png" href="../../assets/app-icon.png">
+<link rel="apple-touch-icon" href="../../assets/app-icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "等轉機時能做什麼", "text": "下週要第一次自己出國 ，中途會在機場過夜7個小時，不曉得要如何度過這個晚上，如果想睡的話可以直接找個地方躺嗎（？）\n\n另外機票是在報到時就會拿到兩張了嗎，還是說轉機時要再領一次？", "answerCount": 1, "acceptedAnswer": {"@type": "Answer", "text": "可以查詢轉機的機場有沒有機場旅館，記得事先預訂比較不會撲空，或是可以直接在機場內找地方坐著睡(請遵守當地機場規定)。\n轉機的機票若你是購買聯程機票(同一訂單)在出發機場例如桃園機場就會拿到兩張機票，務必妥善保管，轉機登機時必須出示該航段機票。如果你買的兩張是不同航空公司、兩間航空沒有聯程協議也需要重新報到！\n在第一段的機場務必確認你的行李是否有直掛到最終目的地，有票務上的問題也可以在報到時直接詢問櫃檯人員☺️"}}}</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
@@ -23,7 +25,10 @@ a:hover { text-decoration:underline; }
 header.site { border-bottom:1px solid var(--line); padding:0.7rem 0; background:var(--paper);
               position:sticky; top:0; z-index:10; }
 header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
-.brand { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.brand { display:flex; flex-direction:row; align-items:center; gap:0.55rem; min-width:0; }
+.brand:hover { text-decoration:none; }
+.logo-icon { width:34px; height:34px; border-radius:8px; flex:none; }
+.brand-txt { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .logo { font-weight:800; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
 .logo span { color:var(--orange); }
 .brand-sub { font-size:0.68rem; color:var(--sub); line-height:1.35; }
@@ -234,8 +239,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <div class="brand"><a class="logo" href="../../index.html">初級大人<span>手冊</span></a>
-    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></div>
+  <a class="brand" href="../../index.html"><img class="logo-icon" src="../../assets/app-icon.png" alt="">
+    <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
+    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
   <nav class="site-nav"><a href="../../index.html" class="">百科</a><a href="../../community/index.html" class="on">社群</a></nav>
 </div></header>
 <main><div class="wrap">

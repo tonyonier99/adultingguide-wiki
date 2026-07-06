@@ -10,6 +10,8 @@
 那時候去年一開始我真的超級不適應職場氛圍
 是不是很不適合做餐飲業外場啊
 還是說很">
+<link rel="icon" type="image/png" href="../../assets/app-icon.png">
+<link rel="apple-touch-icon" href="../../assets/app-icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "有沒有打工經驗談可以說說", "text": "我自認爲我自己個性是蠻內向的人🥲\n我去年暑假打工過 \n但不是服務業餐飲業類型的\n那時候去年一開始我真的超級不適應職場氛圍\n是不是很不適合做餐飲業外場啊\n還是說很看那間店經理同事的氛圍\n問過幾個朋友給我的建議和經驗很兩極\n目前投了幾間 已經有一間跟我約面試了\n如果真的去面試發現我自己可能很不適合怎麼辦\n好焦慮", "answerCount": 2, "acceptedAnswer": {"@type": "Answer", "text": "嗯⋯主要想確認你去年打工的感受是什麼欸\n因為提到的都有可能是原因喔！\n\n然後不要焦慮面試不到這件事情，就算沒有這份工作，也不會只有這份工作\n要相信自己的感受，如果覺得不好是可以拒絕，不要勉強自己"}}}</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
@@ -26,7 +28,10 @@ a:hover { text-decoration:underline; }
 header.site { border-bottom:1px solid var(--line); padding:0.7rem 0; background:var(--paper);
               position:sticky; top:0; z-index:10; }
 header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
-.brand { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.brand { display:flex; flex-direction:row; align-items:center; gap:0.55rem; min-width:0; }
+.brand:hover { text-decoration:none; }
+.logo-icon { width:34px; height:34px; border-radius:8px; flex:none; }
+.brand-txt { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .logo { font-weight:800; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
 .logo span { color:var(--orange); }
 .brand-sub { font-size:0.68rem; color:var(--sub); line-height:1.35; }
@@ -237,8 +242,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <div class="brand"><a class="logo" href="../../index.html">初級大人<span>手冊</span></a>
-    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></div>
+  <a class="brand" href="../../index.html"><img class="logo-icon" src="../../assets/app-icon.png" alt="">
+    <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
+    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
   <nav class="site-nav"><a href="../../index.html" class="">百科</a><a href="../../community/index.html" class="on">社群</a></nav>
 </div></header>
 <main><div class="wrap">
