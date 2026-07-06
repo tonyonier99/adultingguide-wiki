@@ -172,6 +172,15 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
                  padding:0.4rem 0.9rem; border-radius:99px; }
 .sec-label { font-size:0.78rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
              margin:2rem 0 0.2rem; }
+/* 可展開的區（大人秘技／我要發問）*/
+.sec-fold { margin:2rem 0 0; }
+.sec-fold > summary.sec-label { margin:0; cursor:pointer; list-style:none; display:flex;
+             align-items:center; padding:0.7rem 0; border-bottom:1px solid var(--line); }
+.sec-fold > summary.sec-label::-webkit-details-marker { display:none; }
+.sec-fold > summary.sec-label::after { content:"▾"; margin-left:auto; font-size:0.9rem;
+             color:var(--sub); transition:transform 0.2s ease; }
+.sec-fold[open] > summary.sec-label::after { transform:rotate(180deg); }
+.sec-fold .fold-body { padding-top:0.3rem; }
 .pcard { display:block; background:#fff; border-radius:16px; margin-top:0.8rem; padding:1.1rem 1.2rem;
          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
          transition:box-shadow 0.2s cubic-bezier(.645,.045,.355,1), transform 0.2s cubic-bezier(.645,.045,.355,1); }
@@ -232,11 +241,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="body"><p>我想知道關於職場男女之間的互都怎樣才不算性騷擾，或是如何的言語</p></div>
   <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">1 讚</div>
 </div>
-<div class="ans-label">還沒有人回答——下載 App 當第一個</div>
+<div class="ans-label">你也有這個秘技、或想補充嗎？歡迎來 App 分享</div>
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
-  <p>網頁只能看討論，發問、回答、按讚都在 App 裡。</p>
-  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App 加入討論</a>
+  <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>
+  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
 </div>
 </div></main>
 <footer class="site"><div class="wrap">
