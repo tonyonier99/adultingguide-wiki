@@ -76,6 +76,10 @@ section.sources .org { color:var(--sub); margin-right:0.4rem; }
              font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; white-space:nowrap;
              transition:transform 0.2s cubic-bezier(.645,.045,.355,1); }
 .cta a.btn:hover { text-decoration:none; transform:translateY(-1px); }
+@media (max-width:560px) {
+  .cta { flex-direction:column; align-items:stretch; gap:0.9rem; }
+  .cta a.btn { text-align:center; }
+}
 footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
               font-size:0.78rem; color:var(--sub); line-height:1.7; }
 .foot-nav { display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem; margin-bottom:0.9rem; }
@@ -94,7 +98,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              border-radius:99px; margin-bottom:0.4rem; }
 /* 分類大卡（首頁，用剪紙頭圖當封面）*/
 .cat-grid { margin-top:1rem; display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; }
-@media (min-width:680px) { .cat-grid { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
+@media (min-width:680px) { .cat-grid { gap:1rem; } }
 .cat-grid .cat-card { margin-top:0; }
 .cat-grid .cat-card .cover { aspect-ratio:16/10; }
 .cat-grid .cat-card h3 { font-size:1.08rem; }
@@ -130,7 +134,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
 .cat-subsec span { font-weight:600; color:var(--sub); font-size:0.85rem; }
 .acard-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.7rem; margin-top:1.2rem; }
-@media (min-width:680px) { .acard-grid { grid-template-columns:repeat(3, 1fr); gap:0.9rem; } }
+@media (min-width:680px) { .acard-grid { gap:0.9rem; } }
 .acard { display:block; background:#fff; border-radius:14px; padding:0.9rem 1rem;
          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
          transition:box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
