@@ -118,6 +118,27 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .about h2 { font-size:1.2rem; margin:2rem 0 0.6rem; padding-left:0.7rem;
             border-left:4px solid var(--cat); line-height:1.5; }
 .about p { margin:0.7rem 0; }
+/* 在地嚴選徵集頁 */
+.picks-flag { display:inline-block; font-size:0.72rem; font-weight:800; color:#fff;
+              background:var(--sub); padding:0.22rem 0.7rem; border-radius:99px; margin-bottom:0.6rem; }
+.pick-form { margin-top:1.6rem; display:flex; flex-direction:column; gap:1rem;
+             background:#fff; border-radius:16px; padding:1.4rem 1.3rem;
+             box-shadow:0 1px 3px rgba(69,63,58,0.05); }
+.pick-form label { display:flex; flex-direction:column; gap:0.35rem;
+                   font-size:0.9rem; font-weight:700; color:var(--ink); }
+.pick-form .req { color:var(--cat); }
+.pick-form input, .pick-form select, .pick-form textarea {
+  font:inherit; font-size:1rem; font-weight:400; color:var(--ink);
+  border:1px solid var(--line); border-radius:10px; padding:0.65rem 0.8rem;
+  background:var(--paper); width:100%; }
+.pick-form textarea { resize:vertical; line-height:1.6; }
+.pick-form input:focus, .pick-form select:focus, .pick-form textarea:focus {
+  outline:none; border-color:var(--cat); }
+.pick-form .btn { display:inline-block; background:var(--orange); color:#fff; font-weight:700;
+  font-size:0.98rem; padding:0.7rem 1.4rem; border-radius:99px; border:none; cursor:pointer;
+  align-self:flex-start; }
+.pick-form .btn:hover { opacity:0.92; }
+.pick-note { font-size:0.8rem; color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
 /* index */
 .home-hero { padding:2.6rem 0 0.6rem; }
 .home-hero h1 { font-size:1.9rem; line-height:1.4; }
@@ -281,6 +302,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <footer class="site"><div class="wrap">
   <nav class="foot-nav">
     <a href="../../about">關於</a>
+    <a href="../../picks">推薦在地好店</a>
     <a href="../../support">支援</a>
     <a href="../../privacy">隱私政策</a>
     <a href="../../terms">使用條款</a>
