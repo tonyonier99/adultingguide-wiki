@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant-TW" style="--cat:#E65100;--cat-bg:#FFF3E0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>創業稅入門：營業稅三段級距，先記死｜初級大人手冊</title>
+<meta name="description" content="開始營業最常被搞糊的『我要不要繳營業稅、要不要開發票』——三段級距一次講白。">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "創業稅入門：營業稅三段級距，先記死", "description": "開始營業最常被搞糊的『我要不要繳營業稅、要不要開發票』——三段級距一次講白。", "dateModified": "2026-07-04", "inLanguage": "zh-Hant-TW", "publisher": {"@type": "Organization", "name": "初級大人手冊"}, "citation": ["https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=4e040848cb7044ce8d2c8540bd628f5f", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=13", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=10", "https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=3ee59a0b82a94e35a7cfc684d8e12d0d", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=5", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=71", "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340028&flno=13", "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/withheld-rule/rule/a7BB6R9", "https://www.einvoice.nat.gov.tw/", "https://www.ntbt.gov.tw/singlehtml/0baa381b53034993a08862dfde2243b9?cntId=08f87d2104c04266a40e67c00d7c5c5a"]}</script>
+<style>
+/* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
+:root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
+        --paper:#FBF6F1; --cat:#E65100; --cat-bg:#FBF1E7;
+        --measure:43.75rem; /* 700px 正文欄 */ }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; color:var(--ink);
+       background:var(--paper); font-size:1.125rem; line-height:1.95; letter-spacing:0.02em;
+       -webkit-font-smoothing:antialiased; }
+a { color:var(--cat); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.wrap { max-width:var(--measure); margin:0 auto; padding:0 1.25rem; }
+header.site { border-bottom:1px solid var(--line); padding:0.85rem 0; background:var(--paper);
+              position:sticky; top:0; z-index:10; }
+header.site .wrap { display:flex; align-items:baseline; gap:0.75rem; }
+.logo { font-weight:800; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
+.logo span { color:var(--orange); }
+.tagline { font-size:0.78rem; color:var(--sub); }
+.site-nav { margin-left:auto; display:flex; gap:1.1rem; }
+.site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); }
+.site-nav a.on { color:var(--orange); }
+main { padding:0 0 3.5rem; }
+/* 文章頭圖：縮進欄寬、原尺寸、圓角（不滿版）*/
+.hero-wrap { max-width:var(--measure); margin:1.6rem auto 0; padding:0 1.25rem; }
+.hero-img { width:100%; aspect-ratio:780/320; object-fit:cover; display:block;
+            border-radius:16px; }
+.hero-band { aspect-ratio:780/240; display:flex; align-items:flex-end; padding:1.1rem 1.2rem;
+             border-radius:16px; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 150%); }
+.hero-band .glyph { font-size:0.82rem; font-weight:700; color:var(--cat);
+                    background:#fff; padding:0.3rem 0.9rem; border-radius:99px; }
+.article-head { padding-top:1.8rem; }
+.crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
+.crumb a { color:var(--sub); }
+h1 { font-size:2rem; line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+.meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
+.badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
+         background:var(--cat-bg); color:var(--cat); font-weight:700; }
+.badge::before { content:"✓ "; }
+.badge.gray { background:#F1EBE3; color:var(--sub); font-weight:500; }
+.badge.gray::before { content:""; }
+.summary { color:var(--sub); font-size:1.02rem; margin-bottom:1.6rem; }
+/* 標題：前空後貼、階差小、靠字重 */
+article h2 { font-size:1.375rem; margin:2.4rem 0 0.7rem; padding-left:0.75rem;
+             border-left:4px solid var(--cat); line-height:1.5; font-weight:700;
+             letter-spacing:0.03em; }
+article p { margin:0.65rem 0; }
+article ul, article ol { margin:0.65rem 0 1rem 1.4rem; }
+article li { margin:0.4rem 0; padding-left:0.2rem; }
+article li::marker { color:var(--cat); }
+.callout { background:var(--cat-bg); border-radius:12px; padding:0.95rem 1.1rem;
+           margin:1.2rem 0; font-size:1rem; border-left:3px solid var(--cat); }
+section.sources { margin-top:3rem; border-top:1px solid var(--line); padding-top:1.4rem; }
+section.sources h3 { font-size:1rem; margin-bottom:0.7rem; font-weight:700; }
+section.sources ul { list-style:none; }
+section.sources li { font-size:0.92rem; line-height:1.7; margin:0.5rem 0; padding-left:1rem;
+                     position:relative; }
+section.sources li::before { content:""; position:absolute; left:0; top:0.68em;
+                             width:6px; height:6px; border-radius:50%; background:var(--cat); }
+section.sources .org { color:var(--sub); margin-right:0.4rem; }
+.cta { margin-top:2.8rem; background:var(--cream); border-radius:18px; padding:1.4rem 1.5rem;
+       display:flex; gap:1.1rem; align-items:center; }
+.cta .cta-txt { flex:1; }
+.cta strong { display:block; margin-bottom:0.25rem; font-size:1.05rem; }
+.cta p { font-size:0.92rem; color:var(--sub); margin-bottom:0; line-height:1.6; }
+.cta a.btn { display:inline-block; background:var(--orange); color:#fff; font-weight:700;
+             font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; white-space:nowrap;
+             transition:transform 0.2s cubic-bezier(.645,.045,.355,1); }
+.cta a.btn:hover { text-decoration:none; transform:translateY(-1px); }
+footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
+              font-size:0.78rem; color:var(--sub); line-height:1.7; }
+/* index */
+.home-hero { padding:2.6rem 0 0.6rem; }
+.home-hero h1 { font-size:1.9rem; line-height:1.4; }
+.home-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
+.cat { margin-top:2.4rem; }
+.cat-title { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
+             color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
+             border-radius:99px; margin-bottom:0.4rem; }
+/* 卡片：無邊框、暖底、rest 平、hover 微陰影（Notion 值）*/
+.card { display:flex; gap:1rem; align-items:stretch; background:#fff;
+        border-radius:16px; margin-top:0.8rem; color:var(--ink); overflow:hidden;
+        box-shadow:0 1px 2px rgba(69,63,58,0.04);
+        transition:box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
+                   transform 0.2s cubic-bezier(.645,.045,.355,1); }
+.card:hover { text-decoration:none; transform:translateY(-2px);
+              box-shadow:0 4px 18px rgba(69,63,58,0.06); }
+.card .thumb { width:104px; flex:none; object-fit:cover; object-position:center; }
+.card .card-txt { padding:0.95rem 1.1rem; align-self:center; }
+.card strong { display:block; font-size:1.08rem; margin-bottom:0.15rem; }
+.card span { font-size:0.88rem; color:var(--sub); line-height:1.6; }
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="../index.html">初級大人<span>手冊</span></a>
+  <nav class="site-nav"><a href="../index.html" class="on">百科</a><a href="../community/index.html" class="">社群</a></nav>
+</div></header>
+<main>
+<div class="hero-wrap"><img class="hero-img" src="../assets/cat_money.png" alt="金錢與保險"></div>
+<div class="wrap">
+<div class="article-head">
+<nav class="crumb"><a href="../index.html">全部分類</a> › 金錢與保險</nav>
+<h1>創業稅入門：營業稅三段級距，先記死</h1>
+<div class="meta">
+  <span class="badge">官方來源查證</span>
+  <span class="badge gray">最後查證 2026-07-04</span>
+</div>
+<p class="summary">開始營業最常被搞糊的『我要不要繳營業稅、要不要開發票』——三段級距一次講白。</p>
+<article>
+<p>開始營業最讓人霧煞煞的，就是「我到底要不要繳營業稅、要不要開發票」。</p>
+<h2>營業稅三段級距</h2>
+<ul>
+<li>第一段：當月銷售額未達「起徵點」（賣貨物每月 10 萬、賣勞務／服務每月 5 萬）→ 免營業稅、暫時免辦稅籍登記。</li>
+<li>第二段：超過起徵點、但平均每月未達 20 萬 → 屬小規模營業人，國稅局「按季查定」課 1%（你不用自己算、也不用開統一發票）。</li>
+<li>第三段：平均每月銷售額達 20 萬以上 → 國稅局核定你「使用統一發票」，改課 5%。</li>
+</ul>
+<h2>算給你看</h2>
+<ul>
+<li>在蝦皮賣衣服（貨物）平均每月做 8 萬 → 沒到 10 萬起徵點，免營業稅；但這 8 萬還是要併你的綜所稅報。</li>
+<li>做到平均每月 15 萬 → 過了起徵點、還沒到 20 萬，國稅局按季查你 1%，不用自己開發票。</li>
+<li>做到平均每月 25 萬 → 要開統一發票、課 5%。</li>
+</ul>
+<h2>起徵點 ≠ 要開發票的門檻</h2>
+<ul>
+<li>這兩個是不同數字，最多人搞混：「起徵點」分業別（貨物 10 萬／勞務 5 萬）；「要不要開統一發票」的門檻一律是每月 20 萬，不分業別。</li>
+<li>注意：起徵點是 114 年起調高的新數字（舊的 8 萬／4 萬已作廢），看到舊文章別被誤導。</li>
+</ul>
+<h2>營所稅（只有公司才有）</h2>
+<ul>
+<li>公司要繳營利事業所得稅，稅率 20%（公司一年賺的、扣掉成本後的「課稅所得」12 萬元以下免、12～20 萬之間減半課）。</li>
+<li>行號、個人接案不繳營所稅，賺的直接併進你個人的綜合所得稅。</li>
+</ul>
+<h2>扣繳：你付錢給別人時要先扣稅</h2>
+<ul>
+<li>你發薪水、付接案報酬時，要先幫對方「扣繳」一筆稅交國庫：薪資約 5%、接案（執行業務）／租金／佣金 10%。</li>
+<li>小額有免扣門檻：每次應扣稅額不超過 2,000 元免扣；稿費、講師鐘點等每次給付不超過 5,000 元免扣。</li>
+</ul>
+<h2>發票電子化</h2>
+<ul>
+<li>要開統一發票就是開「電子發票（雲端發票）」，不一定要買 POS，財政部有免費開立管道可用。</li>
+</ul>
+<aside class="callout">重點：營業稅看三段——未達起徵點（貨10萬/勞5萬）免、到20萬前按 1% 查定、20 萬以上開發票 5%。起徵點（分業別）跟發票門檻（一律 20 萬）是兩回事。公司另繳 20% 營所稅，行號和個人接案併你綜所。</aside>
+</article>
+<section class="sources">
+  <h3>本文查證來源</h3>
+  <ul><li><span class="org">財政部全球資訊網</span><a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=4e040848cb7044ce8d2c8540bd628f5f" rel="noopener">起徵點公告</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=13" rel="noopener">加值型及非加值型營業稅法第 13 條</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340080&flno=10" rel="noopener">加值型及非加值型營業稅法第 10 條</a></li><li><span class="org">財政部全球資訊網</span><a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=3ee59a0b82a94e35a7cfc684d8e12d0d" rel="noopener">免用統一發票說明</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=5" rel="noopener">所得稅法第 5 條</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340003&flno=71" rel="noopener">所得稅法第 71 條</a></li><li><span class="org">全國法規資料庫</span><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340028&flno=13" rel="noopener">各類所得扣繳率標準第 13 條</a></li><li><span class="org">財政部稅務入口網</span><a href="https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/withheld-rule/rule/a7BB6R9" rel="noopener">執行業務扣繳</a></li><li><span class="org">財政部電子發票整合服務平台</span><a href="https://www.einvoice.nat.gov.tw/" rel="noopener">財政部電子發票整合服務平台</a></li><li><span class="org">財政部臺北國稅局</span><a href="https://www.ntbt.gov.tw/singlehtml/0baa381b53034993a08862dfde2243b9?cntId=08f87d2104c04266a40e67c00d7c5c5a" rel="noopener">營利事業所得稅（稅率20%、課稅所得12萬以下免徵）</a></li></ul>
+</section>
+<div class="cta">
+  <div class="cta-txt">
+    <strong>在 App 裡看更多</strong>
+    <p>報稅、租屋、福利、緊急應變——112 篇查證百科＋13 個生活工具，離線也能查。</p>
+  </div>
+  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">前往 App Store</a>
+</div>
+</div>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+  內容經官方來源查證，僅供參考；實際金額、期限以主管機關當年公告為準。<br>
+  © 2026 初級大人手冊
+</div></footer>
+</body>
+</html>

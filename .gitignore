@@ -1,0 +1,20 @@
+# 防呆：這個公開 repo 只該有 HTML／圖片。以下絕不進版控。
+# 原始碼與腳本
+*.py
+*.swift
+build_site.py
+# 資料與金鑰
+*.json
+*.env
+.env*
+*.pem
+*.key
+credentials*
+secret*
+# 備份與暫存
+*.bak
+*.bak_*
+*~
+/tmp/
+__pycache__/
+.DS_Store
