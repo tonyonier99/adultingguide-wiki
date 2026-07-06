@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://adultingguide.tw/a/benefit-24">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "磨課師 MOOCs 免費上台大課", "description": "想旁聽大學課程不用人脈，打開網頁就能上。", "dateModified": "2026-07-04", "inLanguage": "zh-Hant-TW", "publisher": {"@type": "Organization", "name": "初級大人手冊"}, "citation": ["https://moocs.moe.edu.tw/moocs/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "磨課師 MOOCs 免費上台大課", "description": "想旁聽大學課程不用人脈，打開網頁就能上。", "image": "https://adultingguide.tw/assets/cat_benefits.png", "datePublished": "2026-07-04", "dateModified": "2026-07-04", "inLanguage": "zh-Hant-TW", "mainEntityOfPage": "https://adultingguide.tw/a/benefit-24", "author": {"@type": "Organization", "name": "初級大人手冊"}, "publisher": {"@type": "Organization", "name": "初級大人手冊"}, "citation": ["https://moocs.moe.edu.tw/moocs/"]}</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -213,6 +213,37 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .acard .a-date { display:inline-block; margin-top:0.5rem; font-size:0.68rem; color:var(--sub);
                  background:#F1EBE3; padding:0.15rem 0.55rem; border-radius:99px; white-space:nowrap; }
+/* 首頁搜尋盒＋搜尋頁 */
+.home-search { display:flex; gap:0.5rem; margin-top:1.2rem; }
+.home-search input { flex:1; font-size:1rem; padding:0.75rem 1rem; border:1.5px solid var(--line);
+                     border-radius:99px; background:#fff; color:var(--ink); }
+.home-search input:focus { outline:none; border-color:var(--orange); }
+.home-search button { flex:none; background:var(--orange); color:#fff; font-weight:700; font-size:0.95rem;
+                      border:none; padding:0 1.3rem; border-radius:99px; cursor:pointer; }
+.search-box { width:100%; font-size:1.05rem; padding:0.85rem 1.1rem; border:1.5px solid var(--line);
+              border-radius:14px; background:#fff; color:var(--ink); margin:1rem 0 0.4rem; }
+.search-box:focus { outline:none; border-color:var(--orange); }
+.search-hint { font-size:0.85rem; color:var(--sub); margin-bottom:0.6rem; }
+.search-results a { display:block; background:#fff; border-radius:12px; padding:0.85rem 1rem; margin-top:0.6rem;
+                    color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.search-results a:hover { text-decoration:none; transform:translateY(-1px);
+                          box-shadow:0 4px 14px rgba(69,63,58,0.06); }
+.search-results .r-kind { font-size:0.68rem; font-weight:700; color:var(--orange); background:#FBF1E7;
+                          padding:0.1rem 0.5rem; border-radius:99px; margin-right:0.4rem; }
+.search-results .r-title { font-weight:700; }
+.search-results .r-sum { font-size:0.85rem; color:var(--sub); line-height:1.6; margin-top:0.25rem;
+                         display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+/* 延伸閱讀（文章頁底） */
+.related { margin-top:2.2rem; }
+.related h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.2rem; }
+.related-grid { display:grid; grid-template-columns:1fr; gap:0.6rem; margin-top:0.8rem; }
+@media (min-width:560px) { .related-grid { grid-template-columns:repeat(3, 1fr); } }
+.rel-card { display:block; background:#fff; border-radius:12px; padding:0.85rem 0.95rem; color:var(--ink);
+            box-shadow:0 1px 2px rgba(69,63,58,0.04);
+            transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.rel-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
+.rel-card .rc-title { font-size:0.92rem; font-weight:700; line-height:1.45;
+                      display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 /* 進場動畫 */
 @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
 @keyframes heroIn { from { opacity:0; transform:scale(1.02); } to { opacity:1; transform:none; } }
@@ -224,6 +255,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   .home-hero, * { animation:none !important; }
 }
 </style>
+
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -257,6 +289,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="errata">
   <span class="errata-hd">發現錯誤或過時了？</span>這本手冊是我們邊長大、邊整理出來的，難免有疏漏——<a href="mailto:tonyonier99@gmail.com?subject=%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A+%E5%8B%98%E8%AA%A4&body=%E5%97%A8%EF%BC%8C%E6%88%91%E7%99%BC%E7%8F%BE%E9%80%99%E7%AF%87%E7%99%BE%E7%A7%91%E6%9C%89%E9%9C%80%E8%A6%81%E4%BF%AE%E6%AD%A3%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%9A%0A%0A%E3%83%BB%E6%96%87%E7%AB%A0%EF%BC%9A%E7%A3%A8%E8%AA%B2%E5%B8%AB+MOOCs+%E5%85%8D%E8%B2%BB%E4%B8%8A%E5%8F%B0%E5%A4%A7%E8%AA%B2%0A%E3%83%BB%E5%93%AA%E8%A3%A1%E6%80%AA%E6%80%AA%E7%9A%84%EF%BC%9A%0A%E3%83%BB%E6%AD%A3%E7%A2%BA%E7%9A%84%E6%87%89%E8%A9%B2%E6%98%AF%EF%BC%9A%0A">告訴我們一起修正 →</a>
 </div>
+<section class="related"><h3>延伸閱讀</h3><p class="search-hint">同一類的其他內容</p><div class="related-grid"><a class="rel-card" href="../a/benefit-1"><div class="rc-title">半年一次健保免費洗牙</div></a><a class="rel-card" href="../a/benefit-2"><div class="rc-title">30 歲開始免費成人健檢</div></a><a class="rel-card" href="../a/benefit-3"><div class="rc-title">15-45 歲每人 3 次免費諮商</div></a></div></section>
 <div class="cta">
   <div class="cta-txt">
     <strong>在 App 裡看更多</strong>
@@ -269,6 +302,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </main>
 <footer class="site"><div class="wrap">
   <nav class="foot-nav">
+    <a href="../search">搜尋</a>
     <a href="../about">關於</a>
     <a href="../support">支援</a>
     <a href="../privacy">隱私政策</a>

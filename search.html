@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="zh-Hant-TW" style="--cat:#1976D2;--cat-bg:#E3F2FD">
+<html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
-<title>印鑑登記與印鑑證明｜初級大人手冊</title>
-<meta name="description" content="辦過戶、繼承、重大委任常被要求附印鑑證明，這篇講清楚怎麼登記、怎麼申請。">
-<link rel="canonical" href="https://adultingguide.tw/a/seal-1">
-<link rel="icon" type="image/png" href="../assets/app-icon.png">
-<link rel="apple-touch-icon" href="../assets/app-icon.png">
+<title>搜尋｜初級大人手冊</title>
+<meta name="description" content="搜尋初級大人手冊的百科文章與社群討論。">
+<link rel="canonical" href="https://adultingguide.tw/search">
+<link rel="icon" type="image/png" href="assets/app-icon.png">
+<link rel="apple-touch-icon" href="assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
-<meta property="og:title" content="印鑑登記與印鑑證明｜初級大人手冊">
-<meta property="og:description" content="辦過戶、繼承、重大委任常被要求附印鑑證明，這篇講清楚怎麼登記、怎麼申請。">
-<meta property="og:url" content="https://adultingguide.tw/a/seal-1">
-<meta property="og:image" content="https://adultingguide.tw/assets/cat_gov.png">
+<meta property="og:title" content="搜尋｜初級大人手冊">
+<meta property="og:description" content="搜尋初級大人手冊的百科文章與社群討論。">
+<meta property="og:url" content="https://adultingguide.tw/search">
+<meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "印鑑登記與印鑑證明", "description": "辦過戶、繼承、重大委任常被要求附印鑑證明，這篇講清楚怎麼登記、怎麼申請。", "image": "https://adultingguide.tw/assets/cat_gov.png", "datePublished": "2026-07-04", "dateModified": "2026-07-04", "inLanguage": "zh-Hant-TW", "mainEntityOfPage": "https://adultingguide.tw/a/seal-1", "author": {"@type": "Organization", "name": "初級大人手冊"}, "publisher": {"@type": "Organization", "name": "初級大人手冊"}, "citation": ["https://www.ris.gov.tw/app/portal/741", "https://glrs.moi.gov.tw/LawContent.aspx?id=GL000642", "https://xyhr.gov.taipei/News_Content.aspx?n=85337AAB2364378F&s=C7EE3C8D7D98FCB2", "https://dthr.gov.taipei/cp.aspx?n=29600D783244FF86"]}</script>
+
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -259,90 +259,53 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="../"><img class="logo-icon" src="../assets/app-icon.png" alt="">
+  <a class="brand" href="./"><img class="logo-icon" src="assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
     <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
-  <nav class="site-nav"><a href="../" class="on">百科</a><a href="../community/" class="">社群</a><a href="../picks" class="">島嶼地圖</a></nav>
+  <nav class="site-nav"><a href="./" class="on">百科</a><a href="community/" class="">社群</a><a href="picks" class="">島嶼地圖</a></nav>
 </div></header>
 <main>
-<div class="hero-wrap"><img class="hero-img" src="../assets/cat_gov.png" alt="證件與政府"></div>
 <div class="wrap">
-<div class="article-head">
-<nav class="crumb"><a href="../">全部分類</a> › <a href="../c/gov">證件與政府</a></nav>
-<h1>印鑑登記與印鑑證明</h1>
-<div class="meta">
-  <span class="badge">官方來源查證</span>
-  <span class="badge gray">最後查證 2026-07-04</span>
+<div class="article-head about">
+<h1>搜尋</h1>
+<input id="q" class="search-box" type="search" placeholder="輸入關鍵字，例如：報稅、租屋、勞健保" autofocus>
+<p class="search-hint">同時搜尋百科文章與社群討論。</p>
+<div id="results" class="search-results"></div>
 </div>
-<p class="summary">辦過戶、繼承、重大委任常被要求附印鑑證明，這篇講清楚怎麼登記、怎麼申請。</p>
-<article>
-<h2>印鑑登記、印鑑證明是什麼</h2>
-<ul>
-<li>印鑑登記：把一顆指定的印章拿到戶政事務所登記，讓它變成「官方認證的章」。登記後這顆章叫印鑑章，戶政會把它的印面存檔備查。</li>
-<li>印鑑證明：戶政事務所開出來的一份證明文件，用來證明某份契約或文件上蓋的章，就是你登記的那顆印鑑章。</li>
-<li>效力：文件蓋上印鑑章、再附一份印鑑證明，等同於確認「這是本人的意思」（本人同意、本人簽署），對方就能放心這不是別人偽造。</li>
-</ul>
-<h2>什麼時候會用到</h2>
-<ul>
-<li>買賣或過戶不動產（房子、土地）。</li>
-<li>辦理遺產繼承、分割。</li>
-<li>處理重大財產，或委任別人代你辦重要的事（例如委託書要附印鑑證明，證明委任是真的）。</li>
-<li>這類場合通常是地政事務所、銀行、法院或對方要求你附上印鑑證明，平常生活用不到。</li>
-</ul>
-<h2>怎麼辦印鑑登記</h2>
-<ul>
-<li>地點：戶籍地的戶政事務所。如果你戶籍縣市已建置數位化系統，可由所轄任一戶政事務所辦理。</li>
-<li>原則本人親辦。少數例外（旅居國外、在營軍人、收容人、重大疾病或不能行走者等）可依規定委任他人代辦。</li>
-<li>要帶：本人國民身分證、要登記的那顆印章。</li>
-<li>印章規格有規定：印面的長、寬或直徑要 1 公分以上、不超過 3 公分；要刻戶籍登記的姓名、不能加刻圖騰；不能用原子章或橡膠這類容易變形的材質。</li>
-<li>規費：印鑑登記每次新臺幣 20 元。（印鑑各項規費由各直轄市、縣市政府自訂，目前各地多為每件 20 元，以當地戶政公告為準。）</li>
-</ul>
-<h2>怎麼申請印鑑證明</h2>
-<ul>
-<li>要先完成印鑑登記，才能申請印鑑證明（沒登記過就要先登記）。</li>
-<li>要帶：本人國民身分證、原本登記的那顆印鑑章。</li>
-<li>可以委託：請別人代辦時，受委任人要帶自己的身分證、委任書、委任人的身分證影本和原登記印鑑；人在國外委任的，委任書通常要經駐外館處驗證。</li>
-<li>規費：每張新臺幣 20 元。需要幾份就申請幾份（不同單位常會各要一份正本）。</li>
-<li>效期：法規沒有規定統一的有效期限，但實務上收件單位（如地政、銀行）多半要求是近 3 個月內申請的，以對方規定為準。</li>
-</ul>
-<h2>跟普通印章、簽名差在哪</h2>
-<ul>
-<li>普通印章：誰都能去刻一顆一樣的，沒有戶政背書，無法單獨證明是本人。</li>
-<li>印鑑章：經過戶政登記存檔，搭配印鑑證明，等於有官方背書「這顆章就是這個人」。</li>
-<li>簽名：有些文件用親簽即可；但牽涉重大財產、過戶、繼承時，對方往往指定要印鑑證明，簽名不一定夠。</li>
-</ul>
-<h2>變更或廢止印鑑</h2>
-<ul>
-<li>想換一顆章當印鑑、或不想再保留印鑑，都可以到戶政事務所辦變更或廢止，規費同樣每次 20 元。</li>
-<li>有些情況印鑑會「當然廢止」（自動失效）：本人死亡、喪失國籍、或遷出戶籍地（但遷往國外、或已建置印鑑數位化系統的同一直轄市／縣市內搬家除外）。另外，若當初登記時自己有填「有效期限」，到期也會失效（多數人不會特別設）。</li>
-</ul>
-<aside class="callout">重點：印鑑章＝經戶政登記的「官方認證章」，印鑑證明＝證明某份文件蓋的就是這顆章；蓋了等同本人同意。買賣不動產、繼承、重大委任才會用到，登記與證明各每件 20 元，要本人帶身分證和印章到戶籍地戶政事務所辦。</aside>
-</article>
-<section class="sources">
-  <h3>官方來源</h3>
-  <a class="src-btn" href="https://www.ris.gov.tw/app/portal/741" rel="noopener"><span class="src-txt"><span class="src-org">內政部戶政司</span>印鑑登記及印鑑證明業務</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://glrs.moi.gov.tw/LawContent.aspx?id=GL000642" rel="noopener"><span class="src-txt"><span class="src-org">內政部主管法規共用系統</span>戶政事務所辦理印鑑登記作業規定</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://xyhr.gov.taipei/News_Content.aspx?n=85337AAB2364378F&s=C7EE3C8D7D98FCB2" rel="noopener"><span class="src-txt"><span class="src-org">臺北市信義區戶政事務所</span>應如何辦理印鑑證明？</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://dthr.gov.taipei/cp.aspx?n=29600D783244FF86" rel="noopener"><span class="src-txt"><span class="src-org">臺北市大同區戶政事務所</span>戶政規費及罰鍰</span><span class="src-arrow">↗</span></a>
-</section>
-<div class="errata">
-  <span class="errata-hd">發現錯誤或過時了？</span>這本手冊是我們邊長大、邊整理出來的，難免有疏漏——<a href="mailto:tonyonier99@gmail.com?subject=%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A+%E5%8B%98%E8%AA%A4&body=%E5%97%A8%EF%BC%8C%E6%88%91%E7%99%BC%E7%8F%BE%E9%80%99%E7%AF%87%E7%99%BE%E7%A7%91%E6%9C%89%E9%9C%80%E8%A6%81%E4%BF%AE%E6%AD%A3%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%9A%0A%0A%E3%83%BB%E6%96%87%E7%AB%A0%EF%BC%9A%E5%8D%B0%E9%91%91%E7%99%BB%E8%A8%98%E8%88%87%E5%8D%B0%E9%91%91%E8%AD%89%E6%98%8E%0A%E3%83%BB%E5%93%AA%E8%A3%A1%E6%80%AA%E6%80%AA%E7%9A%84%EF%BC%9A%0A%E3%83%BB%E6%AD%A3%E7%A2%BA%E7%9A%84%E6%87%89%E8%A9%B2%E6%98%AF%EF%BC%9A%0A">告訴我們一起修正 →</a>
-</div>
-<section class="related"><h3>延伸閱讀</h3><p class="search-hint">同一類的其他內容</p><div class="related-grid"><a class="rel-card" href="../a/natcert-1"><div class="rc-title">自然人憑證是什麼、怎麼辦</div></a><a class="rel-card" href="../a/license-1"><div class="rc-title">考駕照：機車與汽車</div></a><a class="rel-card" href="../a/idcard-1"><div class="rc-title">身分證怎麼辦</div></a></div></section>
-<div class="cta">
-  <div class="cta-txt">
-    <strong>在 App 裡看更多</strong>
-    <p>報稅、租屋、福利、緊急應變，大人生活的大小事，App 裡都查得到。</p>
-  </div>
-  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">前往 App Store</a>
-</div>
-</div>
+<script>
+(function(){
+  var idx=[], q=document.getElementById('q'), out=document.getElementById('results');
+  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function render(list){
+    if(!q.value.trim()){out.innerHTML='';return;}
+    if(!list.length){out.innerHTML='<p class="search-hint">找不到相關內容，換個關鍵字試試。</p>';return;}
+    out.innerHTML=list.slice(0,40).map(function(r){
+      return '<a href="'+r.u+'"><span class="r-kind">'+esc(r.k)+'</span><span class="r-title">'+esc(r.t)+'</span><div class="r-sum">'+esc(r.d)+'</div></a>';
+    }).join('');
+  }
+  function search(){
+    var s=q.value.trim().toLowerCase();
+    if(!s){render([]);return;}
+    render(idx.filter(function(r){return (r.t+' '+r.d).toLowerCase().indexOf(s)>=0;}));
+  }
+  q.addEventListener('input',search);
+  fetch('/search-index.json').then(function(r){return r.json();}).then(function(d){
+    idx=d;
+    var p=new URLSearchParams(location.search).get('q');
+    if(p){q.value=p;}
+    search();
+  }).catch(function(){out.innerHTML='<p class="search-hint">搜尋索引載入失敗，請重新整理。</p>';});
+})();
+</script>
 </div>
 </main>
 <footer class="site"><div class="wrap">
   <nav class="foot-nav">
-    <a href="../search">搜尋</a>
-    <a href="../about">關於</a>
-    <a href="../support">支援</a>
-    <a href="../privacy">隱私政策</a>
-    <a href="../terms">使用條款</a>
+    <a href="search">搜尋</a>
+    <a href="about">關於</a>
+    <a href="support">支援</a>
+    <a href="privacy">隱私政策</a>
+    <a href="terms">使用條款</a>
     <a href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
   </nav>
   <p class="foot-legal">內容僅供生活參考，實際金額、期限與規定以各主管機關當年公告為準。<br>

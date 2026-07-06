@@ -5,26 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
 <title>冷凍包裹怎麼寄｜初級大人手冊 社群</title>
-<meta name="description" content="最近買了豬腳要孝敬父母
-結果在冷凍包裹上受挫
-
-我已經冷凍12小時變得硬梆梆了
-要用紙箱包起來才能寄 請問我可以在紙箱外包滿膠帶嗎？還是不行呢？
-
-今天星期五拿">
+<meta name="description" content="最近買了豬腳要孝敬父母 結果在冷凍包裹上受挫 我已經冷凍12小時變得硬梆梆了 要用紙箱包起來才能寄 請問我可以在紙箱外包滿膠帶嗎？還是不行呢？ 今天星期五拿去寄 六日會配送嗎">
 <link rel="canonical" href="https://adultingguide.tw/community/p/196508b6-8b54-4e12-9787-551b109d1cd5">
 <link rel="icon" type="image/png" href="../../assets/app-icon.png">
 <link rel="apple-touch-icon" href="../../assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
 <meta property="og:title" content="冷凍包裹怎麼寄｜初級大人手冊 社群">
-<meta property="og:description" content="最近買了豬腳要孝敬父母
-結果在冷凍包裹上受挫
-
-我已經冷凍12小時變得硬梆梆了
-要用紙箱包起來才能寄 請問我可以在紙箱外包滿膠帶嗎？還是不行呢？
-
-今天星期五拿">
+<meta property="og:description" content="最近買了豬腳要孝敬父母 結果在冷凍包裹上受挫 我已經冷凍12小時變得硬梆梆了 要用紙箱包起來才能寄 請問我可以在紙箱外包滿膠帶嗎？還是不行呢？ 今天星期五拿去寄 六日會配送嗎">
 <meta property="og:url" content="https://adultingguide.tw/community/p/196508b6-8b54-4e12-9787-551b109d1cd5">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,6 +213,37 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .acard .a-date { display:inline-block; margin-top:0.5rem; font-size:0.68rem; color:var(--sub);
                  background:#F1EBE3; padding:0.15rem 0.55rem; border-radius:99px; white-space:nowrap; }
+/* 首頁搜尋盒＋搜尋頁 */
+.home-search { display:flex; gap:0.5rem; margin-top:1.2rem; }
+.home-search input { flex:1; font-size:1rem; padding:0.75rem 1rem; border:1.5px solid var(--line);
+                     border-radius:99px; background:#fff; color:var(--ink); }
+.home-search input:focus { outline:none; border-color:var(--orange); }
+.home-search button { flex:none; background:var(--orange); color:#fff; font-weight:700; font-size:0.95rem;
+                      border:none; padding:0 1.3rem; border-radius:99px; cursor:pointer; }
+.search-box { width:100%; font-size:1.05rem; padding:0.85rem 1.1rem; border:1.5px solid var(--line);
+              border-radius:14px; background:#fff; color:var(--ink); margin:1rem 0 0.4rem; }
+.search-box:focus { outline:none; border-color:var(--orange); }
+.search-hint { font-size:0.85rem; color:var(--sub); margin-bottom:0.6rem; }
+.search-results a { display:block; background:#fff; border-radius:12px; padding:0.85rem 1rem; margin-top:0.6rem;
+                    color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.search-results a:hover { text-decoration:none; transform:translateY(-1px);
+                          box-shadow:0 4px 14px rgba(69,63,58,0.06); }
+.search-results .r-kind { font-size:0.68rem; font-weight:700; color:var(--orange); background:#FBF1E7;
+                          padding:0.1rem 0.5rem; border-radius:99px; margin-right:0.4rem; }
+.search-results .r-title { font-weight:700; }
+.search-results .r-sum { font-size:0.85rem; color:var(--sub); line-height:1.6; margin-top:0.25rem;
+                         display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+/* 延伸閱讀（文章頁底） */
+.related { margin-top:2.2rem; }
+.related h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.2rem; }
+.related-grid { display:grid; grid-template-columns:1fr; gap:0.6rem; margin-top:0.8rem; }
+@media (min-width:560px) { .related-grid { grid-template-columns:repeat(3, 1fr); } }
+.rel-card { display:block; background:#fff; border-radius:12px; padding:0.85rem 0.95rem; color:var(--ink);
+            box-shadow:0 1px 2px rgba(69,63,58,0.04);
+            transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.rel-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
+.rel-card .rc-title { font-size:0.92rem; font-weight:700; line-height:1.45;
+                      display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 /* 進場動畫 */
 @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
 @keyframes heroIn { from { opacity:0; transform:scale(1.02); } to { opacity:1; transform:none; } }
@@ -297,6 +316,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .crumb { font-size:0.8rem; color:var(--sub); margin:1.6rem 0 0; }
 .crumb a { color:var(--sub); }
 </style>
+
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -330,6 +350,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </div></main>
 <footer class="site"><div class="wrap">
   <nav class="foot-nav">
+    <a href="../../search">搜尋</a>
     <a href="../../about">關於</a>
     <a href="../../support">支援</a>
     <a href="../../privacy">隱私政策</a>
