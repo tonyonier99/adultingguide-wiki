@@ -5,7 +5,8 @@
 build_site.py
 # 資料與金鑰
 *.json
-!search-index.json  # 例外：站內搜尋索引（僅公開的標題／摘要／網址，需被服務）
+# 例外：站內搜尋索引（僅公開的標題／摘要／網址，需被服務；不含金鑰）
+!search-index.json
 *.env
 .env*
 *.pem
