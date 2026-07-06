@@ -1,0 +1,25 @@
+# 初級大人手冊（adultingguide.tw）
+
+> 台灣年輕人的生活使用手冊。報稅、租屋、拜拜、看醫生、辦證件、爭勞權——第一次遇到的大人課題，每篇都對過官方來源、寫成看得懂的白話，另有網友互助社群。
+
+## 百科分類
+- [金錢與保險](https://adultingguide.tw/c/money)：理財、報稅、保險、勞退
+- [醫療健康](https://adultingguide.tw/c/medical)：看病、健檢、牙科、急救
+- [居家生活](https://adultingguide.tw/c/housing)：租屋、家電、修繕、打掃
+- [工作與創業](https://adultingguide.tw/c/workplace)：求職、加班費、離職、勞基法
+- [交通與旅遊](https://adultingguide.tw/c/traffic)：通勤、出國、大眾運輸、車禍
+- [人際與禮俗](https://adultingguide.tw/c/etiquette)：紅包、節慶、拜拜、婚喪
+- [證件與政府](https://adultingguide.tw/c/gov)：身分證、護照、戶籍、監理
+- [數位與防詐](https://adultingguide.tw/c/digital)：3C、網路、個資、防詐
+- [新手福利包](https://adultingguide.tw/c/benefits)：政府補助、免費資源、隱藏撇步
+
+## 社群
+- [社群討論](https://adultingguide.tw/community/)：真實網友的發問與經驗分享，站長培訓的海巡專員提供查證解答。
+
+## 關於本站
+- [關於](https://adultingguide.tw/about)
+- [支援](https://adultingguide.tw/support)
+- [隱私權政策](https://adultingguide.tw/privacy)
+- [使用條款](https://adultingguide.tw/terms)
+
+內容僅供生活參考，金額、期限與規定以各主管機關當年公告為準。
