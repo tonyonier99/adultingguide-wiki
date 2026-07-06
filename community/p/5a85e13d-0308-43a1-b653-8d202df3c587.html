@@ -143,6 +143,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   align-self:flex-start; }
 .pick-form .btn:hover { opacity:0.92; }
 .pick-note { font-size:0.8rem; color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
+.pick-ok { margin-top:1.6rem; background:var(--cat-bg); border-radius:16px; padding:1.6rem 1.4rem;
+           text-align:center; }
+.pick-ok strong { display:block; font-size:1.15rem; color:var(--cat); margin-bottom:0.4rem; }
+.pick-ok p { font-size:0.95rem; color:var(--ink); line-height:1.7; margin:0; }
 /* index */
 .home-hero { padding:2.6rem 0 0.6rem; }
 .home-hero h1 { font-size:1.9rem; line-height:1.4; }
@@ -183,6 +187,23 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .cat-card.featured h3 { font-size:1.4rem; }
 .home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
             margin:2.2rem 0 0.2rem; }
+/* 首頁島嶼地圖介紹區 */
+.isl-sec { margin-top:2.8rem; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
+           border-radius:18px; padding:1.5rem 1.4rem; }
+.isl-head { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+.isl-head h2 { font-size:1.35rem; font-weight:800; }
+.isl-flag { font-size:0.7rem; font-weight:800; color:#fff; background:var(--sub);
+            padding:0.18rem 0.6rem; border-radius:99px; }
+.isl-lead { color:var(--ink); margin:0.5rem 0 0; font-size:1rem; line-height:1.7; }
+.isl-grid { display:grid; grid-template-columns:1fr; gap:0.7rem; margin-top:1.1rem; }
+@media (min-width:640px) { .isl-grid { grid-template-columns:repeat(3, 1fr); } }
+.isl-card { display:block; background:#fff; border-radius:14px; padding:1.05rem 1.1rem; color:var(--ink);
+            box-shadow:0 1px 2px rgba(69,63,58,0.04);
+            transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.isl-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
+.isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
+.isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
+.isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
