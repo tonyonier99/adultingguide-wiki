@@ -18,14 +18,16 @@ body { font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; color:var(
 a { color:var(--cat); text-decoration:none; }
 a:hover { text-decoration:underline; }
 .wrap { max-width:var(--measure); margin:0 auto; padding:0 1.25rem; }
-header.site { border-bottom:1px solid var(--line); padding:0.85rem 0; background:var(--paper);
+header.site { border-bottom:1px solid var(--line); padding:0.7rem 0; background:var(--paper);
               position:sticky; top:0; z-index:10; }
-header.site .wrap { display:flex; align-items:baseline; gap:0.75rem; }
+header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
+.brand { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .logo { font-weight:800; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
 .logo span { color:var(--orange); }
+.brand-sub { font-size:0.68rem; color:var(--sub); line-height:1.35; }
 .tagline { font-size:0.78rem; color:var(--sub); }
-.site-nav { margin-left:auto; display:flex; gap:1.1rem; }
-.site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); }
+.site-nav { margin-left:auto; display:flex; gap:1.1rem; flex:none; }
+.site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); white-space:nowrap; }
 .site-nav a.on { color:var(--orange); }
 main { padding:0 0 3.5rem; }
 /* 文章頭圖：縮進欄寬、原尺寸、圓角（不滿版）*/
@@ -99,17 +101,30 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
 .cat-card .cc-sub { font-size:0.9rem; color:var(--sub); margin-top:0.2rem; }
 .cat-card .cc-count { display:inline-block; margin-top:0.7rem; font-size:0.78rem; font-weight:700;
                       color:var(--cat); background:var(--cat-bg); padding:0.2rem 0.7rem; border-radius:99px; }
-/* 文章列表卡（分類頁）*/
-.acard { display:block; background:#fff; border-radius:14px; margin-top:0.75rem; padding:1rem 1.2rem;
+/* 置頂招牌卡（福利包）*/
+.cat-card.featured { box-shadow:0 3px 16px rgba(230,81,0,0.13); margin-top:1.4rem; }
+.cat-card.featured:hover { box-shadow:0 10px 30px rgba(230,81,0,0.18); }
+.cover-wrap { position:relative; }
+.feat-flag { position:absolute; top:0.75rem; left:0.75rem; background:var(--orange); color:#fff;
+             font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
+             box-shadow:0 2px 10px rgba(0,0,0,0.18); }
+.cat-card.featured h3 { font-size:1.4rem; }
+.home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+            margin:2.2rem 0 0.2rem; }
+/* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
+.acard-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.7rem; margin-top:1.2rem; }
+@media (min-width:680px) { .acard-grid { grid-template-columns:repeat(3, 1fr); gap:0.9rem; } }
+.acard { display:block; background:#fff; border-radius:14px; padding:0.9rem 1rem;
          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
          transition:box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
                     transform 0.2s cubic-bezier(.645,.045,.355,1); }
 .acard:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 4px 18px rgba(69,63,58,0.06); }
-.acard .a-title { font-size:1.1rem; font-weight:700; margin-bottom:0.2rem; }
-.acard .a-sum { font-size:0.9rem; color:var(--sub); line-height:1.7;
+.acard .a-title { font-size:0.98rem; font-weight:700; line-height:1.45; margin-bottom:0.3rem;
+                  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.acard .a-sum { font-size:0.82rem; color:var(--sub); line-height:1.65;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-.acard .a-date { display:inline-block; margin-top:0.55rem; font-size:0.74rem; color:var(--sub);
-                 background:#F1EBE3; padding:0.15rem 0.6rem; border-radius:99px; }
+.acard .a-date { display:inline-block; margin-top:0.5rem; font-size:0.68rem; color:var(--sub);
+                 background:#F1EBE3; padding:0.15rem 0.55rem; border-radius:99px; white-space:nowrap; }
 /* 進場動畫 */
 @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
 @keyframes heroIn { from { opacity:0; transform:scale(1.02); } to { opacity:1; transform:none; } }
@@ -124,7 +139,8 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="logo" href="../index.html">初級大人<span>手冊</span></a>
+  <div class="brand"><a class="logo" href="../index.html">初級大人<span>手冊</span></a>
+    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></div>
   <nav class="site-nav"><a href="../index.html" class="on">百科</a><a href="../community/index.html" class="">社群</a></nav>
 </div></header>
 <main>
@@ -134,7 +150,7 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
 <nav class="crumb"><a href="../index.html">全部分類</a> › 人際與禮俗</nav>
 <h1>人際與禮俗</h1>
 <p class="summary">紅包、節慶、拜拜、婚喪　·　8 篇</p>
-<a class="acard" href="../a/etq-4.html" style="animation-delay:0.00s"><div class="a-title">拜拜基本禮節：香幾炷、怎麼合十、神明桌規矩</div><div class="a-sum">第一次自己拜拜怕失禮？香幾炷、怎麼拜，一次搞懂。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/etq-5.html" style="animation-delay:0.04s"><div class="a-title">拜拜進階：順序、日子、公司怎麼拜</div><div class="a-sum">初一十五、神明祖先地基主，順序和日子一次搞懂。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/social-1.html" style="animation-delay:0.08s"><div class="a-title">職場與人際應對</div><div class="a-sum">職場進退、怎麼拒絕、怎麼開口，幾個讓相處更順的原則。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/wedding-1.html" style="animation-delay:0.12s"><div class="a-title">婚禮、彌月、入厝禮俗</div><div class="a-sum">同事朋友辦喜事、生小孩、搬新家，包多少送什麼看這篇。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/funeral-1.html" style="animation-delay:0.16s"><div class="a-title">親人過世，前幾天和後續要辦什麼</div><div class="a-sum">家人走了，慌亂中該先做什麼、哪些有期限，照順序來。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/condolence-1.html" style="animation-delay:0.20s"><div class="a-title">參加喪禮：白包與該注意的禮數</div><div class="a-sum">第一次參加告別式怕失禮——白包包多少、穿什麼、什麼話不能說。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/visit-sick-1.html" style="animation-delay:0.24s"><div class="a-title">探病禮節：送什麼、避什麼</div><div class="a-sum">探病送錯禮反而失禮——什麼能送、什麼有諧音忌諱、什麼時候去。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/gift-taboo-1.html" style="animation-delay:0.28s"><div class="a-title">送禮的諧音與數字禁忌</div><div class="a-sum">鐘、傘、鞋為什麼不能送？常見送禮諧音和數字禁忌一次整理。</div><span class="a-date">最後查證 2026-07-04</span></a>
+<div class="acard-grid"><a class="acard" href="../a/etq-4.html" style="animation-delay:0.00s"><div class="a-title">拜拜基本禮節：香幾炷、怎麼合十、神明桌規矩</div><div class="a-sum">第一次自己拜拜怕失禮？香幾炷、怎麼拜，一次搞懂。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/etq-5.html" style="animation-delay:0.03s"><div class="a-title">拜拜進階：順序、日子、公司怎麼拜</div><div class="a-sum">初一十五、神明祖先地基主，順序和日子一次搞懂。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/social-1.html" style="animation-delay:0.06s"><div class="a-title">職場與人際應對</div><div class="a-sum">職場進退、怎麼拒絕、怎麼開口，幾個讓相處更順的原則。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/wedding-1.html" style="animation-delay:0.09s"><div class="a-title">婚禮、彌月、入厝禮俗</div><div class="a-sum">同事朋友辦喜事、生小孩、搬新家，包多少送什麼看這篇。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/funeral-1.html" style="animation-delay:0.12s"><div class="a-title">親人過世，前幾天和後續要辦什麼</div><div class="a-sum">家人走了，慌亂中該先做什麼、哪些有期限，照順序來。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/condolence-1.html" style="animation-delay:0.15s"><div class="a-title">參加喪禮：白包與該注意的禮數</div><div class="a-sum">第一次參加告別式怕失禮——白包包多少、穿什麼、什麼話不能說。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/visit-sick-1.html" style="animation-delay:0.18s"><div class="a-title">探病禮節：送什麼、避什麼</div><div class="a-sum">探病送錯禮反而失禮——什麼能送、什麼有諧音忌諱、什麼時候去。</div><span class="a-date">最後查證 2026-07-04</span></a><a class="acard" href="../a/gift-taboo-1.html" style="animation-delay:0.21s"><div class="a-title">送禮的諧音與數字禁忌</div><div class="a-sum">鐘、傘、鞋為什麼不能送？常見送禮諧音和數字禁忌一次整理。</div><span class="a-date">最後查證 2026-07-04</span></a></div>
 </div>
 </div>
 </main>

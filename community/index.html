@@ -18,14 +18,16 @@ body { font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; color:var(
 a { color:var(--cat); text-decoration:none; }
 a:hover { text-decoration:underline; }
 .wrap { max-width:var(--measure); margin:0 auto; padding:0 1.25rem; }
-header.site { border-bottom:1px solid var(--line); padding:0.85rem 0; background:var(--paper);
+header.site { border-bottom:1px solid var(--line); padding:0.7rem 0; background:var(--paper);
               position:sticky; top:0; z-index:10; }
-header.site .wrap { display:flex; align-items:baseline; gap:0.75rem; }
+header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
+.brand { display:flex; flex-direction:column; gap:2px; min-width:0; }
 .logo { font-weight:800; font-size:1.05rem; color:var(--ink); white-space:nowrap; }
 .logo span { color:var(--orange); }
+.brand-sub { font-size:0.68rem; color:var(--sub); line-height:1.35; }
 .tagline { font-size:0.78rem; color:var(--sub); }
-.site-nav { margin-left:auto; display:flex; gap:1.1rem; }
-.site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); }
+.site-nav { margin-left:auto; display:flex; gap:1.1rem; flex:none; }
+.site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); white-space:nowrap; }
 .site-nav a.on { color:var(--orange); }
 main { padding:0 0 3.5rem; }
 /* 文章頭圖：縮進欄寬、原尺寸、圓角（不滿版）*/
@@ -99,17 +101,30 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
 .cat-card .cc-sub { font-size:0.9rem; color:var(--sub); margin-top:0.2rem; }
 .cat-card .cc-count { display:inline-block; margin-top:0.7rem; font-size:0.78rem; font-weight:700;
                       color:var(--cat); background:var(--cat-bg); padding:0.2rem 0.7rem; border-radius:99px; }
-/* 文章列表卡（分類頁）*/
-.acard { display:block; background:#fff; border-radius:14px; margin-top:0.75rem; padding:1rem 1.2rem;
+/* 置頂招牌卡（福利包）*/
+.cat-card.featured { box-shadow:0 3px 16px rgba(230,81,0,0.13); margin-top:1.4rem; }
+.cat-card.featured:hover { box-shadow:0 10px 30px rgba(230,81,0,0.18); }
+.cover-wrap { position:relative; }
+.feat-flag { position:absolute; top:0.75rem; left:0.75rem; background:var(--orange); color:#fff;
+             font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
+             box-shadow:0 2px 10px rgba(0,0,0,0.18); }
+.cat-card.featured h3 { font-size:1.4rem; }
+.home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+            margin:2.2rem 0 0.2rem; }
+/* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
+.acard-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.7rem; margin-top:1.2rem; }
+@media (min-width:680px) { .acard-grid { grid-template-columns:repeat(3, 1fr); gap:0.9rem; } }
+.acard { display:block; background:#fff; border-radius:14px; padding:0.9rem 1rem;
          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
          transition:box-shadow 0.2s cubic-bezier(.645,.045,.355,1),
                     transform 0.2s cubic-bezier(.645,.045,.355,1); }
 .acard:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 4px 18px rgba(69,63,58,0.06); }
-.acard .a-title { font-size:1.1rem; font-weight:700; margin-bottom:0.2rem; }
-.acard .a-sum { font-size:0.9rem; color:var(--sub); line-height:1.7;
+.acard .a-title { font-size:0.98rem; font-weight:700; line-height:1.45; margin-bottom:0.3rem;
+                  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.acard .a-sum { font-size:0.82rem; color:var(--sub); line-height:1.65;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-.acard .a-date { display:inline-block; margin-top:0.55rem; font-size:0.74rem; color:var(--sub);
-                 background:#F1EBE3; padding:0.15rem 0.6rem; border-radius:99px; }
+.acard .a-date { display:inline-block; margin-top:0.5rem; font-size:0.68rem; color:var(--sub);
+                 background:#F1EBE3; padding:0.15rem 0.55rem; border-radius:99px; white-space:nowrap; }
 /* 進場動畫 */
 @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
 @keyframes heroIn { from { opacity:0; transform:scale(1.02); } to { opacity:1; transform:none; } }
@@ -176,11 +191,12 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="logo" href="../index.html">初級大人<span>手冊</span></a>
+  <div class="brand"><a class="logo" href="../index.html">初級大人<span>手冊</span></a>
+    <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></div>
   <nav class="site-nav"><a href="../index.html" class="">百科</a><a href="../community/index.html" class="on">社群</a></nav>
 </div></header>
 <main><div class="wrap">
-<div class="comm-hero"><h1>大人的疑難雜症，這裡有人一起想辦法</h1><p>報稅、租屋、職場、生活大小事——真實網友的發問與經驗，還有站長培訓的海巡專員查證解答。</p><span class="readonly-note">網頁只能看討論 · 發問回答請下載 App</span></div>
+<div class="comm-hero"><h1>大人的煩惱，有人跟你一起想</h1><p>網友的真實發問和生活經驗，卡關的時候，站長也會跳下來一起聊。</p><span class="readonly-note">網頁只能看討論 · 發問回答請下載 App</span></div>
 <div class="sec-label">熱門討論　<span style="color:var(--sub);font-weight:400">6</span></div>
 <a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587.html" style="animation-delay:0.00s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">c</span><span class="who">cecilia</span><span class="tag tip">秘技</span></div>
@@ -192,13 +208,13 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">滾</span><span class="who">滾筒洗衣機</span><span class="tag tip">秘技</span></div>
   <div class="p-title">外婆給我的筆記1——菜市場買菜</div>
   <div class="p-excerpt">好像蠻多初級大人去菜市場時撿不到便宜反而被坑很慘，我自己也是所以就去找老練大人我外婆了… 1、傳統市場通常都會有公秤，如果感覺被多算錢或拿上去手感不對可以去那，公秤是政府設的會有人定期檢查不用擔心，找不到公秤就儘量找能直接看見秤重畫面的商家 2、其實去菜攤買菜如果買的比較多或跟老闆混熟了可以問能不能送一點蒜頭或辣椒，基本上好聲好氣的請求，成功率挺高的，但不給也不要去硬凹人家喔… 3、市場重量單位幾乎用臺斤來計算，一臺斤大約是600克 4、買水果、買菜如果自己不介意能吃就好，又想省錢可以參考一旁擺的那種一盤一百的那種固定價NG商品 5、去菜市場很常看到XXX金額/斤，假如一顆高麗菜20/斤，老闆如果秤下去是一顆是1200克那就是40塊錢 6、攤販在裝你的東西時，千萬！千萬！千萬！不要滑手機或看其他地方，專心看著給你裝東西的人！有的比較黑的可能會看你沒在注意就少給你東西或多塞一個多算錢！！最好東西到手後不要直接轉身，打開袋子對一下自己買了什麼 7、建議邊買邊心算一下，跟老闆算出來的落差太大再跟老闆核對一次 8、沒有明碼標價的基本上就是開賭盤，老闆開口多少就是多少，真要買一定要先問出一個價來，不能先跟你講明的不要買 9、懶得找、或抓不準哪家好就看哪裡婆婆媽媽聚集最多跟著買，一個市場商販的口碑都是婆婆媽媽們按照經驗，一傳十十傳百來的 10、很多菜市場賣炸物的攤是寶藏，喜歡吃炸物的可以試試看🤤 先這些～之後要等我有遇到新狀況再跟我外婆挖了 不想鬥智鬥勇的還是總歸一句——去超市大賣場吧，雖然一定會貴不少，但每樣都明碼標價還有發票明細</div>
-  <div class="p-meta">0 則補充 · 101 讚</div>
+  <div class="p-meta">0 則補充 · 102 讚</div>
 </a>
 <a class="pcard" href="p/cc15124a-b0f6-4dfc-b7f5-80500c514ec9.html" style="animation-delay:0.06s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">果</span><span class="who">果塔</span><span class="tag tip">秘技</span></div>
   <div class="p-title">訊號不好119打不通怎麼辦</div>
   <div class="p-excerpt">一、『112』為行動電話緊急救難號碼，在全球各地有基地台訊號範圍處均可撥打。即使行動電話無SIM卡，只要尚有電力並在信號涵蓋範圍內，均可撥通。 二、『112』、『110』、『119』使用的差異性： (一)在我國，『112』、『110』、『119』均為緊急救難號碼，『112』適用在緊急危難時，如果您持用手機所在位置收訊不佳，『110』、『119』都撥不通時使用。 (二)『112』於撥通後將由語音導引，轉接至報案需要的『110』或急難求助的『119』。 (三)由於『112』係由語音導引進行轉接，將延長接續時間，為爭取救難時效，於收訊狀況良好時，仍應優先撥打『110』或『119』。 三、『112』的使用時機與方法： (一)當您遇到緊急狀況時，所在位置收訊不佳，只要您的手機收發功能正常，不論您是否處在所承租門號業者訊號範圍，只要有任何一家3G/GSM系統業者的訊號，就可以幫您轉接警察局或消防局，而且『112』有中、英文語音說明，對來台旅遊的外國朋友也能方便使用。 (二)撥打『112』，您將會聽到以下語音：『這裡是行動電話112緊急救難專線，您若要報案請按〝0〞，我們將為您轉接〝110〞警察局，您若急需救助請按〝9〞，我們將為您轉接〝119〞消防局。』，若不方便撥號，系統會自動轉至〝119〞消防局。</div>
-  <div class="p-meta">0 則補充 · 74 讚</div>
+  <div class="p-meta">0 則補充 · 75 讚</div>
 </a>
 <a class="pcard" href="p/f08056ac-605c-4f82-b3f2-70127c9b2d68.html" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">陳</span><span class="who">陳</span><span class="tag ask">發問</span></div>
@@ -229,13 +245,13 @@ footer.site { border-top:1px solid var(--line); padding:1.5rem 0 2.5rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">滾</span><span class="who">滾筒洗衣機</span></div>
   <div class="p-title">外婆給我的筆記1——菜市場買菜</div>
   <div class="p-excerpt">好像蠻多初級大人去菜市場時撿不到便宜反而被坑很慘，我自己也是所以就去找老練大人我外婆了… 1、傳統市場通常都會有公秤，如果感覺被多算錢或拿上去手感不對可以去那，公秤是政府設的會有人定期檢查不用擔心，找不到公秤就儘量找能直接看見秤重畫面的商家 2、其實去菜攤買菜如果買的比較多或跟老闆混熟了可以問能不能送一點蒜頭或辣椒，基本上好聲好氣的請求，成功率挺高的，但不給也不要去硬凹人家喔… 3、市場重量單位幾乎用臺斤來計算，一臺斤大約是600克 4、買水果、買菜如果自己不介意能吃就好，又想省錢可以參考一旁擺的那種一盤一百的那種固定價NG商品 5、去菜市場很常看到XXX金額/斤，假如一顆高麗菜20/斤，老闆如果秤下去是一顆是1200克那就是40塊錢 6、攤販在裝你的東西時，千萬！千萬！千萬！不要滑手機或看其他地方，專心看著給你裝東西的人！有的比較黑的可能會看你沒在注意就少給你東西或多塞一個多算錢！！最好東西到手後不要直接轉身，打開袋子對一下自己買了什麼 7、建議邊買邊心算一下，跟老闆算出來的落差太大再跟老闆核對一次 8、沒有明碼標價的基本上就是開賭盤，老闆開口多少就是多少，真要買一定要先問出一個價來，不能先跟你講明的不要買 9、懶得找、或抓不準哪家好就看哪裡婆婆媽媽聚集最多跟著買，一個市場商販的口碑都是婆婆媽媽們按照經驗，一傳十十傳百來的 10、很多菜市場賣炸物的攤是寶藏，喜歡吃炸物的可以試試看🤤 先這些～之後要等我有遇到新狀況再跟我外婆挖了 不想鬥智鬥勇的還是總歸一句——去超市大賣場吧，雖然一定會貴不少，但每樣都明碼標價還有發票明細</div>
-  <div class="p-meta">0 則補充 · 101 讚</div>
+  <div class="p-meta">0 則補充 · 102 讚</div>
 </a>
 <a class="pcard" href="p/cc15124a-b0f6-4dfc-b7f5-80500c514ec9.html" style="animation-delay:0.06s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">果</span><span class="who">果塔</span></div>
   <div class="p-title">訊號不好119打不通怎麼辦</div>
   <div class="p-excerpt">一、『112』為行動電話緊急救難號碼，在全球各地有基地台訊號範圍處均可撥打。即使行動電話無SIM卡，只要尚有電力並在信號涵蓋範圍內，均可撥通。 二、『112』、『110』、『119』使用的差異性： (一)在我國，『112』、『110』、『119』均為緊急救難號碼，『112』適用在緊急危難時，如果您持用手機所在位置收訊不佳，『110』、『119』都撥不通時使用。 (二)『112』於撥通後將由語音導引，轉接至報案需要的『110』或急難求助的『119』。 (三)由於『112』係由語音導引進行轉接，將延長接續時間，為爭取救難時效，於收訊狀況良好時，仍應優先撥打『110』或『119』。 三、『112』的使用時機與方法： (一)當您遇到緊急狀況時，所在位置收訊不佳，只要您的手機收發功能正常，不論您是否處在所承租門號業者訊號範圍，只要有任何一家3G/GSM系統業者的訊號，就可以幫您轉接警察局或消防局，而且『112』有中、英文語音說明，對來台旅遊的外國朋友也能方便使用。 (二)撥打『112』，您將會聽到以下語音：『這裡是行動電話112緊急救難專線，您若要報案請按〝0〞，我們將為您轉接〝110〞警察局，您若急需救助請按〝9〞，我們將為您轉接〝119〞消防局。』，若不方便撥號，系統會自動轉至〝119〞消防局。</div>
-  <div class="p-meta">0 則補充 · 74 讚</div>
+  <div class="p-meta">0 則補充 · 75 讚</div>
 </a>
 <a class="pcard" href="p/fc246451-56a3-493e-babb-c35e00f8f902.html" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">阿</span><span class="who">阿福</span></div>
