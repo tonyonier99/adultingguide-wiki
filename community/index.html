@@ -196,6 +196,21 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
 .isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
+/* 首頁三大板塊入口 */
+.pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
+@media (min-width:640px) { .pillars { grid-template-columns:repeat(3, 1fr); } }
+.pillar { display:flex; flex-direction:column; background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
+          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
+          transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.pillar:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.pillar .pl-top { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; }
+.pillar h3 { font-size:1.2rem; font-weight:800; }
+.pl-count { font-size:0.72rem; font-weight:700; color:var(--orange); background:#FBF1E7;
+            padding:0.12rem 0.55rem; border-radius:99px; }
+.pl-flag { font-size:0.68rem; font-weight:800; color:#fff; background:var(--sub);
+           padding:0.14rem 0.55rem; border-radius:99px; }
+.pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
+.pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -323,7 +338,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <a class="brand" href="../"><img class="logo-icon" src="../assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
     <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
-  <nav class="site-nav"><a href="../" class="">百科</a><a href="../community/" class="on">社群</a><a href="../picks" class="">島嶼地圖</a></nav>
+  <nav class="site-nav"><a href="../wiki" class="">百科</a><a href="../community/" class="on">社群</a><a href="../picks" class="">島嶼地圖</a></nav>
 </div></header>
 <main><div class="wrap">
 <div class="comm-hero"><h1>大人的煩惱，有人跟你一起想</h1><p>網友的真實發問和生活經驗，卡關的時候，站長也會跳下來一起聊。</p></div>
@@ -387,17 +402,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A8C6A1">咩</span><span class="who">咩</span></div>
   <div class="p-title">下大雨撐傘</div>
   <div class="p-excerpt">下大雨時把書包背前面再撐傘，人跟書包都比較不容易濕</div>
-  <div class="p-meta">0 則補充 · 36 讚</div>
-</a><a class="pcard" href="p/746f0406-5de7-4d87-a019-12540a693b3b" style="animation-delay:0.18s">
+  <div class="p-meta">0 則補充 · 37 讚</div>
+</a><a class="pcard" href="p/f1a4ad98-c3fa-4a7c-9c76-6bff42597635" style="animation-delay:0.18s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">水</span><span class="who">水蜜頭罐桃舒芙蕾</span></div>
+  <div class="p-title">當性私密影像被外流，你該怎麼辦？四個步驟保護自己</div>
+  <div class="p-excerpt">首先，無論性別，在遇到性私密影像被外流的情況下，請先記得一件事： 被外流不是你的錯。 錯的是偷拍、威脅、散布、轉傳、保存、販售，以及消費觀看的人。 在事件發生的當下，請先深呼吸，跟著以下步驟保護自己。 ⸻ 🛑【步驟一：發生當下的緊急應變】 1. 不要單獨面對加害者 如果對方威脅、勒索、要求付錢、要求見面，或要求你再傳更多照片： 不要付款。 不要再傳新的照片或影片。 不要答應單獨見面。 不要刪除對話紀錄。 絕對不要因為害怕而刪除證據，或答應對方提出的條件。 留存證據是後續申請下架、報案與追查的重要依據。 如果你現在有人身安全危險，請立刻撥打 110。 2. 立刻找信任的人陪你 可以是朋友、家人、老師、社工、伴侶、同事，或任何你信任的人。 這時候很容易陷入崩潰、羞恥與恐慌，請不要一個人硬撐。 如果你不知道怎麼開口，可以直接把這篇文章傳給對方，請他陪你一起處理下一步。 ⸻ 📸【步驟二：冷靜蒐證】 看見自己的影像被外流，可能會讓人痛苦到想立刻關掉頁面。 但如果可以，請盡量讓信任的人陪你一起，以「截圖」或「螢幕錄影」保存以下資訊： 1. 外流網址，包含完整 URL 2. 網站名稱、群組名稱、社團名稱，例如 Telegram 群組名、論壇看板名 3. 發文者的帳號、暱稱、ID、頭像 4. 發布時間、留言內容、轉傳紀錄 5. 對方威脅、勒索、要求金錢或要求見面的對話紀錄 6. 對方承認持有、散布、販售、威脅公開影像的訊息 7. 若知道對方身分，請保存其姓名、電話、銀行帳戶、LINE ID、IG 帳號等資訊 提醒： 如果影像涉及未滿 18 歲，請不要下載、保存、轉傳影像，也不要把影像傳給其他人「幫忙確認」。 請保留網址、帳號、頁面資訊後，盡快向警方、113 或性影像處理中心求助。 ⸻ ⚖️【步驟三：申請下架與報案】 1. 向「性影像處理中心」線上申訴，申請下架 台灣目前設有衛福部的「性影像處理中心」，可以協助受理性影像案件申訴，並通知平台業者限制瀏覽或移除影像。 只要手上有外流網址與相關事證，不論是否已報案，都可以先提出線上申訴。 申訴時通常需要準備： 1. 可聯絡的電子信箱 2. 申訴原因 3. 具體訴求，例如要求下架、移除、限制瀏覽 4. 外流網址 5. 相關事證，例如截圖、對話紀錄、帳號資訊 如果真的不知道該如何填寫，也可以在報案時請警方協助，或先聯絡性影像處理中心諮詢。 衛福部性影像處理中心 服務專線：(02)6605-7373 服務時間：9:00–22:00 2. 前往警察局報案 報案時，可以將蒐集好的證據臨櫃提供，並向警方說明： 「我要報案，我的性私密影像被未經同意散布／被威脅散布。 我已經保存網址、截圖、帳號與對話紀錄，希望警方協助受理並保全證據。」 如果當下不好意思口頭說明，也可以用文字向警方敘述，或請信任的朋友陪同協助說明。 重要提醒： 報案結束後，請記得向警方索取「受（處）理案件證明單」，確保案件有正式受理紀錄。 偵查時間可能需要數月至一年以上。 期間若感到不安，或想了解案件狀態，可以致電原報案分局，找當時承辦的員警詢問進度。實際承辦單位也可能依案件狀況、居住地或管轄地調整。 ⸻ 🛡️【步驟四：加強個人社群防護】 在等候警方調查與下架處理的期間，為了避免後續騷擾、威脅或帳號被入侵，請盡快調高所有通訊與社群軟體的隱私設定： 1. 將 IG、FB、Threads、X、TikTok 等社群帳號改為私人帳號 2. 關閉陌生人私訊 3. 移除可疑追蹤者 4. 更換帳號密碼 5. 開啟雙重驗證，2FA 6. 檢查雲端相簿、Google Drive、iCloud、LINE Keep 7. 檢查是否有異常裝置登入紀錄 8. 提醒親近的朋友：「如果收到我的相關影像或連結，請不要點開、不要轉傳，請直接截圖回報給我。」 ⸻ 🚫【給加害者與轉傳者的法律提醒】 在台灣，侵害性隱私可能涉及刑事犯罪： 未經同意偷拍： 可能涉及《刑法》第 319-1 條。未經同意攝錄他人性影像，可處 3 年以下有期徒刑。 未經同意散布： 即使當初是合意拍攝，只要未經同意重製、散布、播送、交付、公然陳列，或用其他方式讓他人觀看性影像，可能涉及《刑法》第 319-3 條，最重可處 5 年以下有期徒刑。 AI 換臉／Deepfake： 意圖散布而製作，或散布不實性影像，可能涉及《刑法》第 319-4 條。若意圖營利，刑度可能更高。 下載、購買、保存、轉傳： 請不要下載、保存、購買、轉傳或散布他人的非自願性影像。 如果內容涉及兒少性影像，散布、販售，或意圖散布而持有，都可能涉及更嚴重的刑事責任。 實際法律責任仍會依個案狀況判斷，建議同時尋求警方、法律扶助或專業律師協助。 ⸻ 💗【最後，想對你說】 私密影像被外流，不代表你做錯了什麼。 真正錯的人，是那些未經同意保存、威脅、散布、轉傳、觀看與販售的人。 請先保護自己，保存證據，找信任的人陪你。 你也可以撥打 113 保護專線，或向 性影像處理中心 求助。 你不是一個人。 這件事可以被處理，也有人會陪你一起處理。</div>
+  <div class="p-meta">0 則補充 · 30 讚</div>
+</a><a class="pcard" href="p/746f0406-5de7-4d87-a019-12540a693b3b" style="animation-delay:0.21s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
   <div class="p-title">死亡證明要請幾份</div>
   <div class="p-excerpt">一般來說死亡證明可以請10-20份或者更多 因為除了該跑的政府流程需要外 銀行、保險等等一家公司就需要給一張</div>
   <div class="p-meta">0 則補充 · 30 讚</div>
-</a><a class="pcard" href="p/f1a4ad98-c3fa-4a7c-9c76-6bff42597635" style="animation-delay:0.21s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">水</span><span class="who">水蜜頭罐桃舒芙蕾</span></div>
-  <div class="p-title">當性私密影像被外流，你該怎麼辦？四個步驟保護自己</div>
-  <div class="p-excerpt">首先，無論性別，在遇到性私密影像被外流的情況下，請先記得一件事： 被外流不是你的錯。 錯的是偷拍、威脅、散布、轉傳、保存、販售，以及消費觀看的人。 在事件發生的當下，請先深呼吸，跟著以下步驟保護自己。 ⸻ 🛑【步驟一：發生當下的緊急應變】 1. 不要單獨面對加害者 如果對方威脅、勒索、要求付錢、要求見面，或要求你再傳更多照片： 不要付款。 不要再傳新的照片或影片。 不要答應單獨見面。 不要刪除對話紀錄。 絕對不要因為害怕而刪除證據，或答應對方提出的條件。 留存證據是後續申請下架、報案與追查的重要依據。 如果你現在有人身安全危險，請立刻撥打 110。 2. 立刻找信任的人陪你 可以是朋友、家人、老師、社工、伴侶、同事，或任何你信任的人。 這時候很容易陷入崩潰、羞恥與恐慌，請不要一個人硬撐。 如果你不知道怎麼開口，可以直接把這篇文章傳給對方，請他陪你一起處理下一步。 ⸻ 📸【步驟二：冷靜蒐證】 看見自己的影像被外流，可能會讓人痛苦到想立刻關掉頁面。 但如果可以，請盡量讓信任的人陪你一起，以「截圖」或「螢幕錄影」保存以下資訊： 1. 外流網址，包含完整 URL 2. 網站名稱、群組名稱、社團名稱，例如 Telegram 群組名、論壇看板名 3. 發文者的帳號、暱稱、ID、頭像 4. 發布時間、留言內容、轉傳紀錄 5. 對方威脅、勒索、要求金錢或要求見面的對話紀錄 6. 對方承認持有、散布、販售、威脅公開影像的訊息 7. 若知道對方身分，請保存其姓名、電話、銀行帳戶、LINE ID、IG 帳號等資訊 提醒： 如果影像涉及未滿 18 歲，請不要下載、保存、轉傳影像，也不要把影像傳給其他人「幫忙確認」。 請保留網址、帳號、頁面資訊後，盡快向警方、113 或性影像處理中心求助。 ⸻ ⚖️【步驟三：申請下架與報案】 1. 向「性影像處理中心」線上申訴，申請下架 台灣目前設有衛福部的「性影像處理中心」，可以協助受理性影像案件申訴，並通知平台業者限制瀏覽或移除影像。 只要手上有外流網址與相關事證，不論是否已報案，都可以先提出線上申訴。 申訴時通常需要準備： 1. 可聯絡的電子信箱 2. 申訴原因 3. 具體訴求，例如要求下架、移除、限制瀏覽 4. 外流網址 5. 相關事證，例如截圖、對話紀錄、帳號資訊 如果真的不知道該如何填寫，也可以在報案時請警方協助，或先聯絡性影像處理中心諮詢。 衛福部性影像處理中心 服務專線：(02)6605-7373 服務時間：9:00–22:00 2. 前往警察局報案 報案時，可以將蒐集好的證據臨櫃提供，並向警方說明： 「我要報案，我的性私密影像被未經同意散布／被威脅散布。 我已經保存網址、截圖、帳號與對話紀錄，希望警方協助受理並保全證據。」 如果當下不好意思口頭說明，也可以用文字向警方敘述，或請信任的朋友陪同協助說明。 重要提醒： 報案結束後，請記得向警方索取「受（處）理案件證明單」，確保案件有正式受理紀錄。 偵查時間可能需要數月至一年以上。 期間若感到不安，或想了解案件狀態，可以致電原報案分局，找當時承辦的員警詢問進度。實際承辦單位也可能依案件狀況、居住地或管轄地調整。 ⸻ 🛡️【步驟四：加強個人社群防護】 在等候警方調查與下架處理的期間，為了避免後續騷擾、威脅或帳號被入侵，請盡快調高所有通訊與社群軟體的隱私設定： 1. 將 IG、FB、Threads、X、TikTok 等社群帳號改為私人帳號 2. 關閉陌生人私訊 3. 移除可疑追蹤者 4. 更換帳號密碼 5. 開啟雙重驗證，2FA 6. 檢查雲端相簿、Google Drive、iCloud、LINE Keep 7. 檢查是否有異常裝置登入紀錄 8. 提醒親近的朋友：「如果收到我的相關影像或連結，請不要點開、不要轉傳，請直接截圖回報給我。」 ⸻ 🚫【給加害者與轉傳者的法律提醒】 在台灣，侵害性隱私可能涉及刑事犯罪： 未經同意偷拍： 可能涉及《刑法》第 319-1 條。未經同意攝錄他人性影像，可處 3 年以下有期徒刑。 未經同意散布： 即使當初是合意拍攝，只要未經同意重製、散布、播送、交付、公然陳列，或用其他方式讓他人觀看性影像，可能涉及《刑法》第 319-3 條，最重可處 5 年以下有期徒刑。 AI 換臉／Deepfake： 意圖散布而製作，或散布不實性影像，可能涉及《刑法》第 319-4 條。若意圖營利，刑度可能更高。 下載、購買、保存、轉傳： 請不要下載、保存、購買、轉傳或散布他人的非自願性影像。 如果內容涉及兒少性影像，散布、販售，或意圖散布而持有，都可能涉及更嚴重的刑事責任。 實際法律責任仍會依個案狀況判斷，建議同時尋求警方、法律扶助或專業律師協助。 ⸻ 💗【最後，想對你說】 私密影像被外流，不代表你做錯了什麼。 真正錯的人，是那些未經同意保存、威脅、散布、轉傳、觀看與販售的人。 請先保護自己，保存證據，找信任的人陪你。 你也可以撥打 113 保護專線，或向 性影像處理中心 求助。 你不是一個人。 這件事可以被處理，也有人會陪你一起處理。</div>
-  <div class="p-meta">0 則補充 · 29 讚</div>
 </a><a class="pcard" href="p/8afd8936-1d58-4be9-8633-b3fe2bb0782a" style="animation-delay:0.24s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">M</span><span class="who">Muaa</span></div>
   <div class="p-title">關於【行動自然人憑證】 超級推去辦！</div>
@@ -453,6 +468,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">法扶法律諮詢，不是要打官司才需要找律師</div>
   <div class="p-excerpt">如果不幸遇到了租屋糾紛、勞資爭議、合約問題、車禍和解、債務、家事問題、消費糾紛等。 如果還不確定事情嚴不嚴重，可以先找 法律扶助基金會。 怎麼找： 1.法扶網站查詢各地服務據點 2.使用線上預約系統 3.電話諮詢可撥法扶全國專線 412-8518 轉 2，手機需加 02 費用： 不需要先審查財力或案情，且諮詢不用負擔律師費</div>
   <div class="p-meta">0 則補充 · 8 讚</div>
+</a><a class="pcard" href="p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
+  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北車站附近的台開金融大樓1樓直接查詢 年滿18歲就可使用線上查閱服務。 費用： 中文版信用報告含信用評分，每年度可免費查一次；同年度第2次以後，每次酌收 NT$80。單獨查個人信用評分，每年度也可免費一次，第2次以後每次 NT$20</div>
+  <div class="p-meta">0 則補充 · 8 讚</div>
 </a><a class="pcard" href="p/b04c4ff8-6496-4bcd-a2f7-a54ec7078272" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">M</span><span class="who">Muaa</span></div>
   <div class="p-title">關於【機車的繳費項目】 ！</div>
@@ -462,11 +482,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">I</span><span class="who">I don’t 呱</span></div>
   <div class="p-title">殘膠處理</div>
   <div class="p-excerpt">大部分的標籤紙殘膠可以用含有油脂類的產品去處（乳液、護手霜、食用油、護髮油等），比較適合在不會滲透的材質 市售除膠劑使用時要注意殘膠面的材質，譬如壓克力塑膠有些除膠劑會腐蝕表面</div>
-  <div class="p-meta">0 則補充 · 7 讚</div>
-</a><a class="pcard" href="p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
-  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北車站附近的台開金融大樓1樓直接查詢 年滿18歲就可使用線上查閱服務。 費用： 中文版信用報告含信用評分，每年度可免費查一次；同年度第2次以後，每次酌收 NT$80。單獨查個人信用評分，每年度也可免費一次，第2次以後每次 NT$20</div>
   <div class="p-meta">0 則補充 · 7 讚</div>
 </a><a class="pcard" href="p/e5968d24-7590-49ac-82b6-29a37135fba8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
@@ -513,6 +528,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">信用卡</div>
   <div class="p-excerpt">現在哪張信用卡最好用！想要再辦一張 我很少出國 都是國內消費～ 外送 網購 平常出門都是刷卡居多</div>
   <div class="p-meta">0 則補充 · 4 讚</div>
+</a><a class="pcard" href="p/c7cf77ce-e98a-4d87-b86a-f3ae26b8f807" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">張</span><span class="who">張張</span></div>
+  <div class="p-title">汽車險小知識</div>
+  <div class="p-excerpt">1️⃣「強制險」跟「任意險」是什麼？ 📍強制險 強制險只賠對方，不賠自己。 📍任意險 所以除了強制險以外的保險都統稱為任意險，例如：車體險、第三人責任險….等，用來補足強制險無法賠付的地方 。 📍任意險有哪些 第三人責任險：賠對方身體傷害＋財物損失。 （第三人定義：這台車駕駛及乘客以外的人，稱為第三人） 超額責任險：強制險及第三人責任保險保額不夠賠的部分可以用此項給付。 車體險、竊盜險：保障「自己的汽車」車輛損失。 駕駛人傷害險：因意外事故導致駕駛人（經車主同意使用或投保時列名之駕駛人）身體傷害、死亡、失能。 強制汽車責任保險駕駛人傷害保險（限車主）：汽車單一事故保障「駕駛人」身體傷害、死亡、失能。 乘客險：因交通意外事故，導致車上乘客受有傷害或死亡，依法負賠償責任。 保險慰問金費用保險： 被保險人前往探視或慰問因交通意外事故所致第三人傷害之費用補償。 道路救援費用保險：提供「拖吊、送水、送油(不包括汽油費用)、換胎(備胎由被保險人提供)、開鎖、接電」的救援服務。 2️⃣每種任意險保障對象/項目？ 第三人責任險：第三人 超額責任險：第三人 車體險、竊盜險：自己的汽車 強制汽車責任保險駕駛人傷害保險（限車主）/駕駛人傷害保險：本車駕駛 乘客險：本車乘客 3️⃣我要怎麼挑選適合我的保障內容？ 一般來說會用「新車」跟「非新車」分類，5年內的汽車算新車。 📍新車：建議至少投保乙式車體險、竊盜險、第三人責任險、超額險、駕駛人傷害險、乘客險 📍非新車：第三人責任險、超額險、駕駛人傷害險、乘客險 為什麼非新車通常不會配車體險或竊盜險 👉🏻車體險的保額是依據汽車的重置價格，重置價格的計算是來自保發中心的資料，依據使用年份會折舊（汽車一落地就折舊15%，意思是你買了這台車，這台車的價值就剩85%）， 而汽車的重置價格不高，保費也不一定很便宜，甚至有可能會等於重置價格， 但也不是說一定不能買，而是視需求投保即可，若是非新車想買車體險，可以買丙式車體險。 4️⃣上面有提到車體險，車體險有甲、乙、丙、丁，差在哪裡？ 甲式：什麼都賠 乙式：除了不明損失，什麼都賠 丙式：只賠車碰車事故（有車撞你才符合理賠條件），保額是汽車的重置價格 丁式：保障範圍等同於丙式，保額不等於重置價格，可以自行選擇保額 5️⃣網路投保盛行，跟一般業務員差在哪裡？ 以同公司來說，只會差異在商品，通常業務員跟網路投保的商品包裝會不一樣，大家可以自行比較， 若以理賠角度來說，網路投保沒有專屬於你的業務員，若有任何問題，只能撥打客服。 *以上保障項目僅為條款解釋，實際理賠情況以真實狀況為主*</div>
+  <div class="p-meta">0 則補充 · 3 讚</div>
 </a><a class="pcard" href="p/eea67cb0-68de-4461-bc77-ba07ef1ffa17" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">Katja</span></div>
   <div class="p-title">衣服污點清除術</div>
@@ -527,11 +547,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">地</span><span class="who">地瓜球</span></div>
   <div class="p-title">滷東西加蒜</div>
   <div class="p-excerpt">我媽教我的 滷東西的時候如果要加蒜頭 蒜皮不要剝掉 這樣蒜頭才不會散開讓湯髒髒的</div>
-  <div class="p-meta">0 則補充 · 2 讚</div>
-</a><a class="pcard" href="p/c7cf77ce-e98a-4d87-b86a-f3ae26b8f807" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">張</span><span class="who">張張</span></div>
-  <div class="p-title">汽車險小知識</div>
-  <div class="p-excerpt">1️⃣「強制險」跟「任意險」是什麼？ 📍強制險 強制險只賠對方，不賠自己。 📍任意險 所以除了強制險以外的保險都統稱為任意險，例如：車體險、第三人責任險….等，用來補足強制險無法賠付的地方 。 📍任意險有哪些 第三人責任險：賠對方身體傷害＋財物損失。 （第三人定義：這台車駕駛及乘客以外的人，稱為第三人） 超額責任險：強制險及第三人責任保險保額不夠賠的部分可以用此項給付。 車體險、竊盜險：保障「自己的汽車」車輛損失。 駕駛人傷害險：因意外事故導致駕駛人（經車主同意使用或投保時列名之駕駛人）身體傷害、死亡、失能。 強制汽車責任保險駕駛人傷害保險（限車主）：汽車單一事故保障「駕駛人」身體傷害、死亡、失能。 乘客險：因交通意外事故，導致車上乘客受有傷害或死亡，依法負賠償責任。 保險慰問金費用保險： 被保險人前往探視或慰問因交通意外事故所致第三人傷害之費用補償。 道路救援費用保險：提供「拖吊、送水、送油(不包括汽油費用)、換胎(備胎由被保險人提供)、開鎖、接電」的救援服務。 2️⃣每種任意險保障對象/項目？ 第三人責任險：第三人 超額責任險：第三人 車體險、竊盜險：自己的汽車 強制汽車責任保險駕駛人傷害保險（限車主）/駕駛人傷害保險：本車駕駛 乘客險：本車乘客 3️⃣我要怎麼挑選適合我的保障內容？ 一般來說會用「新車」跟「非新車」分類，5年內的汽車算新車。 📍新車：建議至少投保乙式車體險、竊盜險、第三人責任險、超額險、駕駛人傷害險、乘客險 📍非新車：第三人責任險、超額險、駕駛人傷害險、乘客險 為什麼非新車通常不會配車體險或竊盜險 👉🏻車體險的保額是依據汽車的重置價格，重置價格的計算是來自保發中心的資料，依據使用年份會折舊（汽車一落地就折舊15%，意思是你買了這台車，這台車的價值就剩85%）， 而汽車的重置價格不高，保費也不一定很便宜，甚至有可能會等於重置價格， 但也不是說一定不能買，而是視需求投保即可，若是非新車想買車體險，可以買丙式車體險。 4️⃣上面有提到車體險，車體險有甲、乙、丙、丁，差在哪裡？ 甲式：什麼都賠 乙式：除了不明損失，什麼都賠 丙式：只賠車碰車事故（有車撞你才符合理賠條件），保額是汽車的重置價格 丁式：保障範圍等同於丙式，保額不等於重置價格，可以自行選擇保額 5️⃣網路投保盛行，跟一般業務員差在哪裡？ 以同公司來說，只會差異在商品，通常業務員跟網路投保的商品包裝會不一樣，大家可以自行比較， 若以理賠角度來說，網路投保沒有專屬於你的業務員，若有任何問題，只能撥打客服。 *以上保障項目僅為條款解釋，實際理賠情況以真實狀況為主*</div>
   <div class="p-meta">0 則補充 · 2 讚</div>
 </a><a class="pcard" href="p/a9a8c603-f2bd-4caa-a2b1-974885d05bd8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">軒</span><span class="who">軒</span></div>
@@ -664,6 +679,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">關於寵物保險</div>
   <div class="p-excerpt">台灣對於寵物醫療上的補助比較少，所以一次寵物生病就幾萬幾萬的不見了，有了解的人有推薦哪一個寵物保險嗎？ 我家有一隻先天性器官塌陷的小貓 （非常罕見的疾病，很害怕某一天突然就呼吸不過來）</div>
   <div class="p-meta">1 則回答 · 3 讚</div>
+</a><a class="pcard" href="p/81fac50b-ed7e-4e69-843a-4e9475473bf5" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">松</span><span class="who">松鼠🐿️</span></div>
+  <div class="p-title">我要買二手車</div>
+  <div class="p-excerpt">最近考慮購買人生第一輛車，考慮購買二手車，但不確定要看哪些部分才不會被騙</div>
+  <div class="p-meta">1 則回答 · 3 讚</div>
 </a><a class="pcard" href="p/4d3cf215-5347-4c0c-9461-a71b88ae8626" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">小</span><span class="who">小朋友</span></div>
   <div class="p-title">怎麼自學韓文</div>
@@ -694,11 +714,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">有沒有打工經驗談可以說說</div>
   <div class="p-excerpt">我自認爲我自己個性是蠻內向的人🥲 我去年暑假打工過 但不是服務業餐飲業類型的 那時候去年一開始我真的超級不適應職場氛圍 是不是很不適合做餐飲業外場啊 還是說很看那間店經理同事的氛圍 問過幾個朋友給我的建議和經驗很兩極 目前投了幾間 已經有一間跟我約面試了 如果真的去面試發現我自己可能很不適合怎麼辦 好焦慮</div>
   <div class="p-meta">2 則回答 · 2 讚</div>
-</a><a class="pcard" href="p/81fac50b-ed7e-4e69-843a-4e9475473bf5" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">松</span><span class="who">松鼠🐿️</span></div>
-  <div class="p-title">我要買二手車</div>
-  <div class="p-excerpt">最近考慮購買人生第一輛車，考慮購買二手車，但不確定要看哪些部分才不會被騙</div>
-  <div class="p-meta">1 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/ad007193-fb5e-4e20-950a-af2637372605" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">愛</span><span class="who">愛麗絲</span></div>
   <div class="p-title">衣服泛黃、沾到番茄醬、咖喱醬怎麼辦？</div>

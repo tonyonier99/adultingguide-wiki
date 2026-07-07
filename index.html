@@ -196,6 +196,21 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
 .isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
+/* 首頁三大板塊入口 */
+.pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
+@media (min-width:640px) { .pillars { grid-template-columns:repeat(3, 1fr); } }
+.pillar { display:flex; flex-direction:column; background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
+          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
+          transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.pillar:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.pillar .pl-top { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; }
+.pillar h3 { font-size:1.2rem; font-weight:800; }
+.pl-count { font-size:0.72rem; font-weight:700; color:var(--orange); background:#FBF1E7;
+            padding:0.12rem 0.55rem; border-radius:99px; }
+.pl-flag { font-size:0.68rem; font-weight:800; color:#fff; background:var(--sub);
+           padding:0.14rem 0.55rem; border-radius:99px; }
+.pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
+.pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -262,24 +277,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <a class="brand" href="./"><img class="logo-icon" src="assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
     <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
-  <nav class="site-nav"><a href="./" class="on">百科</a><a href="community/" class="">社群</a><a href="picks" class="">島嶼地圖</a></nav>
+  <nav class="site-nav"><a href="wiki" class="">百科</a><a href="community/" class="">社群</a><a href="picks" class="">島嶼地圖</a></nav>
 </div></header>
 <main>
 <div class="wrap">
 <div class="home-hero"><h1>大人的每一件麻煩事，先來這裡看看</h1><p>報稅、租屋、拜拜、看醫生，第一次遇到不用慌，這裡都幫你整理好了。</p><form class="home-search" action="search" method="get" role="search"><input type="search" name="q" placeholder="搜尋報稅、租屋、勞健保…" aria-label="搜尋全站"><button type="submit">搜尋</button></form></div>
+<div class="pillars"><a class="pillar" href="wiki"><div class="pl-top"><h3>百科</h3><span class="pl-count">112 篇</span></div><p>報稅、租屋、看醫生……第一次遇到的大人課題，每篇都對過官方來源、寫成白話。</p><span class="pl-go">開始查 →</span></a><a class="pillar" href="community/"><div class="pl-top"><h3>社群</h3></div><p>網友的真實發問與生活經驗，卡關的時候有人一起想，站長也會跳下來解答。</p><span class="pl-go">去逛逛 →</span></a><a class="pillar" href="picks"><div class="pl-top"><h3>島嶼地圖</h3><span class="pl-flag">準備中</span></div><p>一張親自走訪、確認過才上架的在地好店地圖，真的好的才放上來、不收業配。</p><span class="pl-go">看看這是什麼 →</span></a></div>
+<div class="home-sec">精選</div>
 <a class="cat-card featured" href="c/benefits" style="animation-delay:0.00s"><div class="cover-wrap"><img class="cover" src="assets/cat_benefits.png" alt="新手福利包"><span class="feat-flag">免費資源</span></div><div class="cc-body"><h3>新手福利包</h3><div class="cc-sub">政府補助、免費資源、隱藏撇步</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">40 篇</span></div></a>
-<div class="home-sec">生活分類</div>
-<div class="cat-grid">
-<a class="cat-card" href="c/money" style="animation-delay:0.00s"><img class="cover" src="assets/cat_money.png" alt="金錢與保險"><div class="cc-body"><h3>金錢與保險</h3><div class="cc-sub">理財、報稅、保險、勞退</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">12 篇</span></div></a>
-<a class="cat-card" href="c/medical" style="animation-delay:0.06s"><img class="cover" src="assets/cat_medical.png" alt="醫療健康"><div class="cc-body"><h3>醫療健康</h3><div class="cc-sub">看病、健檢、牙科、急救</div><span class="cc-count" style="color:#1976D2;background:#E3F2FD">7 篇</span></div></a>
-<a class="cat-card" href="c/housing" style="animation-delay:0.12s"><img class="cover" src="assets/cat_housing.png" alt="居家生活"><div class="cc-body"><h3>居家生活</h3><div class="cc-sub">租屋、家電、修繕、打掃</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">16 篇</span></div></a>
-<a class="cat-card" href="c/workplace" style="animation-delay:0.18s"><img class="cover" src="assets/cat_workplace.png" alt="工作與創業"><div class="cc-body"><h3>工作與創業</h3><div class="cc-sub">求職、加班費、離職、勞基法</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">10 篇</span></div></a>
-<a class="cat-card" href="c/traffic" style="animation-delay:0.24s"><img class="cover" src="assets/cat_traffic.png" alt="交通與旅遊"><div class="cc-body"><h3>交通與旅遊</h3><div class="cc-sub">通勤、出國、大眾運輸、車禍</div><span class="cc-count" style="color:#1976D2;background:#E3F2FD">7 篇</span></div></a>
-<a class="cat-card" href="c/etiquette" style="animation-delay:0.30s"><img class="cover" src="assets/cat_etiquette.png" alt="人際與禮俗"><div class="cc-body"><h3>人際與禮俗</h3><div class="cc-sub">紅包、節慶、拜拜、婚喪</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">8 篇</span></div></a>
-<a class="cat-card" href="c/gov" style="animation-delay:0.36s"><img class="cover" src="assets/cat_gov.png" alt="證件與政府"><div class="cc-body"><h3>證件與政府</h3><div class="cc-sub">身分證、護照、戶籍、監理</div><span class="cc-count" style="color:#1976D2;background:#E3F2FD">8 篇</span></div></a>
-<a class="cat-card" href="c/digital" style="animation-delay:0.42s"><img class="cover" src="assets/cat_digital.png" alt="數位與防詐"><div class="cc-body"><h3>數位與防詐</h3><div class="cc-sub">3C、網路、個資、防詐</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">4 篇</span></div></a>
-</div>
-<div class="isl-sec"><div class="isl-head"><h2>島嶼地圖</h2><span class="isl-flag">準備中</span></div><p class="isl-lead">一張<strong>親自走訪、確認過才上架</strong>的在地好店地圖。</p><div class="isl-grid"><a class="isl-card" href="picks"><h4>這是什麼</h4><p>農產土產、鄉鎮特色、值得專程去的小店——我們一間一間走訪，慢慢畫成一張地圖。</p></a><a class="isl-card" href="picks"><h4>為什麼做</h4><p>網路上店家資訊又多又亂、踩雷很痛。我們親自去確認，真的好的才放上來，不收業配。</p></a><a class="isl-card" href="picks"><h4>之後會怎樣</h4><p>地圖會慢慢長出來。你有口袋名單嗎？推薦給我們，我們親自去確認。</p></a></div><a class="isl-more" href="picks">推薦你的口袋名單 →</a></div>
 <div class="cta"><div class="cta-txt"><strong>初級大人手冊 App</strong><p>報稅、租屋、看醫生……大人生活的大小事，一支 App 全查得到。</p></div><a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">前往 App Store</a></div>
 </div>
 </main>

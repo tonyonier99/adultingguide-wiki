@@ -196,6 +196,21 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
 .isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
+/* 首頁三大板塊入口 */
+.pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
+@media (min-width:640px) { .pillars { grid-template-columns:repeat(3, 1fr); } }
+.pillar { display:flex; flex-direction:column; background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
+          color:var(--ink); box-shadow:0 1px 2px rgba(69,63,58,0.04);
+          transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.pillar:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.pillar .pl-top { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; }
+.pillar h3 { font-size:1.2rem; font-weight:800; }
+.pl-count { font-size:0.72rem; font-weight:700; color:var(--orange); background:#FBF1E7;
+            padding:0.12rem 0.55rem; border-radius:99px; }
+.pl-flag { font-size:0.68rem; font-weight:800; color:#fff; background:var(--sub);
+           padding:0.14rem 0.55rem; border-radius:99px; }
+.pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
+.pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -323,7 +338,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <a class="brand" href="../../"><img class="logo-icon" src="../../assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span>
     <span class="brand-sub">報稅、租屋、拜拜、看醫生，台灣年輕人的生活使用手冊</span></span></a>
-  <nav class="site-nav"><a href="../../" class="">百科</a><a href="../../community/" class="on">社群</a><a href="../../picks" class="">島嶼地圖</a></nav>
+  <nav class="site-nav"><a href="../../wiki" class="">百科</a><a href="../../community/" class="on">社群</a><a href="../../picks" class="">島嶼地圖</a></nav>
 </div></header>
 <main><div class="wrap">
 <nav class="crumb"><a href="../">社群討論</a> › 秘技</nav>
@@ -369,7 +384,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <p>以同公司來說，只會差異在商品，通常業務員跟網路投保的商品包裝會不一樣，大家可以自行比較，</p>
 <p>若以理賠角度來說，網路投保沒有專屬於你的業務員，若有任何問題，只能撥打客服。</p>
 <p>*以上保障項目僅為條款解釋，實際理賠情況以真實狀況為主*</p></div>
-  <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">2 讚</div>
+  <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">3 讚</div>
 </div>
 <div class="ans-label">你也有這個秘技、或想補充嗎？歡迎來 App 分享</div>
 <div class="join-cta">
