@@ -269,8 +269,31 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   .cat-card, .acard, .anim-up, .hero-img, .hero-band, .article-head, .comm-hero,
   .home-hero, * { animation:none !important; }
 }
+/* 每日一學入口（/wiki 上的橫幅） */
+.daily-entry { display:flex; align-items:center; gap:1rem; margin-top:1.2rem;
+               background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
+               border-radius:16px; padding:1.1rem 1.3rem; color:var(--ink);
+               transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-entry:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.daily-entry .de-txt { flex:1; min-width:0; }
+.daily-entry strong { display:block; font-size:1.1rem; font-weight:800; margin-bottom:0.2rem; }
+.daily-entry .de-txt span { font-size:0.9rem; color:var(--sub); line-height:1.6; }
+.daily-entry .de-go { flex:none; font-weight:700; color:var(--cat); font-size:0.9rem; white-space:nowrap; }
+/* 每日一學列表頁 */
+.daily-cat { font-size:1rem; font-weight:800; color:var(--ink); margin:2rem 0 0.1rem;
+             padding-left:0.6rem; border-left:4px solid var(--cat); }
+.daily-cat span { font-weight:600; color:var(--sub); font-size:0.85rem; }
+.daily-list { display:grid; grid-template-columns:1fr; gap:0.6rem; margin-top:0.9rem; }
+@media (min-width:680px) { .daily-list { grid-template-columns:repeat(2, 1fr); gap:0.8rem; } }
+.daily-item { display:block; background:#fff; border-radius:14px; padding:0.95rem 1.1rem; color:var(--ink);
+              box-shadow:0 1px 2px rgba(69,63,58,0.04);
+              transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-item:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 4px 18px rgba(69,63,58,0.06); }
+.daily-item .d-tip { font-size:0.98rem; font-weight:600; line-height:1.7; }
+.daily-item .d-more { display:inline-block; margin-top:0.5rem; font-size:0.78rem; font-weight:700; color:var(--cat);
+                      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 </style>
-
+<script data-goatcounter="https://adultingguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -282,9 +305,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="wrap">
 <div class="home-hero"><h1>大人的每一件麻煩事，先來這裡看看</h1><p>報稅、租屋、拜拜、看醫生，第一次遇到不用慌，這裡都幫你整理好了。</p><form class="home-search" action="search" method="get" role="search"><input type="search" name="q" placeholder="搜尋報稅、租屋、勞健保…" aria-label="搜尋全站"><button type="submit">搜尋</button></form></div>
 <div class="pillars"><a class="pillar" href="wiki"><div class="pl-top"><h3>百科</h3><span class="pl-count">112 篇</span></div><p>各種生活主題的完整文章，可分類瀏覽、關鍵字搜尋、收藏備查。</p><span class="pl-go">開始查 →</span></a><a class="pillar" href="community/"><div class="pl-top"><h3>社群</h3></div><p>「大人秘技」分享你的撇步、「我要發問」有想知道的就來問。</p><span class="pl-go">去逛逛 →</span></a><a class="pillar" href="picks"><div class="pl-top"><h3>島嶼地圖</h3><span class="pl-flag">準備中</span></div><p>台灣做得好的東西，農特產、工藝、設計，歡迎投稿，實地拜訪後上架。</p><span class="pl-go">看看這是什麼 →</span></a></div>
-<div class="home-sec">精選</div>
+<h2 class="home-sec">精選</h2>
 <a class="cat-card featured" href="c/benefits" style="animation-delay:0.00s"><div class="cover-wrap"><img class="cover" src="assets/cat_benefits.png" alt="新手福利包"><span class="feat-flag">免費資源</span></div><div class="cc-body"><h3>新手福利包</h3><div class="cc-sub">政府補助、免費資源、隱藏撇步</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">40 篇</span></div></a>
-<div class="cta"><div class="cta-txt"><strong>初級大人手冊 App</strong><p>報稅、租屋、看醫生……大人生活的大小事，一支 App 全查得到。</p></div><a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">前往 App Store</a></div>
+<div class="cta"><div class="cta-txt"><strong>初級大人手冊 App</strong><p>報稅、租屋、看醫生……大人生活的大小事，一支 App 全查得到。</p></div><a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">前往 App Store</a></div>
 </div>
 </main>
 <footer class="site"><div class="wrap">
@@ -294,7 +317,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="support">支援</a>
     <a href="privacy">隱私政策</a>
     <a href="terms">使用條款</a>
-    <a href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+    <a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
   </nav>
   <p class="foot-legal">內容僅供生活參考，實際金額、期限與規定以各主管機關當年公告為準。<br>
   © 2026 初級大人手冊</p>

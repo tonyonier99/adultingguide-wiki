@@ -269,6 +269,29 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   .cat-card, .acard, .anim-up, .hero-img, .hero-band, .article-head, .comm-hero,
   .home-hero, * { animation:none !important; }
 }
+/* 每日一學入口（/wiki 上的橫幅） */
+.daily-entry { display:flex; align-items:center; gap:1rem; margin-top:1.2rem;
+               background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
+               border-radius:16px; padding:1.1rem 1.3rem; color:var(--ink);
+               transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-entry:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.daily-entry .de-txt { flex:1; min-width:0; }
+.daily-entry strong { display:block; font-size:1.1rem; font-weight:800; margin-bottom:0.2rem; }
+.daily-entry .de-txt span { font-size:0.9rem; color:var(--sub); line-height:1.6; }
+.daily-entry .de-go { flex:none; font-weight:700; color:var(--cat); font-size:0.9rem; white-space:nowrap; }
+/* 每日一學列表頁 */
+.daily-cat { font-size:1rem; font-weight:800; color:var(--ink); margin:2rem 0 0.1rem;
+             padding-left:0.6rem; border-left:4px solid var(--cat); }
+.daily-cat span { font-weight:600; color:var(--sub); font-size:0.85rem; }
+.daily-list { display:grid; grid-template-columns:1fr; gap:0.6rem; margin-top:0.9rem; }
+@media (min-width:680px) { .daily-list { grid-template-columns:repeat(2, 1fr); gap:0.8rem; } }
+.daily-item { display:block; background:#fff; border-radius:14px; padding:0.95rem 1.1rem; color:var(--ink);
+              box-shadow:0 1px 2px rgba(69,63,58,0.04);
+              transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-item:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 4px 18px rgba(69,63,58,0.06); }
+.daily-item .d-tip { font-size:0.98rem; font-weight:600; line-height:1.7; }
+.daily-item .d-more { display:inline-block; margin-top:0.5rem; font-size:0.78rem; font-weight:700; color:var(--cat);
+                      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
 .comm-hero { padding:2.4rem 0 0.4rem; }
 .comm-hero h1 { font-size:1.75rem; line-height:1.4; }
@@ -331,7 +354,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .crumb { font-size:0.8rem; color:var(--sub); margin:1.6rem 0 0; }
 .crumb a { color:var(--sub); }
 </style>
-
+<script data-goatcounter="https://adultingguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -341,7 +364,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </div></header>
 <main><div class="wrap">
 <div class="comm-hero"><h1>社群</h1><p>長大的煩惱，我們跟你一起想。</p></div>
-<div class="sec-label">熱門討論　<span style="color:var(--sub);font-weight:400">6</span></div><a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587" style="animation-delay:0.00s">
+<h2 class="sec-label">熱門討論　<span style="color:var(--sub);font-weight:400">6</span></h2><a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587" style="animation-delay:0.00s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">c</span><span class="who">cecilia</span><span class="tag tip">秘技</span></div>
   <div class="p-title">路上距離判斷</div>
   <div class="p-excerpt">1.路上的虛白線，一白一空就是10公尺 2.高速車距可以用「車速/2」估算，100km/h需要距50公尺，也就是5組虛白線 3.祝大家行車安全～</div>
@@ -355,12 +378,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">果</span><span class="who">果塔</span><span class="tag tip">秘技</span></div>
   <div class="p-title">訊號不好119打不通怎麼辦</div>
   <div class="p-excerpt">一、『112』為行動電話緊急救難號碼，在全球各地有基地台訊號範圍處均可撥打。即使行動電話無SIM卡，只要尚有電力並在信號涵蓋範圍內，均可撥通。 二、『112』、『110』、『119』使用的差異性： (一)在我國，『112』、『110』、『119』均為緊急救難號碼，『112』適用在緊急危難時，如果您持用手機所在位置收訊不佳，『110』、『119』都撥不通時使用。 (二)『112』於撥通後將由語音導引，轉接至報案需要的『110』或急難求助的『119』。 (三)由於『112』係由語音導引進行轉接，將延長接續時間，為爭取救難時效，於收訊狀況良好時，仍應優先撥打『110』或『119』。 三、『112』的使用時機與方法： (一)當您遇到緊急狀況時，所在位置收訊不佳，只要您的手機收發功能正常，不論您是否處在所承租門號業者訊號範圍，只要有任何一家3G/GSM系統業者的訊號，就可以幫您轉接警察局或消防局，而且『112』有中、英文語音說明，對來台旅遊的外國朋友也能方便使用。 (二)撥打『112』，您將會聽到以下語音：『這裡是行動電話112緊急救難專線，您若要報案請按〝0〞，我們將為您轉接〝110〞警察局，您若急需救助請按〝9〞，我們將為您轉接〝119〞消防局。』，若不方便撥號，系統會自動轉至〝119〞消防局。</div>
-  <div class="p-meta">0 則補充 · 75 讚</div>
+  <div class="p-meta">0 則補充 · 76 讚</div>
 </a><a class="pcard" href="p/f08056ac-605c-4f82-b3f2-70127c9b2d68" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">陳</span><span class="who">陳</span><span class="tag ask">發問</span></div>
   <div class="p-title">股票怎麼看？</div>
   <div class="p-excerpt">升大學後就很多身旁的朋友在買股票看股票 但我完全不懂🥹 有人可以跟我解釋股票怎麼使用怎麼看嗎🥹🥹</div>
-  <div class="p-meta">5 則回答 · 72 讚</div>
+  <div class="p-meta">5 則回答 · 75 讚</div>
 </a><a class="pcard" href="p/fc246451-56a3-493e-babb-c35e00f8f902" style="animation-delay:0.12s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">阿</span><span class="who">阿福</span><span class="tag tip">秘技</span></div>
   <div class="p-title">健保塗氟攻略</div>
@@ -372,7 +395,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-excerpt">青壯世代心理健康支持方案 符合資格每人免費3次 衛福部</div>
   <div class="p-meta">0 則補充 · 44 讚</div>
 </a>
-<details class="sec-fold"><summary class="sec-label">大人秘技　<span style="color:var(--sub);font-weight:400">44</span></summary><div class="fold-body"><a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587" style="animation-delay:0.00s">
+<details class="sec-fold"><summary class="sec-label">大人秘技　<span style="color:var(--sub);font-weight:400">47</span></summary><div class="fold-body"><a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587" style="animation-delay:0.00s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">c</span><span class="who">cecilia</span></div>
   <div class="p-title">路上距離判斷</div>
   <div class="p-excerpt">1.路上的虛白線，一白一空就是10公尺 2.高速車距可以用「車速/2」估算，100km/h需要距50公尺，也就是5組虛白線 3.祝大家行車安全～</div>
@@ -386,7 +409,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">果</span><span class="who">果塔</span></div>
   <div class="p-title">訊號不好119打不通怎麼辦</div>
   <div class="p-excerpt">一、『112』為行動電話緊急救難號碼，在全球各地有基地台訊號範圍處均可撥打。即使行動電話無SIM卡，只要尚有電力並在信號涵蓋範圍內，均可撥通。 二、『112』、『110』、『119』使用的差異性： (一)在我國，『112』、『110』、『119』均為緊急救難號碼，『112』適用在緊急危難時，如果您持用手機所在位置收訊不佳，『110』、『119』都撥不通時使用。 (二)『112』於撥通後將由語音導引，轉接至報案需要的『110』或急難求助的『119』。 (三)由於『112』係由語音導引進行轉接，將延長接續時間，為爭取救難時效，於收訊狀況良好時，仍應優先撥打『110』或『119』。 三、『112』的使用時機與方法： (一)當您遇到緊急狀況時，所在位置收訊不佳，只要您的手機收發功能正常，不論您是否處在所承租門號業者訊號範圍，只要有任何一家3G/GSM系統業者的訊號，就可以幫您轉接警察局或消防局，而且『112』有中、英文語音說明，對來台旅遊的外國朋友也能方便使用。 (二)撥打『112』，您將會聽到以下語音：『這裡是行動電話112緊急救難專線，您若要報案請按〝0〞，我們將為您轉接〝110〞警察局，您若急需救助請按〝9〞，我們將為您轉接〝119〞消防局。』，若不方便撥號，系統會自動轉至〝119〞消防局。</div>
-  <div class="p-meta">0 則補充 · 75 讚</div>
+  <div class="p-meta">0 則補充 · 76 讚</div>
 </a><a class="pcard" href="p/fc246451-56a3-493e-babb-c35e00f8f902" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">阿</span><span class="who">阿福</span></div>
   <div class="p-title">健保塗氟攻略</div>
@@ -402,41 +425,46 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">下大雨撐傘</div>
   <div class="p-excerpt">下大雨時把書包背前面再撐傘，人跟書包都比較不容易濕</div>
   <div class="p-meta">0 則補充 · 37 讚</div>
-</a><a class="pcard" href="p/746f0406-5de7-4d87-a019-12540a693b3b" style="animation-delay:0.18s">
+</a><a class="pcard" href="p/f1a4ad98-c3fa-4a7c-9c76-6bff42597635" style="animation-delay:0.18s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">水</span><span class="who">水蜜頭罐桃舒芙蕾</span></div>
+  <div class="p-title">當性私密影像被外流，你該怎麼辦？四個步驟保護自己</div>
+  <div class="p-excerpt">首先，無論性別，在遇到性私密影像被外流的情況下，請先記得一件事： 被外流不是你的錯。 錯的是偷拍、威脅、散布、轉傳、保存、販售，以及消費觀看的人。 在事件發生的當下，請先深呼吸，跟著以下步驟保護自己。 ⸻ 🛑【步驟一：發生當下的緊急應變】 1. 不要單獨面對加害者 如果對方威脅、勒索、要求付錢、要求見面，或要求你再傳更多照片： 不要付款。 不要再傳新的照片或影片。 不要答應單獨見面。 不要刪除對話紀錄。 絕對不要因為害怕而刪除證據，或答應對方提出的條件。 留存證據是後續申請下架、報案與追查的重要依據。 如果你現在有人身安全危險，請立刻撥打 110。 2. 立刻找信任的人陪你 可以是朋友、家人、老師、社工、伴侶、同事，或任何你信任的人。 這時候很容易陷入崩潰、羞恥與恐慌，請不要一個人硬撐。 如果你不知道怎麼開口，可以直接把這篇文章傳給對方，請他陪你一起處理下一步。 ⸻ 📸【步驟二：冷靜蒐證】 看見自己的影像被外流，可能會讓人痛苦到想立刻關掉頁面。 但如果可以，請盡量讓信任的人陪你一起，以「截圖」或「螢幕錄影」保存以下資訊： 1. 外流網址，包含完整 URL 2. 網站名稱、群組名稱、社團名稱，例如 Telegram 群組名、論壇看板名 3. 發文者的帳號、暱稱、ID、頭像 4. 發布時間、留言內容、轉傳紀錄 5. 對方威脅、勒索、要求金錢或要求見面的對話紀錄 6. 對方承認持有、散布、販售、威脅公開影像的訊息 7. 若知道對方身分，請保存其姓名、電話、銀行帳戶、LINE ID、IG 帳號等資訊 提醒： 如果影像涉及未滿 18 歲，請不要下載、保存、轉傳影像，也不要把影像傳給其他人「幫忙確認」。 請保留網址、帳號、頁面資訊後，盡快向警方、113 或性影像處理中心求助。 ⸻ ⚖️【步驟三：申請下架與報案】 1. 向「性影像處理中心」線上申訴，申請下架 台灣目前設有衛福部的「性影像處理中心」，可以協助受理性影像案件申訴，並通知平台業者限制瀏覽或移除影像。 只要手上有外流網址與相關事證，不論是否已報案，都可以先提出線上申訴。 申訴時通常需要準備： 1. 可聯絡的電子信箱 2. 申訴原因 3. 具體訴求，例如要求下架、移除、限制瀏覽 4. 外流網址 5. 相關事證，例如截圖、對話紀錄、帳號資訊 如果真的不知道該如何填寫，也可以在報案時請警方協助，或先聯絡性影像處理中心諮詢。 衛福部性影像處理中心 服務專線：(02)6605-7373 服務時間：9:00–22:00 2. 前往警察局報案 報案時，可以將蒐集好的證據臨櫃提供，並向警方說明： 「我要報案，我的性私密影像被未經同意散布／被威脅散布。 我已經保存網址、截圖、帳號與對話紀錄，希望警方協助受理並保全證據。」 如果當下不好意思口頭說明，也可以用文字向警方敘述，或請信任的朋友陪同協助說明。 重要提醒： 報案結束後，請記得向警方索取「受（處）理案件證明單」，確保案件有正式受理紀錄。 偵查時間可能需要數月至一年以上。 期間若感到不安，或想了解案件狀態，可以致電原報案分局，找當時承辦的員警詢問進度。實際承辦單位也可能依案件狀況、居住地或管轄地調整。 ⸻ 🛡️【步驟四：加強個人社群防護】 在等候警方調查與下架處理的期間，為了避免後續騷擾、威脅或帳號被入侵，請盡快調高所有通訊與社群軟體的隱私設定： 1. 將 IG、FB、Threads、X、TikTok 等社群帳號改為私人帳號 2. 關閉陌生人私訊 3. 移除可疑追蹤者 4. 更換帳號密碼 5. 開啟雙重驗證，2FA 6. 檢查雲端相簿、Google Drive、iCloud、LINE Keep 7. 檢查是否有異常裝置登入紀錄 8. 提醒親近的朋友：「如果收到我的相關影像或連結，請不要點開、不要轉傳，請直接截圖回報給我。」 ⸻ 🚫【給加害者與轉傳者的法律提醒】 在台灣，侵害性隱私可能涉及刑事犯罪： 未經同意偷拍： 可能涉及《刑法》第 319-1 條。未經同意攝錄他人性影像，可處 3 年以下有期徒刑。 未經同意散布： 即使當初是合意拍攝，只要未經同意重製、散布、播送、交付、公然陳列，或用其他方式讓他人觀看性影像，可能涉及《刑法》第 319-3 條，最重可處 5 年以下有期徒刑。 AI 換臉／Deepfake： 意圖散布而製作，或散布不實性影像，可能涉及《刑法》第 319-4 條。若意圖營利，刑度可能更高。 下載、購買、保存、轉傳： 請不要下載、保存、購買、轉傳或散布他人的非自願性影像。 如果內容涉及兒少性影像，散布、販售，或意圖散布而持有，都可能涉及更嚴重的刑事責任。 實際法律責任仍會依個案狀況判斷，建議同時尋求警方、法律扶助或專業律師協助。 ⸻ 💗【最後，想對你說】 私密影像被外流，不代表你做錯了什麼。 真正錯的人，是那些未經同意保存、威脅、散布、轉傳、觀看與販售的人。 請先保護自己，保存證據，找信任的人陪你。 你也可以撥打 113 保護專線，或向 性影像處理中心 求助。 你不是一個人。 這件事可以被處理，也有人會陪你一起處理。</div>
+  <div class="p-meta">0 則補充 · 34 讚</div>
+</a><a class="pcard" href="p/746f0406-5de7-4d87-a019-12540a693b3b" style="animation-delay:0.21s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
   <div class="p-title">死亡證明要請幾份</div>
   <div class="p-excerpt">一般來說死亡證明可以請10-20份或者更多 因為除了該跑的政府流程需要外 銀行、保險等等一家公司就需要給一張</div>
   <div class="p-meta">0 則補充 · 31 讚</div>
-</a><a class="pcard" href="p/f1a4ad98-c3fa-4a7c-9c76-6bff42597635" style="animation-delay:0.21s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">水</span><span class="who">水蜜頭罐桃舒芙蕾</span></div>
-  <div class="p-title">當性私密影像被外流，你該怎麼辦？四個步驟保護自己</div>
-  <div class="p-excerpt">首先，無論性別，在遇到性私密影像被外流的情況下，請先記得一件事： 被外流不是你的錯。 錯的是偷拍、威脅、散布、轉傳、保存、販售，以及消費觀看的人。 在事件發生的當下，請先深呼吸，跟著以下步驟保護自己。 ⸻ 🛑【步驟一：發生當下的緊急應變】 1. 不要單獨面對加害者 如果對方威脅、勒索、要求付錢、要求見面，或要求你再傳更多照片： 不要付款。 不要再傳新的照片或影片。 不要答應單獨見面。 不要刪除對話紀錄。 絕對不要因為害怕而刪除證據，或答應對方提出的條件。 留存證據是後續申請下架、報案與追查的重要依據。 如果你現在有人身安全危險，請立刻撥打 110。 2. 立刻找信任的人陪你 可以是朋友、家人、老師、社工、伴侶、同事，或任何你信任的人。 這時候很容易陷入崩潰、羞恥與恐慌，請不要一個人硬撐。 如果你不知道怎麼開口，可以直接把這篇文章傳給對方，請他陪你一起處理下一步。 ⸻ 📸【步驟二：冷靜蒐證】 看見自己的影像被外流，可能會讓人痛苦到想立刻關掉頁面。 但如果可以，請盡量讓信任的人陪你一起，以「截圖」或「螢幕錄影」保存以下資訊： 1. 外流網址，包含完整 URL 2. 網站名稱、群組名稱、社團名稱，例如 Telegram 群組名、論壇看板名 3. 發文者的帳號、暱稱、ID、頭像 4. 發布時間、留言內容、轉傳紀錄 5. 對方威脅、勒索、要求金錢或要求見面的對話紀錄 6. 對方承認持有、散布、販售、威脅公開影像的訊息 7. 若知道對方身分，請保存其姓名、電話、銀行帳戶、LINE ID、IG 帳號等資訊 提醒： 如果影像涉及未滿 18 歲，請不要下載、保存、轉傳影像，也不要把影像傳給其他人「幫忙確認」。 請保留網址、帳號、頁面資訊後，盡快向警方、113 或性影像處理中心求助。 ⸻ ⚖️【步驟三：申請下架與報案】 1. 向「性影像處理中心」線上申訴，申請下架 台灣目前設有衛福部的「性影像處理中心」，可以協助受理性影像案件申訴，並通知平台業者限制瀏覽或移除影像。 只要手上有外流網址與相關事證，不論是否已報案，都可以先提出線上申訴。 申訴時通常需要準備： 1. 可聯絡的電子信箱 2. 申訴原因 3. 具體訴求，例如要求下架、移除、限制瀏覽 4. 外流網址 5. 相關事證，例如截圖、對話紀錄、帳號資訊 如果真的不知道該如何填寫，也可以在報案時請警方協助，或先聯絡性影像處理中心諮詢。 衛福部性影像處理中心 服務專線：(02)6605-7373 服務時間：9:00–22:00 2. 前往警察局報案 報案時，可以將蒐集好的證據臨櫃提供，並向警方說明： 「我要報案，我的性私密影像被未經同意散布／被威脅散布。 我已經保存網址、截圖、帳號與對話紀錄，希望警方協助受理並保全證據。」 如果當下不好意思口頭說明，也可以用文字向警方敘述，或請信任的朋友陪同協助說明。 重要提醒： 報案結束後，請記得向警方索取「受（處）理案件證明單」，確保案件有正式受理紀錄。 偵查時間可能需要數月至一年以上。 期間若感到不安，或想了解案件狀態，可以致電原報案分局，找當時承辦的員警詢問進度。實際承辦單位也可能依案件狀況、居住地或管轄地調整。 ⸻ 🛡️【步驟四：加強個人社群防護】 在等候警方調查與下架處理的期間，為了避免後續騷擾、威脅或帳號被入侵，請盡快調高所有通訊與社群軟體的隱私設定： 1. 將 IG、FB、Threads、X、TikTok 等社群帳號改為私人帳號 2. 關閉陌生人私訊 3. 移除可疑追蹤者 4. 更換帳號密碼 5. 開啟雙重驗證，2FA 6. 檢查雲端相簿、Google Drive、iCloud、LINE Keep 7. 檢查是否有異常裝置登入紀錄 8. 提醒親近的朋友：「如果收到我的相關影像或連結，請不要點開、不要轉傳，請直接截圖回報給我。」 ⸻ 🚫【給加害者與轉傳者的法律提醒】 在台灣，侵害性隱私可能涉及刑事犯罪： 未經同意偷拍： 可能涉及《刑法》第 319-1 條。未經同意攝錄他人性影像，可處 3 年以下有期徒刑。 未經同意散布： 即使當初是合意拍攝，只要未經同意重製、散布、播送、交付、公然陳列，或用其他方式讓他人觀看性影像，可能涉及《刑法》第 319-3 條，最重可處 5 年以下有期徒刑。 AI 換臉／Deepfake： 意圖散布而製作，或散布不實性影像，可能涉及《刑法》第 319-4 條。若意圖營利，刑度可能更高。 下載、購買、保存、轉傳： 請不要下載、保存、購買、轉傳或散布他人的非自願性影像。 如果內容涉及兒少性影像，散布、販售，或意圖散布而持有，都可能涉及更嚴重的刑事責任。 實際法律責任仍會依個案狀況判斷，建議同時尋求警方、法律扶助或專業律師協助。 ⸻ 💗【最後，想對你說】 私密影像被外流，不代表你做錯了什麼。 真正錯的人，是那些未經同意保存、威脅、散布、轉傳、觀看與販售的人。 請先保護自己，保存證據，找信任的人陪你。 你也可以撥打 113 保護專線，或向 性影像處理中心 求助。 你不是一個人。 這件事可以被處理，也有人會陪你一起處理。</div>
-  <div class="p-meta">0 則補充 · 30 讚</div>
 </a><a class="pcard" href="p/8afd8936-1d58-4be9-8633-b3fe2bb0782a" style="animation-delay:0.24s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">M</span><span class="who">Muaa</span></div>
   <div class="p-title">關於【行動自然人憑證】 超級推去辦！</div>
   <div class="p-excerpt">年滿18歲，去任一戶政事務所辦理。 攜帶： 身分證/email信箱/250元 申請項目： 自然人憑證實體卡 後續： 下載行動自然人app，將實體卡綁定即可。 - 辦好以後你要上網查詢勞健保/監理所網站等等各種政府數位服務都超級方便，只要選擇「行動自然人憑證」登入，不用各種插卡或驗證。 只要注意記得到期前在app裡免費延展&amp;換手機裝置要轉移即可！ 如果換手機忘記先轉移，可以刪除app在新手機用實體卡感應NFC重新綁定就好（手機沒有NFC也可以官網操作） 親測可行。 - 我好像推銷，但我真的覺得非方便更進一步成為大人（？）</div>
-  <div class="p-meta">0 則補充 · 27 讚</div>
-</a><a class="pcard" href="p/3ad817ce-143c-4aee-adab-d4f718dda815" style="animation-delay:0.27s">
+  <div class="p-meta">0 則補充 · 28 讚</div>
+</a><a class="pcard" href="p/17e85775-514f-49c0-8acf-d8e8cffe185b" style="animation-delay:0.27s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">Y</span><span class="who">Yu</span></div>
+  <div class="p-title">蘋果手機也能加值悠遊卡</div>
+  <div class="p-excerpt">下載easy wallet綁定常用悠遊卡 首頁點選悠遊加值機 不用跑捷運或超商也能自己在家加值悠遊卡了</div>
+  <div class="p-meta">0 則補充 · 26 讚</div>
+</a><a class="pcard" href="p/3ad817ce-143c-4aee-adab-d4f718dda815" style="animation-delay:0.30s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">魚</span><span class="who">魚魚</span></div>
   <div class="p-title">補充所有免費癌症篩檢</div>
   <div class="p-excerpt">1. 胃癌（2026年最新納入） 對象： 45～74歲民眾。頻率： 終身補助 1 次。 項目： 幽門螺旋桿菌「糞便抗原檢測」（非侵入性）。 2. 肺癌對象：具肺癌家族史：45～74歲男性或40～74歲女性（父母、子女或兄弟姊妹曾確診肺癌）。 重度吸菸史：50～74歲吸菸史達 20 包-年以上，有意願戒菸或戒菸未達 15 年之重度吸菸者。 頻率： 每 2 年 1 次。 項目： 低劑量電腦斷層掃描（LDCT）。 3. 大腸癌對象： 45～74歲一般民眾； 或 40～44歲具一等親（父母、子女、兄弟姊妹）大腸癌病史者。 頻率： 每 2 年 1 次。 項目： 糞便潛血檢查。 4. 乳癌對象： 40～74歲女性。 頻率： 每 2 年 1 次。 項目： 乳房X光攝影檢查。 5. 口腔癌對象： 30歲以上嚼檳榔（含已戒）或吸菸者；以及 18歲以上嚼檳榔（含已戒）之原住民。 頻率： 每 2 年 1 次。 項目： 口腔黏膜檢查。 6. 子宮頸癌對象與項目：30歲以上女性：建議每年 1 次子宮頸抹片檢查。 25～29歲女性：每 3 年 1 次子宮頸抹片檢查。 特定年齡（如35、45、65歲）：當年度可額外獲得 1 次人類乳突病毒（HPV）檢測</div>
   <div class="p-meta">0 則補充 · 26 讚</div>
-</a><a class="pcard" href="p/17e85775-514f-49c0-8acf-d8e8cffe185b" style="animation-delay:0.30s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">Y</span><span class="who">Yu</span></div>
-  <div class="p-title">蘋果手機也能加值悠遊卡</div>
-  <div class="p-excerpt">下載easy wallet綁定常用悠遊卡 首頁點選悠遊加值機 不用跑捷運或超商也能自己在家加值悠遊卡了</div>
-  <div class="p-meta">0 則補充 · 20 讚</div>
-</a><a class="pcard" href="p/09391414-a6f2-4b28-b146-17d277de7a0f" style="animation-delay:0.33s">
+</a><a class="pcard" href="p/ecf5a568-2a11-404c-bd2f-ef0e1812e979" style="animation-delay:0.33s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">31歲前，通往世界的神卡：IYTC </div>
+  <div class="p-excerpt">結論：適合畢業後、工作中、準備出國旅遊或短期進修的人，用途主要是省錢跟身份認證。 1.準備一張個人大頭照，以及身分證明文件，例如護照、身分證或健保卡 2.至 ISIC Taiwan 線上填寫申請表並上傳資料，再選擇親自取卡或郵寄取卡。 3.官方資訊顯示，線上辦理費用為 NT$400，郵寄取卡另加 NT$80；若資料沒問題，約繳費後7個工作天內發卡，效期通常為發卡當月起一年。 這張卡在出國時可查詢餐飲、旅遊、交通、住宿、音樂、娛樂等青年優惠；ISIC Taiwan 也標示 IYTC 可享有超過2萬個相關優惠</div>
+  <div class="p-meta">0 則補充 · 21 讚</div>
+</a><a class="pcard" href="p/09391414-a6f2-4b28-b146-17d277de7a0f" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">Y</span><span class="who">Yue</span></div>
   <div class="p-title">🛵機車牌照稅</div>
   <div class="p-excerpt">依汽缸排氣量徵收，其級距如下： 150cc 以下：$0（免徵） 151cc - 250cc：$800 251cc - 500cc：$1,620 501cc - 600cc：$2,160 601cc - 1200cc：$4,320</div>
   <div class="p-meta">0 則補充 · 20 讚</div>
-</a><a class="pcard" href="p/ecf5a568-2a11-404c-bd2f-ef0e1812e979" style="animation-delay:0.36s">
+</a><a class="pcard" href="p/d51092ed-398b-407a-8271-5f429652a27d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">31歲前，通往世界的神卡：IYTC </div>
-  <div class="p-excerpt">結論：適合畢業後、工作中、準備出國旅遊或短期進修的人，用途主要是省錢跟身份認證。 1.準備一張個人大頭照，以及身分證明文件，例如護照、身分證或健保卡 2.至 ISIC Taiwan 線上填寫申請表並上傳資料，再選擇親自取卡或郵寄取卡。 3.官方資訊顯示，線上辦理費用為 NT$400，郵寄取卡另加 NT$80；若資料沒問題，約繳費後7個工作天內發卡，效期通常為發卡當月起一年。 這張卡在出國時可查詢餐飲、旅遊、交通、住宿、音樂、娛樂等青年優惠；ISIC Taiwan 也標示 IYTC 可享有超過2萬個相關優惠</div>
-  <div class="p-meta">0 則補充 · 18 讚</div>
+  <div class="p-title">再也不用麻煩什麼不能入境</div>
+  <div class="p-excerpt">網頁叫做-AI入境物品檢查 雖然不是政府的網站，但是你只要上傳一張照片就能判斷是否可以入境！ 如果還是不放心還是要檢查 財政部關務署 及 農業部動植物防疫檢疫署官網喔～</div>
+  <div class="p-meta">0 則補充 · 16 讚</div>
 </a><a class="pcard" href="p/58dfa867-61d3-4de4-923b-7625296bbac7" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">打</span><span class="who">打狗</span></div>
   <div class="p-title">辦台胞證+護照小提醒</div>
@@ -452,6 +480,21 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">請問有原生家庭困擾的大人小孩需要撫養費官司建議嗎🤣</div>
   <div class="p-excerpt">我在想會不會這個問題太冷門了哈哈哈 總之按照目前法規，基本上你父母只要沒有財產/不願工作，被法院判定無法自理生活，直系血親卑親屬，你本人，只要18歲以前有拿過任何一毛錢，我是指即便只是給妳麥香紅茶跟蘋果麵包20塊費用果腹、出註冊費這種程度，他有養育事實，你就有撫養義務。 建議是出社會之後每月匯款一筆金額，少少的也沒關係1-2000元，用來向法院證明你沒有棄養，功能到時候判撫養費可以輕一點🫠但基本上不能免除，免除扶養費的官司建立在他不問你死活的前提。</div>
   <div class="p-meta">0 則補充 · 11 讚</div>
+</a><a class="pcard" href="p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
+  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北車站附近的台開金融大樓1樓直接查詢 年滿18歲就可使用線上查閱服務。 費用： 中文版信用報告含信用評分，每年度可免費查一次；同年度第2次以後，每次酌收 NT$80。單獨查個人信用評分，每年度也可免費一次，第2次以後每次 NT$20</div>
+  <div class="p-meta">0 則補充 · 10 讚</div>
+</a><a class="pcard" href="p/a188971d-279e-48c3-b9d7-18e1d3aefd34" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">源</span><span class="who">源夢</span></div>
+  <div class="p-title">透過敲蘋果判斷脆蘋果或面蘋果</div>
+  <div class="p-excerpt">翹起來硬硬的像是敲桌子的聲音就會是脆脆的蘋果，敲起來聲音悶悶的就是面蘋果，不會聽也可以試著問問攤販讓攤販幫忙挑選。</div>
+  <div class="p-meta">0 則補充 · 9 讚</div>
+</a><a class="pcard" href="p/e5968d24-7590-49ac-82b6-29a37135fba8" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">初級大人的隱藏捷徑：MyData</div>
+  <div class="p-excerpt">政府提供的「個人資料調閱平台」 只要透過身分驗證，就可以在 MyData 下載自己的資料，或授權給銀行、政府機關使用，達到省時省力 常見用途： 查勞保投保紀錄、健保投退保資料、所得資料、財產資料、入出國紀錄，也可以用在部分銀行辦卡、貸款、財力證明補件</div>
+  <div class="p-meta">0 則補充 · 9 讚</div>
 </a><a class="pcard" href="p/29c6a134-ffe4-4aaf-92f1-dc63f7974a8c" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">🍬</span><span class="who">🍬</span></div>
   <div class="p-title">怎麼拜拜</div>
@@ -472,31 +515,31 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">法扶法律諮詢，不是要打官司才需要找律師</div>
   <div class="p-excerpt">如果不幸遇到了租屋糾紛、勞資爭議、合約問題、車禍和解、債務、家事問題、消費糾紛等。 如果還不確定事情嚴不嚴重，可以先找 法律扶助基金會。 怎麼找： 1.法扶網站查詢各地服務據點 2.使用線上預約系統 3.電話諮詢可撥法扶全國專線 412-8518 轉 2，手機需加 02 費用： 不需要先審查財力或案情，且諮詢不用負擔律師費</div>
   <div class="p-meta">0 則補充 · 8 讚</div>
-</a><a class="pcard" href="p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
-  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北車站附近的台開金融大樓1樓直接查詢 年滿18歲就可使用線上查閱服務。 費用： 中文版信用報告含信用評分，每年度可免費查一次；同年度第2次以後，每次酌收 NT$80。單獨查個人信用評分，每年度也可免費一次，第2次以後每次 NT$20</div>
-  <div class="p-meta">0 則補充 · 8 讚</div>
 </a><a class="pcard" href="p/b04c4ff8-6496-4bcd-a2f7-a54ec7078272" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">M</span><span class="who">Muaa</span></div>
   <div class="p-title">關於【機車的繳費項目】 ！</div>
   <div class="p-excerpt">【強制險】 保險到期前繳費 ·所有牌&amp;電動機車 皆［必繳］ 【公路養管費（原汽燃費）】 每年7月 ·白牌/綠牌/黃牌/紅牌 ［必繳］ ·電動機車 ［目前免繳］（預期2030年起才納入） 【使用牌照稅】 每年四月繳費 ·白牌/綠牌（150cc以下） ［免繳］ ·電動機車 ［目前免繳］ （免稅優惠立法延長至2030/12/31） ·黃牌/紅牌（151cc以上） ［必繳］ 【其他項目】 ·定期排氣檢驗（免費）： 出廠滿5年燃油車，每年必免費檢驗，逾期罰500元 ·定期車輛檢驗費（200元）：黃牌/紅牌的大型重機車 出廠滿5年後，每年定期檢驗1次（滿10年後每年2次） ·車牌與行照規費： （領牌費300-400元/行照費150/可自費選號） 新車領牌付一遍，遺失或補辦才需再次付費。 - 因為剛進來的測驗有些題答有點模稜，所以補充一下。 大家可以上監理所網站探索哦！ 如果整理有誤也歡迎補充（我也是之前上去探索的）</div>
   <div class="p-meta">0 則補充 · 8 讚</div>
-</a><a class="pcard" href="p/e5968d24-7590-49ac-82b6-29a37135fba8" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">初級大人的隱藏捷徑：MyData</div>
-  <div class="p-excerpt">政府提供的「個人資料調閱平台」 只要透過身分驗證，就可以在 MyData 下載自己的資料，或授權給銀行、政府機關使用，達到省時省力 常見用途： 查勞保投保紀錄、健保投退保資料、所得資料、財產資料、入出國紀錄，也可以用在部分銀行辦卡、貸款、財力證明補件</div>
-  <div class="p-meta">0 則補充 · 7 讚</div>
-</a><a class="pcard" href="p/d51092ed-398b-407a-8271-5f429652a27d" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">再也不用麻煩什麼不能入境</div>
-  <div class="p-excerpt">網頁叫做-AI入境物品檢查 雖然不是政府的網站，但是你只要上傳一張照片就能判斷是否可以入境！ 如果還是不放心還是要檢查 財政部關務署 及 農業部動植物防疫檢疫署官網喔～</div>
-  <div class="p-meta">0 則補充 · 6 讚</div>
 </a><a class="pcard" href="p/38a97b6d-1190-43ac-86de-3b3ca1f16775" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">入職必備-良民證</div>
   <div class="p-excerpt">正式名稱叫 警察刑事紀錄證明 主要是看你在台灣有沒有任何刑事案件。 不光是入職才需要，像出國簽證、留學、移民、海外工作、金融業或教育相關職缺都會需要 申請： 線上申請，分為郵寄及去各縣市警察局領，不受戶籍地限制。 費用： 一般每份 新台幣100元，同一次申請第2份起，如果證明內容相同，每份加收 20元。</div>
+  <div class="p-meta">0 則補充 · 7 讚</div>
+</a><a class="pcard" href="p/8ca0164e-1a60-4544-a761-0943340ff67d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">買衣服小知識-從版型和裡布看衣服好不好</div>
+  <div class="p-excerpt">買衣服時，不要只看外觀和價格，可以先注意兩個地方： 一、看衣服的版型 如果女生 T 恤前短後長太明顯，穿上後可能因胸型把前面撐得更短，造成衣服往後跑、領口卡脖子，需要一直拉衣服。試穿時可以抬手、走動，看看衣服是否容易位移。 二、翻開衣服內側看顏色 如果外面顏色很深，裡面卻明顯偏白，可能代表顏色主要印在布料表面。這類衣服不一定品質差，但若印染和固色做得不好，洗幾次後可能比較容易褪色、龜裂或掉色。 三、挑衣服時，除了看材質，也要注意版型是否穩定、顏色是否均勻，以及縫線和做工是否整齊，通常更容易選到耐穿又好看的衣服。</div>
   <div class="p-meta">0 則補充 · 6 讚</div>
+</a><a class="pcard" href="p/c7cf77ce-e98a-4d87-b86a-f3ae26b8f807" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">張</span><span class="who">張張</span></div>
+  <div class="p-title">汽車險小知識</div>
+  <div class="p-excerpt">1️⃣「強制險」跟「任意險」是什麼？ 📍強制險 強制險只賠對方，不賠自己。 📍任意險 所以除了強制險以外的保險都統稱為任意險，例如：車體險、第三人責任險….等，用來補足強制險無法賠付的地方 。 📍任意險有哪些 第三人責任險：賠對方身體傷害＋財物損失。 （第三人定義：這台車駕駛及乘客以外的人，稱為第三人） 超額責任險：強制險及第三人責任保險保額不夠賠的部分可以用此項給付。 車體險、竊盜險：保障「自己的汽車」車輛損失。 駕駛人傷害險：因意外事故導致駕駛人（經車主同意使用或投保時列名之駕駛人）身體傷害、死亡、失能。 強制汽車責任保險駕駛人傷害保險（限車主）：汽車單一事故保障「駕駛人」身體傷害、死亡、失能。 乘客險：因交通意外事故，導致車上乘客受有傷害或死亡，依法負賠償責任。 保險慰問金費用保險： 被保險人前往探視或慰問因交通意外事故所致第三人傷害之費用補償。 道路救援費用保險：提供「拖吊、送水、送油(不包括汽油費用)、換胎(備胎由被保險人提供)、開鎖、接電」的救援服務。 2️⃣每種任意險保障對象/項目？ 第三人責任險：第三人 超額責任險：第三人 車體險、竊盜險：自己的汽車 強制汽車責任保險駕駛人傷害保險（限車主）/駕駛人傷害保險：本車駕駛 乘客險：本車乘客 3️⃣我要怎麼挑選適合我的保障內容？ 一般來說會用「新車」跟「非新車」分類，5年內的汽車算新車。 📍新車：建議至少投保乙式車體險、竊盜險、第三人責任險、超額險、駕駛人傷害險、乘客險 📍非新車：第三人責任險、超額險、駕駛人傷害險、乘客險 為什麼非新車通常不會配車體險或竊盜險 👉🏻車體險的保額是依據汽車的重置價格，重置價格的計算是來自保發中心的資料，依據使用年份會折舊（汽車一落地就折舊15%，意思是你買了這台車，這台車的價值就剩85%）， 而汽車的重置價格不高，保費也不一定很便宜，甚至有可能會等於重置價格， 但也不是說一定不能買，而是視需求投保即可，若是非新車想買車體險，可以買丙式車體險。 4️⃣上面有提到車體險，車體險有甲、乙、丙、丁，差在哪裡？ 甲式：什麼都賠 乙式：除了不明損失，什麼都賠 丙式：只賠車碰車事故（有車撞你才符合理賠條件），保額是汽車的重置價格 丁式：保障範圍等同於丙式，保額不等於重置價格，可以自行選擇保額 5️⃣網路投保盛行，跟一般業務員差在哪裡？ 以同公司來說，只會差異在商品，通常業務員跟網路投保的商品包裝會不一樣，大家可以自行比較， 若以理賠角度來說，網路投保沒有專屬於你的業務員，若有任何問題，只能撥打客服。 *以上保障項目僅為條款解釋，實際理賠情況以真實狀況為主*</div>
+  <div class="p-meta">0 則補充 · 5 讚</div>
+</a><a class="pcard" href="p/eea67cb0-68de-4461-bc77-ba07ef1ffa17" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">Katja</span></div>
+  <div class="p-title">衣服污點清除術</div>
+  <div class="p-excerpt">我很常吃東西時嘴巴有洞（？）醬汁湯水噴到衣服上，分享家母的清潔魔法～ 一回到家就用洗碗精或洗髮精直接塗在衣服上，不要泡水不要沖洗不要刷。至少靜置一晚，再直接丟洗衣機就可以洗淨！</div>
+  <div class="p-meta">0 則補充 · 5 讚</div>
 </a><a class="pcard" href="p/771ee26e-959f-4ecb-bb86-73aeaaaa7fa5" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">餅</span><span class="who">餅餅</span></div>
   <div class="p-title">關於水果🍉</div>
@@ -512,21 +555,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">生熟食砧板怎麼分？為什麼需要兩塊砧板</div>
   <div class="p-excerpt">處理食材、食物時，食品安全衛生的考量一定要將熟食砧板跟生食砧板分開以免交叉污染造成食物中毒！2026年4月爆發的沙門氏菌食物中毒事件便是交叉污染造成(可能是手部清潔不佳或是未分類砧板造成)，沙門氏菌不耐熱，攝氏60度加熱20分鐘以上即被殺滅。 熟食：不會再經過高溫加熱的食物。如：煎好的菜圃蛋、煮熟的牛排、雞肉、水果、直接放到醬油裡使用的蔥花、蒜末、生菜沙拉等等 生食：等等還會高溫加熱的食材。如：生肉、海鮮、加工食品如還會要炒的豆乾、蔬菜等。 切東西的順序由低污染到高污染：乾貨-加工食品(豆腐豆乾等)-蔬果-根莖類-牛羊肉-豬肉-雞肉-內臟-海鮮 換切下一樣時請務必確實清洗砧板。 *砧板是消耗品請定時更換* 食藥署沙門氏菌衛教： https://www.fda.gov.tw/tc/sitecontent.aspx?sid=1942 衛生福利部食物中毒衛教： https://www.mohw.gov.tw/fp-16-29716-1.html</div>
   <div class="p-meta">0 則補充 · 5 讚</div>
-</a><a class="pcard" href="p/a188971d-279e-48c3-b9d7-18e1d3aefd34" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">源</span><span class="who">源夢</span></div>
-  <div class="p-title">透過敲蘋果判斷脆蘋果或面蘋果</div>
-  <div class="p-excerpt">翹起來硬硬的像是敲桌子的聲音就會是脆脆的蘋果，敲起來聲音悶悶的就是面蘋果，不會聽也可以試著問問攤販讓攤販幫忙挑選。</div>
-  <div class="p-meta">0 則補充 · 4 讚</div>
-</a><a class="pcard" href="p/c7cf77ce-e98a-4d87-b86a-f3ae26b8f807" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">張</span><span class="who">張張</span></div>
-  <div class="p-title">汽車險小知識</div>
-  <div class="p-excerpt">1️⃣「強制險」跟「任意險」是什麼？ 📍強制險 強制險只賠對方，不賠自己。 📍任意險 所以除了強制險以外的保險都統稱為任意險，例如：車體險、第三人責任險….等，用來補足強制險無法賠付的地方 。 📍任意險有哪些 第三人責任險：賠對方身體傷害＋財物損失。 （第三人定義：這台車駕駛及乘客以外的人，稱為第三人） 超額責任險：強制險及第三人責任保險保額不夠賠的部分可以用此項給付。 車體險、竊盜險：保障「自己的汽車」車輛損失。 駕駛人傷害險：因意外事故導致駕駛人（經車主同意使用或投保時列名之駕駛人）身體傷害、死亡、失能。 強制汽車責任保險駕駛人傷害保險（限車主）：汽車單一事故保障「駕駛人」身體傷害、死亡、失能。 乘客險：因交通意外事故，導致車上乘客受有傷害或死亡，依法負賠償責任。 保險慰問金費用保險： 被保險人前往探視或慰問因交通意外事故所致第三人傷害之費用補償。 道路救援費用保險：提供「拖吊、送水、送油(不包括汽油費用)、換胎(備胎由被保險人提供)、開鎖、接電」的救援服務。 2️⃣每種任意險保障對象/項目？ 第三人責任險：第三人 超額責任險：第三人 車體險、竊盜險：自己的汽車 強制汽車責任保險駕駛人傷害保險（限車主）/駕駛人傷害保險：本車駕駛 乘客險：本車乘客 3️⃣我要怎麼挑選適合我的保障內容？ 一般來說會用「新車」跟「非新車」分類，5年內的汽車算新車。 📍新車：建議至少投保乙式車體險、竊盜險、第三人責任險、超額險、駕駛人傷害險、乘客險 📍非新車：第三人責任險、超額險、駕駛人傷害險、乘客險 為什麼非新車通常不會配車體險或竊盜險 👉🏻車體險的保額是依據汽車的重置價格，重置價格的計算是來自保發中心的資料，依據使用年份會折舊（汽車一落地就折舊15%，意思是你買了這台車，這台車的價值就剩85%）， 而汽車的重置價格不高，保費也不一定很便宜，甚至有可能會等於重置價格， 但也不是說一定不能買，而是視需求投保即可，若是非新車想買車體險，可以買丙式車體險。 4️⃣上面有提到車體險，車體險有甲、乙、丙、丁，差在哪裡？ 甲式：什麼都賠 乙式：除了不明損失，什麼都賠 丙式：只賠車碰車事故（有車撞你才符合理賠條件），保額是汽車的重置價格 丁式：保障範圍等同於丙式，保額不等於重置價格，可以自行選擇保額 5️⃣網路投保盛行，跟一般業務員差在哪裡？ 以同公司來說，只會差異在商品，通常業務員跟網路投保的商品包裝會不一樣，大家可以自行比較， 若以理賠角度來說，網路投保沒有專屬於你的業務員，若有任何問題，只能撥打客服。 *以上保障項目僅為條款解釋，實際理賠情況以真實狀況為主*</div>
-  <div class="p-meta">0 則補充 · 4 讚</div>
-</a><a class="pcard" href="p/eea67cb0-68de-4461-bc77-ba07ef1ffa17" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">Katja</span></div>
-  <div class="p-title">衣服污點清除術</div>
-  <div class="p-excerpt">我很常吃東西時嘴巴有洞（？）醬汁湯水噴到衣服上，分享家母的清潔魔法～ 一回到家就用洗碗精或洗髮精直接塗在衣服上，不要泡水不要沖洗不要刷。至少靜置一晚，再直接丟洗衣機就可以洗淨！</div>
-  <div class="p-meta">0 則補充 · 4 讚</div>
 </a><a class="pcard" href="p/3227b3dc-7c28-45d1-8eae-47c9fa715fda" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
   <div class="p-title">突然想踏入婚姻的墳墓該怎麼辦</div>
@@ -546,11 +574,26 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">地</span><span class="who">地瓜球</span></div>
   <div class="p-title">滷東西加蒜</div>
   <div class="p-excerpt">我媽教我的 滷東西的時候如果要加蒜頭 蒜皮不要剝掉 這樣蒜頭才不會散開讓湯髒髒的</div>
+  <div class="p-meta">0 則補充 · 3 讚</div>
+</a><a class="pcard" href="p/2d914990-149a-4220-9da5-6f937237a75d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">如何看高鐵等有沒有行駛？Rail Island 鐵道地圖</div>
+  <div class="p-excerpt">一樣先告知此網站非官方網站，使用前還是要自己斟酌 可以直接在Google搜尋：Rail Island 鐵道地圖 我自己常出差都會看高鐵動線，不過 1.高鐵 2.台鐵 3.捷運 4.輕軌 都可以直接查看路線、停靠站與列車資訊，介面簡潔、操作直覺，比對路線時非常方便。</div>
+  <div class="p-meta">0 則補充 · 2 讚</div>
+</a><a class="pcard" href="p/3e6e7370-1727-4cf1-903d-8a51eef8508d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">颱風天沒地方停車？其實可以停路邊！？</div>
+  <div class="p-excerpt">颱風期間，紅黃線不會自動開放停車，還是必須要等各縣市政府正式公告喔！ 各地規定不同，部分縣市會限制只有 8公尺、10公尺或15公尺以上的道路才能停放，因此還是要以當地政府公告為準～ 提醒： 即使開放，路口、公車站、消防栓、人行道、橋梁及隧道等地點仍禁止停車。車輛應順向靠邊、不可併排，並保留雙向通行及救災空間～</div>
   <div class="p-meta">0 則補充 · 2 讚</div>
 </a><a class="pcard" href="p/a9a8c603-f2bd-4caa-a2b1-974885d05bd8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">軒</span><span class="who">軒</span></div>
   <div class="p-title">牙齒問題</div>
   <div class="p-excerpt">想問問牙齒重建比較好還是植牙比較好 從小沒照顧牙齒都蛀牙蛀光光了 然後就是用牙齒有保險嗎</div>
+  <div class="p-meta">0 則補充 · 2 讚</div>
+</a><a class="pcard" href="p/380daaaf-8d13-4fdb-a639-56ea087873e4" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">I</span><span class="who">I don’t 呱</span></div>
+  <div class="p-title">一點點修繕技巧</div>
+  <div class="p-excerpt">更換水龍頭起泡器時，如果鉗子轉不開，可以嘗試下列技巧 1.刮除交界處水垢、髒污 2.隔著洗臉巾、抹布再夾 3.往交界處上一點油 螺絲崩牙的時候可以放一節橡皮筋或貼電火布在牙處再轉，如果是電器、3C產品較小螺絲，可以使用橡皮擦屑 組裝櫃子或其他需要槌子但沒有的時候可以用老虎鉗平面處敲擊 使用任何膠帶時，將尾巴稍微對折留頭，下次用的時候你會感謝你自己 如果沒有除鏽劑或不方便買，可以用可樂除鏽 除鏽後將可樂清乾淨記得保持乾燥，也可以上油儘量隔絕水分 組裝任何物品前記得看說明書！！！！</div>
   <div class="p-meta">0 則補充 · 2 讚</div>
 </a><a class="pcard" href="p/cf1bcbfa-0a16-44ce-bd9d-c99d6314a2fb" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
@@ -566,11 +609,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Chengggg</span></div>
   <div class="p-title">擦傷怎麼處理傷口</div>
   <div class="p-excerpt">準備：棉棒 石蠟紗布 普通紗布 透氣膠帶 生理食鹽水 先清潔傷口 再蓋上石蠟紗布 再蓋上普通紗布（厚度依組織液分泌量而異 受傷初期組織液分泌量大 可以多蓋幾層以免滲出來）最後用透氣膠帶黏好 如果沒有石蠟紗布 可以去買外傷藥膏（利膚、使皮新等等）塗一層在傷口上 再蓋上普通紗布 只是這樣換藥時會比較痛 紗布容易沾黏在傷口上 （純屬個人的經驗分享，不代表任何醫療建議。）</div>
-  <div class="p-meta">0 則補充 · 1 讚</div>
-</a><a class="pcard" href="p/380daaaf-8d13-4fdb-a639-56ea087873e4" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">I</span><span class="who">I don’t 呱</span></div>
-  <div class="p-title">一點點修繕技巧</div>
-  <div class="p-excerpt">更換水龍頭起泡器時，如果鉗子轉不開，可以嘗試下列技巧 1.刮除交界處水垢、髒污 2.隔著洗臉巾、抹布再夾 3.往交界處上一點油 螺絲崩牙的時候可以放一節橡皮筋或貼電火布在牙處再轉，如果是電器、3C產品較小螺絲，可以使用橡皮擦屑 組裝櫃子或其他需要槌子但沒有的時候可以用老虎鉗平面處敲擊 使用任何膠帶時，將尾巴稍微對折留頭，下次用的時候你會感謝你自己 如果沒有除鏽劑或不方便買，可以用可樂除鏽 除鏽後將可樂清乾淨記得保持乾燥，也可以上油儘量隔絕水分 組裝任何物品前記得看說明書！！！！</div>
   <div class="p-meta">0 則補充 · 1 讚</div>
 </a><a class="pcard" href="p/9242baf2-53b3-4c7c-819b-ebbc9f6b2107" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
@@ -593,26 +631,26 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-excerpt">水量跟水溫有時候很難調到剛好不會熄火，又不會太熱的平衡</div>
   <div class="p-meta">0 則補充 · 0 讚</div>
 </a></div></details>
-<details class="sec-fold"><summary class="sec-label">我要發問　<span style="color:var(--sub);font-weight:400">74</span></summary><div class="fold-body"><a class="pcard" href="p/f08056ac-605c-4f82-b3f2-70127c9b2d68" style="animation-delay:0.00s">
+<details class="sec-fold"><summary class="sec-label">我要發問　<span style="color:var(--sub);font-weight:400">78</span></summary><div class="fold-body"><a class="pcard" href="p/f08056ac-605c-4f82-b3f2-70127c9b2d68" style="animation-delay:0.00s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">陳</span><span class="who">陳</span></div>
   <div class="p-title">股票怎麼看？</div>
   <div class="p-excerpt">升大學後就很多身旁的朋友在買股票看股票 但我完全不懂🥹 有人可以跟我解釋股票怎麼使用怎麼看嗎🥹🥹</div>
-  <div class="p-meta">5 則回答 · 72 讚</div>
+  <div class="p-meta">5 則回答 · 75 讚</div>
 </a><a class="pcard" href="p/e451bd81-2a79-496f-a6cd-9896f2a03e91" style="animation-delay:0.03s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">阿</span><span class="who">阿鵝</span></div>
   <div class="p-title">保險怎麼買</div>
   <div class="p-excerpt">小妹我自己家人沒幫我保任何保險 健保是在家人下面 工作有勞保相關什麼的 但最想了解的是什麼險最需要買以及該如何買比較好!!!!! 之前有出過車禍要賠償對方車損 沒保險真的負擔好大啊啊啊啊</div>
-  <div class="p-meta">5 則回答 · 28 讚</div>
+  <div class="p-meta">5 則回答 · 29 讚</div>
 </a><a class="pcard" href="p/affcc241-32df-4e64-9254-a62da783b525" style="animation-delay:0.06s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">阿</span><span class="who">阿極</span></div>
   <div class="p-title">大學生有哪些要做的事情</div>
   <div class="p-excerpt">接下來要成為大學生了（汽機車駕照都有了），但還不知道報稅、健保付費……之類的生活必須學習跟政府有關的內容，日常煮飯那些都還行，看朋友練習投資理財知識也有點壓力，不知道大家都什麼時候開始學會投資理財的🥹</div>
-  <div class="p-meta">7 則回答 · 17 讚</div>
+  <div class="p-meta">7 則回答 · 18 讚</div>
 </a><a class="pcard" href="p/8c69e3d7-ee77-4216-9fe5-aa09074c72b0" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">麻</span><span class="who">麻糬</span></div>
   <div class="p-title">心理素質該怎麼提升</div>
   <div class="p-excerpt">雖然已經成年，但是對於任何事情都有一種不怎麼熟悉的不確定感，遇到挫折還是有想逃避的念頭，這該如何是好？</div>
-  <div class="p-meta">4 則回答 · 16 讚</div>
+  <div class="p-meta">4 則回答 · 18 讚</div>
 </a><a class="pcard" href="p/cddc77ab-d22e-446a-b037-bd5a90510e5e" style="animation-delay:0.12s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">奶</span><span class="who">奶油</span></div>
   <div class="p-title">每次做菜都亂煮一通</div>
@@ -652,7 +690,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">P</span><span class="who">Pepe</span></div>
   <div class="p-title">出國一個月，什麼東西是要帶但大家常常會忘記的</div>
   <div class="p-excerpt">第一次要出國這麼久，初級大人這幾天一直在想有什麼東西要帶的，怕沒有帶到，因為有些東西怕出國買也很麻煩（藥之類的），所以想請教經驗豐富的大家！</div>
-  <div class="p-meta">4 則回答 · 5 讚</div>
+  <div class="p-meta">5 則回答 · 5 讚</div>
 </a><a class="pcard" href="p/b8df5580-6c24-42fd-be4f-1ae8350a41d4" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小女孩</span></div>
   <div class="p-title">打工</div>
@@ -673,11 +711,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">什麼情況要補繳稅？</div>
   <div class="p-excerpt">工作四五年了，每次報稅大部分都是退稅給我，好像在手機上登入送出後就沒我的事一樣，會有什麼情況是我要多填資料或是要補繳稅的</div>
   <div class="p-meta">4 則回答 · 4 讚</div>
-</a><a class="pcard" href="p/ac5fc9dd-476d-463e-b49e-b3214cd68b3f" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">有</span><span class="who">有一個美麗的小女孩他的名字叫做小薇</span></div>
-  <div class="p-title">求開車小撇步</div>
-  <div class="p-excerpt">剛考到駕照 目前開車的問題就是不會抓距離 比如說不知道這個距離可不可以變換車道 常常朋友說後面的車已經在讓我了 但是我還是不敢切過去，我覺得很近 朋友跟我說後照鏡看得到一整台車的距離就可以切了嗎？ 有沒有一些開車小撇步😭</div>
-  <div class="p-meta">0 則回答 · 3 讚</div>
 </a><a class="pcard" href="p/d5f972da-3dde-4492-9c1d-9b9ea2b814d3" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">阿</span><span class="who">阿魚</span></div>
   <div class="p-title">關於寵物保險</div>
@@ -703,6 +736,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">社會</div>
   <div class="p-excerpt">這裡有人會教人情世故嗎？ 還是真的這種事必須要自己發覺呢？</div>
   <div class="p-meta">4 則回答 · 3 讚</div>
+</a><a class="pcard" href="p/ac5fc9dd-476d-463e-b49e-b3214cd68b3f" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">有</span><span class="who">有一個美麗的小女孩他的名字叫做小薇</span></div>
+  <div class="p-title">求開車小撇步</div>
+  <div class="p-excerpt">剛考到駕照 目前開車的問題就是不會抓距離 比如說不知道這個距離可不可以變換車道 常常朋友說後面的車已經在讓我了 但是我還是不敢切過去，我覺得很近 朋友跟我說後照鏡看得到一整台車的距離就可以切了嗎？ 有沒有一些開車小撇步😭</div>
+  <div class="p-meta">1 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/e1e2c6bd-f293-4810-baf3-8ffe73dff0c1" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">Y</span><span class="who">Yin</span></div>
   <div class="p-title">第一次開車上高速公路怎麼克服</div>
@@ -808,6 +846,26 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">有什麼問題想要問問高級大人的嗎？</div>
   <div class="p-excerpt">只要是你想知道的問題都可以問，別害羞！讓我們陪你一起長大！</div>
   <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/02e0b5d8-5303-456d-9ad9-7050054a2c16" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">w</span><span class="who">wuillll</span></div>
+  <div class="p-title">想吃脆桃該買哪種</div>
+  <div class="p-excerpt">😭想吃脆的</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/d193ec38-69dd-4fab-801f-a0f457712043" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小白</span></div>
+  <div class="p-title">一個人能過的怎樣</div>
+  <div class="p-excerpt">有在網路看到一篇文：說一堆未成年已經在焦慮未來能不能養的活自己 想問在社會歷練過的人或著同樣焦慮的人怎麼看（先不考慮結婚生子）</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/9f77c44c-8aea-46d4-b77c-234524f6198d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">魚</span><span class="who">魚丸</span></div>
+  <div class="p-title">信用卡推薦</div>
+  <div class="p-excerpt">想辦信用卡，但不知道回饋優惠有沒有差別，現在身上有Costco聯名卡（富邦）。回饋好少！ 想問有沒有推薦的銀行我會馬上行動</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/6b5b1546-d6b3-43f1-aa4f-a185f5c84087" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">兔</span><span class="who">兔兔</span></div>
+  <div class="p-title">澎湖搭船</div>
+  <div class="p-excerpt">請問澎湖搭船有什麼限制嗎？ 例如 行李箱大小、數量 物品 例如：防曬噴霧、手持風扇….</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/a6b8b8bb-0932-4cb6-91f6-dcb1d960c06f" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">奶</span><span class="who">奶油</span></div>
   <div class="p-title">第一次出國</div>
@@ -827,7 +885,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">T</span><span class="who">Tako</span></div>
   <div class="p-title">大學實習</div>
   <div class="p-excerpt">大學的實習單位好多 有的有薪水單很少有的沒薪水有的甚至要倒貼 有薪水的可能在外縣市沒住宿需要自己租屋 想請問大家的實習單位都是怎麼選擇的？怎麼選擇才會比較好🫠🫠🫠</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/ec6a8083-ed69-4f1c-b854-152af320f839" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">雞</span><span class="who">雞蛋🍳</span></div>
   <div class="p-title">我想組電腦！</div>
@@ -942,7 +1000,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小白</span></div>
   <div class="p-title">出社會前的焦慮</div>
   <div class="p-excerpt">有沒有人現在處於快要出社會或剛出社會的情況，我現在是快出社會，常常會想出社會後怎麼找工作，找不到怎麼辦，以及怎麼快速適應。有沒有過來人或現在跟我有一樣煩惱的人一起討論</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/e28554a3-a4a2-4f58-8ac0-5b737fa69a13" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">Y</span><span class="who">YX</span></div>
   <div class="p-title">初學機車</div>
@@ -967,7 +1025,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="join-cta">
   <strong>加入討論，把你的經驗分享給下一個新手</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>
-  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+  <a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
 </div>
 </div></main>
 <footer class="site"><div class="wrap">
@@ -977,7 +1035,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="../support">支援</a>
     <a href="../privacy">隱私政策</a>
     <a href="../terms">使用條款</a>
-    <a href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+    <a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
   </nav>
   <p class="foot-legal">這些都是網友自己發表的發問和經驗分享。想加入一起聊，App 裡見。<br>
   © 2026 初級大人手冊</p>

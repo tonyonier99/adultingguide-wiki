@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://adultingguide.tw/community/p/1167c290-4bdd-45b4-af87-5eb7bc1edcf0">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "入厝要怎麼拜！", "text": "只知道要拜地基主跟擺床墊，還有什麼需要做的事嗎😔😔", "answerCount": 3, "author": {"@type": "Person", "name": "QQ"}, "datePublished": "2026-06-22", "acceptedAnswer": {"@type": "Answer", "text": "如果有拜地基主之後就要每年都拜", "url": "https://adultingguide.tw/community/p/1167c290-4bdd-45b4-af87-5eb7bc1edcf0", "author": {"@type": "Person", "name": "高級大人"}, "datePublished": "2026-06-22"}}}</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "入厝要怎麼拜！", "text": "只知道要拜地基主跟擺床墊，還有什麼需要做的事嗎😔😔", "answerCount": 3, "author": {"@type": "Person", "name": "QQ"}, "datePublished": "2026-06-22", "acceptedAnswer": {"@type": "Answer", "text": "如果有拜地基主之後就要每年都拜", "url": "https://adultingguide.tw/community/p/1167c290-4bdd-45b4-af87-5eb7bc1edcf0", "author": {"@type": "Person", "name": "高級大人"}, "datePublished": "2026-06-22"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "入厝要怎麼拜！", "item": "https://adultingguide.tw/community/p/1167c290-4bdd-45b4-af87-5eb7bc1edcf0"}]}]</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -269,6 +269,29 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   .cat-card, .acard, .anim-up, .hero-img, .hero-band, .article-head, .comm-hero,
   .home-hero, * { animation:none !important; }
 }
+/* 每日一學入口（/wiki 上的橫幅） */
+.daily-entry { display:flex; align-items:center; gap:1rem; margin-top:1.2rem;
+               background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
+               border-radius:16px; padding:1.1rem 1.3rem; color:var(--ink);
+               transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-entry:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.daily-entry .de-txt { flex:1; min-width:0; }
+.daily-entry strong { display:block; font-size:1.1rem; font-weight:800; margin-bottom:0.2rem; }
+.daily-entry .de-txt span { font-size:0.9rem; color:var(--sub); line-height:1.6; }
+.daily-entry .de-go { flex:none; font-weight:700; color:var(--cat); font-size:0.9rem; white-space:nowrap; }
+/* 每日一學列表頁 */
+.daily-cat { font-size:1rem; font-weight:800; color:var(--ink); margin:2rem 0 0.1rem;
+             padding-left:0.6rem; border-left:4px solid var(--cat); }
+.daily-cat span { font-weight:600; color:var(--sub); font-size:0.85rem; }
+.daily-list { display:grid; grid-template-columns:1fr; gap:0.6rem; margin-top:0.9rem; }
+@media (min-width:680px) { .daily-list { grid-template-columns:repeat(2, 1fr); gap:0.8rem; } }
+.daily-item { display:block; background:#fff; border-radius:14px; padding:0.95rem 1.1rem; color:var(--ink);
+              box-shadow:0 1px 2px rgba(69,63,58,0.04);
+              transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-item:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 4px 18px rgba(69,63,58,0.06); }
+.daily-item .d-tip { font-size:0.98rem; font-weight:600; line-height:1.7; }
+.daily-item .d-more { display:inline-block; margin-top:0.5rem; font-size:0.78rem; font-weight:700; color:var(--cat);
+                      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
 .comm-hero { padding:2.4rem 0 0.4rem; }
 .comm-hero h1 { font-size:1.75rem; line-height:1.4; }
@@ -331,7 +354,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .crumb { font-size:0.8rem; color:var(--sub); margin:1.6rem 0 0; }
 .crumb a { color:var(--sub); }
 </style>
-
+<script data-goatcounter="https://adultingguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -377,7 +400,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>
-  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+  <a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
 </div>
 </div></main>
 <footer class="site"><div class="wrap">
@@ -387,7 +410,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="../../support">支援</a>
     <a href="../../privacy">隱私政策</a>
     <a href="../../terms">使用條款</a>
-    <a href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+    <a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
   </nav>
   <p class="foot-legal">這些都是網友自己發表的發問和經驗分享。想加入一起聊，App 裡見。<br>
   © 2026 初級大人手冊</p>

@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://adultingguide.tw/community/p/49c8921b-3781-4c67-8255-5cdded547968">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "出社會前的焦慮", "text": "有沒有人現在處於快要出社會或剛出社會的情況，我現在是快出社會，常常會想出社會後怎麼找工作，找不到怎麼辦，以及怎麼快速適應。有沒有過來人或現在跟我有一樣煩惱的人一起討論", "answerCount": 1, "author": {"@type": "Person", "name": "小白"}, "datePublished": "2026-06-22", "acceptedAnswer": {"@type": "Answer", "text": "我是快出社會 正在找工作以及面試 原本有一個大方向但都找不到 超級無敵焦慮 但會有這些情緒都很正常 慢慢摸索慢慢釐清自己想要的就好了！大家一起加油", "url": "https://adultingguide.tw/community/p/49c8921b-3781-4c67-8255-5cdded547968", "author": {"@type": "Person", "name": "菜子"}, "datePublished": "2026-06-25"}}}</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "出社會前的焦慮", "text": "有沒有人現在處於快要出社會或剛出社會的情況，我現在是快出社會，常常會想出社會後怎麼找工作，找不到怎麼辦，以及怎麼快速適應。有沒有過來人或現在跟我有一樣煩惱的人一起討論", "answerCount": 2, "author": {"@type": "Person", "name": "小白"}, "datePublished": "2026-06-22", "acceptedAnswer": {"@type": "Answer", "text": "我是快出社會 正在找工作以及面試 原本有一個大方向但都找不到 超級無敵焦慮 但會有這些情緒都很正常 慢慢摸索慢慢釐清自己想要的就好了！大家一起加油", "url": "https://adultingguide.tw/community/p/49c8921b-3781-4c67-8255-5cdded547968", "author": {"@type": "Person", "name": "菜子"}, "datePublished": "2026-06-25"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "出社會前的焦慮", "item": "https://adultingguide.tw/community/p/49c8921b-3781-4c67-8255-5cdded547968"}]}]</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -269,6 +269,29 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   .cat-card, .acard, .anim-up, .hero-img, .hero-band, .article-head, .comm-hero,
   .home-hero, * { animation:none !important; }
 }
+/* 每日一學入口（/wiki 上的橫幅） */
+.daily-entry { display:flex; align-items:center; gap:1rem; margin-top:1.2rem;
+               background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
+               border-radius:16px; padding:1.1rem 1.3rem; color:var(--ink);
+               transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-entry:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 6px 20px rgba(69,63,58,0.08); }
+.daily-entry .de-txt { flex:1; min-width:0; }
+.daily-entry strong { display:block; font-size:1.1rem; font-weight:800; margin-bottom:0.2rem; }
+.daily-entry .de-txt span { font-size:0.9rem; color:var(--sub); line-height:1.6; }
+.daily-entry .de-go { flex:none; font-weight:700; color:var(--cat); font-size:0.9rem; white-space:nowrap; }
+/* 每日一學列表頁 */
+.daily-cat { font-size:1rem; font-weight:800; color:var(--ink); margin:2rem 0 0.1rem;
+             padding-left:0.6rem; border-left:4px solid var(--cat); }
+.daily-cat span { font-weight:600; color:var(--sub); font-size:0.85rem; }
+.daily-list { display:grid; grid-template-columns:1fr; gap:0.6rem; margin-top:0.9rem; }
+@media (min-width:680px) { .daily-list { grid-template-columns:repeat(2, 1fr); gap:0.8rem; } }
+.daily-item { display:block; background:#fff; border-radius:14px; padding:0.95rem 1.1rem; color:var(--ink);
+              box-shadow:0 1px 2px rgba(69,63,58,0.04);
+              transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.daily-item:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 4px 18px rgba(69,63,58,0.06); }
+.daily-item .d-tip { font-size:0.98rem; font-weight:600; line-height:1.7; }
+.daily-item .d-more { display:inline-block; margin-top:0.5rem; font-size:0.78rem; font-weight:700; color:var(--cat);
+                      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
 .comm-hero { padding:2.4rem 0 0.4rem; }
 .comm-hero h1 { font-size:1.75rem; line-height:1.4; }
@@ -331,7 +354,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .crumb { font-size:0.8rem; color:var(--sub); margin:1.6rem 0 0; }
 .crumb a { color:var(--sub); }
 </style>
-
+<script data-goatcounter="https://adultingguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -348,14 +371,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="body"><p>有沒有人現在處於快要出社會或剛出社會的情況，我現在是快出社會，常常會想出社會後怎麼找工作，找不到怎麼辦，以及怎麼快速適應。有沒有過來人或現在跟我有一樣煩惱的人一起討論</p></div>
   <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">0 讚</div>
 </div>
-<div class="ans-label">1 則回答</div><div class="answer">
+<div class="ans-label">2 則回答</div><div class="answer">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜子</span></div>
   <div class="body"><p>我是快出社會 正在找工作以及面試 原本有一個大方向但都找不到 超級無敵焦慮 但會有這些情緒都很正常 慢慢摸索慢慢釐清自己想要的就好了！大家一起加油</p></div>
+</div><div class="answer">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">又</span><span class="who">又</span></div>
+  <div class="body"><p>各縣市都會設有就業服務站，或是也會有就業博覽會，他們可以提供就業機會或是職能訓練也會輔導你面試，不用太擔心找不到工作～</p></div>
 </div>
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>
-  <a class="btn" href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+  <a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
 </div>
 </div></main>
 <footer class="site"><div class="wrap">
@@ -365,7 +391,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="../../support">支援</a>
     <a href="../../privacy">隱私政策</a>
     <a href="../../terms">使用條款</a>
-    <a href="https://apps.apple.com/tw/app/id6763735472" rel="noopener">下載 App</a>
+    <a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
   </nav>
   <p class="foot-legal">這些都是網友自己發表的發問和經驗分享。想加入一起聊，App 裡見。<br>
   © 2026 初級大人手冊</p>
