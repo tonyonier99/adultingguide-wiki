@@ -40,7 +40,7 @@ header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
 .logo span { color:var(--orange); }
 .brand-sub { font-size:0.68rem; color:var(--sub); line-height:1.35; }
 .tagline { font-size:0.78rem; color:var(--sub); }
-.site-nav { margin-left:auto; display:flex; gap:1.1rem; flex:none; }
+.site-nav { margin-left:auto; display:flex; justify-content:flex-end; flex-wrap:wrap; gap:0.25rem 1rem; flex:none; }
 .site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); white-space:nowrap; }
 .site-nav a.on { color:var(--orange); }
 main { padding:0 0 3.5rem; }
@@ -299,7 +299,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <header class="site"><div class="wrap">
   <a class="brand" href="../"><img class="logo-icon" src="../assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span></span></a>
-  <nav class="site-nav"><a href="../wiki" class="on">百科</a><a href="../community/" class="">社群</a><a href="../picks" class="">島嶼地圖</a></nav>
+  <nav class="site-nav" aria-label="主要導覽"><a href="../wiki" class="on">百科</a><a href="../community/" class="">社群</a><a href="../group-buy">團購</a><a href="../picks" class="">島嶼地圖</a><a href="../updates">更新日誌</a><a href="../feedback">回報／建議</a></nav>
 </div></header>
 <main>
 <div class="hero-wrap"><img class="hero-img" src="../assets/cat_etiquette.png" alt="人際與禮俗"></div>
