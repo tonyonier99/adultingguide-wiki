@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://adultingguide.tw/community/p/4d3cf215-5347-4c0c-9461-a71b88ae8626">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "怎麼自學韓文", "text": "目前會50音，然後不知道下一步怎麼繼續了", "answerCount": 1, "author": {"@type": "Person", "name": "小朋友"}, "datePublished": "2026-06-23", "acceptedAnswer": {"@type": "Answer", "text": "我自己是在多鄰國打卡，學了100多天，多少有累積一點單字量，我覺得這個比較適合想學單字跟短句的人。", "url": "https://adultingguide.tw/community/p/4d3cf215-5347-4c0c-9461-a71b88ae8626", "author": {"@type": "Person", "name": "清雅"}, "datePublished": "2026-06-24"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "怎麼自學韓文", "item": "https://adultingguide.tw/community/p/4d3cf215-5347-4c0c-9461-a71b88ae8626"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "怎麼自學韓文", "text": "目前會50音，然後不知道下一步怎麼繼續了", "answerCount": 3, "author": {"@type": "Person", "name": "小朋友"}, "datePublished": "2026-06-23", "acceptedAnswer": {"@type": "Answer", "text": "我自己是在多鄰國打卡，學了100多天，多少有累積一點單字量，我覺得這個比較適合想學單字跟短句的人。", "url": "https://adultingguide.tw/community/p/4d3cf215-5347-4c0c-9461-a71b88ae8626", "author": {"@type": "Person", "name": "清雅"}, "datePublished": "2026-06-24"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "怎麼自學韓文", "item": "https://adultingguide.tw/community/p/4d3cf215-5347-4c0c-9461-a71b88ae8626"}]}]</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -196,7 +196,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
 .isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
-/* 首頁三大板塊入口 */
+/* 首頁主要入口 */
 .pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
 @media (min-width:640px) { .pillars { grid-template-columns:repeat(3, 1fr); } }
 .pillar { display:flex; flex-direction:column; background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
@@ -211,6 +211,29 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
            padding:0.14rem 0.55rem; border-radius:99px; }
 .pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
 .pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
+/* 團購與回報頁：沿用文章頁的字級與欄寬，只補卡片和表單排版 */
+.promo-list { display:grid; gap:0.9rem; margin-top:1.4rem; }
+.promo-card { background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
+              box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.promo-card h2 { font-size:1.2rem; line-height:1.5; margin:0 0 0.45rem; }
+.promo-card p { font-size:1rem; line-height:1.85; margin:0.45rem 0; }
+.promo-card img { width:100%; display:block; border-radius:12px; margin:0 0 0.9rem; }
+.promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
+                   font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
+.promo-card .btn:hover { text-decoration:none; }
+.feedback-form { display:grid; gap:1rem; margin-top:1.4rem; }
+.feedback-form label { display:grid; gap:0.35rem; font-size:0.95rem; font-weight:700; }
+.feedback-form input, .feedback-form select, .feedback-form textarea { width:100%; font:inherit; font-size:1rem;
+  font-weight:400; color:var(--ink); background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:0.7rem 0.85rem; }
+.feedback-form input:focus, .feedback-form select:focus, .feedback-form textarea:focus { outline:none; border-color:var(--orange); }
+.feedback-form textarea { resize:vertical; }
+.feedback-form .hint { font-size:0.82rem; font-weight:400; color:var(--sub); }
+.feedback-form .req { color:var(--orange); }
+.feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
+                      font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
+.page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
+.page-note h2 { font-size:1.05rem; margin-bottom:0.25rem; }
+.page-note p { font-size:0.95rem; color:var(--sub); }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -360,7 +383,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <header class="site"><div class="wrap">
   <a class="brand" href="../../"><img class="logo-icon" src="../../assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span></span></a>
-  <nav class="site-nav" aria-label="主要導覽"><a href="../../wiki" class="">百科</a><a href="../../community/" class="on">社群</a><a href="../../group-buy">團購</a><a href="../../picks" class="">島嶼地圖</a><a href="../../updates">更新日誌</a><a href="../../feedback">回報／建議</a></nav>
+  <nav class="site-nav"><a href="../../wiki" class="">百科</a><a href="../../community/" class="on">社群</a><a href="../../group-buy" class="">團購</a><a href="../../picks" class="">島嶼地圖</a><a href="../../updates" class="">更新日誌</a><a href="../../feedback" class="">回報／建議</a></nav>
 </div></header>
 <main><div class="wrap">
 <nav class="crumb"><a href="../">社群討論</a> › 發問</nav>
@@ -371,9 +394,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="body"><p>目前會50音，然後不知道下一步怎麼繼續了</p></div>
   <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">3 讚</div>
 </div>
-<div class="ans-label">1 則回答</div><div class="answer">
+<div class="ans-label">3 則回答</div><div class="answer">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">清</span><span class="who">清雅</span></div>
   <div class="body"><p>我自己是在多鄰國打卡，學了100多天，多少有累積一點單字量，我覺得這個比較適合想學單字跟短句的人。</p></div>
+</div><div class="answer">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">妙</span><span class="who">妙麗</span></div>
+  <div class="body"><p>YouTube 有很多免費教學影片！</p>
+<p>Korean Vitamin 這本教材也很不錯可以參考看看</p></div>
+</div><div class="answer">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">變</span><span class="who">變成高級大人就可以退休了嗎</span></div>
+  <div class="body"><p>我自己是找喜歡的Netflix 或YouTube 片段，把裡面看不懂的句子打上去Gemini（句型較貼近當地用法）和Claude（講解文法特別清楚） ，請AI先幫我解析文法，再提供我單字或文法重點的對話範例，用這方法練完大概一集影集就可以很明顯的感覺到進步！</p></div>
 </div>
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
