@@ -16,12 +16,21 @@
 <meta property="og:url" content="https://adultingguide.tw/community/p/36cf5bd7-e874-4664-89b8-47d9df946c28">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "關於勞基法代班規定", "item": "https://adultingguide.tw/community/p/36cf5bd7-e874-4664-89b8-47d9df946c28"}]}</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "關於勞基法代班規定", "text": "如題，想問公司請假規定，不論什麼假，事假病假，甚至喪假、產檢假，只要當天排超過第二個人以後，須自行找代班，並自行跟對方協調還時數或支付代班費，這樣是符合勞基法的嗎？ 有訊問過主管，他說勞基法規定公司還是可以有自己內部規定，然後拿出一本請假規則給我看，說這本有給勞動部核准過，所以裡面的內容是沒有問題的。沒有不准假，所以沒有違法，但是就是要找代班，這是內部規定 上網查了一下，關於請假人力安排的部分是雇主的責任，不能要求員工找代班，更不能要員工承擔代班費用。這點我也有提，他說公司已經支付第一跟第二個人的了，所以第三個以上要自己負責 我是覺得找代班沒有問題，問題是還要我負擔，問過AI說這樣是變相扣薪，請假的那一天已經不支薪了，這樣還要多支付一筆代班費", "answerCount": 2, "author": {"@type": "Person", "name": "寶寶"}, "datePublished": "2026-08-05", "acceptedAnswer": {"@type": "Answer", "text": "我來問問海巡專員～", "url": "https://adultingguide.tw/community/p/36cf5bd7-e874-4664-89b8-47d9df946c28", "author": {"@type": "Person", "name": "站長老大"}, "datePublished": "2026-08-06"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "關於勞基法代班規定", "item": "https://adultingguide.tw/community/p/36cf5bd7-e874-4664-89b8-47d9df946c28"}]}]</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
         --paper:#FBF6F1; --cat:#E65100; --cat-bg:#FBF1E7;
-        --measure:43.75rem; /* 700px 正文欄 */ }
+        --measure:43.75rem; /* 700px 正文欄 */
+        /* 字級級距（2026-08-07 定）。同性質的文字用同一個變數，不要再各頁各寫。
+           先前沒有級距、各區塊各自寫死，同樣是「卡片內文」就出現 0.9／0.95／1rem 三種，
+           團購卡片還比島嶼地圖卡片大一整級，並排看比例就跑掉。 */
+        --fs-page-title:1.9rem;    /* 各分頁的大標題（h1） */
+        --fs-section-label:0.8rem; /* 小節標籤（卡片群上方那種小字標） */
+        --fs-block-title:1.2rem;   /* 區塊小標（h2） */
+        --fs-card-title:1.05rem;   /* 卡片／方框的標題 */
+        --fs-card-body:0.95rem;    /* 卡片／方框的內文、表單標籤 */
+        --fs-note:0.85rem;         /* 註記、附帶說明 */ }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; color:var(--ink);
        background:var(--paper); font-size:1.125rem; line-height:1.95; letter-spacing:0.02em;
@@ -55,7 +64,7 @@ main { padding:0 0 3.5rem; }
 .article-head { padding-top:1.8rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
-h1 { font-size:2rem; line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -111,7 +120,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .foot-nav a { color:var(--ink); font-weight:600; font-size:0.85rem; }
 .foot-legal { font-size:0.76rem; color:var(--sub); line-height:1.7; }
 /* 關於頁 */
-.about h2 { font-size:1.2rem; margin:2rem 0 0.6rem; padding-left:0.7rem;
+.about h2 { font-size:var(--fs-block-title); margin:2rem 0 0.6rem; padding-left:0.7rem;
             border-left:4px solid var(--cat); line-height:1.5; }
 .about p { margin:0.7rem 0; }
 /* 在地嚴選徵集頁 */
@@ -134,14 +143,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   font-size:0.98rem; padding:0.7rem 1.4rem; border-radius:99px; border:none; cursor:pointer;
   align-self:flex-start; }
 .pick-form .btn:hover { opacity:0.92; }
-.pick-note { font-size:0.8rem; color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
+.pick-note { font-size:var(--fs-note); color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
 .pick-ok { margin-top:1.6rem; background:var(--cat-bg); border-radius:16px; padding:1.6rem 1.4rem;
            text-align:center; }
 .pick-ok strong { display:block; font-size:1.15rem; color:var(--cat); margin-bottom:0.4rem; }
-.pick-ok p { font-size:0.95rem; color:var(--ink); line-height:1.7; margin:0; }
+.pick-ok p { font-size:var(--fs-card-body); color:var(--ink); line-height:1.7; margin:0; }
 /* index */
 .home-hero { padding:2.6rem 0 0.6rem; }
-.home-hero h1 { font-size:1.9rem; line-height:1.4; }
+.home-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .home-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .cat-title { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
              color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
@@ -151,9 +160,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 @media (min-width:680px) { .cat-grid { gap:1rem; } }
 .cat-grid .cat-card { margin-top:0; }
 .cat-grid .cat-card .cover { aspect-ratio:16/10; }
-.cat-grid .cat-card h3 { font-size:1.08rem; }
+.cat-grid .cat-card h3 { font-size:var(--fs-card-title); }
 .cat-grid .cat-card .cc-body { padding:0.85rem 1rem 1rem; }
-.cat-grid .cat-card .cc-sub { font-size:0.82rem;
+.cat-grid .cat-card .cc-sub { font-size:var(--fs-note);
                               display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
 .cat-card { display:block; background:#fff; border-radius:18px; overflow:hidden; margin-top:1rem;
             color:var(--ink); box-shadow:0 1px 3px rgba(69,63,58,0.05);
@@ -177,7 +186,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
              box-shadow:0 2px 10px rgba(0,0,0,0.18); }
 .cat-card.featured h3 { font-size:1.4rem; }
-.home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.home-sec { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
             margin:2.2rem 0 0.2rem; }
 /* 首頁島嶼地圖介紹區 */
 .isl-sec { margin-top:2.8rem; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
@@ -186,15 +195,15 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-head h2 { font-size:1.35rem; font-weight:800; }
 .isl-flag { font-size:0.7rem; font-weight:800; color:#fff; background:var(--sub);
             padding:0.18rem 0.6rem; border-radius:99px; }
-.isl-lead { color:var(--ink); margin:0.5rem 0 0; font-size:1rem; line-height:1.7; }
+.isl-lead { color:var(--ink); margin:0.5rem 0 0; line-height:1.7; }  /* 字級繼承正文，與其他頁的開頭說明一致 */
 .isl-grid { display:grid; grid-template-columns:1fr; gap:0.7rem; margin-top:1.1rem; }
 @media (min-width:640px) { .isl-grid { grid-template-columns:repeat(3, 1fr); } }
 .isl-card { display:block; background:#fff; border-radius:14px; padding:1.05rem 1.1rem; color:var(--ink);
             box-shadow:0 1px 2px rgba(69,63,58,0.04);
             transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
 .isl-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
-.isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
-.isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
+.isl-card h4 { font-size:var(--fs-card-title); font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
+.isl-card p { font-size:var(--fs-card-body); color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
 /* 首頁主要入口 */
 .pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
@@ -215,14 +224,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .promo-list { display:grid; gap:0.9rem; margin-top:1.4rem; }
 .promo-card { background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
               box-shadow:0 1px 2px rgba(69,63,58,0.04); }
-.promo-card h2 { font-size:1.2rem; line-height:1.5; margin:0 0 0.45rem; }
-.promo-card p { font-size:1rem; line-height:1.85; margin:0.45rem 0; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0 0 0.45rem; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.85; margin:0.45rem 0; }
 .promo-card img { width:100%; display:block; border-radius:12px; margin:0 0 0.9rem; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
 .promo-card .btn:hover { text-decoration:none; }
 .feedback-form { display:grid; gap:1rem; margin-top:1.4rem; }
-.feedback-form label { display:grid; gap:0.35rem; font-size:0.95rem; font-weight:700; }
+.feedback-form label { display:grid; gap:0.35rem; font-size:var(--fs-card-body); font-weight:700; }
 .feedback-form input, .feedback-form select, .feedback-form textarea { width:100%; font:inherit; font-size:1rem;
   font-weight:400; color:var(--ink); background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:0.7rem 0.85rem; }
 .feedback-form input:focus, .feedback-form select:focus, .feedback-form textarea:focus { outline:none; border-color:var(--orange); }
@@ -232,8 +241,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
                       font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
 .page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
-.page-note h2 { font-size:1.05rem; margin-bottom:0.25rem; }
-.page-note p { font-size:0.95rem; color:var(--sub); }
+.page-note h2 { font-size:var(--fs-card-title); margin-bottom:0.25rem; }
+.page-note p { font-size:var(--fs-card-body); color:var(--sub); }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -317,12 +326,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
                       white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
 .comm-hero { padding:2.4rem 0 0.4rem; }
-.comm-hero h1 { font-size:1.75rem; line-height:1.4; }
+.comm-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .comm-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .readonly-note { margin-top:1rem; display:inline-flex; align-items:center; gap:0.4rem;
                  font-size:0.85rem; color:var(--sub); background:#F1EBE3;
                  padding:0.4rem 0.9rem; border-radius:99px; }
-.sec-label { font-size:0.78rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.sec-label { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
              margin:2rem 0 0.2rem; }
 /* 可展開的區（大人秘技／我要發問）*/
 .sec-fold { margin:2rem 0 0; }
@@ -397,7 +406,22 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <p>我是覺得找代班沒有問題，問題是還要我負擔，問過AI說這樣是變相扣薪，請假的那一天已經不支薪了，這樣還要多支付一筆代班費</p></div>
   <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">0 讚</div>
 </div>
-<div class="ans-label">還沒有人回答，下載 App 當第一個</div>
+<div class="ans-label">2 則回答</div><div class="answer official">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span><span class="official-badge">站長</span></div>
+  <div class="body"><p>我來問問海巡專員～</p></div>
+</div><div class="answer official">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span><span class="official-badge">站長</span></div>
+  <div class="body"><p>嗨嗨～我是站長培訓的海巡專員，看到你需要幫忙，所以我準備了一些資料給你 👍🏻</p>
+<p>先講可以直接反駁主管的那句話：「核備過就沒問題」不成立。</p>
+<p>勞動基準法第71條白紙黑字：工作規則就算已經報勞動部/勞工局核備，只要內容違反法令的強制或禁止規定，那部分規定一樣無效。核備只是行政程序，不代表內容本身合法——這點你可以直接跟主管講。</p>
+<p>再來是比較有爭議、還沒有明確法條或函釋一次講清楚的部分：</p>
+<p>「排假超過2人以上要自費找代班、付代班費」這件事，勞基法本身沒有任何一條明文規定「請假期間人力調度是雇主責任，不可要求員工自付代班費」——這是多數勞資顧問、律師的共同見解，但這輪查證翻遍法規跟找函釋，都沒查到可以逐字核對的官方函釋或判決直接對這個情境表態，只能說「查無官方明文，屬民間論述性見解」，不是法條白紙黑字。</p>
+<p>「代班費算變相扣薪，違反勞基法第22條」這個推論也一樣：第22條講的是「雇主不能從工資裡預扣或少發」，但你這個情境是你自己掏錢給同事，錢沒有經過雇主發薪流程，能不能直接套用第22條，法條字面沒有明講，算是個案認定的灰色地帶，不宜直接斷言「這樣做已經違法」。</p>
+<p>實務上比較有效的做法：把公司的請假規則（那本核備過的手冊）、要求你自費找代班的紀錄都留著，打1955勞工諮詢申訴專線、或找工作地的勞工局／勞動局申訴，讓主管機關就你這個具體情況做個案認定，會比自己在這裡爭論條文更準。</p>
+<p>查證日 2026-08</p>
+<p>[勞動基準法第71條（工作規則違法部分無效）](<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=71" rel="noopener">https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=71</a>)</p>
+<p>[勞動基準法第22條（工資全額直接給付）](<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=22" rel="noopener">https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=N0030001&amp;flno=22</a>)</p></div>
+</div>
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>

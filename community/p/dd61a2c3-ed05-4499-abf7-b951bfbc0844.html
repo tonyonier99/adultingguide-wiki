@@ -16,12 +16,21 @@
 <meta property="og:url" content="https://adultingguide.tw/community/p/dd61a2c3-ed05-4499-abf7-b951bfbc0844">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "求新手爸媽領取政府補助的流程，需要準備什麼？", "text": "求新手爸媽領取政府補助的流程，需要準備什麼？ 準備要迎接新生命的到來，新手爸媽手腳忙亂，請問有人可以分享怎麼完全領取政府新生兒的補助嗎？", "answerCount": 1, "author": {"@type": "Person", "name": "脆狗"}, "datePublished": "2026-08-02", "acceptedAnswer": {"@type": "Answer", "text": "基本上去報戶口的時候戶政人員都會幫你一次申請好，告訴你有什麼東西可以請領，也會有機關提供的文宣～ 比較常漏掉的應該是各縣市公共圖書館的嬰幼兒閱讀禮袋，但這個也比較不趕，0-5/6歲都能申請", "url": "https://adultingguide.tw/community/p/dd61a2c3-ed05-4499-abf7-b951bfbc0844", "author": {"@type": "Person", "name": "KAN"}, "datePublished": "2026-08-04"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "求新手爸媽領取政府補助的流程，需要準備什麼？", "item": "https://adultingguide.tw/community/p/dd61a2c3-ed05-4499-abf7-b951bfbc0844"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "QAPage", "mainEntity": {"@type": "Question", "name": "求新手爸媽領取政府補助的流程，需要準備什麼？", "text": "求新手爸媽領取政府補助的流程，需要準備什麼？ 準備要迎接新生命的到來，新手爸媽手腳忙亂，請問有人可以分享怎麼完全領取政府新生兒的補助嗎？", "answerCount": 2, "author": {"@type": "Person", "name": "脆狗"}, "datePublished": "2026-08-02", "acceptedAnswer": {"@type": "Answer", "text": "基本上去報戶口的時候戶政人員都會幫你一次申請好，告訴你有什麼東西可以請領，也會有機關提供的文宣～ 比較常漏掉的應該是各縣市公共圖書館的嬰幼兒閱讀禮袋，但這個也比較不趕，0-5/6歲都能申請", "url": "https://adultingguide.tw/community/p/dd61a2c3-ed05-4499-abf7-b951bfbc0844", "author": {"@type": "Person", "name": "KAN"}, "datePublished": "2026-08-04"}}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "社群", "item": "https://adultingguide.tw/community/"}, {"@type": "ListItem", "position": 3, "name": "求新手爸媽領取政府補助的流程，需要準備什麼？", "item": "https://adultingguide.tw/community/p/dd61a2c3-ed05-4499-abf7-b951bfbc0844"}]}]</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
         --paper:#FBF6F1; --cat:#E65100; --cat-bg:#FBF1E7;
-        --measure:43.75rem; /* 700px 正文欄 */ }
+        --measure:43.75rem; /* 700px 正文欄 */
+        /* 字級級距（2026-08-07 定）。同性質的文字用同一個變數，不要再各頁各寫。
+           先前沒有級距、各區塊各自寫死，同樣是「卡片內文」就出現 0.9／0.95／1rem 三種，
+           團購卡片還比島嶼地圖卡片大一整級，並排看比例就跑掉。 */
+        --fs-page-title:1.9rem;    /* 各分頁的大標題（h1） */
+        --fs-section-label:0.8rem; /* 小節標籤（卡片群上方那種小字標） */
+        --fs-block-title:1.2rem;   /* 區塊小標（h2） */
+        --fs-card-title:1.05rem;   /* 卡片／方框的標題 */
+        --fs-card-body:0.95rem;    /* 卡片／方框的內文、表單標籤 */
+        --fs-note:0.85rem;         /* 註記、附帶說明 */ }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; color:var(--ink);
        background:var(--paper); font-size:1.125rem; line-height:1.95; letter-spacing:0.02em;
@@ -55,7 +64,7 @@ main { padding:0 0 3.5rem; }
 .article-head { padding-top:1.8rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
-h1 { font-size:2rem; line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -111,7 +120,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .foot-nav a { color:var(--ink); font-weight:600; font-size:0.85rem; }
 .foot-legal { font-size:0.76rem; color:var(--sub); line-height:1.7; }
 /* 關於頁 */
-.about h2 { font-size:1.2rem; margin:2rem 0 0.6rem; padding-left:0.7rem;
+.about h2 { font-size:var(--fs-block-title); margin:2rem 0 0.6rem; padding-left:0.7rem;
             border-left:4px solid var(--cat); line-height:1.5; }
 .about p { margin:0.7rem 0; }
 /* 在地嚴選徵集頁 */
@@ -134,14 +143,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   font-size:0.98rem; padding:0.7rem 1.4rem; border-radius:99px; border:none; cursor:pointer;
   align-self:flex-start; }
 .pick-form .btn:hover { opacity:0.92; }
-.pick-note { font-size:0.8rem; color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
+.pick-note { font-size:var(--fs-note); color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
 .pick-ok { margin-top:1.6rem; background:var(--cat-bg); border-radius:16px; padding:1.6rem 1.4rem;
            text-align:center; }
 .pick-ok strong { display:block; font-size:1.15rem; color:var(--cat); margin-bottom:0.4rem; }
-.pick-ok p { font-size:0.95rem; color:var(--ink); line-height:1.7; margin:0; }
+.pick-ok p { font-size:var(--fs-card-body); color:var(--ink); line-height:1.7; margin:0; }
 /* index */
 .home-hero { padding:2.6rem 0 0.6rem; }
-.home-hero h1 { font-size:1.9rem; line-height:1.4; }
+.home-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .home-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .cat-title { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
              color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
@@ -151,9 +160,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 @media (min-width:680px) { .cat-grid { gap:1rem; } }
 .cat-grid .cat-card { margin-top:0; }
 .cat-grid .cat-card .cover { aspect-ratio:16/10; }
-.cat-grid .cat-card h3 { font-size:1.08rem; }
+.cat-grid .cat-card h3 { font-size:var(--fs-card-title); }
 .cat-grid .cat-card .cc-body { padding:0.85rem 1rem 1rem; }
-.cat-grid .cat-card .cc-sub { font-size:0.82rem;
+.cat-grid .cat-card .cc-sub { font-size:var(--fs-note);
                               display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
 .cat-card { display:block; background:#fff; border-radius:18px; overflow:hidden; margin-top:1rem;
             color:var(--ink); box-shadow:0 1px 3px rgba(69,63,58,0.05);
@@ -177,7 +186,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
              box-shadow:0 2px 10px rgba(0,0,0,0.18); }
 .cat-card.featured h3 { font-size:1.4rem; }
-.home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.home-sec { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
             margin:2.2rem 0 0.2rem; }
 /* 首頁島嶼地圖介紹區 */
 .isl-sec { margin-top:2.8rem; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
@@ -186,15 +195,15 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-head h2 { font-size:1.35rem; font-weight:800; }
 .isl-flag { font-size:0.7rem; font-weight:800; color:#fff; background:var(--sub);
             padding:0.18rem 0.6rem; border-radius:99px; }
-.isl-lead { color:var(--ink); margin:0.5rem 0 0; font-size:1rem; line-height:1.7; }
+.isl-lead { color:var(--ink); margin:0.5rem 0 0; line-height:1.7; }  /* 字級繼承正文，與其他頁的開頭說明一致 */
 .isl-grid { display:grid; grid-template-columns:1fr; gap:0.7rem; margin-top:1.1rem; }
 @media (min-width:640px) { .isl-grid { grid-template-columns:repeat(3, 1fr); } }
 .isl-card { display:block; background:#fff; border-radius:14px; padding:1.05rem 1.1rem; color:var(--ink);
             box-shadow:0 1px 2px rgba(69,63,58,0.04);
             transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
 .isl-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
-.isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
-.isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
+.isl-card h4 { font-size:var(--fs-card-title); font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
+.isl-card p { font-size:var(--fs-card-body); color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
 /* 首頁主要入口 */
 .pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
@@ -215,14 +224,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .promo-list { display:grid; gap:0.9rem; margin-top:1.4rem; }
 .promo-card { background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
               box-shadow:0 1px 2px rgba(69,63,58,0.04); }
-.promo-card h2 { font-size:1.2rem; line-height:1.5; margin:0 0 0.45rem; }
-.promo-card p { font-size:1rem; line-height:1.85; margin:0.45rem 0; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0 0 0.45rem; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.85; margin:0.45rem 0; }
 .promo-card img { width:100%; display:block; border-radius:12px; margin:0 0 0.9rem; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
 .promo-card .btn:hover { text-decoration:none; }
 .feedback-form { display:grid; gap:1rem; margin-top:1.4rem; }
-.feedback-form label { display:grid; gap:0.35rem; font-size:0.95rem; font-weight:700; }
+.feedback-form label { display:grid; gap:0.35rem; font-size:var(--fs-card-body); font-weight:700; }
 .feedback-form input, .feedback-form select, .feedback-form textarea { width:100%; font:inherit; font-size:1rem;
   font-weight:400; color:var(--ink); background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:0.7rem 0.85rem; }
 .feedback-form input:focus, .feedback-form select:focus, .feedback-form textarea:focus { outline:none; border-color:var(--orange); }
@@ -232,8 +241,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
                       font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
 .page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
-.page-note h2 { font-size:1.05rem; margin-bottom:0.25rem; }
-.page-note p { font-size:0.95rem; color:var(--sub); }
+.page-note h2 { font-size:var(--fs-card-title); margin-bottom:0.25rem; }
+.page-note p { font-size:var(--fs-card-body); color:var(--sub); }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -317,12 +326,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
                       white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
 .comm-hero { padding:2.4rem 0 0.4rem; }
-.comm-hero h1 { font-size:1.75rem; line-height:1.4; }
+.comm-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .comm-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .readonly-note { margin-top:1rem; display:inline-flex; align-items:center; gap:0.4rem;
                  font-size:0.85rem; color:var(--sub); background:#F1EBE3;
                  padding:0.4rem 0.9rem; border-radius:99px; }
-.sec-label { font-size:0.78rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.sec-label { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
              margin:2rem 0 0.2rem; }
 /* 可展開的區（大人秘技／我要發問）*/
 .sec-fold { margin:2rem 0 0; }
@@ -395,10 +404,28 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <p>準備要迎接新生命的到來，新手爸媽手腳忙亂，請問有人可以分享怎麼完全領取政府新生兒的補助嗎？</p></div>
   <div class="p-meta" style="margin-top:0.8rem;color:var(--sub);font-size:0.85rem;">3 讚</div>
 </div>
-<div class="ans-label">1 則回答</div><div class="answer">
+<div class="ans-label">2 則回答</div><div class="answer">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">KAN</span></div>
   <div class="body"><p>基本上去報戶口的時候戶政人員都會幫你一次申請好，告訴你有什麼東西可以請領，也會有機關提供的文宣～</p>
 <p>比較常漏掉的應該是各縣市公共圖書館的嬰幼兒閱讀禮袋，但這個也比較不趕，0-5/6歲都能申請</p></div>
+</div><div class="answer official">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span><span class="official-badge">站長</span></div>
+  <div class="body"><p>嗨嗨～我是站長培訓的海巡專員，看到你需要幫忙，所以我準備了一些資料給你 👍🏻</p>
+<p>新生兒補助主要分兩塊，流程不一樣，分開講：</p>
+<p>一、生育補助（一次性）</p>
+<p>2026年起不論媽媽有沒有勞保/國保/農保，每胎合併發給到10萬元（雙胞胎20萬、三胞胎30萬），前提是新生兒要在國內辦出生登記或設戶籍。</p>
+<p>・有勞保：辦出生登記時，直接在戶政事務所「一站式」一併申辦，不用另外跑；投保滿280天分娩（早產181天）才符合資格。</p>
+<p>・沒有任何保險：一樣可以領10萬，同樣走出生登記的一站式服務。</p>
+<p>二、育兒津貼（每月，未滿2歲）</p>
+<p>第1胎5,000元/月、第2胎6,000元/月、第3胎（含）以上7,000元/月，已取消家庭收入排富限制。</p>
+<p>・這跟生育補助是兩條不同流程，戶政的「一站式」不包含它。</p>
+<p>・要另外辦：可以上 twbaby.sfaa.gov.tw 線上申請，或帶身分證明文件（戶口名簿）＋指定帳戶影本，到寶寶戶籍地的鄉鎮市區公所辦。</p>
+<p>三、地方加碼</p>
+<p>不少縣市另外有自己的生育獎勵金/加碼育兒津貼（例如台北市有整合的單一窗口），因縣市而異，記得查一下自己戶籍地政府的公告，不要漏領。</p>
+<p>查證日 2026-08</p>
+<p>[衛福部・生育補助說明](<a href="https://dep.mohw.gov.tw/DOSI/cp-3544-86293-102.html" rel="noopener">https://dep.mohw.gov.tw/DOSI/cp-3544-86293-102.html</a>)</p>
+<p>[衛福部・育兒津貼（未滿2歲幼兒照顧政策）](<a href="https://www.mohw.gov.tw/cp-5130-58003-1.html" rel="noopener">https://www.mohw.gov.tw/cp-5130-58003-1.html</a>)</p>
+<p>[育兒津貼線上申辦（社家署）](<a href="https://twbaby.sfaa.gov.tw" rel="noopener">https://twbaby.sfaa.gov.tw</a>)</p></div>
 </div>
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>

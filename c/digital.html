@@ -25,6 +25,8 @@
         /* 字級級距（2026-08-07 定）。同性質的文字用同一個變數，不要再各頁各寫。
            先前沒有級距、各區塊各自寫死，同樣是「卡片內文」就出現 0.9／0.95／1rem 三種，
            團購卡片還比島嶼地圖卡片大一整級，並排看比例就跑掉。 */
+        --fs-page-title:1.9rem;    /* 各分頁的大標題（h1） */
+        --fs-section-label:0.8rem; /* 小節標籤（卡片群上方那種小字標） */
         --fs-block-title:1.2rem;   /* 區塊小標（h2） */
         --fs-card-title:1.05rem;   /* 卡片／方框的標題 */
         --fs-card-body:0.95rem;    /* 卡片／方框的內文、表單標籤 */
@@ -62,7 +64,7 @@ main { padding:0 0 3.5rem; }
 .article-head { padding-top:1.8rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
-h1 { font-size:2rem; line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -148,7 +150,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .pick-ok p { font-size:var(--fs-card-body); color:var(--ink); line-height:1.7; margin:0; }
 /* index */
 .home-hero { padding:2.6rem 0 0.6rem; }
-.home-hero h1 { font-size:1.9rem; line-height:1.4; }
+.home-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .home-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .cat-title { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
              color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
@@ -184,7 +186,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
              box-shadow:0 2px 10px rgba(0,0,0,0.18); }
 .cat-card.featured h3 { font-size:1.4rem; }
-.home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.home-sec { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
             margin:2.2rem 0 0.2rem; }
 /* 首頁島嶼地圖介紹區 */
 .isl-sec { margin-top:2.8rem; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);

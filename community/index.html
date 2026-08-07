@@ -21,7 +21,16 @@
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
         --paper:#FBF6F1; --cat:#E65100; --cat-bg:#FBF1E7;
-        --measure:43.75rem; /* 700px 正文欄 */ }
+        --measure:43.75rem; /* 700px 正文欄 */
+        /* 字級級距（2026-08-07 定）。同性質的文字用同一個變數，不要再各頁各寫。
+           先前沒有級距、各區塊各自寫死，同樣是「卡片內文」就出現 0.9／0.95／1rem 三種，
+           團購卡片還比島嶼地圖卡片大一整級，並排看比例就跑掉。 */
+        --fs-page-title:1.9rem;    /* 各分頁的大標題（h1） */
+        --fs-section-label:0.8rem; /* 小節標籤（卡片群上方那種小字標） */
+        --fs-block-title:1.2rem;   /* 區塊小標（h2） */
+        --fs-card-title:1.05rem;   /* 卡片／方框的標題 */
+        --fs-card-body:0.95rem;    /* 卡片／方框的內文、表單標籤 */
+        --fs-note:0.85rem;         /* 註記、附帶說明 */ }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; color:var(--ink);
        background:var(--paper); font-size:1.125rem; line-height:1.95; letter-spacing:0.02em;
@@ -55,7 +64,7 @@ main { padding:0 0 3.5rem; }
 .article-head { padding-top:1.8rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
-h1 { font-size:2rem; line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -111,7 +120,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .foot-nav a { color:var(--ink); font-weight:600; font-size:0.85rem; }
 .foot-legal { font-size:0.76rem; color:var(--sub); line-height:1.7; }
 /* 關於頁 */
-.about h2 { font-size:1.2rem; margin:2rem 0 0.6rem; padding-left:0.7rem;
+.about h2 { font-size:var(--fs-block-title); margin:2rem 0 0.6rem; padding-left:0.7rem;
             border-left:4px solid var(--cat); line-height:1.5; }
 .about p { margin:0.7rem 0; }
 /* 在地嚴選徵集頁 */
@@ -134,14 +143,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   font-size:0.98rem; padding:0.7rem 1.4rem; border-radius:99px; border:none; cursor:pointer;
   align-self:flex-start; }
 .pick-form .btn:hover { opacity:0.92; }
-.pick-note { font-size:0.8rem; color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
+.pick-note { font-size:var(--fs-note); color:var(--sub); font-weight:400; line-height:1.6; margin:0; }
 .pick-ok { margin-top:1.6rem; background:var(--cat-bg); border-radius:16px; padding:1.6rem 1.4rem;
            text-align:center; }
 .pick-ok strong { display:block; font-size:1.15rem; color:var(--cat); margin-bottom:0.4rem; }
-.pick-ok p { font-size:0.95rem; color:var(--ink); line-height:1.7; margin:0; }
+.pick-ok p { font-size:var(--fs-card-body); color:var(--ink); line-height:1.7; margin:0; }
 /* index */
 .home-hero { padding:2.6rem 0 0.6rem; }
-.home-hero h1 { font-size:1.9rem; line-height:1.4; }
+.home-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .home-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .cat-title { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
              color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
@@ -151,9 +160,9 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 @media (min-width:680px) { .cat-grid { gap:1rem; } }
 .cat-grid .cat-card { margin-top:0; }
 .cat-grid .cat-card .cover { aspect-ratio:16/10; }
-.cat-grid .cat-card h3 { font-size:1.08rem; }
+.cat-grid .cat-card h3 { font-size:var(--fs-card-title); }
 .cat-grid .cat-card .cc-body { padding:0.85rem 1rem 1rem; }
-.cat-grid .cat-card .cc-sub { font-size:0.82rem;
+.cat-grid .cat-card .cc-sub { font-size:var(--fs-note);
                               display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
 .cat-card { display:block; background:#fff; border-radius:18px; overflow:hidden; margin-top:1rem;
             color:var(--ink); box-shadow:0 1px 3px rgba(69,63,58,0.05);
@@ -177,7 +186,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
              box-shadow:0 2px 10px rgba(0,0,0,0.18); }
 .cat-card.featured h3 { font-size:1.4rem; }
-.home-sec { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.home-sec { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
             margin:2.2rem 0 0.2rem; }
 /* 首頁島嶼地圖介紹區 */
 .isl-sec { margin-top:2.8rem; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 160%);
@@ -186,15 +195,15 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .isl-head h2 { font-size:1.35rem; font-weight:800; }
 .isl-flag { font-size:0.7rem; font-weight:800; color:#fff; background:var(--sub);
             padding:0.18rem 0.6rem; border-radius:99px; }
-.isl-lead { color:var(--ink); margin:0.5rem 0 0; font-size:1rem; line-height:1.7; }
+.isl-lead { color:var(--ink); margin:0.5rem 0 0; line-height:1.7; }  /* 字級繼承正文，與其他頁的開頭說明一致 */
 .isl-grid { display:grid; grid-template-columns:1fr; gap:0.7rem; margin-top:1.1rem; }
 @media (min-width:640px) { .isl-grid { grid-template-columns:repeat(3, 1fr); } }
 .isl-card { display:block; background:#fff; border-radius:14px; padding:1.05rem 1.1rem; color:var(--ink);
             box-shadow:0 1px 2px rgba(69,63,58,0.04);
             transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
 .isl-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
-.isl-card h4 { font-size:0.95rem; font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
-.isl-card p { font-size:0.9rem; color:var(--sub); line-height:1.75; margin:0; }
+.isl-card h4 { font-size:var(--fs-card-title); font-weight:800; color:var(--cat); margin-bottom:0.35rem; }
+.isl-card p { font-size:var(--fs-card-body); color:var(--sub); line-height:1.75; margin:0; }
 .isl-more { display:inline-block; margin-top:1.1rem; font-weight:700; color:var(--cat); }
 /* 首頁主要入口 */
 .pillars { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.6rem; }
@@ -215,14 +224,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .promo-list { display:grid; gap:0.9rem; margin-top:1.4rem; }
 .promo-card { background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
               box-shadow:0 1px 2px rgba(69,63,58,0.04); }
-.promo-card h2 { font-size:1.2rem; line-height:1.5; margin:0 0 0.45rem; }
-.promo-card p { font-size:1rem; line-height:1.85; margin:0.45rem 0; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0 0 0.45rem; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.85; margin:0.45rem 0; }
 .promo-card img { width:100%; display:block; border-radius:12px; margin:0 0 0.9rem; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
 .promo-card .btn:hover { text-decoration:none; }
 .feedback-form { display:grid; gap:1rem; margin-top:1.4rem; }
-.feedback-form label { display:grid; gap:0.35rem; font-size:0.95rem; font-weight:700; }
+.feedback-form label { display:grid; gap:0.35rem; font-size:var(--fs-card-body); font-weight:700; }
 .feedback-form input, .feedback-form select, .feedback-form textarea { width:100%; font:inherit; font-size:1rem;
   font-weight:400; color:var(--ink); background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:0.7rem 0.85rem; }
 .feedback-form input:focus, .feedback-form select:focus, .feedback-form textarea:focus { outline:none; border-color:var(--orange); }
@@ -232,8 +241,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
                       font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
 .page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
-.page-note h2 { font-size:1.05rem; margin-bottom:0.25rem; }
-.page-note p { font-size:0.95rem; color:var(--sub); }
+.page-note h2 { font-size:var(--fs-card-title); margin-bottom:0.25rem; }
+.page-note p { font-size:var(--fs-card-body); color:var(--sub); }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -317,12 +326,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
                       white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
 .comm-hero { padding:2.4rem 0 0.4rem; }
-.comm-hero h1 { font-size:1.75rem; line-height:1.4; }
+.comm-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .comm-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
 .readonly-note { margin-top:1rem; display:inline-flex; align-items:center; gap:0.4rem;
                  font-size:0.85rem; color:var(--sub); background:#F1EBE3;
                  padding:0.4rem 0.9rem; border-radius:99px; }
-.sec-label { font-size:0.78rem; font-weight:700; letter-spacing:0.06em; color:var(--sub);
+.sec-label { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
              margin:2rem 0 0.2rem; }
 /* 可展開的區（大人秘技／我要發問）*/
 .sec-fold { margin:2rem 0 0; }
@@ -391,63 +400,63 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Meow</span><span class="tag tip">秘技</span></div>
   <div class="p-title">機車內必備</div>
   <div class="p-excerpt">1. 粉筆(掰一半用夾鏈袋裝起來)如果遇到車禍需要馬上移車可以用來在地上畫線後趕快移開 2. 隨身衛生紙+濕紙巾 3. 自己的雨衣、備用塑膠雨衣(可以給後座備用著) 4. 防曬手套、冬天手套(我是一年四季都放裡面懶得拿出來) 5. 買機車椅墊收納袋增加收納空間也比較整齊 6. 塞個一百兩百塊放著以防臨時出門忘記帶錢 7. 小抹布，下雨過後椅墊太濕或是被鳥屎滴到可以擦(但不要塞在前面小盒子因為台灣人高機率會順偷走) 8. 充電線(現在機車很多都有充電孔可以充電) 9. 飲料杯套也可以折在裡面(夏天很熱會想隨時來杯喝的) 差不多醬 以上！</div>
-  <div class="p-meta">0 則補充 · 474 讚</div>
+  <div class="p-meta">0 則補充 · 482 讚</div>
 </a><a class="pcard" href="p/2ca3dff2-c4a3-46dc-bf93-958c31fcd32f" style="animation-delay:0.03s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">努</span><span class="who">努力發掘生活冷知識の觀察家</span><span class="tag tip">秘技</span></div>
   <div class="p-title">UNIQLO打折時間分享(⁎⁍̴̛ᴗ⁍̴̛⁎)</div>
   <div class="p-excerpt">to不知道ㄉ鄉民們 UNIQLO分為兩種折扣價格：新價格、限定價格 1.限定價格—星期五8:30AM開始 是當季商品，通常夏季販賣Airism、冬季販賣Heattech，以及其他剛上市不久的衣服。 此價格的特性是，通常顏色尺寸都是齊全的（排除熱銷款式馬上被搶光），庫存多，也比較符合季節時令的穿搭。 2.新價格—星期二8:30AM開始 通常是過季商品、滯銷商品。 此價格的特性在，款式、尺寸非常不齊全，很難買到適合自己的，但價格都會特別便宜，尤其離上市日越久、折扣就越變態。 ⚠️但很多人都會等新價格，缺點就會是你再看的時候已經沒有尺寸了，所以早買早享受、晚買享折扣，可以自己選喜歡的消費方式！ （小小的隱藏版攻略） 記得可以問店員花籃在哪裡，所謂「花籃」就是瑕疵品區域，通常在這個地方也很容易找到瑕疵不大、自己能夠輕鬆處理的商品，因為UNIQLO極度重視商品完整性，有任何一點瑕疵，舉凡小髒污、小脫線，都會直接視為瑕疵品販售。 有時候原本已經新價格990的褲子，變瑕疵品直接打對折變490，真的大撿便宜，而且褲子的髒污，用清潔專用的藥劑處理就能弄掉了！！！ —— 所以有自己喜歡的衣服，記得可以先觀望或加到購物車，星期二跟五早上起床看一下你的衣服價格有沒有變成紅色，就是有打折嚕✨ 祝大家買的開心🤓</div>
-  <div class="p-meta">0 則補充 · 350 讚</div>
+  <div class="p-meta">0 則補充 · 356 讚</div>
 </a><a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587" style="animation-delay:0.06s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">c</span><span class="who">cecilia</span><span class="tag tip">秘技</span></div>
   <div class="p-title">路上距離判斷</div>
   <div class="p-excerpt">1.路上的虛白線，一白一空就是10公尺 2.高速車距可以用「車速/2」估算，100km/h需要距50公尺，也就是5組虛白線 3.祝大家行車安全～</div>
-  <div class="p-meta">0 則補充 · 288 讚</div>
+  <div class="p-meta">0 則補充 · 289 讚</div>
 </a><a class="pcard" href="p/9b5d2a4b-0f92-434a-9aac-e0f59f6ab091" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">怪</span><span class="who">怪魚</span><span class="tag tip">秘技</span></div>
   <div class="p-title">星巴克點餐技巧</div>
   <div class="p-excerpt">給在星巴克不知道怎麼點餐的各位 飲料客製化調整： 。冰塊： 少冰 微冰 去冰 （完全無冰塊） 。甜度： 少糖 半糖 微糖 無糖* *部分飲料無法調整甜度，或是即使是無糖也是會甜 更換植物奶： 。加價20元更換：燕麥奶、杏仁奶 。無需加價：低脂奶、豆奶*、椰奶* *豆奶跟一般豆漿的味道完全不相關，會甜 *椰奶會甜 點餐流程建議： 冷熱&gt;大小&gt;品項*&gt;冰塊甜度&gt;其他客製化 因為pos機系統的關係，店員點餐必須按照這個順序按按鈕，所以建議點餐可以這樣說 ：我要一杯冰的大杯抹茶那堤少冰無糖多兩下抹茶換燕麥奶 可以減少大部分會被點錯的問題。 飲料特殊客製化： 飲料能做到的客製化很多，但請不要在買一送一的時候兩杯客製化不同，謝謝。 熱牛奶類：多奶泡、少奶泡、去奶泡 咖啡類：少濃縮、多濃縮*1 +15元、換低咖啡因、換短濃縮、換特選豆+10元 咖啡星冰樂類：少咖啡液、多咖啡液、*換低咖啡因濃縮、換特選濃縮 *咖啡星冰樂有自己的星冰樂咖啡液，可以換濃縮 但每增加一份濃縮就是15元 星冰樂：甜度可調整 *巧克力or摩卡是調整巧克力醬味道會變淡。 配料可調整 ex:巧克力脆片、焦糖醬、抹茶、鮮奶油… *但季節性飲料的配料不開放增加 冰奶茶類：多茶（少牛奶）、多牛奶（少茶） 福吉茶是茶粉和糖混在一起，減少味道會變談 抹茶可以增加，最多可以加到8下，一下是15ml 星沁爽：只能調冰塊，甜度無法調整 而且我覺得去冰真的很難喝，而且調整冰塊加的是水跟內容物各半，你沒有得到更多飲料 謝謝你看到這裡，你成為了星巴克點餐大師 最後教怎麼能得到一個態度好的店員 常說請、謝謝、對不起 不要劈頭就問有沒有買一送一 也不要在有買一送一的時候明知故問 客製化請一次說完，水要幾杯也是，不要讓店員重複點或是來回跑 不要在晚上點低咖啡因（七點過後 不要壓線點餐（打烊前半小時 內用就是內用 沒有我要內用但要外帶</div>
-  <div class="p-meta">0 則補充 · 269 讚</div>
+  <div class="p-meta">0 則補充 · 274 讚</div>
 </a><a class="pcard" href="p/8ca0164e-1a60-4544-a761-0943340ff67d" style="animation-delay:0.12s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span><span class="tag tip">秘技</span></div>
   <div class="p-title">買衣服小知識-從版型和裡布看衣服好不好</div>
   <div class="p-excerpt">買衣服時，不要只看外觀和價格，可以先注意兩個地方： 一、看衣服的版型 如果女生 T 恤前短後長太明顯，穿上後可能因胸型把前面撐得更短，造成衣服往後跑、領口卡脖子，需要一直拉衣服。試穿時可以抬手、走動，看看衣服是否容易位移。 二、翻開衣服內側看顏色 如果外面顏色很深，裡面卻明顯偏白，可能代表顏色主要印在布料表面。這類衣服不一定品質差，但若印染和固色做得不好，洗幾次後可能比較容易褪色、龜裂或掉色。 三、挑衣服時，除了看材質，也要注意版型是否穩定、顏色是否均勻，以及縫線和做工是否整齊，通常更容易選到耐穿又好看的衣服。</div>
-  <div class="p-meta">0 則補充 · 250 讚</div>
+  <div class="p-meta">0 則補充 · 251 讚</div>
 </a><a class="pcard" href="p/33b8ab65-bb07-4276-a152-640ac0dc71c7" style="animation-delay:0.15s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">KOSA</span><span class="tag tip">秘技</span></div>
   <div class="p-title">緩解經痛</div>
   <div class="p-excerpt">1.含薑成分🫚→抑制前列線素抗發炎 2.黑糖→補充微量元素 3.鐵質（補血） →牛肉、菠菜 4.溫熱水、多休息、睡眠充足 5.其他→ 洋甘菊茶、黑巧克力🍫、深海魚、橄欖油 （忌 咖啡因、刺激物、油炸、冰🧊） **成藥** o 改源IB o UHA味覺糖 （鐵、葉酸+鐵）</div>
-  <div class="p-meta">0 則補充 · 221 讚</div>
+  <div class="p-meta">0 則補充 · 225 讚</div>
 </a>
-<details class="sec-fold"><summary class="sec-label">大人秘技　<span style="color:var(--sub);font-weight:400">114</span></summary><div class="fold-body"><a class="pcard" href="p/1ff8012a-38fa-48a5-9480-efc45a11d601" style="animation-delay:0.00s">
+<details class="sec-fold"><summary class="sec-label">大人秘技　<span style="color:var(--sub);font-weight:400">120</span></summary><div class="fold-body"><a class="pcard" href="p/1ff8012a-38fa-48a5-9480-efc45a11d601" style="animation-delay:0.00s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Meow</span></div>
   <div class="p-title">機車內必備</div>
   <div class="p-excerpt">1. 粉筆(掰一半用夾鏈袋裝起來)如果遇到車禍需要馬上移車可以用來在地上畫線後趕快移開 2. 隨身衛生紙+濕紙巾 3. 自己的雨衣、備用塑膠雨衣(可以給後座備用著) 4. 防曬手套、冬天手套(我是一年四季都放裡面懶得拿出來) 5. 買機車椅墊收納袋增加收納空間也比較整齊 6. 塞個一百兩百塊放著以防臨時出門忘記帶錢 7. 小抹布，下雨過後椅墊太濕或是被鳥屎滴到可以擦(但不要塞在前面小盒子因為台灣人高機率會順偷走) 8. 充電線(現在機車很多都有充電孔可以充電) 9. 飲料杯套也可以折在裡面(夏天很熱會想隨時來杯喝的) 差不多醬 以上！</div>
-  <div class="p-meta">0 則補充 · 474 讚</div>
+  <div class="p-meta">0 則補充 · 482 讚</div>
 </a><a class="pcard" href="p/2ca3dff2-c4a3-46dc-bf93-958c31fcd32f" style="animation-delay:0.03s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">努</span><span class="who">努力發掘生活冷知識の觀察家</span></div>
   <div class="p-title">UNIQLO打折時間分享(⁎⁍̴̛ᴗ⁍̴̛⁎)</div>
   <div class="p-excerpt">to不知道ㄉ鄉民們 UNIQLO分為兩種折扣價格：新價格、限定價格 1.限定價格—星期五8:30AM開始 是當季商品，通常夏季販賣Airism、冬季販賣Heattech，以及其他剛上市不久的衣服。 此價格的特性是，通常顏色尺寸都是齊全的（排除熱銷款式馬上被搶光），庫存多，也比較符合季節時令的穿搭。 2.新價格—星期二8:30AM開始 通常是過季商品、滯銷商品。 此價格的特性在，款式、尺寸非常不齊全，很難買到適合自己的，但價格都會特別便宜，尤其離上市日越久、折扣就越變態。 ⚠️但很多人都會等新價格，缺點就會是你再看的時候已經沒有尺寸了，所以早買早享受、晚買享折扣，可以自己選喜歡的消費方式！ （小小的隱藏版攻略） 記得可以問店員花籃在哪裡，所謂「花籃」就是瑕疵品區域，通常在這個地方也很容易找到瑕疵不大、自己能夠輕鬆處理的商品，因為UNIQLO極度重視商品完整性，有任何一點瑕疵，舉凡小髒污、小脫線，都會直接視為瑕疵品販售。 有時候原本已經新價格990的褲子，變瑕疵品直接打對折變490，真的大撿便宜，而且褲子的髒污，用清潔專用的藥劑處理就能弄掉了！！！ —— 所以有自己喜歡的衣服，記得可以先觀望或加到購物車，星期二跟五早上起床看一下你的衣服價格有沒有變成紅色，就是有打折嚕✨ 祝大家買的開心🤓</div>
-  <div class="p-meta">0 則補充 · 350 讚</div>
+  <div class="p-meta">0 則補充 · 356 讚</div>
 </a><a class="pcard" href="p/5a85e13d-0308-43a1-b653-8d202df3c587" style="animation-delay:0.06s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">c</span><span class="who">cecilia</span></div>
   <div class="p-title">路上距離判斷</div>
   <div class="p-excerpt">1.路上的虛白線，一白一空就是10公尺 2.高速車距可以用「車速/2」估算，100km/h需要距50公尺，也就是5組虛白線 3.祝大家行車安全～</div>
-  <div class="p-meta">0 則補充 · 288 讚</div>
+  <div class="p-meta">0 則補充 · 289 讚</div>
 </a><a class="pcard" href="p/9b5d2a4b-0f92-434a-9aac-e0f59f6ab091" style="animation-delay:0.09s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">怪</span><span class="who">怪魚</span></div>
   <div class="p-title">星巴克點餐技巧</div>
   <div class="p-excerpt">給在星巴克不知道怎麼點餐的各位 飲料客製化調整： 。冰塊： 少冰 微冰 去冰 （完全無冰塊） 。甜度： 少糖 半糖 微糖 無糖* *部分飲料無法調整甜度，或是即使是無糖也是會甜 更換植物奶： 。加價20元更換：燕麥奶、杏仁奶 。無需加價：低脂奶、豆奶*、椰奶* *豆奶跟一般豆漿的味道完全不相關，會甜 *椰奶會甜 點餐流程建議： 冷熱&gt;大小&gt;品項*&gt;冰塊甜度&gt;其他客製化 因為pos機系統的關係，店員點餐必須按照這個順序按按鈕，所以建議點餐可以這樣說 ：我要一杯冰的大杯抹茶那堤少冰無糖多兩下抹茶換燕麥奶 可以減少大部分會被點錯的問題。 飲料特殊客製化： 飲料能做到的客製化很多，但請不要在買一送一的時候兩杯客製化不同，謝謝。 熱牛奶類：多奶泡、少奶泡、去奶泡 咖啡類：少濃縮、多濃縮*1 +15元、換低咖啡因、換短濃縮、換特選豆+10元 咖啡星冰樂類：少咖啡液、多咖啡液、*換低咖啡因濃縮、換特選濃縮 *咖啡星冰樂有自己的星冰樂咖啡液，可以換濃縮 但每增加一份濃縮就是15元 星冰樂：甜度可調整 *巧克力or摩卡是調整巧克力醬味道會變淡。 配料可調整 ex:巧克力脆片、焦糖醬、抹茶、鮮奶油… *但季節性飲料的配料不開放增加 冰奶茶類：多茶（少牛奶）、多牛奶（少茶） 福吉茶是茶粉和糖混在一起，減少味道會變談 抹茶可以增加，最多可以加到8下，一下是15ml 星沁爽：只能調冰塊，甜度無法調整 而且我覺得去冰真的很難喝，而且調整冰塊加的是水跟內容物各半，你沒有得到更多飲料 謝謝你看到這裡，你成為了星巴克點餐大師 最後教怎麼能得到一個態度好的店員 常說請、謝謝、對不起 不要劈頭就問有沒有買一送一 也不要在有買一送一的時候明知故問 客製化請一次說完，水要幾杯也是，不要讓店員重複點或是來回跑 不要在晚上點低咖啡因（七點過後 不要壓線點餐（打烊前半小時 內用就是內用 沒有我要內用但要外帶</div>
-  <div class="p-meta">0 則補充 · 269 讚</div>
+  <div class="p-meta">0 則補充 · 274 讚</div>
 </a><a class="pcard" href="p/8ca0164e-1a60-4544-a761-0943340ff67d" style="animation-delay:0.12s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">買衣服小知識-從版型和裡布看衣服好不好</div>
   <div class="p-excerpt">買衣服時，不要只看外觀和價格，可以先注意兩個地方： 一、看衣服的版型 如果女生 T 恤前短後長太明顯，穿上後可能因胸型把前面撐得更短，造成衣服往後跑、領口卡脖子，需要一直拉衣服。試穿時可以抬手、走動，看看衣服是否容易位移。 二、翻開衣服內側看顏色 如果外面顏色很深，裡面卻明顯偏白，可能代表顏色主要印在布料表面。這類衣服不一定品質差，但若印染和固色做得不好，洗幾次後可能比較容易褪色、龜裂或掉色。 三、挑衣服時，除了看材質，也要注意版型是否穩定、顏色是否均勻，以及縫線和做工是否整齊，通常更容易選到耐穿又好看的衣服。</div>
-  <div class="p-meta">0 則補充 · 250 讚</div>
+  <div class="p-meta">0 則補充 · 251 讚</div>
 </a><a class="pcard" href="p/33b8ab65-bb07-4276-a152-640ac0dc71c7" style="animation-delay:0.15s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">KOSA</span></div>
   <div class="p-title">緩解經痛</div>
   <div class="p-excerpt">1.含薑成分🫚→抑制前列線素抗發炎 2.黑糖→補充微量元素 3.鐵質（補血） →牛肉、菠菜 4.溫熱水、多休息、睡眠充足 5.其他→ 洋甘菊茶、黑巧克力🍫、深海魚、橄欖油 （忌 咖啡因、刺激物、油炸、冰🧊） **成藥** o 改源IB o UHA味覺糖 （鐵、葉酸+鐵）</div>
-  <div class="p-meta">0 則補充 · 221 讚</div>
+  <div class="p-meta">0 則補充 · 225 讚</div>
 </a><a class="pcard" href="p/f1a4ad98-c3fa-4a7c-9c76-6bff42597635" style="animation-delay:0.18s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">水</span><span class="who">水蜜頭罐桃舒芙蕾</span></div>
   <div class="p-title">當性私密影像被外流，你該怎麼辦？四個步驟保護自己</div>
@@ -457,37 +466,37 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">常</span><span class="who">常綠喬木</span></div>
   <div class="p-title">跑步側腹痛？</div>
   <div class="p-excerpt">把手壓在痛點，深深彎腰下去，起來就不痛了 還會痛的話，多彎幾次試看看</div>
-  <div class="p-meta">0 則補充 · 203 讚</div>
+  <div class="p-meta">0 則補充 · 205 讚</div>
 </a><a class="pcard" href="p/8df78363-a18b-465a-8c8e-07de47061e5a" style="animation-delay:0.24s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">滾</span><span class="who">滾筒洗衣機</span></div>
   <div class="p-title">外婆給我的筆記1——菜市場買菜</div>
   <div class="p-excerpt">好像蠻多初級大人去菜市場時撿不到便宜反而被坑很慘，我自己也是所以就去找老練大人我外婆了… 1、傳統市場通常都會有公秤，如果感覺被多算錢或拿上去手感不對可以去那，公秤是政府設的會有人定期檢查不用擔心，找不到公秤就儘量找能直接看見秤重畫面的商家 2、其實去菜攤買菜如果買的比較多或跟老闆混熟了可以問能不能送一點蒜頭或辣椒，基本上好聲好氣的請求，成功率挺高的，但不給也不要去硬凹人家喔… 3、市場重量單位幾乎用臺斤來計算，一臺斤大約是600克 4、買水果、買菜如果自己不介意能吃就好，又想省錢可以參考一旁擺的那種一盤一百的那種固定價NG商品 5、去菜市場很常看到XXX金額/斤，假如一顆高麗菜20/斤，老闆如果秤下去是一顆是1200克那就是40塊錢 6、攤販在裝你的東西時，千萬！千萬！千萬！不要滑手機或看其他地方，專心看著給你裝東西的人！有的比較黑的可能會看你沒在注意就少給你東西或多塞一個多算錢！！最好東西到手後不要直接轉身，打開袋子對一下自己買了什麼 7、建議邊買邊心算一下，跟老闆算出來的落差太大再跟老闆核對一次 8、沒有明碼標價的基本上就是開賭盤，老闆開口多少就是多少，真要買一定要先問出一個價來，不能先跟你講明的不要買 9、懶得找、或抓不準哪家好就看哪裡婆婆媽媽聚集最多跟著買，一個市場商販的口碑都是婆婆媽媽們按照經驗，一傳十十傳百來的 10、很多菜市場賣炸物的攤是寶藏，喜歡吃炸物的可以試試看🤤 先這些～之後要等我有遇到新狀況再跟我外婆挖了 不想鬥智鬥勇的還是總歸一句——去超市大賣場吧，雖然一定會貴不少，但每樣都明碼標價還有發票明細</div>
-  <div class="p-meta">0 則補充 · 195 讚</div>
+  <div class="p-meta">0 則補充 · 196 讚</div>
 </a><a class="pcard" href="p/6eac98f3-f189-4e0f-94b0-eea07bb9ab43" style="animation-delay:0.27s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">S</span><span class="who">S</span></div>
   <div class="p-title">乾淨整齊的空間是需要刻意維護的</div>
   <div class="p-excerpt">如果身在很會照顧家人的家庭裡， 有很多家事不用自己動手， 突然需要搬出去住的時候， 就會發現很多事都需要自己動手喔！ 如果能每天隨手做就不需要大掃除啦！ 像是廁所不是上完沖水就好， 需要常常清潔落塵污漬； 廁所的鏡子、淋浴間的玻璃和水龍頭需要有人去擦水垢； 洗完澡需要盡量刮或擦掉水氣才不容易發霉； 排水孔的頭髮垃圾需要常常清掉； 即使排水孔常常清掉肉眼可見的東西仍需要定時清潔排水孔避免阻塞，馬桶也是。 放馬桶刷的容器也要常常拿起來清乾淨； 浴室裡使用的毛巾浴巾幾天就要洗一次，住在潮濕地區最好有多條替換。 洗臉台/流理台用完要把噴濺到的髒污清潔乾淨 梳完頭髮的梳子需要自己去把上面卡的頭髮和垢清掉； 垃圾不是倒完就好，垃圾桶和旁邊地板牆壁會隨時間增加沾染到的髒污，需要動手去清潔； 每個傢俱電器都會累積落塵髒污，就算是出門幾天沒有人活動也需要打掃清潔； 滾筒洗衣機大多配備容易發霉的膠圈，洗完衣服隨手擦乾流縫通風能延長壽命； 電風扇、冷氣、洗衣機、除濕機、空氣清淨機、吸塵器這類會「吸塵」的家電都需要定期維護清潔延長使用壽命； 電器不是電源沒開就不會通電，插頭插著就會通電； 家裡的常備用品需要常常去清點，避免突然要用買不到的窘境； 遇雨鞋子濕透，把很多報紙揉團塞進去放在除濕機旁邊很快就乾了； 使用洗碗機不是只要把髒碗盤丟進去、放洗劑按開關就好，首先要把沾黏在餐具上的頑固污垢刷掉，像是煮飯的鍋內黏到的飯粒、蒸薯泥的容器都需要先刷掉再放進洗碗機才能洗乾淨； 濾水器的濾心需要定時更換保養，不是買來就用到飽； 衣物從剛洗完的洗衣機拿出來多少會皺會黏，晾曬前要先「手動」甩開拉平才上衣架，上衣架後要檢查是否整件平整，當然洗衣前要看洗標，有些衣物不適合丟洗衣機，容易變形和較細緻的衣物要平放晾乾，丟進洗衣機前的衣物翻內裡出來再丟進洗衣機。 太多細碎的隱形家事，想到再補充。</div>
-  <div class="p-meta">0 則補充 · 173 讚</div>
+  <div class="p-meta">0 則補充 · 174 讚</div>
 </a><a class="pcard" href="p/d6470e88-fcda-4958-a4e2-8273f0e32598" style="animation-delay:0.30s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
   <div class="p-title">你也覺得機車換機油太貴了嗎？</div>
   <div class="p-excerpt">相信大家騎機車到了一定的里程數都要換機油 去機車行換不外乎就是$500 $600起跳 其實可以在蝦皮上購買機車的機油 一瓶約$100～$300 再到機車行請他們幫你更換 工本費約$100 以下是機車常見機油規格懶人包 很多人看到 5W-40、5W-50、10W-40 都不知道差在哪，其實可以簡單理解成： 👉 前面的數字（5W、10W） 代表冷車啟動時的流動性，數字越小，冷車時潤滑越快。 台灣氣候來說，5W 和 10W 都很適合，日常使用差異不大。 👉 後面的數字（30、40、50） 代表引擎高溫運轉時的黏度，數字越大，油膜越厚，高溫保護能力越好。 常見規格建議 ✅ 5W-30 * 追求省油 * 一般市區代步 ✅ 5W-40（最推薦） * 適合大部分速克達 * 市區通勤、假日出遊都很適合 * 保護性與價格取得不錯的平衡 ✅ 5W-50 * 經常跑山 * 長途旅行 * 夏天高溫騎乘 * 習慣高轉速騎車 ✅ 10W-40 * 一般通勤 * 高里程或車齡較高的車款 * 價格通常比 5W 系列更親民 ✅ 10W-50 * 高里程、老車 * 引擎磨耗較大 * 經常長途或高溫騎乘 💡 如果不知道怎麼選，5W-40 幾乎是大部分機車都適用的選擇。 ⚠️ 最後還是要以車主手冊或原廠建議的機油黏度為主，不建議自行更改規格。</div>
-  <div class="p-meta">0 則補充 · 168 讚</div>
+  <div class="p-meta">0 則補充 · 171 讚</div>
 </a><a class="pcard" href="p/5891c11a-6a76-43c2-a858-b79e7c1fb972" style="animation-delay:0.33s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">ㄒ</span><span class="who">ㄒˉㄏˉ</span></div>
   <div class="p-title">租屋打掃小技巧</div>
   <div class="p-excerpt">到租屋處結果冰箱異味很重？ 除了用咖啡渣跟檸檬 最快的除臭方式是在冰箱平鋪放一張濕的洗臉巾 （（要通電））放幾個小時到一天即可喔！</div>
-  <div class="p-meta">0 則補充 · 162 讚</div>
+  <div class="p-meta">0 則補充 · 163 讚</div>
 </a><a class="pcard" href="p/ebb64cd7-4698-4d71-8c7d-0acfee551476" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">L</span><span class="who">Lily</span></div>
   <div class="p-title">脫離學生身份了嗎？買高鐵還是有優惠</div>
   <div class="p-excerpt">1.下載兩個app:台灣高鐵、T-EX行動購票 2.打開台灣高鐵註冊登入後，找到「兌換專區」 3.優惠選擇：月月GO有禮 指定車次88折 4.購買完畢後，打開T-EX行動購票「載入訂位」 5.輸入訂位代號、身分證字號末四碼 完成～ 需要注意的是高峰期好像不適用 一個月只有兩張88折 高鐵也可以點數兌換商品喔</div>
-  <div class="p-meta">0 則補充 · 147 讚</div>
+  <div class="p-meta">0 則補充 · 151 讚</div>
 </a><a class="pcard" href="p/7c57a265-9ca1-416f-b8cd-1cfffcaae795" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">D</span><span class="who">Dd🍚</span></div>
   <div class="p-title">你可能不知道的看醫生知識</div>
   <div class="p-excerpt">⭐️重要⭐️ ❗️健保卡是個人重要文件，但沒有照片不能當成證件使用 ❗️你的就醫資訊不是健保卡插下去就知道，需要從健保系統雲端抓資料，所以如果有重大傷病時，去新的醫院或診所要提醒他們你有重大傷病，這樣才會去抓資料 ❗️用藥紀錄跟檢查紀錄，需醫院或診所有上傳醫生才查得到 ❗️健保卡讀不到身心障礙手冊，身心障礙手冊是公所發的，沒有跟健保連線，所以要主動出示 ❗️醫生一天要看上百個病人，忘記你的病況很正常，所以看診時可以跟醫生提醒一下你的病況，包括有沒有藥物過敏、食物過敏、重大傷病 ❗️去醫院申請任何資料都要核對身分證，非本人要雙方身分證跟委托書，未成年人要戶口名簿跟家長身分證（證明親子關係），往生者要除戶證明及繼承人攜帶證件辦理，這是個資法的規定，但每個醫療院所的嚴格執行程度不一樣，反正帶齊就對了，不要只帶健保卡！！！</div>
-  <div class="p-meta">0 則補充 · 138 讚</div>
+  <div class="p-meta">0 則補充 · 139 讚</div>
 </a><a class="pcard" href="p/d51092ed-398b-407a-8271-5f429652a27d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">再也不用麻煩什麼不能入境</div>
@@ -502,7 +511,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">燒</span><span class="who">燒肉</span></div>
   <div class="p-title">防止海神波塞冬</div>
   <div class="p-excerpt">大家是否有過大便時會被濺起的水花用到？ 這個方法很簡單 一張衛生紙就夠了 把它墊在水面上就好</div>
-  <div class="p-meta">0 則補充 · 118 讚</div>
+  <div class="p-meta">0 則補充 · 119 讚</div>
 </a><a class="pcard" href="p/50623a9f-e9fe-45ca-a47e-f7530d64e29f" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">R</span><span class="who">Rosémint</span></div>
   <div class="p-title">只有首次辦理護照的可以去戶政事務所辦理</div>
@@ -517,27 +526,32 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">果</span><span class="who">果塔</span></div>
   <div class="p-title">訊號不好119打不通怎麼辦</div>
   <div class="p-excerpt">一、『112』為行動電話緊急救難號碼，在全球各地有基地台訊號範圍處均可撥打。即使行動電話無SIM卡，只要尚有電力並在信號涵蓋範圍內，均可撥通。 二、『112』、『110』、『119』使用的差異性： (一)在我國，『112』、『110』、『119』均為緊急救難號碼，『112』適用在緊急危難時，如果您持用手機所在位置收訊不佳，『110』、『119』都撥不通時使用。 (二)『112』於撥通後將由語音導引，轉接至報案需要的『110』或急難求助的『119』。 (三)由於『112』係由語音導引進行轉接，將延長接續時間，為爭取救難時效，於收訊狀況良好時，仍應優先撥打『110』或『119』。 三、『112』的使用時機與方法： (一)當您遇到緊急狀況時，所在位置收訊不佳，只要您的手機收發功能正常，不論您是否處在所承租門號業者訊號範圍，只要有任何一家3G/GSM系統業者的訊號，就可以幫您轉接警察局或消防局，而且『112』有中、英文語音說明，對來台旅遊的外國朋友也能方便使用。 (二)撥打『112』，您將會聽到以下語音：『這裡是行動電話112緊急救難專線，您若要報案請按〝0〞，我們將為您轉接〝110〞警察局，您若急需救助請按〝9〞，我們將為您轉接〝119〞消防局。』，若不方便撥號，系統會自動轉至〝119〞消防局。</div>
-  <div class="p-meta">0 則補充 · 105 讚</div>
+  <div class="p-meta">0 則補充 · 106 讚</div>
 </a><a class="pcard" href="p/1335c1e5-dceb-4b93-91f9-d884a19a9487" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">如</span><span class="who">如影城</span></div>
   <div class="p-title">眼藥水冷知識</div>
   <div class="p-excerpt">其實眼藥水瓶裝的那種 保存期限就只有一個月～ 放太久會滋生細菌</div>
-  <div class="p-meta">0 則補充 · 102 讚</div>
+  <div class="p-meta">0 則補充 · 103 讚</div>
 </a><a class="pcard" href="p/2433ad3c-b93c-4e4b-890b-2cd26e04c407" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">里</span><span class="who">里</span></div>
   <div class="p-title">戶政事務所、區公所、國稅局、地政事務所</div>
   <div class="p-excerpt">▪️戶政事務所：跟你的身世、住哪裡有關 身分證、自然人憑證、改名、遷戶籍 戶籍謄本、戶口名簿 結婚登記、死亡登記等 門牌編釘、門牌更新等 ▪️區公所：跟你的居住環境、社會福利有關 當兵、抽籤、役男出境、延役等 健保投保、國民年金 育兒津貼、兒少補助、發展遲緩兒童早期治療補助（早療） 急難補助、急難紓困 特殊境遇家庭補助（特境補助） 身障卡申請、換證、身障津貼補助、身障輔具補助、身障停車證 中低收申請、中低收津貼補助、醫療補助 中低收老人生活津貼、住院醫療補助 老人津貼、敬老卡等 調解申請 原住民相關、老鼠藥、防災包、找里長等 ▪️地政事務所：跟你擁有的房子、土地有關 不動產登記、過戶、資料變更 土地及建物登記謄本、地籍圖、建物平面圖謄本 ▪️國稅局：跟你個人、公司的稅收有關 綜合所得稅、遺產稅、贈與稅 營業税、營業事業所得稅 🔺身分證遺失先掛失，再去戶政辦理；健保卡遺失，掛失後找健保局辦理。 🔺區公所還有一項是免費法律諮詢，但不一定每個區公所都有提供。 通常法院、市政府的某些時段也有免費的法律諮詢可以使用，去之前建議先電話詢問。 或想了解自己所在地到底哪些機關有提供免費法律諮詢服務，可以詢問當地的法扶機構。 🔺公家機關平日上班 六日休，見紅休，如遇補班補課日也會上班。 有午休時間，也有午休期間能辦理業務的機關（如戶政），建議都還是致電詢問看看。</div>
-  <div class="p-meta">0 則補充 · 96 讚</div>
+  <div class="p-meta">0 則補充 · 101 讚</div>
 </a><a class="pcard" href="p/1b04469b-bcd5-4ca8-9c96-8221df97a6ff" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
   <div class="p-title">買菜用app</div>
   <div class="p-excerpt">如果有在跑菜市場買菜的 想看季節時蔬或什麼菜比較便宜 可以用這個app看菜價 https://apps.apple.com/app/id6661027883</div>
-  <div class="p-meta">0 則補充 · 96 讚</div>
+  <div class="p-meta">0 則補充 · 97 讚</div>
 </a><a class="pcard" href="p/7e7a8fd5-3ef2-4130-9f89-aba98db544b7" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">長</span><span class="who">長大中</span></div>
   <div class="p-title">謄本/名簿 原來如此</div>
   <div class="p-excerpt">戶口名簿：一戶一本 戶籍謄本：本人、配偶、直系血親或利害關係人都可以去申請，沒有份數限制。 戶口名簿：給影本 戶籍謄本：繳交正本</div>
   <div class="p-meta">0 則補充 · 91 讚</div>
+</a><a class="pcard" href="p/6c9c6284-724d-4dd1-bec3-adc0fd85a33f" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">冰</span><span class="who">冰玥</span></div>
+  <div class="p-title">無限次免除跨行轉帳手續費</div>
+  <div class="p-excerpt">使用line pay，設定好兩個或兩個以上的銀行帳號，存入要提出的金額到裡面，然後再按右下「全部」➡️「餘額」➡️「提領」，改到要提出的銀行帳戶，就能匯進去了 由此也能玩出各種騷操作， 例如固定去一個最方便的atm提領跟存錢就好，金流在line pay裡做分/匯流</div>
+  <div class="p-meta">0 則補充 · 89 讚</div>
 </a><a class="pcard" href="p/f5301c04-0a70-499b-86aa-7349fb0c40ab" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">n</span><span class="who">nobou</span></div>
   <div class="p-title">清潔妙招</div>
@@ -548,16 +562,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">讓房間永保青春、提升睡眠品質</div>
   <div class="p-excerpt">每週兩次，不在家出門的時候。 開啟除濕機，把全部抽屜都開一個小縫 是讓除濕機run 6小左右 房間舒適自在 提升睡眠品質、降低過敏。 不會有怪衣魚或蜈蚣；很多蟲討厭乾燥的環境）</div>
   <div class="p-meta">0 則補充 · 87 讚</div>
-</a><a class="pcard" href="p/6c9c6284-724d-4dd1-bec3-adc0fd85a33f" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">冰</span><span class="who">冰玥</span></div>
-  <div class="p-title">無限次免除跨行轉帳手續費</div>
-  <div class="p-excerpt">使用line pay，設定好兩個或兩個以上的銀行帳號，存入要提出的金額到裡面，然後再按右下「全部」➡️「餘額」➡️「提領」，改到要提出的銀行帳戶，就能匯進去了 由此也能玩出各種騷操作， 例如固定去一個最方便的atm提領跟存錢就好，金流在line pay裡做分/匯流</div>
-  <div class="p-meta">0 則補充 · 86 讚</div>
 </a><a class="pcard" href="p/c7cf77ce-e98a-4d87-b86a-f3ae26b8f807" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">張</span><span class="who">張張</span></div>
   <div class="p-title">汽車險小知識</div>
   <div class="p-excerpt">1️⃣「強制險」跟「任意險」是什麼？ 📍強制險 強制險只賠對方，不賠自己。 📍任意險 所以除了強制險以外的保險都統稱為任意險，例如：車體險、第三人責任險….等，用來補足強制險無法賠付的地方 。 📍任意險有哪些 第三人責任險：賠對方身體傷害＋財物損失。 （第三人定義：這台車駕駛及乘客以外的人，稱為第三人） 超額責任險：強制險及第三人責任保險保額不夠賠的部分可以用此項給付。 車體險、竊盜險：保障「自己的汽車」車輛損失。 駕駛人傷害險：因意外事故導致駕駛人（經車主同意使用或投保時列名之駕駛人）身體傷害、死亡、失能。 強制汽車責任保險駕駛人傷害保險（限車主）：汽車單一事故保障「駕駛人」身體傷害、死亡、失能。 乘客險：因交通意外事故，導致車上乘客受有傷害或死亡，依法負賠償責任。 保險慰問金費用保險： 被保險人前往探視或慰問因交通意外事故所致第三人傷害之費用補償。 道路救援費用保險：提供「拖吊、送水、送油(不包括汽油費用)、換胎(備胎由被保險人提供)、開鎖、接電」的救援服務。 2️⃣每種任意險保障對象/項目？ 第三人責任險：第三人 超額責任險：第三人 車體險、竊盜險：自己的汽車 強制汽車責任保險駕駛人傷害保險（限車主）/駕駛人傷害保險：本車駕駛 乘客險：本車乘客 3️⃣我要怎麼挑選適合我的保障內容？ 一般來說會用「新車」跟「非新車」分類，5年內的汽車算新車。 📍新車：建議至少投保乙式車體險、竊盜險、第三人責任險、超額險、駕駛人傷害險、乘客險 📍非新車：第三人責任險、超額險、駕駛人傷害險、乘客險 為什麼非新車通常不會配車體險或竊盜險 👉🏻車體險的保額是依據汽車的重置價格，重置價格的計算是來自保發中心的資料，依據使用年份會折舊（汽車一落地就折舊15%，意思是你買了這台車，這台車的價值就剩85%）， 而汽車的重置價格不高，保費也不一定很便宜，甚至有可能會等於重置價格， 但也不是說一定不能買，而是視需求投保即可，若是非新車想買車體險，可以買丙式車體險。 4️⃣上面有提到車體險，車體險有甲、乙、丙、丁，差在哪裡？ 甲式：什麼都賠 乙式：除了不明損失，什麼都賠 丙式：只賠車碰車事故（有車撞你才符合理賠條件），保額是汽車的重置價格 丁式：保障範圍等同於丙式，保額不等於重置價格，可以自行選擇保額 5️⃣網路投保盛行，跟一般業務員差在哪裡？ 以同公司來說，只會差異在商品，通常業務員跟網路投保的商品包裝會不一樣，大家可以自行比較， 若以理賠角度來說，網路投保沒有專屬於你的業務員，若有任何問題，只能撥打客服。 *以上保障項目僅為條款解釋，實際理賠情況以真實狀況為主*</div>
-  <div class="p-meta">0 則補充 · 86 讚</div>
+  <div class="p-meta">0 則補充 · 87 讚</div>
 </a><a class="pcard" href="p/8afd8936-1d58-4be9-8633-b3fe2bb0782a" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">M</span><span class="who">Muaa</span></div>
   <div class="p-title">關於【行動自然人憑證】 超級推去辦！</div>
@@ -567,12 +576,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">三</span><span class="who">三歲大人🍼</span></div>
   <div class="p-title">突然一直打嗝怎麼辦</div>
   <div class="p-excerpt">先喝一大口水含在嘴巴，然後連續小口吞水進去就好了！</div>
-  <div class="p-meta">0 則補充 · 81 讚</div>
+  <div class="p-meta">0 則補充 · 82 讚</div>
 </a><a class="pcard" href="p/771ee26e-959f-4ecb-bb86-73aeaaaa7fa5" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">餅</span><span class="who">餅餅</span></div>
   <div class="p-title">關於水果🍉</div>
   <div class="p-excerpt">🍎 先分享一個水果小觀念： 沒有要馬上吃的水果，不要先洗！ 買回家先冰起來，準備吃的時候再洗，保存時間會比較久～ 不然水果表面的水分容易讓它比較快壞掉。 最近想來分享一些我平常挑水果的小心得 🍓🍎🍊 包含： ✨ 怎麼分品種 ✨ 不同口感差異 ✨ 挑水果的小技巧 ✨ 保存方式 如果不是要拜拜可以參考「固定盤的水果」 很多店家會把快即期、太熟的水果裝成一籃一籃 基本是一盤100或150 但要注意的是這類水果通常需儘速食用完畢 買回去壞了是不給退的 店家購買的水果切開如果有問題1-2天內 部分店家基本上都能換（出門前先打電話詢問） 如果可以要記得帶上水果本人 至於流動攤販就不一定 可以問問看 很多都是我自己的生活經驗整理，不是專業果農等級😂 如果有哪裡不對，也歡迎大家補充、更正～～ 我只是一個很愛吃水果的小大人而已 🍉 請大家溫柔一點，不要噴我，我會受傷🥹 謝謝大家！ （我都會丟給GPT潤飾 因為我文筆很差哈哈哈）</div>
-  <div class="p-meta">0 則補充 · 78 讚</div>
+  <div class="p-meta">0 則補充 · 81 讚</div>
+</a><a class="pcard" href="p/2ac12982-bc24-476e-91d4-54dae4d4b934" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">W</span><span class="who">Woolly</span></div>
+  <div class="p-title">關於月經來晚上睡覺容易漏的小秘技</div>
+  <div class="p-excerpt">晚上睡覺的時候經血沿著屁股溝往後流到內褲上的，在睡前拿一張厚的衛生紙（薄的多拿兩張） 對折再對折變成正方形後， 捲成最細的小長條然後在睡覺的時候卡在屁股的縫縫中！ 沒有任何不適的感覺而且可以大大降低沾到床單的機率哦～</div>
+  <div class="p-meta">0 則補充 · 77 讚</div>
 </a><a class="pcard" href="p/a82f4001-b6a3-4138-8dd7-63d7c9761e81" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">咩</span><span class="who">咩</span></div>
   <div class="p-title">下大雨撐傘</div>
@@ -583,56 +597,56 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">健保塗氟攻略</div>
   <div class="p-excerpt">六個月給付一次：六歲（含）以下兒童 三個月給付一次： 偏遠地區12歲（含）以下兒童 糖尿病患者 65歲以上長者 中風、帕金森氏患者 洗腎患者 使用雙磷酸鹽類或抗骨鬆單株抗體藥物患者 癌症患者 身心障礙患者（肢體障礙、慢性精神病患者、重要器官失去功能患者） 口乾症患者</div>
   <div class="p-meta">0 則補充 · 76 讚</div>
-</a><a class="pcard" href="p/2ac12982-bc24-476e-91d4-54dae4d4b934" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">W</span><span class="who">Woolly</span></div>
-  <div class="p-title">關於月經來晚上睡覺容易漏的小秘技</div>
-  <div class="p-excerpt">晚上睡覺的時候經血沿著屁股溝往後流到內褲上的，在睡前拿一張厚的衛生紙（薄的多拿兩張） 對折再對折變成正方形後， 捲成最細的小長條然後在睡覺的時候卡在屁股的縫縫中！ 沒有任何不適的感覺而且可以大大降低沾到床單的機率哦～</div>
-  <div class="p-meta">0 則補充 · 73 讚</div>
 </a><a class="pcard" href="p/dea5e1aa-a26b-483f-8c5b-161ecb53184a" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">柚</span><span class="who">柚子</span></div>
   <div class="p-title">銀行小知識</div>
-  <div class="p-excerpt">去銀行前務必帶「身分證」，帶健保卡的話很多業務基本上不能辦喔。 銀行開戶建議都先線上預約（肯定比現場等還快），記得提早到！ 開戶：身分證、工作證明（現在沒有工作證明很難開戶）、有公司統編更好！</div>
+  <div class="p-excerpt">去銀行前務必帶「身分證」，只帶健保卡的話很多業務基本上不能辦喔。 銀行開戶建議都先線上預約（肯定比現場等還快），記得提早到！ 開戶：身分證、健保卡、印章、工作證明（現在沒有工作證明很難開戶）、有公司統編更好！ 如果真的不確定一定要打電話先詢問喔</div>
   <div class="p-meta">0 則補充 · 73 讚</div>
+</a><a class="pcard" href="p/4ccf2c27-612c-4546-a28d-6be445c694f8" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">V</span><span class="who">Vcn</span></div>
+  <div class="p-title">睡覺鼻塞</div>
+  <div class="p-excerpt">哪邊鼻塞就往反方向側躺 例如：右邊鼻塞就往左邊側躺 鼻子通了之後要趕快回正不然另一邊會塞 像我這種睡覺超常鼻塞的人 用過的都說讚</div>
+  <div class="p-meta">0 則補充 · 71 讚</div>
+</a><a class="pcard" href="p/f47a2651-b2f7-494a-ad81-96c603cece60" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">9</span><span class="who">9527</span></div>
+  <div class="p-title">工作心得</div>
+  <div class="p-excerpt">1.做所有的事情都要會做紀錄。 2.用專案管理的角度來做一週兩次或是兩週一次的工作進度檢討。紀錄事情要清楚人事時地物。截止日期要做到什麼程度都要提前確認。 3.有時候有交比沒交好。不用全部都做到自己認定的100分。但要訓練自己用最少時間做到自己滿意。提前跟主管確認什麼時候要給對方看過。所有的改正細節要做紀錄。避免下次再犯。 4.分清楚事情的事實、各方觀點、各方立場甚至是信仰。讓自己有餘韻有退路。 5.如果可以問主管他的管理方式。沒辦法完成的事情要提前說。也可以做簡單的每日工作進度報告。也方便自己抓工進。 6.同事普遍都是有利益衝突的對象，特別是升級管道單一的職場，不要透露太多個人訊息，不是來交朋友的。但必要的人情世故，合作關係要維持好。 暫時想到這麼多，歡迎大家討論</div>
+  <div class="p-meta">0 則補充 · 70 讚</div>
+</a><a class="pcard" href="p/eea67cb0-68de-4461-bc77-ba07ef1ffa17" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">Katja</span></div>
+  <div class="p-title">衣服污點清除術</div>
+  <div class="p-excerpt">我很常吃東西時嘴巴有洞（？）醬汁湯水噴到衣服上，分享家母的清潔魔法～ 一回到家就用洗碗精或洗髮精直接塗在衣服上，不要泡水不要沖洗不要刷。至少靜置一晚，再直接丟洗衣機就可以洗淨！</div>
+  <div class="p-meta">0 則補充 · 69 讚</div>
+</a><a class="pcard" href="p/f424e8f9-4ab9-467f-b328-05af4f79d45e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
+  <div class="p-title">大學生想創業？ 對未來很迷茫？</div>
+  <div class="p-excerpt">你知道各個大學幾乎都有設立「育成中心」嗎？ 很多人以為育成中心只有想創業的人才會去，其實不是！🤩 育成中心就像是學生的資源站，提供創業輔導、業師諮詢、競賽協助、實作機會和各種資源媒合。無論你想累積作品、增加實務經驗，還是探索未來職涯，都能在這裡獲得幫助。 簡單來說，就是幫助學生把想法變成成果，讓你在畢業前就能累積更多經驗，提升自己的競爭力！ 下次如果學校有育成中心舉辦活動，不妨多去了解看看，說不定能找到對你很有幫助的資源！ 以下是全台灣的育成中心列表： https://www.tipo.gov.tw/tw/tipo1/785-1147.html</div>
+  <div class="p-meta">0 則補充 · 68 讚</div>
 </a><a class="pcard" href="p/17e85775-514f-49c0-8acf-d8e8cffe185b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">Y</span><span class="who">Yu</span></div>
   <div class="p-title">蘋果手機也能加值悠遊卡</div>
   <div class="p-excerpt">下載easy wallet綁定常用悠遊卡 首頁點選悠遊加值機 不用跑捷運或超商也能自己在家加值悠遊卡了</div>
   <div class="p-meta">0 則補充 · 68 讚</div>
-</a><a class="pcard" href="p/eea67cb0-68de-4461-bc77-ba07ef1ffa17" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">K</span><span class="who">Katja</span></div>
-  <div class="p-title">衣服污點清除術</div>
-  <div class="p-excerpt">我很常吃東西時嘴巴有洞（？）醬汁湯水噴到衣服上，分享家母的清潔魔法～ 一回到家就用洗碗精或洗髮精直接塗在衣服上，不要泡水不要沖洗不要刷。至少靜置一晚，再直接丟洗衣機就可以洗淨！</div>
-  <div class="p-meta">0 則補充 · 68 讚</div>
-</a><a class="pcard" href="p/f424e8f9-4ab9-467f-b328-05af4f79d45e" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
-  <div class="p-title">大學生想創業？ 對未來很迷茫？</div>
-  <div class="p-excerpt">你知道各個大學幾乎都有設立「育成中心」嗎？ 很多人以為育成中心只有想創業的人才會去，其實不是！🤩 育成中心就像是學生的資源站，提供創業輔導、業師諮詢、競賽協助、實作機會和各種資源媒合。無論你想累積作品、增加實務經驗，還是探索未來職涯，都能在這裡獲得幫助。 簡單來說，就是幫助學生把想法變成成果，讓你在畢業前就能累積更多經驗，提升自己的競爭力！ 下次如果學校有育成中心舉辦活動，不妨多去了解看看，說不定能找到對你很有幫助的資源！ 以下是全台灣的育成中心列表： https://www.tipo.gov.tw/tw/tipo1/785-1147.html</div>
-  <div class="p-meta">0 則補充 · 67 讚</div>
 </a><a class="pcard" href="p/e5968d24-7590-49ac-82b6-29a37135fba8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">初級大人的隱藏捷徑：MyData</div>
   <div class="p-excerpt">政府提供的「個人資料調閱平台」 只要透過身分驗證，就可以在 MyData 下載自己的資料，或授權給銀行、政府機關使用，達到省時省力 常見用途： 查勞保投保紀錄、健保投退保資料、所得資料、財產資料、入出國紀錄，也可以用在部分銀行辦卡、貸款、財力證明補件</div>
-  <div class="p-meta">0 則補充 · 67 讚</div>
+  <div class="p-meta">0 則補充 · 68 讚</div>
 </a><a class="pcard" href="p/ecf5a568-2a11-404c-bd2f-ef0e1812e979" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">31歲前，通往世界的神卡：IYTC </div>
   <div class="p-excerpt">結論：適合畢業後、工作中、準備出國旅遊或短期進修的人，用途主要是省錢跟身份認證。 1.準備一張個人大頭照，以及身分證明文件，例如護照、身分證或健保卡 2.至 ISIC Taiwan 線上填寫申請表並上傳資料，再選擇親自取卡或郵寄取卡。 3.官方資訊顯示，線上辦理費用為 NT$400，郵寄取卡另加 NT$80；若資料沒問題，約繳費後7個工作天內發卡，效期通常為發卡當月起一年。 這張卡在出國時可查詢餐飲、旅遊、交通、住宿、音樂、娛樂等青年優惠；ISIC Taiwan 也標示 IYTC 可享有超過2萬個相關優惠</div>
-  <div class="p-meta">0 則補充 · 66 讚</div>
-</a><a class="pcard" href="p/f47a2651-b2f7-494a-ad81-96c603cece60" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">9</span><span class="who">9527</span></div>
-  <div class="p-title">工作心得</div>
-  <div class="p-excerpt">1.做所有的事情都要會做紀錄。 2.用專案管理的角度來做一週兩次或是兩週一次的工作進度檢討。紀錄事情要清楚人事時地物。截止日期要做到什麼程度都要提前確認。 3.有時候有交比沒交好。不用全部都做到自己認定的100分。但要訓練自己用最少時間做到自己滿意。提前跟主管確認什麼時候要給對方看過。所有的改正細節要做紀錄。避免下次再犯。 4.分清楚事情的事實、各方觀點、各方立場甚至是信仰。讓自己有餘韻有退路。 5.如果可以問主管他的管理方式。沒辦法完成的事情要提前說。也可以做簡單的每日工作進度報告。也方便自己抓工進。 6.同事普遍都是有利益衝突的對象，特別是升級管道單一的職場，不要透露太多個人訊息，不是來交朋友的。但必要的人情世故，合作關係要維持好。 暫時想到這麼多，歡迎大家討論</div>
-  <div class="p-meta">0 則補充 · 65 讚</div>
-</a><a class="pcard" href="p/4ccf2c27-612c-4546-a28d-6be445c694f8" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">V</span><span class="who">Vcn</span></div>
-  <div class="p-title">睡覺鼻塞</div>
-  <div class="p-excerpt">哪邊鼻塞就往反方向側躺 例如：右邊鼻塞就往左邊側躺 鼻子通了之後要趕快回正不然另一邊會塞 像我這種睡覺超常鼻塞的人 用過的都說讚</div>
-  <div class="p-meta">0 則補充 · 65 讚</div>
+  <div class="p-meta">0 則補充 · 67 讚</div>
 </a><a class="pcard" href="p/fbd8bffe-19f6-4983-84e4-d306e572dcf2" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">M</span><span class="who">Monalisastare</span></div>
   <div class="p-title">小強🪳必死香香泡泡水</div>
   <div class="p-excerpt">蟑螂🪳怕水 只要水進到肚子裡就會掛 牠肚子有個洞🕳️只要 讓水流進這個洞 牠必死無疑 但這個洞上面有一層油膜 所以只要任何 可以帶走油膜的清潔泡泡水 加上噴槍 你就可以化身殺蟑狙擊手 這招也不怕房間會充滿刺鼻的殺蟲劑味 可以拿用完的酒精噴瓶 裝洗到快沒了的洗髮精或沐浴乳 加水調配 這樣一定都是你自己喜歡的味道 但要注意⚠️處理完小強🪳屍體後 要拿清水擦牆+拖地善後 把泡泡水清乾淨 避免有人滑倒</div>
-  <div class="p-meta">0 則補充 · 64 讚</div>
+  <div class="p-meta">0 則補充 · 66 讚</div>
+</a><a class="pcard" href="p/e2cc52e5-d2c1-4777-a236-e704bbf2cab5" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">白</span><span class="who">白日夢</span></div>
+  <div class="p-title">吃飯時間</div>
+  <div class="p-excerpt">飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1小時或飯後2小時 隨餐 吃藥後立即吃飯，或吃飯時同時服藥 睡前 睡前半小時 「飯後」藥其實就是為了減少胃刺激或讓吸收比較好，通常建議在吃完後半小時到 1 小時；如果你是立刻吃，有些藥可能影響吸收 如果藥袋寫「空腹」或「飯前」吃完馬上吃飯就可能不適合，會影響吸收。 「睡前」的藥也不適合吃了直接躺下，容易造成藥卡在食道或是腸胃不適；吃完還是建議站著或坐著10-15分鐘再躺下</div>
+  <div class="p-meta">0 則補充 · 63 讚</div>
 </a><a class="pcard" href="p/aab62c26-dad3-413c-95f4-bda647149bbb" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">東</span><span class="who">東子</span></div>
   <div class="p-title">免費心理諮詢3次</div>
@@ -642,57 +656,57 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">魚</span><span class="who">魚魚</span></div>
   <div class="p-title">補充所有免費癌症篩檢</div>
   <div class="p-excerpt">1. 胃癌（2026年最新納入） 對象： 45～74歲民眾。頻率： 終身補助 1 次。 項目： 幽門螺旋桿菌「糞便抗原檢測」（非侵入性）。 2. 肺癌對象：具肺癌家族史：45～74歲男性或40～74歲女性（父母、子女或兄弟姊妹曾確診肺癌）。 重度吸菸史：50～74歲吸菸史達 20 包-年以上，有意願戒菸或戒菸未達 15 年之重度吸菸者。 頻率： 每 2 年 1 次。 項目： 低劑量電腦斷層掃描（LDCT）。 3. 大腸癌對象： 45～74歲一般民眾； 或 40～44歲具一等親（父母、子女、兄弟姊妹）大腸癌病史者。 頻率： 每 2 年 1 次。 項目： 糞便潛血檢查。 4. 乳癌對象： 40～74歲女性。 頻率： 每 2 年 1 次。 項目： 乳房X光攝影檢查。 5. 口腔癌對象： 30歲以上嚼檳榔（含已戒）或吸菸者；以及 18歲以上嚼檳榔（含已戒）之原住民。 頻率： 每 2 年 1 次。 項目： 口腔黏膜檢查。 6. 子宮頸癌對象與項目：30歲以上女性：建議每年 1 次子宮頸抹片檢查。 25～29歲女性：每 3 年 1 次子宮頸抹片檢查。 特定年齡（如35、45、65歲）：當年度可額外獲得 1 次人類乳突病毒（HPV）檢測</div>
-  <div class="p-meta">0 則補充 · 60 讚</div>
+  <div class="p-meta">0 則補充 · 62 讚</div>
 </a><a class="pcard" href="p/2813be29-1f52-42a8-a6ad-ab0d0b292300" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">0</span><span class="who">0xJohn</span></div>
   <div class="p-title">銀行帳戶每天都有一次（小額）免費跨轉！</div>
   <div class="p-excerpt">很多人不知道，其實銀行每天都送你一次免費跨行轉帳機會！ 金管會有規定：每個銀行帳戶的每天第一筆500元（含）以下的跨行轉帳通通免手續費！！！ 雖然一次最多只省15元，但如果你經常需要： ✔ 午餐、飲料錢分帳 ✔ 還朋友或同事錢 ✔ 轉帳生活費 ✔ 小額付款 小錢每天省，一年也能少付不少手續費😎</div>
-  <div class="p-meta">0 則補充 · 59 讚</div>
-</a><a class="pcard" href="p/e2cc52e5-d2c1-4777-a236-e704bbf2cab5" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">白</span><span class="who">白日夢</span></div>
-  <div class="p-title">吃飯時間</div>
-  <div class="p-excerpt">飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1小時或飯後2小時 隨餐 吃藥後立即吃飯，或吃飯時同時服藥 睡前 睡前半小時 「飯後」藥其實就是為了減少胃刺激或讓吸收比較好，通常建議在吃完後半小時到 1 小時；如果你是立刻吃，有些藥可能影響吸收 如果藥袋寫「空腹」或「飯前」吃完馬上吃飯就可能不適合，會影響吸收。 「睡前」的藥也不適合吃了直接躺下，容易造成藥卡在食道或是腸胃不適；吃完還是建議站著或坐著10-15分鐘再躺下</div>
-  <div class="p-meta">0 則補充 · 59 讚</div>
+  <div class="p-meta">0 則補充 · 60 讚</div>
 </a><a class="pcard" href="p/9bfbe12b-3c68-44d3-8c84-f878717d81e6" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">鍋</span><span class="who">鍋哩咖貼</span></div>
   <div class="p-title">搭台鐵的一些經驗</div>
   <div class="p-excerpt">自強號3000型： 1.一定要買坐票，無站票（普悠瑪也是） 2.座位椅子下方有插座可以充電，有些新型的是改到扶手，要看一下，插座包含插頭跟USB的插孔 3.座位有桌子，斜上方牆壁上有掛衣服的隱藏式掛鉤 4.車上有販賣推車，便當是有限的售完就沒了 普通自強： 1.有坐票跟站票，也可以使用電子票證 2.沒有桌子，吃便當的話比較刻苦 3.印象中也是有販賣推車 ——— 買票app遇到的坑： 1.如果接近發車時間可能有些車次不會顯示在台鐵的售票app上面，可以去櫃檯問一下該車次還有沒有空位 2.買票的時候注意是否有指定靠窗或靠走道座位，如果搭火車想看海需要看一下買的位置號碼，每種車型靠海座位不同，南下北上也有區別，可以先上網查一下（曾經想看海但坐到靠山的位置@@）</div>
   <div class="p-meta">0 則補充 · 57 讚</div>
+</a><a class="pcard" href="p/cb2aac78-9faa-4f40-aa6a-0079528bfc80" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
+  <div class="p-title">自強3000座位可以充電</div>
+  <div class="p-excerpt">每個座位底下，兩張椅子靠中間的位置，有USB跟110V的電源插座可以使用。 限電腦和手機的插頭。</div>
+  <div class="p-meta">0 則補充 · 56 讚</div>
+</a><a class="pcard" href="p/cc4c3cd6-7044-413f-ab06-d25ca9541414" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">學</span><span class="who">學習當大人的鳳</span></div>
+  <div class="p-title">分辨火龍果顏色的冷知識</div>
+  <div class="p-excerpt">火龍果不用切下去才知道裡面的顏色，用外表就可以知道是什麼顏色的肉！ 紅色果肉的外觀是比較偏圓一點的，而白色果肉的外觀則是比較長一些橢圓型的。 喜歡特定顏色的人可以參考看看</div>
+  <div class="p-meta">0 則補充 · 56 讚</div>
+</a><a class="pcard" href="p/b7053cb6-76f5-4316-ab86-b85cb2d2ebab" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">。</span><span class="who">。</span></div>
+  <div class="p-title">必勝客/拿坡里特價</div>
+  <div class="p-excerpt">想吃大披薩或炸雞覺得太貴的可以看看哈哈哈哈 注意一下他們的臉書哀居 也可以下載app看看 有時候會有199特價（大披薩跟六塊炸雞桶） 拿坡里的話上谷歌查官網按快速點餐就可以看有沒有的 在推薦那邊找一下 必勝客我覺得比較難找 實在不行你打電話過去問</div>
+  <div class="p-meta">0 則補充 · 56 讚</div>
 </a><a class="pcard" href="p/e981791d-b581-450b-a29b-3f4c1b4957e4" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
   <div class="p-title">殺蟑小妙招</div>
   <div class="p-excerpt">很多人應該都不想拿著殺蟑劑到處噴 看小強到處亂跑 所以 除了殺蟲劑跟蟑螂誘餌 如果現場看到一隻狗幹大的蟑螂 可以試著先拿掃把打暈它 然後抽幾張衛生紙 沾水之後做成一團紙糊 往他身上丟 封印它 接著把塑膠袋由內而外反過來 用手把它整坨包起來 然後塑膠袋打結 狠狠地 把它拉進垃圾車 AAAAAAAAAAAAAAAAA</div>
   <div class="p-meta">0 則補充 · 55 讚</div>
-</a><a class="pcard" href="p/cb2aac78-9faa-4f40-aa6a-0079528bfc80" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
-  <div class="p-title">自強3000座位可以充電</div>
-  <div class="p-excerpt">每個座位底下，兩張椅子靠中間的位置，有USB跟110V的電源插座可以使用。 限電腦和手機的插頭。</div>
-  <div class="p-meta">0 則補充 · 54 讚</div>
-</a><a class="pcard" href="p/b7053cb6-76f5-4316-ab86-b85cb2d2ebab" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">。</span><span class="who">。</span></div>
-  <div class="p-title">必勝客/拿坡里特價</div>
-  <div class="p-excerpt">想吃大披薩或炸雞覺得太貴的可以看看哈哈哈哈 注意一下他們的臉書哀居 也可以下載app看看 有時候會有199特價（大披薩跟六塊炸雞桶） 拿坡里的話上谷歌查官網按快速點餐就可以看有沒有的 在推薦那邊找一下 必勝客我覺得比較難找 實在不行你打電話過去問</div>
-  <div class="p-meta">0 則補充 · 54 讚</div>
-</a><a class="pcard" href="p/cc4c3cd6-7044-413f-ab06-d25ca9541414" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">學</span><span class="who">學習當大人的鳳</span></div>
-  <div class="p-title">分辨火龍果顏色的冷知識</div>
-  <div class="p-excerpt">火龍果不用切下去才知道裡面的顏色，用外表就可以知道是什麼顏色的肉！ 紅色果肉的外觀是比較偏圓一點的，而白色果肉的外觀則是比較長一些橢圓型的。 喜歡特定顏色的人可以參考看看</div>
-  <div class="p-meta">0 則補充 · 53 讚</div>
 </a><a class="pcard" href="p/d6f7b213-3510-4d5e-a155-f28181fb8b74" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">諾</span><span class="who">諾拉</span></div>
   <div class="p-title">請問有原生家庭困擾的大人小孩需要撫養費官司建議嗎🤣</div>
   <div class="p-excerpt">我在想會不會這個問題太冷門了哈哈哈 總之按照目前法規，基本上你父母只要沒有財產/不願工作，被法院判定無法自理生活，直系血親卑親屬，你本人，只要18歲以前有拿過任何一毛錢，我是指即便只是給妳麥香紅茶跟蘋果麵包20塊費用果腹、出註冊費這種程度，他有養育事實，你就有撫養義務。 建議是出社會之後每月匯款一筆金額，少少的也沒關係1-2000元，用來向法院證明你沒有棄養，功能到時候判撫養費可以輕一點🫠但基本上不能免除，免除扶養費的官司建立在他不問你死活的前提。</div>
   <div class="p-meta">0 則補充 · 52 讚</div>
+</a><a class="pcard" href="p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
+  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北車站附近的台開金融大樓1樓直接查詢 年滿18歲就可使用線上查閱服務。 費用： 中文版信用報告含信用評分，每年度可免費查一次；同年度第2次以後，每次酌收 NT$80。單獨查個人信用評分，每年度也可免費一次，第2次以後每次 NT$20</div>
+  <div class="p-meta">0 則補充 · 51 讚</div>
 </a><a class="pcard" href="p/3e6e7370-1727-4cf1-903d-8a51eef8508d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">颱風天沒地方停車？其實可以停路邊！？</div>
   <div class="p-excerpt">颱風期間，紅黃線不會自動開放停車，還是必須要等各縣市政府正式公告喔！ 各地規定不同，部分縣市會限制只有 8公尺、10公尺或15公尺以上的道路才能停放，因此還是要以當地政府公告為準～ 提醒： 即使開放，路口、公車站、消防栓、人行道、橋梁及隧道等地點仍禁止停車。車輛應順向靠邊、不可併排，並保留雙向通行及救災空間～</div>
   <div class="p-meta">0 則補充 · 50 讚</div>
-</a><a class="pcard" href="p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
-  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北車站附近的台開金融大樓1樓直接查詢 年滿18歲就可使用線上查閱服務。 費用： 中文版信用報告含信用評分，每年度可免費查一次；同年度第2次以後，每次酌收 NT$80。單獨查個人信用評分，每年度也可免費一次，第2次以後每次 NT$20</div>
-  <div class="p-meta">0 則補充 · 50 讚</div>
+</a><a class="pcard" href="p/31fb75b3-f543-4a48-998a-b51aab0067bf" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">早</span><span class="who">早安你好</span></div>
+  <div class="p-title">持郵政VISA金融卡購買高鐵車票選按「信用卡交易」免手續費</div>
+  <div class="p-excerpt">持郵政VISA金融卡至台灣高鐵「自動售票機」，購票請選按「信用卡交易」，免手續費，並享有次月現金回饋優惠(如選按「金融卡交易」，並輸入6至12位數晶片密碼，為轉帳交易，須扣手續費新臺幣15元，且無現金回饋)。</div>
+  <div class="p-meta">0 則補充 · 47 讚</div>
 </a><a class="pcard" href="p/bd72f1c6-60c7-4b44-8a35-6d14a983de11" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">L</span><span class="who">LIN</span></div>
   <div class="p-title">身體癢時該怎麼辦？或怎麼快速止癢？</div>
@@ -703,10 +717,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">死亡證明要請幾份</div>
   <div class="p-excerpt">一般來說死亡證明可以請10-20份或者更多 因為除了該跑的政府流程需要外 銀行、保險等等一家公司就需要給一張</div>
   <div class="p-meta">0 則補充 · 46 讚</div>
-</a><a class="pcard" href="p/31fb75b3-f543-4a48-998a-b51aab0067bf" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">早</span><span class="who">早安你好</span></div>
-  <div class="p-title">持郵政VISA金融卡購買高鐵車票選按「信用卡交易」免手續費</div>
-  <div class="p-excerpt">持郵政VISA金融卡至台灣高鐵「自動售票機」，購票請選按「信用卡交易」，免手續費，並享有次月現金回饋優惠(如選按「金融卡交易」，並輸入6至12位數晶片密碼，為轉帳交易，須扣手續費新臺幣15元，且無現金回饋)。</div>
+</a><a class="pcard" href="p/243037c8-fa38-4dde-876f-55daf239f385" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">綿</span><span class="who">綿綿冰小羊</span></div>
+  <div class="p-title">網路匯款須知！一個不注意小心變車手😱</div>
+  <div class="p-excerpt">現在很多人會在社群平台購買二手商品、演唱會周邊、粉絲自製商品，匯款早已是再平常不過的事 但你知道嗎？一筆看似普通的轉帳，也可能讓自己陷入不必要的麻煩。 最常見的情況是，賣家提供的不是自己的帳戶，而是「朋友」、「家人」或「工作室」的收款帳戶。這不一定代表有問題，但如果收款人事先不知道這筆款項，可能會以為自己收到不明匯款，甚至向銀行詢問，銀行也可能聯絡匯款人確認交易內容。 更嚴重的是，若不幸遇到詐騙，❗️收款帳戶可能是詐騙集團使用的帳戶❗️ 雖然正常購買商品的消費者通常不會因為付款就變成共犯，但後續可能需要向銀行或警方說明交易經過。因此，保留證據非常重要。 匯款前，請確認這 5 件事⚠️： ✔️ 確認賣家的身分與評價。 ✔️ 確認收款帳戶是否與賣家資訊一致，若不是，請詢問原因。 ✔️ 保留商品頁面、聊天紀錄、匯款證明與交易序號（最好最好就是要有備註！） ✔️ 不要因為對方催促就急著付款，先冷靜確認資訊。 ✔️ 若覺得交易有異常，寧可暫停，也不要抱著「應該沒事」的心態。 網路交易很方便，但多花 30 秒確認，往往就能避免後續數小時、甚至數天的麻煩！</div>
   <div class="p-meta">0 則補充 · 45 讚</div>
 </a><a class="pcard" href="p/b1b5835e-e8e0-4735-abe8-625730fc0a3d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">T</span><span class="who">Toastfestival</span></div>
@@ -723,6 +737,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">地球上的凡士林大妙用</div>
   <div class="p-excerpt">大家好我是來自外星球的趴嚕醬 以下分享在地球研究的小小成果 ✨凡士林大妙用✨ 1.鎖水（乳液擦完使用） 2.護髮（用了很多次，不會很油，但不要用太多） 3.卸妝（沒帶卸妝水我都拿來用） 4.嘴唇乾、皮膚乾可以擦 凡士林雖然後便宜，但成分很單純，也有很大的妙用，各位初級地球人可以研究看看唷</div>
   <div class="p-meta">0 則補充 · 44 讚</div>
+</a><a class="pcard" href="p/0884af80-018b-4b36-aa3d-417b2b4cb4f9" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span></div>
+  <div class="p-title">歡迎投稿加入「高麗菜煮蛋」那一桌！</div>
+  <div class="p-excerpt">你有什麼不為人知的小撇步嗎？歡迎投稿讓我們一起長大！</div>
+  <div class="p-meta">0 則補充 · 44 讚</div>
 </a><a class="pcard" href="p/e0d692b3-345a-41da-9744-1cb0403d1dce" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">斑</span><span class="who">斑比</span></div>
   <div class="p-title">台灣藥局買不到EVE</div>
@@ -733,11 +752,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">透過敲蘋果判斷脆蘋果或面蘋果</div>
   <div class="p-excerpt">敲起來硬硬的像是敲桌子的聲音就會是脆脆的蘋果，敲起來聲音悶悶的就是面蘋果，不會聽也可以試著問問攤販讓攤販幫忙挑選。</div>
   <div class="p-meta">0 則補充 · 43 讚</div>
-</a><a class="pcard" href="p/243037c8-fa38-4dde-876f-55daf239f385" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">綿</span><span class="who">綿綿冰小羊</span></div>
-  <div class="p-title">網路匯款須知！一個不注意小心變車手😱</div>
-  <div class="p-excerpt">現在很多人會在社群平台購買二手商品、演唱會周邊、粉絲自製商品，匯款早已是再平常不過的事 但你知道嗎？一筆看似普通的轉帳，也可能讓自己陷入不必要的麻煩。 最常見的情況是，賣家提供的不是自己的帳戶，而是「朋友」、「家人」或「工作室」的收款帳戶。這不一定代表有問題，但如果收款人事先不知道這筆款項，可能會以為自己收到不明匯款，甚至向銀行詢問，銀行也可能聯絡匯款人確認交易內容。 更嚴重的是，若不幸遇到詐騙，❗️收款帳戶可能是詐騙集團使用的帳戶❗️ 雖然正常購買商品的消費者通常不會因為付款就變成共犯，但後續可能需要向銀行或警方說明交易經過。因此，保留證據非常重要。 匯款前，請確認這 5 件事⚠️： ✔️ 確認賣家的身分與評價。 ✔️ 確認收款帳戶是否與賣家資訊一致，若不是，請詢問原因。 ✔️ 保留商品頁面、聊天紀錄、匯款證明與交易序號（最好最好就是要有備註！） ✔️ 不要因為對方催促就急著付款，先冷靜確認資訊。 ✔️ 若覺得交易有異常，寧可暫停，也不要抱著「應該沒事」的心態。 網路交易很方便，但多花 30 秒確認，往往就能避免後續數小時、甚至數天的麻煩！</div>
-  <div class="p-meta">0 則補充 · 41 讚</div>
 </a><a class="pcard" href="p/588da653-753e-4647-8a1a-2f6811c6dd3d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">2</span><span class="who">22Y畢業即失業</span></div>
   <div class="p-title">7月燃料費🛵</div>
@@ -747,37 +761,47 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">超</span><span class="who">超級德生</span></div>
   <div class="p-title">韓國租車須知</div>
   <div class="p-excerpt">1. 紅燈右轉可以但要讓行人和直行車，左轉要等左轉箭頭，除非是有藍色左轉箭頭牌子的路口綠燈就可轉（那個牌子叫做 無保護左轉），路牌或地上畫迴轉箭頭的地方才可以迴轉 2. 帶國際駕照租車 不要帶日本租車用的那個翻譯本 3. 21歲以上才能租 26歲以上租更便宜 4. 保險選最貴的那個 5. 建議租樂天或SK有全險比較好 6. 用naver map自帶神盾功能 學區不要超過30 要超速不要超過10%比較好 7. 淡季可以等出發前一段時間再租 會有租不出去的車大打折清倉撿便宜 旺季不要賭 8. 一堆車不能插USB-C頭 建議原廠充電線配一個USB-A轉接頭 就可以連car play或android 那個 9. 加油加黃色的（汽油 基本上沒在分929598） 油槍不要插太深不然會提早跳停 加滿按15萬韓幣那個 會依照加多少扣錢不會真的坑你15萬 記得關油箱 10. Naver map可一鍵找目的地附近的停車場和便宜加油站，停公營停車場比較便宜甚至免錢，迷你車停有優惠、迷你車可以停格子寫藍色字경차的格子 11. 路邊有劃線的不要停 沒劃線的基本可以停 不要停別人家門口 12. 韓國人轉彎切車道極不愛打方向燈 計程車很會闖紅燈 鬼切 很多市區路口沒有號誌燈會有轉彎車橫衝直撞 請隨時做好防禦性駕駛 13. 去濟州島的牛島不要租三輪車 容易翻車 很爛</div>
-  <div class="p-meta">0 則補充 · 40 讚</div>
+  <div class="p-meta">0 則補充 · 41 讚</div>
 </a><a class="pcard" href="p/3379c878-317d-4157-a9d9-6ea2d53e019b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">S</span><span class="who">S</span></div>
   <div class="p-title">流鼻血止血</div>
   <div class="p-excerpt">小孩12歲前頻繁流鼻血很正常， 可能每個月都會來一次， 拿橡皮筋或髮圈綁中指第二指節， 當指頭稍微變色時拆掉等待恢復正常指頭顏色， 如果還沒止血再綁回去， 這樣來來回回直到止血， 從右邊鼻孔流就綁左手， 從左邊鼻孔流就綁右手， 通常止血速度都很快， 如果很久很久很久沒有止血請自行就醫！</div>
   <div class="p-meta">0 則補充 · 39 讚</div>
-</a><a class="pcard" href="p/0884af80-018b-4b36-aa3d-417b2b4cb4f9" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span></div>
-  <div class="p-title">歡迎投稿加入「高麗菜煮蛋」那一桌！</div>
-  <div class="p-excerpt">你有什麼不為人知的小撇步嗎？歡迎投稿讓我們一起長大！</div>
-  <div class="p-meta">0 則補充 · 38 讚</div>
+</a><a class="pcard" href="p/e0e29bec-a828-4da4-b82e-703879407807" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">Š</span><span class="who">Šmïłë_筱ਂ</span></div>
+  <div class="p-title">irent租車 其實每個月都有優惠卷可以領</div>
+  <div class="p-excerpt">去google搜尋🔍 irent領卷專區 上面都有使用期限 有普通的30分鐘折抵卷以及60分鐘折抵卷 或訂閱制的會員 以及 當月壽星 按 複製兌換碼 開啟 irent的APP 點選左上角的三條線 選擇優惠管理 點右邊的折抵卷 右上方就有折抵卷兌換 貼上即可呦～ 租車前或還車前都可以確認一下帳號裡有無卷可以使用 使用irent 約快1年 近期才發現的 &gt;&lt;</div>
+  <div class="p-meta">0 則補充 · 37 讚</div>
 </a><a class="pcard" href="p/2d914990-149a-4220-9da5-6f937237a75d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">如何看高鐵等有沒有行駛？Rail Island 鐵道地圖</div>
   <div class="p-excerpt">一樣先告知此網站非官方網站，使用前還是要自己斟酌 可以直接在Google搜尋：Rail Island 鐵道地圖 我自己常出差都會看高鐵動線，不過 1.高鐵 2.台鐵 3.捷運 4.輕軌 都可以直接查看路線、停靠站與列車資訊，介面簡潔、操作直覺，比對路線時非常方便。</div>
   <div class="p-meta">0 則補充 · 36 讚</div>
+</a><a class="pcard" href="p/d8804903-cef3-4fb7-a91c-086d37dd1ff3" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
+  <div class="p-title">考機車駕照一律推薦直接報考駕訓班</div>
+  <div class="p-excerpt">報考駕訓班有幾個好處： 1. 100%搶得到名額 2. 不會報錯車種與場次 3. 上路後可以更快適應交通環境</div>
+  <div class="p-meta">0 則補充 · 35 讚</div>
 </a><a class="pcard" href="p/269bc94d-d2c6-4da6-ad73-6ea13bd84d42" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
   <div class="p-title">萌寵小知識</div>
   <div class="p-excerpt">幼貓結紮時間要選好，公貓至少要滿7個月再結紮，母貓則是5-6個月以上，公貓太早結紮容易引發泌尿道問題，輕則尿另外堵塞，重者需做尿道造口！</div>
   <div class="p-meta">0 則補充 · 35 讚</div>
-</a><a class="pcard" href="p/d8804903-cef3-4fb7-a91c-086d37dd1ff3" style="animation-delay:0.36s">
+</a><a class="pcard" href="p/49f81b0f-2b91-4689-9a6a-6627b1987ca3" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
-  <div class="p-title">考機車駕照一律推薦直接報考駕訓班</div>
-  <div class="p-excerpt">報考駕訓班有幾個好處： 1. 100%搶得到名額 2. 不會報錯車種與場次 3. 上路後可以更快適應交通環境</div>
+  <div class="p-title">機車直接左轉的方法</div>
+  <div class="p-excerpt">#如何直接左轉 一、在路口前 50 至 60 公尺準備靠左，打左轉方向燈，並靠向車道左側準備變換車道 二、找到適當時機匯入內側車道右側 三、行駛到路口中心停等，觀察對向車流，確認沒有直行車，同時評估視覺死角內是否有來車。尤其當對向也有車輛要左轉時更要注意(EP08曾提到這類死角)，死角會出現在該左轉車的右後方區域 若該路口有左轉附加車道，可以在左轉附加車道確認； 若該路口又有左轉保護時相，只要等待保護時相出現即可 四、加速左轉通過路口，在行穿線前減速 五、查看有無行人 六、通過，進入路段。不要忘記熄滅方向燈 那麼什麼是變換車道的適當時機？ #變換車道的適當時機 我們需要觀察兩個要素：車距與車速。 把後視鏡切一半，分為內半鏡與外半鏡：內半鏡觀察正後方車輛，外半鏡觀察左右側車道。 若後方車輛佔據後視鏡面積超過整個外半鏡，代表車距太近，不適合變換車道。 若可以在外半鏡看見整台後車，代表車距安全——但車距安全不代表車速安全。 接著停留 2 至 3 秒觀察該車動態： 若該車在後視鏡逐漸放大，代表它正在加速，不適合變換車道。 若該車在後視鏡沒有放大、甚至開始縮小，代表它沒有加速，可以變換車道。 看完後視鏡後，變換車道前建議轉頭確認側邊車輛，那些區域正是後視鏡的死角。 一切確認完畢後，加速並變換車道，給予後車更長的安全距離。</div>
   <div class="p-meta">0 則補充 · 33 讚</div>
 </a><a class="pcard" href="p/58dfa867-61d3-4de4-923b-7625296bbac7" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">打</span><span class="who">打狗</span></div>
   <div class="p-title">辦台胞證+護照小提醒</div>
   <div class="p-excerpt">護照大約需要兩個禮拜左右的工作時間才能領到，所以如果要護照+台胞證，至少留一個半月-兩個月的時間會比較穩妥。 如果有要去中國玩的小大人不知道怎麼辦護照跟台胞證的話，我是用Klook上門取件，他會先跟你收護照+兩寸照片 辦台胞證如果不是穿黑色（還是深色）的衣服就不給過，所以去拍大頭貼的時候除了化妝讓自己水噹噹，也要注意一下呦。</div>
-  <div class="p-meta">0 則補充 · 32 讚</div>
+  <div class="p-meta">0 則補充 · 33 讚</div>
+</a><a class="pcard" href="p/9f8dd4d0-25eb-4f75-895e-d91e59dc8fa1" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">錢</span><span class="who">錢包丟了的課程</span></div>
+  <div class="p-title">漂白水要濃縮著用（注意事項）</div>
+  <div class="p-excerpt">1. 不要直接倒進除濕機，以為可以除臭，對肺很不好的！ 2.不要直接倒進水管，容易侵蝕水管造成漏水… 3.打掃時使用注意稀釋比例！還有要戴口罩😷避免肺部受傷。 4.可以用來洗洗衣機唷，一個月洗一次吧， 按照自家洗衣機的容量調配1:100至1:500的漂白水：水比例，可以直接設定洗衣，浸泡不超過3小時後洗一洗～（上次諮詢洗機器的師傅說洗洗衣機的清潔粉末其實效果相當有限，他反而更推薦漂白水） 5.冷氣機/除濕機裡的海綿是不可更換的，卻又很容易發霉發臭，可以在關掉電源的情況下將稀釋過的漂白水噴在海綿與鰭片的位置噴灑，接著開啟冷氣調到最低溫讓冷凝水蒸發去將漂白水和髒水流掉，冷氣/除濕機可以開個4小時左右。每次感覺臭的時候都可以這樣操作。（注意不要噴到主機板！） 大概是這樣吧⋯</div>
+  <div class="p-meta">0 則補充 · 30 讚</div>
 </a><a class="pcard" href="p/f676bdba-b876-4b08-8ce1-b8ae9c701b98" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">地</span><span class="who">地瓜球</span></div>
   <div class="p-title">滷東西加蒜</div>
@@ -788,11 +812,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">關於【機車的繳費項目】 ！</div>
   <div class="p-excerpt">【強制險】 保險到期前繳費 ·所有牌&amp;電動機車 皆［必繳］ 【公路養管費（原汽燃費）】 每年7月 ·白牌/綠牌/黃牌/紅牌 ［必繳］ ·電動機車 ［目前免繳］（預期2030年起才納入） 【使用牌照稅】 每年四月繳費 ·白牌/綠牌（150cc以下） ［免繳］ ·電動機車 ［目前免繳］ （免稅優惠立法延長至2030/12/31） ·黃牌/紅牌（151cc以上） ［必繳］ 【其他項目】 ·定期排氣檢驗（免費）： 出廠滿5年燃油車，每年必免費檢驗，逾期罰500元 ·定期車輛檢驗費（200元）：黃牌/紅牌的大型重機車 出廠滿5年後，每年定期檢驗1次（滿10年後每年2次） ·車牌與行照規費： （領牌費300-400元/行照費150/可自費選號） 新車領牌付一遍，遺失或補辦才需再次付費。 - 因為剛進來的測驗有些題答有點模稜，所以補充一下。 大家可以上監理所網站探索哦！ 如果整理有誤也歡迎補充（我也是之前上去探索的）</div>
   <div class="p-meta">0 則補充 · 30 讚</div>
-</a><a class="pcard" href="p/49f81b0f-2b91-4689-9a6a-6627b1987ca3" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
-  <div class="p-title">機車直接左轉的方法</div>
-  <div class="p-excerpt">#如何直接左轉 一、在路口前 50 至 60 公尺準備靠左，打左轉方向燈，並靠向車道左側準備變換車道 二、找到適當時機匯入內側車道右側 三、行駛到路口中心停等，觀察對向車流，確認沒有直行車，同時評估視覺死角內是否有來車。尤其當對向也有車輛要左轉時更要注意(EP08曾提到這類死角)，死角會出現在該左轉車的右後方區域 若該路口有左轉附加車道，可以在左轉附加車道確認； 若該路口又有左轉保護時相，只要等待保護時相出現即可 四、加速左轉通過路口，在行穿線前減速 五、查看有無行人 六、通過，進入路段。不要忘記熄滅方向燈 那麼什麼是變換車道的適當時機？ #變換車道的適當時機 我們需要觀察兩個要素：車距與車速。 把後視鏡切一半，分為內半鏡與外半鏡：內半鏡觀察正後方車輛，外半鏡觀察左右側車道。 若後方車輛佔據後視鏡面積超過整個外半鏡，代表車距太近，不適合變換車道。 若可以在外半鏡看見整台後車，代表車距安全——但車距安全不代表車速安全。 接著停留 2 至 3 秒觀察該車動態： 若該車在後視鏡逐漸放大，代表它正在加速，不適合變換車道。 若該車在後視鏡沒有放大、甚至開始縮小，代表它沒有加速，可以變換車道。 看完後視鏡後，變換車道前建議轉頭確認側邊車輛，那些區域正是後視鏡的死角。 一切確認完畢後，加速並變換車道，給予後車更長的安全距離。</div>
-  <div class="p-meta">0 則補充 · 28 讚</div>
+</a><a class="pcard" href="p/93e21d92-5430-4ce4-85ca-61613c9f8c1d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">J</span><span class="who">JoJo</span></div>
+  <div class="p-title">肚臍髒髒的怎麼辦</div>
+  <div class="p-excerpt">肚臍有的時候會白白的，太久沒清潔還會有黑黑的污垢，只需要用嬰兒油滴兩滴在肚臍裡，等污垢軟化之後用棉花棒輕輕擦掉就會非常乾淨了！</div>
+  <div class="p-meta">0 則補充 · 29 讚</div>
 </a><a class="pcard" href="p/f3d15507-8759-4781-98a7-0688128c4e2f" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">芒</span><span class="who">芒果</span></div>
   <div class="p-title">人都到公司了卻被叫回家？</div>
@@ -817,7 +841,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A0C4D8">🍬</span><span class="who">🍬</span></div>
   <div class="p-title">怎麼拜拜</div>
   <div class="p-excerpt">初一、十五主要祭拜「家中的」神明和祖先 做生意的初二、十六祭拜當地的土地公 農曆二月初二這天是土地公的生日也就是所謂的頭牙，土地公喜歡吃甜食，拜麻糬、花生、潤餅、水果。 除夕拜天公、地基主與祖先，初一迎春、拜神明 清明節拜祖先 端午節農曆五月初五，祭拜神明、祖先與地基主 中元節農曆七月十五，俗稱普渡。包含七月初一鬼門開、中元普渡祭拜好兄弟、七月三十鬼門關，通常社區大樓會一起拜，買自己喜歡吃的去拜但切記避免祭拜諧音似「招你來」（香蕉、李子、梨子）的水果。葡萄、荔枝、龍眼等「成串」水果象徵好兄弟成群結隊報到。 重陽節：農曆九月初九，拜祖先 心意最重要不用照傳統拜三牲（雞、豬、魚），其實只要方便自己愛吃的都行，看每家每戶的選擇</div>
-  <div class="p-meta">0 則補充 · 25 讚</div>
+  <div class="p-meta">0 則補充 · 26 讚</div>
 </a><a class="pcard" href="p/3829bdb9-9055-488f-8deb-b0f7dd9e26ce" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">J</span><span class="who">Joey</span></div>
   <div class="p-title">有沒有人想看致富秘笈-怎麼從銀行越搬越多錢</div>
@@ -828,30 +852,35 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">勞保／勞退，自己眼見為實</div>
   <div class="p-excerpt">重點： 確認公司有沒有幫你加保、查勞保年資、查勞退提撥紀錄、核對投保薪資、辦離職或轉職前確認權益 查詢： 搜尋 勞保局 e 化服務系統，可以直接用 1.行動電話認證（門號本人） 2.自然人憑證、行動自然人憑證、 3.金融電子憑證等方式登入 可以查到什麼： 個人投保年資、詳細投保資料、勞工退休金個人專戶資料、給付試算與案件進度 🎉投保薪資是否正確、勞退有沒有按月提撥，也會影響未來失業給付、職災、退休金等權益歐～</div>
   <div class="p-meta">0 則補充 · 24 讚</div>
+</a><a class="pcard" href="p/be7029ea-214f-4cb7-af98-03440930852e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">萊</span><span class="who">萊姆</span></div>
+  <div class="p-title">各種家電使用心得</div>
+  <div class="p-excerpt">1.廚餘機 身為會煮飯但常常沒時間倒垃圾的人來說超級實用。 可以讓你的廚餘變咖啡色的土還沒味道（有水氣一樣會發霉ㄛ 機台密封蠻好的，東西丟進去3天沒攪掉外面沒味道。 關於丟進去的東西： 雞骨頭✅ 蛤蜊殼/蝦殼/螃蟹殼✅ 果核✅ （我上次丟了李子 攪起來聲音聽起來超可怕但他活下來了 豬大骨沒試過 ⚠️含水量多的東西會烘不乾，例如：仙草 （烘完只會變成一鍋泥 烘一次大概3-4小時 電費官方好像是說大概一次20塊 （根據40坪24小時開2台冷氣、有貓砂機、大冰箱、2台空氣清淨機還兩天打一次廚餘的頻率來說，一個月電費大概2500） 2.氣炸鍋 對於烤物炸物來說非常之實用，尤其肯德基冷掉的蛋塔。如果料理或是外食比較常有炸的烤的可以弄一台用。 3.有烤、退冰功能的微波爐 根據使用經驗來說，要烤東西可以氣炸鍋比較好吃也比較好用（有天兵用此物做了鹽焗蝦，然後蝦子一個大燒焦） 退冰功能一般般，照教學微波裡面還是結冰的，根據身邊其他人的使用經驗也覺得此功能不太好用。 如果要買微波爐其實一般功能就可以了。（或是其實我不會用）</div>
+  <div class="p-meta">0 則補充 · 23 讚</div>
 </a><a class="pcard" href="p/38a97b6d-1190-43ac-86de-3b3ca1f16775" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">入職必備-良民證</div>
   <div class="p-excerpt">正式名稱叫 警察刑事紀錄證明 主要是看你在台灣有沒有任何刑事案件。 不光是入職才需要，像出國簽證、留學、移民、海外工作、金融業或教育相關職缺都會需要 申請： 線上申請，分為郵寄及去各縣市警察局領，不受戶籍地限制。 費用： 一般每份 新台幣100元，同一次申請第2份起，如果證明內容相同，每份加收 20元。</div>
   <div class="p-meta">0 則補充 · 23 讚</div>
-</a><a class="pcard" href="p/e0e29bec-a828-4da4-b82e-703879407807" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">Š</span><span class="who">Šmïłë_筱ਂ</span></div>
-  <div class="p-title">irent租車 其實每個月都有優惠卷可以領</div>
-  <div class="p-excerpt">去google搜尋🔍 irent領卷專區 上面都有使用期限 有普通的30分鐘折抵卷以及60分鐘折抵卷 或訂閱制的會員 以及 當月壽星 按 複製兌換碼 開啟 irent的APP 點選左上角的三條線 選擇優惠管理 點右邊的折抵卷 右上方就有折抵卷兌換 貼上即可呦～ 租車前或還車前都可以確認一下帳號裡有無卷可以使用 使用irent 約快1年 近期才發現的 &gt;&lt;</div>
-  <div class="p-meta">0 則補充 · 22 讚</div>
-</a><a class="pcard" href="p/9f8dd4d0-25eb-4f75-895e-d91e59dc8fa1" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">錢</span><span class="who">錢包丟了的課程</span></div>
-  <div class="p-title">漂白水要濃縮著用（注意事項）</div>
-  <div class="p-excerpt">1. 不要直接倒進除濕機，以為可以除臭，對肺很不好的！ 2.不要直接倒進水管，容易侵蝕水管造成漏水… 3.打掃時使用注意稀釋比例！還有要戴口罩😷避免肺部受傷。 4.可以用來洗洗衣機唷，一個月洗一次吧， 按照自家洗衣機的容量調配1:100至1:500的漂白水：水比例，可以直接設定洗衣，浸泡不超過3小時後洗一洗～（上次諮詢洗機器的師傅說洗洗衣機的清潔粉末其實效果相當有限，他反而更推薦漂白水） 5.冷氣機/除濕機裡的海綿是不可更換的，卻又很容易發霉發臭，可以在關掉電源的情況下將稀釋過的漂白水噴在海綿與鰭片的位置噴灑，接著開啟冷氣調到最低溫讓冷凝水蒸發去將漂白水和髒水流掉，冷氣/除濕機可以開個4小時左右。每次感覺臭的時候都可以這樣操作。（注意不要噴到主機板！） 大概是這樣吧⋯</div>
-  <div class="p-meta">0 則補充 · 22 讚</div>
 </a><a class="pcard" href="p/cf1bcbfa-0a16-44ce-bd9d-c99d6314a2fb" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
   <div class="p-title">保險存摺，了解自己到底有什麼保障</div>
   <div class="p-excerpt">自己有做過保經可以很負責的說 先了解自己有沒有保險、整理爸媽以前幫你買的保單、確認車險是否有效，才能讓自己多份保障也不會被保險人員唬 除了查壽險等等之外 財產保險也有 保單存摺查詢平台，可以查詢像強制汽車責任保險、任意車險、火災保險等財產保險保單</div>
-  <div class="p-meta">0 則補充 · 22 讚</div>
-</a><a class="pcard" href="p/be7029ea-214f-4cb7-af98-03440930852e" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">萊</span><span class="who">萊姆</span></div>
-  <div class="p-title">各種家電使用心得</div>
-  <div class="p-excerpt">1.廚餘機 身為會煮飯但常常沒時間倒垃圾的人來說超級實用。 可以讓你的廚餘變咖啡色的土還沒味道（有水氣一樣會發霉ㄛ 機台密封蠻好的，東西丟進去3天沒攪掉外面沒味道。 關於丟進去的東西： 雞骨頭✅ 蛤蜊殼/蝦殼/螃蟹殼✅ 果核✅ （我上次丟了李子 攪起來聲音聽起來超可怕但他活下來了 豬大骨沒試過 ⚠️含水量多的東西會烘不乾，例如：仙草 （烘完只會變成一鍋泥 烘一次大概3-4小時 電費官方好像是說大概一次20塊 （根據40坪24小時開2台冷氣、有貓砂機、大冰箱、2台空氣清淨機還兩天打一次廚餘的頻率來說，一個月電費大概2500） 2.氣炸鍋 對於烤物炸物來說非常之實用，尤其肯德基冷掉的蛋塔。如果料理或是外食比較常有炸的烤的可以弄一台用。 3.有烤、退冰功能的微波爐 根據使用經驗來說，要烤東西可以氣炸鍋比較好吃也比較好用（有天兵用此物做了鹽焗蝦，然後蝦子一個大燒焦） 退冰功能一般般，照教學微波裡面還是結冰的，根據身邊其他人的使用經驗也覺得此功能不太好用。 如果要買微波爐其實一般功能就可以了。（或是其實我不會用）</div>
+  <div class="p-meta">0 則補充 · 23 讚</div>
+</a><a class="pcard" href="p/04dc3b14-7070-4c2e-82c8-3a5a2d2b5b83" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">地</span><span class="who">地瓜超人</span></div>
+  <div class="p-title">機車除了換機油外，還需要換什麼油呢？</div>
+  <div class="p-excerpt">大家知道嗎？ 機車（速可達）除了需要換機油外 另一個很重要的就是更換齒輪油！ 什麼是齒輪油呢？ 齒輪油的作用是：潤滑後輪傳動箱裡面的齒輪。 如果長期沒有更換齒輪油的話，會導致傳動齒輪因潤滑不足導致磨損，進而加速的變速箱損壞，最終影響機車使用壽命！ 因此建議大家在每騎行2～3000公里時，就需要檢查並更換齒輪油囉！</div>
+  <div class="p-meta">0 則補充 · 21 讚</div>
+</a><a class="pcard" href="p/7851bbd5-fa46-4f54-9dcd-26a2a0ddfeb2" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
+  <div class="p-title">台灣高鐵每月送兩次88折優惠</div>
+  <div class="p-excerpt">於「台灣高鐵」APP（白色的）內兌換，路徑如下： TGO會員-兌換專區-兌換車票-選擇優惠方案（注意月份）-填妥下方及後續資料。 記下訂位代號（8碼）-打開「T-EX行動購票」（橘色的）-載入訂位-輸入資料-取票-大功告成！ 提醒：非疏運期為週一到四，不包含連假，詳情要看高鐵公告。</div>
+  <div class="p-meta">0 則補充 · 21 讚</div>
+</a><a class="pcard" href="p/25572ef0-1971-4354-a49a-0349ea554232" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">我</span><span class="who">我不想當大人</span></div>
+  <div class="p-title">Line Pay在711/全家只能用這些銀行</div>
+  <div class="p-excerpt">LINE Pay 在兩大超商只能用這些信用卡 LINE Pay 有個缺點。 在 7-ELEVEN 和全家超商，只能綁定以下銀行的信用卡付款。 • 7-ELEVEN：中信、富邦、聯邦、台新、國泰。 • 全家：中信、富邦、聯邦、台新。 簡單記的話，就是只能用中信、富邦、聯邦、台新四家銀行信用卡，7-ELEVEN 多了國泰。￼ 使用 LINE Pay 在711/全家消費時，不適用於代收與代付服務： 無法取貨付款：網購包裹、蝦皮等貨到付款全家僅收現金，無法使用 LINE Pay。 無法代收繳費：水電費、瓦斯費、停車費、交通罰單、學雜費、各類稅款或電信費皆無法使用 LINE Pay 支付。 不提供一般消費點數回饋：通常透過 LINE Pay 消費，不享有額外的 LINE POINTS 基本回饋（除非有搭上特定檔期活動）。</div>
   <div class="p-meta">0 則補充 · 20 讚</div>
 </a><a class="pcard" href="p/0d4450be-925f-4c8d-916a-4825cafc4e7b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">登</span><span class="who">登</span></div>
@@ -863,30 +892,50 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">突然想踏入婚姻的墳墓該怎麼辦</div>
   <div class="p-excerpt">今天如果真的很確定想跟某個人結婚 最簡單的就是雙方帶著身份證、150元跟兩個證婚人去戶政事務所登記結婚，也可以自己簽完結婚證書預約戶政事務所的結婚登記。 如果雙方家人要走儀式流程大致如下； （我之前在飯店做婚禮企劃走的算簡化版，要再更傳統就要找家中長輩討論，僅提供大概要幹嗎不要讓自己很無措焦慮） 男方提親（簡單來說就是雙方家人見面吃飯）過程中討論 1.聘禮（錢、金飾、嫁妝等物質東西，一般來說收了聘金女生就一定要帶嫁妝才公平） 2.餅數量（男方要買多少餅、中餅還西餅） 3.要有哪些儀式哪裡辦、文定迎娶宴客要一起還分開、女方要不要歸寧、大概分別的桌數 4.女方若要文定迎娶，要不要好命婆、要不要喝茶、誰要喝茶、要不要帶金飾、要不要喝茶禮、幾台禮車、要不要拜別父母等等，細項可以用google 查得到 5.要不要去算八字拿好日子，若「雙方家長」不反對農曆七月飯店餐廳都會有不錯的價格及餐點升級 6.決定要在哪裡辦；現在很多餐廳、婚宴會館甚至熱炒店都可以辦桌菜，餐廳或者婚宴會館基本上都有儀式的包套（可以帶著走文定迎娶宴客的儀式）也有婚禮管家照顧新娘的移動管理婚禮儀式的進行同時也可以請他們提供配合的主持人 找飯店同時就也同時找婚攝拍婚紗 連鎖的通常可以也提供婚禮當天的攝影、新娘秘書及服裝 拍起來有寫就比較流水線的照片 也可以找個人工作室但就比較麻煩不一定有配合的新秘跟婚紗 但拍照起來可能就比較有特色</div>
   <div class="p-meta">0 則補充 · 19 讚</div>
-</a><a class="pcard" href="p/7851bbd5-fa46-4f54-9dcd-26a2a0ddfeb2" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
-  <div class="p-title">台灣高鐵每月送兩次88折優惠</div>
-  <div class="p-excerpt">於「台灣高鐵」APP（白色的）內兌換，路徑如下： TGO會員-兌換專區-兌換車票-選擇優惠方案（注意月份）-填妥下方及後續資料。 記下訂位代號（8碼）-打開「T-EX行動購票」（橘色的）-載入訂位-輸入資料-取票-大功告成！ 提醒：非疏運期為週一到四，不包含連假，詳情要看高鐵公告。</div>
-  <div class="p-meta">0 則補充 · 16 讚</div>
+</a><a class="pcard" href="p/bac8ebd0-a8a8-4a21-9243-1bdadfb8c05b" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">您</span><span class="who">您今夜的呼喚，就是我服務的開端</span></div>
+  <div class="p-title">其實台鐵也有會員點數</div>
+  <div class="p-excerpt">如果各位用台鐵app訂票，每次訂票都會有點數，可以用這個點數折抵下一次的訂票折扣(2點換1元)，也可以拿來換台鐵便當</div>
+  <div class="p-meta">0 則補充 · 18 讚</div>
+</a><a class="pcard" href="p/264d8ade-f1d3-435c-8b68-850f9a4b8bf6" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">三</span><span class="who">三叔公</span></div>
+  <div class="p-title">冷氣可以幫助環境衛生 提升電器壽命</div>
+  <div class="p-excerpt">以前的大人都說冷氣很浪費電 捨不得開 但其實開冷氣反而更省而且更舒適喔！ 1. 控制環境濕度： 濕度，是黴菌、細菌滋生的溫床，環境濕度長期過高身體容易引發過敏、感染、心情煩悶等，電器也會因潮濕容易故障、短路引發火災，牆壁會長壁癌、牆角會有黑斑 2. 控制溫度： 溫度過高，會讓睡眠品質下降，長期睡不好會引發更多健康問題，電器也會縮短壽命許多 開啟冷氣一年電費也許會多三五千塊 但省下來的 例如電器維修費 還有自身健康狀況 根本無價之寶啊</div>
+  <div class="p-meta">0 則補充 · 17 讚</div>
 </a><a class="pcard" href="p/9e24216b-99bb-4ac3-b9c5-7b689e1abaec" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Chengggg</span></div>
   <div class="p-title">擦傷怎麼處理傷口</div>
   <div class="p-excerpt">準備：棉棒 石蠟紗布 普通紗布 透氣膠帶 生理食鹽水 先清潔傷口 再蓋上石蠟紗布 再蓋上普通紗布（厚度依組織液分泌量而異 受傷初期組織液分泌量大 可以多蓋幾層以免滲出來）最後用透氣膠帶黏好 如果沒有石蠟紗布 可以去買外傷藥膏（利膚、使皮新等等）塗一層在傷口上 再蓋上普通紗布 只是這樣換藥時會比較痛 紗布容易沾黏在傷口上 （純屬個人的經驗分享，不代表任何醫療建議。）</div>
   <div class="p-meta">0 則補充 · 16 讚</div>
+</a><a class="pcard" href="p/4158874b-2ac6-491e-a522-ad768786b663" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">栗</span><span class="who">栗</span></div>
+  <div class="p-title">🍳煮東西鍋子起火怎麼辦？</div>
+  <div class="p-excerpt">🔥油鍋起火安全自救 6 步驟 遇到狀況別慌，保持冷靜照步驟做： 1. 保護雙手 趕快戴上隔熱手套，或是用「濕抹布」把手纏好，避免等一下靠太近被燙傷。 2. 「平移」蓋上鍋蓋（關鍵！） 拿起鍋蓋，用平移滑動的方式，慢慢從側邊把鍋子完全蓋住來窒息火勢。 ❌ 不可從正上方直接往下壓，火舌往上竄會嚴重燒傷！ 3. 關閉瓦斯 快速看一眼，確認瓦斯爐開關附近沒有火苗後，小心地把瓦斯關掉，截斷火源。 4. 濕布覆蓋 拿幾條「完全沾濕」的抹布，平舖蓋在鍋蓋上，放上去之後就不要再去動它。 5. 靜置與初步降溫 ❌ 不能馬上掀開鍋蓋！空氣跑進去會導致死灰復燃。在旁邊觀察至少 3 分鐘，確認已經沒有明火後，可以嘗試從遠處用水管朝鍋蓋灑水降溫。 6. 泡水徹底冷卻 耐心等鍋具溫度大幅下降後，把它端進洗碗槽。打開水龍頭，一樣用 平移 的方式拿開鍋蓋，讓整個鍋子泡滿水。 💡 萬一沒有鍋蓋怎麼辦？ 如果手邊剛好沒有鍋蓋，請直接用乾粉滅火器來撲滅火勢。 ⚠️ 致命禁忌：絕對不能直接潑水！ 明火還沒撲滅前，千萬別把水潑進鍋裡。水遇到高溫熱油會瞬間炸開，火跟著油噴濺出來，噴到哪就會燒到哪，非常危險！ 看到脆友分享鍋子起火怎麼辦的教學，本來只是想複製給家人看，但也許會有人跟我一樣需要就貼上來！感謝消防員脆友分享，很想許願百科可以增加更多怎麼辦的系列（火災受困、大地震、玩水被水流捲入溺水、雨天開車飄移、煞車失靈…等等🥹</div>
+  <div class="p-meta">0 則補充 · 15 讚</div>
+</a><a class="pcard" href="p/31cb00a9-89bd-4dc0-8444-5c16052f11d4" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">瑄</span><span class="who">瑄瑄</span></div>
+  <div class="p-title">家中70歲以上長者換照</div>
+  <div class="p-excerpt">70-74歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 換照後有效期限至75歲 75歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 （3）認知功能測驗 每3年重新換照 安全教育課程需至監理站預約上課 體格檢查可去附近診所或衛生所做詢問 從115年起有2年緩衝期 大家可以帶家中長者去換照喔</div>
+  <div class="p-meta">0 則補充 · 15 讚</div>
 </a><a class="pcard" href="p/0815d6a3-5cb8-426f-b95f-33e4fcf86039" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">咪</span><span class="who">咪咪</span></div>
   <div class="p-title">愛吃香瓜的！</div>
   <div class="p-excerpt">香瓜挑選果皮表面無黑點（蠅蟲產卵，會導致果肉腐爛）、香瓜底部無汁液、開裂的（放室溫太久以後會爆炸哦） 還有這幾個月就是香瓜的產季了！也是可以推薦購買的水果！</div>
   <div class="p-meta">0 則補充 · 15 讚</div>
-</a><a class="pcard" href="p/93e21d92-5430-4ce4-85ca-61613c9f8c1d" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">J</span><span class="who">JoJo</span></div>
-  <div class="p-title">肚臍髒髒的怎麼辦</div>
-  <div class="p-excerpt">肚臍有的時候會白白的，太久沒清潔還會有黑黑的污垢，只需要用嬰兒油滴兩滴在肚臍裡，等污垢軟化之後用棉花棒輕輕擦掉就會非常乾淨了！</div>
+</a><a class="pcard" href="p/65112121-359e-437e-977b-60d880d96ca4" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
+  <div class="p-title">不小心成為障礙者做這些幫你重啟生活</div>
+  <div class="p-excerpt">希望各位大人們都不會用到，但是當你或你的家人不小心遇到了，可以減少慌張和摸索的時間。 天有不測風雲，人有旦夕禍福，一個意外，生一場病，輕則讓你必須花醫療費住院、吃一堆藥、開刀等等，嚴重者造成死亡或身心障礙，尤其剛開始成為障礙者，是最令人無助和擔心的，所以在面對生活巨變的同時，有這份百科秘笈，即使有些東西需要改變，但也能夠心裡有個底，按部就班回到生活正軌。 步驟一：一定要到公所去拿鑒定本 發現自己或家人成為障礙者，第一時間請先到公所去拿鑒定本，才能接下去走完後續流程。 步驟二：到醫院請醫師填寫鑒定本和開診斷書 這是申請身心障礙證明很重要的一步，要找地區醫院以上的醫院比較保險，要找對科別，。 步驟三：回公所矯鑒定本，開始等待申請障礙證明的流程。 步驟4：領回身心障礙手冊，開始申請需要的重建和協助資源。 要注意手冊效期，尤其是第一次申請，最長為五年，之後需重新跑流程，若醫師認為你的障礙永久無法復原，才會在第二次為你申請永久效期手冊。 步驟五：開始找資源 政府資源部分應各地區不同，分以下類別： 補助類：健保補助、生活補助、租屋補助、學雜費補助、輔具補助 津貼類：生活津貼等 交通類：身心障礙停車位、愛心卡（涵陪伴卡）、計程車補助、愛心票、富康巴士 照顧服務類：家庭支持者喘息服務、長期照顧、住宿是機構、日間作業設施、社區是住宿服務、自立生活支持服務個人助理、職場個人助理、臨時及短期照顧 重建課程類：就業重建、生活重建、心理重建 其他類：自立生活服務同儕支持員、輔具租用和評估、手語翻譯員、聽打服務等 如果有需要長期就醫者，可一併申請重大傷病卡可減輕就醫負擔。 民間資源：很多基金會、協會、團體等，都有各式各樣的民間資源，像是：視力協助員、休閒課程、職業訓練課程、導盲志工、導盲犬申請、聯誼活動等，也有很多的政府的服務資源，也都會讓這些民間單位來協助，大家也可以一併的準備。 可上各縣市政府社會局、衛生福利部社會及家庭署、勞動部、各縣市政府勞工局、教育部、各縣市政府教育局查詢相關福利和保障措施，在申請手冊時，也可向公所索取協助需求簡介的紙本內容，就能方便準確快速地尋找需要的資源喔 步驟6：最重要的是，溫柔接住自己和家人的情緒，維持穩定正常的生活，吃飽飽睡飽飽，只能說，儘管會有情緒真的很正常，也需要慢慢迎接障礙生活，為自己未來的人生打算。 若有不足之處，歡迎大家補充指教，畢竟障礙的類別和面向實在太多了，也有很多的資源是自己沒接觸到的，也希望我的第一篇秘技投稿，能夠幫助到需要的人。</div>
   <div class="p-meta">0 則補充 · 14 讚</div>
-</a><a class="pcard" href="p/31cb00a9-89bd-4dc0-8444-5c16052f11d4" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">瑄</span><span class="who">瑄瑄</span></div>
-  <div class="p-title">家中70歲以上長者換照</div>
-  <div class="p-excerpt">70-74歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 換照後有效期限至75歲 75歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 （3）認知功能測驗 每3年重新換照 安全教育課程需至監理站預約上課 體格檢查可去附近診所或衛生所做詢問 從115年起有2年緩衝期 大家可以帶家中長者去換照喔</div>
+</a><a class="pcard" href="p/43a26e44-ae23-415e-90d1-c7067be30365" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">小</span><span class="who">小顏</span></div>
+  <div class="p-title">注意瓦斯筒期限（每年記得更換）</div>
+  <div class="p-excerpt">平時家裡煮飯次數不多， 所以一年以上沒有更換瓦斯筒了， 因為瓦斯過期了，老闆說需要多收取檢驗費用！ 所以提醒大家瓦斯要注意不要超過期限了， 可以先請瓦斯行的人幫你換新的瓦斯桶， 至於沒有用完的瓦斯可以扣錢！！！</div>
+  <div class="p-meta">0 則補充 · 14 讚</div>
+</a><a class="pcard" href="p/98aa9230-1621-48c5-a8c3-d135c13fbc14" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">笨</span><span class="who">笨蛋</span></div>
+  <div class="p-title">吃藥</div>
+  <div class="p-excerpt">今天學到教訓 真的一定要吃飽才能吃西藥 西藥藥效很強 拔智齒後沒吃飽再吃藥 今天從2.30不舒服到9. 吃藥需要間隔4～6小時</div>
   <div class="p-meta">0 則補充 · 14 讚</div>
 </a><a class="pcard" href="p/e3c8a4dc-fd0b-4a5a-9907-e219268b880c" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Charles</span></div>
@@ -898,20 +947,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">一點點修繕技巧</div>
   <div class="p-excerpt">更換水龍頭起泡器時，如果鉗子轉不開，可以嘗試下列技巧 1.刮除交界處水垢、髒污 2.隔著洗臉巾、抹布再夾 3.往交界處上一點油 螺絲崩牙的時候可以放一節橡皮筋或貼電火布在牙處再轉，如果是電器、3C產品較小螺絲，可以使用橡皮擦屑 組裝櫃子或其他需要槌子但沒有的時候可以用老虎鉗平面處敲擊 使用任何膠帶時，將尾巴稍微對折留頭，下次用的時候你會感謝你自己 如果沒有除鏽劑或不方便買，可以用可樂除鏽 除鏽後將可樂清乾淨記得保持乾燥，也可以上油儘量隔絕水分 組裝任何物品前記得看說明書！！！！</div>
   <div class="p-meta">0 則補充 · 14 讚</div>
-</a><a class="pcard" href="p/43a26e44-ae23-415e-90d1-c7067be30365" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">小</span><span class="who">小顏</span></div>
-  <div class="p-title">注意瓦斯筒期限（每年記得更換）</div>
-  <div class="p-excerpt">平時家裡煮飯次數不多， 所以一年以上沒有更換瓦斯筒了， 因為瓦斯過期了，老闆說需要多收取檢驗費用！ 所以提醒大家瓦斯要注意不要超過期限了， 可以先請瓦斯行的人幫你換新的瓦斯桶， 至於沒有用完的瓦斯可以扣錢！！！</div>
-  <div class="p-meta">0 則補充 · 13 讚</div>
-</a><a class="pcard" href="p/98aa9230-1621-48c5-a8c3-d135c13fbc14" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">笨</span><span class="who">笨蛋</span></div>
-  <div class="p-title">吃藥</div>
-  <div class="p-excerpt">今天學到教訓 真的一定要吃飽才能吃西藥 西藥藥效很強 拔智齒後沒吃飽再吃藥 今天從2.30不舒服到9. 吃藥需要間隔4～6小時</div>
-  <div class="p-meta">0 則補充 · 13 讚</div>
-</a><a class="pcard" href="p/bac8ebd0-a8a8-4a21-9243-1bdadfb8c05b" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">您</span><span class="who">您今夜的呼喚，就是我服務的開端</span></div>
-  <div class="p-title">其實台鐵也有會員點數</div>
-  <div class="p-excerpt">如果各位用台鐵app訂票，每次訂票都會有點數，可以用這個點數折抵下一次的訂票折扣(2點換1元)，也可以拿來換台鐵便當</div>
+</a><a class="pcard" href="p/5d3d930e-c94d-4485-aa56-7ccac84f8acc" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
+  <div class="p-title">保存密碼的方法</div>
+  <div class="p-excerpt">不知道大家有沒有用過這樣的情況： 1. 時不時忘記使用者名稱/帳號密碼 2. 為了避免忘記密碼所以都用一樣的 3. 各網域密碼條件不同（大小寫、數字、特殊符號），所以還是會搞混 4. 相同密碼使用頻率過高結果被盜帳號 5. 密碼保存的地方太多（Apple, Google），資料超亂 推薦大家使用密碼管理APP（我自己是用Bitwarden, 也有人推One Password) 使用密碼管理app的好處： 1. 可以隨機生成密碼，且條件可以自行設定（字數、字元等） 2. 可以幫你記錄密碼，進入網頁自動帶入，所以只需要記一組密碼 3. 有些有金鑰功能，可以直接登入 4. 可以紀錄個人資訊，如信用卡（卡號、到期日、安全碼）、公司（地址、統編）、個資（住址、護照號碼等） 5. 可以在手機與電腦同時共用資料庫 推薦給大家的祕技，大家也歡迎底下分享用過哪些密碼管理工具～</div>
   <div class="p-meta">0 則補充 · 12 讚</div>
 </a><a class="pcard" href="p/eca877bc-8261-44ac-bd89-7cd2ffd570e1" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">W</span><span class="who">Woolly</span></div>
@@ -923,31 +962,21 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">信用卡</div>
   <div class="p-excerpt">現在哪張信用卡最好用！想要再辦一張 我很少出國 都是國內消費～ 外送 網購 平常出門都是刷卡居多</div>
   <div class="p-meta">0 則補充 · 11 讚</div>
-</a><a class="pcard" href="p/04dc3b14-7070-4c2e-82c8-3a5a2d2b5b83" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">地</span><span class="who">地瓜超人</span></div>
-  <div class="p-title">機車除了換機油外，還需要換什麼油呢？</div>
-  <div class="p-excerpt">大家知道嗎？ 機車（速可達）除了需要換機油外 另一個很重要的就是更換齒輪油！ 什麼是齒輪油呢？ 齒輪油的作用是：潤滑後輪傳動箱裡面的齒輪。 如果長期沒有更換齒輪油的話，會導致傳動齒輪因潤滑不足導致磨損，進而加速的變速箱損壞，最終影響機車使用壽命！ 因此建議大家在每騎行2～3000公里時，就需要檢查並更換齒輪油囉！</div>
-  <div class="p-meta">0 則補充 · 10 讚</div>
 </a><a class="pcard" href="p/3c86953b-789b-41c8-9a81-329f6ee09363" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">笨</span><span class="who">笨蛋</span></div>
   <div class="p-title">關於金針菇</div>
   <div class="p-excerpt">金針菇吃太多會堵住自己 會想吐！</div>
   <div class="p-meta">0 則補充 · 9 讚</div>
-</a><a class="pcard" href="p/65112121-359e-437e-977b-60d880d96ca4" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
-  <div class="p-title">不小心成為障礙者做這些幫你重啟生活</div>
-  <div class="p-excerpt">希望各位大人們都不會用到，但是當你或你的家人不小心遇到了，可以減少慌張和摸索的時間。 天有不測風雲，人有旦夕禍福，一個意外，生一場病，輕則讓你必須花醫療費住院、吃一堆藥、開刀等等，嚴重者造成死亡或身心障礙，尤其剛開始成為障礙者，是最令人無助和擔心的，所以在面對生活巨變的同時，有這份百科秘笈，即使有些東西需要改變，但也能夠心裡有個底，按部就班回到生活正軌。 步驟一：一定要到公所去拿鑒定本 發現自己或家人成為障礙者，第一時間請先到公所去拿鑒定本，才能接下去走完後續流程。 步驟二：到醫院請醫師填寫鑒定本和開診斷書 這是申請身心障礙證明很重要的一步，要找地區醫院以上的醫院比較保險，要找對科別，。 步驟三：回公所矯鑒定本，開始等待申請障礙證明的流程。 步驟4：領回身心障礙手冊，開始申請需要的重建和協助資源。 要注意手冊效期，尤其是第一次申請，最長為五年，之後需重新跑流程，若醫師認為你的障礙永久無法復原，才會在第二次為你申請永久效期手冊。 步驟五：開始找資源 政府資源部分應各地區不同，分以下類別： 補助類：健保補助、生活補助、租屋補助、學雜費補助、輔具補助 津貼類：生活津貼等 交通類：身心障礙停車位、愛心卡（涵陪伴卡）、計程車補助、愛心票、富康巴士 照顧服務類：家庭支持者喘息服務、長期照顧、住宿是機構、日間作業設施、社區是住宿服務、自立生活支持服務個人助理、職場個人助理、臨時及短期照顧 重建課程類：就業重建、生活重建、心理重建 其他類：自立生活服務同儕支持員、輔具租用和評估、手語翻譯員、聽打服務等 如果有需要長期就醫者，可一併申請重大傷病卡可減輕就醫負擔。 民間資源：很多基金會、協會、團體等，都有各式各樣的民間資源，像是：視力協助員、休閒課程、職業訓練課程、導盲志工、導盲犬申請、聯誼活動等，也有很多的政府的服務資源，也都會讓這些民間單位來協助，大家也可以一併的準備。 可上各縣市政府社會局、衛生福利部社會及家庭署、勞動部、各縣市政府勞工局、教育部、各縣市政府教育局查詢相關福利和保障措施，在申請手冊時，也可向公所索取協助需求簡介的紙本內容，就能方便準確快速地尋找需要的資源喔 步驟6：最重要的是，溫柔接住自己和家人的情緒，維持穩定正常的生活，吃飽飽睡飽飽，只能說，儘管會有情緒真的很正常，也需要慢慢迎接障礙生活，為自己未來的人生打算。 若有不足之處，歡迎大家補充指教，畢竟障礙的類別和面向實在太多了，也有很多的資源是自己沒接觸到的，也希望我的第一篇秘技投稿，能夠幫助到需要的人。</div>
-  <div class="p-meta">0 則補充 · 8 讚</div>
 </a><a class="pcard" href="p/987c9859-aac1-4bae-8132-bffb49c4e5ab" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Charles</span></div>
   <div class="p-title">健康動物的標準臨床表現應具備以下特徵：</div>
   <div class="p-excerpt">Mentation（精神狀態）：Bright, alert, and responsive (BAR，精神良好且反應敏銳)，對環境刺激有正常交互作用。 Body condition score（體態評分）：WSAVA標準 4-5/9 或 3/5；肋骨可輕易觸摸但不可視。 Muscle condition score（肌肉評分）：無 Muscle atrophy（肌肉萎縮），脊椎與骨盆肌群飽滿。 Integument（皮膚外皮系統）：Hair coat（毛髮）具光澤，無 Alopecia（脫毛）、Erythema（紅斑）、Pruritus（搔癢）或 Scaling（皮屑）。 Posture and Gait（姿勢與步態）：正常負重，無 Ataxia（共濟失調）、Paresis（輕癱）或 Head tilt（歪頭）。 Mucous membrane（黏膜）：Pink（粉紅色），Capillary refill time（微血管回充時間）&lt; 2秒。</div>
   <div class="p-meta">0 則補充 · 8 讚</div>
-</a><a class="pcard" href="p/5d3d930e-c94d-4485-aa56-7ccac84f8acc" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
-  <div class="p-title">保存密碼的方法</div>
-  <div class="p-excerpt">不知道大家有沒有用過這樣的情況： 1. 時不時忘記使用者名稱/帳號密碼 2. 為了避免忘記密碼所以都用一樣的 3. 各網域密碼條件不同（大小寫、數字、特殊符號），所以還是會搞混 4. 相同密碼使用頻率過高結果被盜帳號 5. 密碼保存的地方太多（Apple, Google），資料超亂 推薦大家使用密碼管理APP（我自己是用Bitwarden, 也有人推One Password) 使用密碼管理app的好處： 1. 可以隨機生成密碼，且條件可以自行設定（字數、字元等） 2. 可以幫你記錄密碼，進入網頁自動帶入，所以只需要記一組密碼 3. 有些有金鑰功能，可以直接登入 4. 可以紀錄個人資訊，如信用卡（卡號、到期日、安全碼）、公司（地址、統編）、個資（住址、護照號碼等） 5. 可以在手機與電腦同時共用資料庫 推薦給大家的祕技，大家也歡迎底下分享用過哪些密碼管理工具～</div>
-  <div class="p-meta">0 則補充 · 6 讚</div>
+</a><a class="pcard" href="p/976bc8fa-3cb4-478e-ae82-ee6db5464a65" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">超</span><span class="who">超級貓咪</span></div>
+  <div class="p-title">【犬貓小知識-認識呼吸次數】</div>
+  <div class="p-excerpt">覺得貓貓狗狗喘嗎？ 有沒有一個標準可以評估呢？ 這時可以嘗試計算每分鐘呼吸次數 呼吸次數為一吸一吐算一下 來計算出每分鐘的呼吸次數 拿一個計時器計15秒，算出來的次數再乘以4 例：15秒吸吐6次，每分鐘則為6*4=24下 一般來說「休息狀態」40以下較佳 也可以觀察有無「張口」呼吸 舌頭顏色有沒有「變紫」 祝貓貓狗狗們都健康</div>
+  <div class="p-meta">0 則補充 · 7 讚</div>
 </a><a class="pcard" href="p/9c289040-0402-4b0b-96ec-a2cc4db96fbb" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">有</span><span class="who">有方向感的沙漠之舟</span></div>
   <div class="p-title">為什麼今年的七夕情人節是8/19？</div>
@@ -958,6 +987,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">牙齒問題</div>
   <div class="p-excerpt">想問問牙齒重建比較好還是植牙比較好 從小沒照顧牙齒都蛀牙蛀光光了 然後就是用牙齒有保險嗎</div>
   <div class="p-meta">0 則補充 · 6 讚</div>
+</a><a class="pcard" href="p/bd43e340-c2e3-4f7c-865d-f80076c5bc27" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
+  <div class="p-title">障礙大人交通：第一次申請和乘坐富康巴士就上手</div>
+  <div class="p-excerpt">什麼是富康巴士 各縣市政府社會局和交通局為了讓行動不便的障礙朋友和需要長期照顧服務的失能長者方便維持正常生活和社會參與，特別設計的交通方式，，例如輪椅停放和固定點，設備，鐵板，司機也需要服務障礙者的S O P訓練才能上路，有費用補助，對於行動不便的障礙朋友來說儼然成為非常舒適安心的交通方式，以下整理搭乘富康巴士前一定要知道的和注意的重點，讓各位大人第一次申請就上手。 1只要有身障證明，就能申請富康巴士嗎 不是，重度以上的視覺障礙和肢體障礙者全身障礙者（例如植物人）等可以申請喔。 2想申請第一趟車之前，有需要做什麼嗎？ 先上將要申請的縣市政府社會局網站，上面會提供電話，可以電話申請，有些甚至也提供網站，可以直接上網依照步驟操作完成申請，當日、隔日或者下一個工作日需留意電話，會有專人打電話核對資料，若已經開通會立刻打電話通知你。 3訂車前要特別留意的事情 1申請順位：富康巴士的申請順位通常會依照戶籍和障礙程度排序，所以如果申請的縣市不是在戶籍縣市，順位也會比較後面。申請的順位不僅牽動可以提前幾天申請，甚至還會影響能不能成功訂到車、每日申請次數甚至是服務範圍，有時候違規次數過多也會對順位有直接的影響各縣市規定不同。 2哪些訂車目的可以申請，各縣市不同，有的縣市會要求就醫優先，有的縣市只要有需求就能申請，要看清楚 3服務範圍：通常會要求起點或者終點有一端要在訂車的縣市，例如台北市的富康巴士會要求起點或終點其中一點在台北市，有些縣市只要符合有一端在申請縣市，服務範圍是有跨到外縣市的，有時候服務範圍也會因為順位而有所不同 4每天可以申請幾趟，通常如果去回都使用，一天就能用掉兩趟了。 5可預約幾天後的車，或者幾天前預約才會有車，例如可預約五個工作天以後的車，且最晚需在三天前預約完成。有些區域也會開放臨時車，若有必要也能使用，只是不一定能夠約到車。 6取消政策、等候時間、違規罰則要特別留意，各區會有所不同，可以詢問客服或者上網站查詢。 7費用：免費還是部分負擔，部分負擔費率怎麼算，通常都可以愛心卡或者線金付款。 特別注意，如果你在18歲以前有申請富康巴士，滿18歲後需要繼續使用，記得用電話或者網站修改一些聯絡資料和重要資訊，未來才能自己全權管理訂車喔。畢竟有沒有訂到車，尤其是臨時車，管理單位是會用電話和簡訊通知的喔。</div>
+  <div class="p-meta">0 則補充 · 4 讚</div>
 </a><a class="pcard" href="p/38fb9f51-10db-4dde-939f-f5c90b60eab6" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">新</span><span class="who">新生社畜兒</span></div>
   <div class="p-title">新鮮人</div>
@@ -973,42 +1007,47 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">關於職場性騷擾</div>
   <div class="p-excerpt">我想知道關於職場男女之間的互都怎樣才不算性騷擾，或是如何的言語</div>
   <div class="p-meta">0 則補充 · 4 讚</div>
-</a><a class="pcard" href="p/bd43e340-c2e3-4f7c-865d-f80076c5bc27" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
-  <div class="p-title">障礙大人交通：第一次申請和乘坐富康巴士就上手</div>
-  <div class="p-excerpt">什麼是富康巴士 各縣市政府社會局和交通局為了讓行動不便的障礙朋友和需要長期照顧服務的失能長者方便維持正常生活和社會參與，特別設計的交通方式，，例如輪椅停放和固定點，設備，鐵板，司機也需要服務障礙者的S O P訓練才能上路，有費用補助，對於行動不便的障礙朋友來說儼然成為非常舒適安心的交通方式，以下整理搭乘富康巴士前一定要知道的和注意的重點，讓各位大人第一次申請就上手。 1只要有身障證明，就能申請富康巴士嗎 不是，重度以上的視覺障礙和肢體障礙者全身障礙者（例如植物人）等可以申請喔。 2想申請第一趟車之前，有需要做什麼嗎？ 先上將要申請的縣市政府社會局網站，上面會提供電話，可以電話申請，有些甚至也提供網站，可以直接上網依照步驟操作完成申請，當日、隔日或者下一個工作日需留意電話，會有專人打電話核對資料，若已經開通會立刻打電話通知你。 3訂車前要特別留意的事情 1申請順位：富康巴士的申請順位通常會依照戶籍和障礙程度排序，所以如果申請的縣市不是在戶籍縣市，順位也會比較後面。申請的順位不僅牽動可以提前幾天申請，甚至還會影響能不能成功訂到車、每日申請次數甚至是服務範圍，有時候違規次數過多也會對順位有直接的影響各縣市規定不同。 2哪些訂車目的可以申請，各縣市不同，有的縣市會要求就醫優先，有的縣市只要有需求就能申請，要看清楚 3服務範圍：通常會要求起點或者終點有一端要在訂車的縣市，例如台北市的富康巴士會要求起點或終點其中一點在台北市，有些縣市只要符合有一端在申請縣市，服務範圍是有跨到外縣市的，有時候服務範圍也會因為順位而有所不同 4每天可以申請幾趟，通常如果去回都使用，一天就能用掉兩趟了。 5可預約幾天後的車，或者幾天前預約才會有車，例如可預約五個工作天以後的車，且最晚需在三天前預約完成。有些區域也會開放臨時車，若有必要也能使用，只是不一定能夠約到車。 6取消政策、等候時間、違規罰則要特別留意，各區會有所不同，可以詢問客服或者上網站查詢。 7費用：免費還是部分負擔，部分負擔費率怎麼算，通常都可以愛心卡或者線金付款。 特別注意，如果你在18歲以前有申請富康巴士，滿18歲後需要繼續使用，記得用電話或者網站修改一些聯絡資料和重要資訊，未來才能自己全權管理訂車喔。畢竟有沒有訂到車，尤其是臨時車，管理單位是會用電話和簡訊通知的喔。</div>
+</a><a class="pcard" href="p/9996af71-97fb-4a6f-95b4-4e770985863b" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
+  <div class="p-title">萌寵小知識2</div>
+  <div class="p-excerpt">如果家中貓貓食欲不振，不要覺得他只是挑食，擔心多一點，更能保護他，且毛孩建議每六個月就健康檢查一次，因為期間都有可能有身體上的問題出現，只是發現不了，特別是貓，他們特別會忍痛。</div>
   <div class="p-meta">0 則補充 · 2 讚</div>
 </a><a class="pcard" href="p/107d75f7-fdb9-4a0e-9243-79e4eb19f9c0" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">漂</span><span class="who">漂流木先生</span></div>
   <div class="p-title">瓦斯式熱水器怎麼調？</div>
   <div class="p-excerpt">水量跟水溫有時候很難調到剛好不會熄火，又不會太熱的平衡</div>
   <div class="p-meta">0 則補充 · 2 讚</div>
+</a><a class="pcard" href="p/939452fa-5fb3-44ef-a9f8-cd7559c55458" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">F</span><span class="who">Flamingo</span></div>
+  <div class="p-title">怎麼申請戶籍謄本、戶籍謄本分幾種</div>
+  <div class="p-excerpt">戶籍謄本有分成紙本跟電子 1.電子戶籍謄本 需要有自然人憑證才能線上申請。 步驟：先進入內政部電子戶籍謄本申請的網站，輸入身分證字號及驗證自然人憑證，就可以申請本人或同戶者的戶籍謄本。 手機或電腦會下載一個pdf檔（即電子謄本）跟一個打不開的檔，外部機構可以透過刷電子謄本最下面的條碼來驗證或是點選那個打不開的檔案來驗證（驗證方式一樣是透過內政部電子謄本的網站，輸入條碼來驗證） ⚠️只能申請同戶者之戶籍謄本，如果家人在別的戶籍或是同址不同戶，就無法以自己的自然人憑證做申請。另外，有的機關因為不會驗證會不收電子戶籍謄本，所以目前大多數人還是選擇到戶政事務所申請紙本戶籍謄本。 ————————— 2.紙本戶籍謄本 全國各戶政事務所都可以申請戶籍謄本，但隨著申請人身分、內容、對象有不同限制。首先說明全戶與部分、詳細記事與省略、除戶與現戶與非現住人口是什麼？ （1）全戶：所有在同一本戶口名簿上的人 （2）部分：其中幾個戶口名簿上的人 （3）省略記事：不會顯示更改姓名、婚姻、出生或死亡、遷徙的紀錄 （4）詳細記事：會顯示所有紀錄 ⭐️申請戶籍謄本時可以向櫃檯人員說明只想留哪些記事內容，哪些不想印出來，但戶口名簿不能做挑選。 （5）除戶謄本：戶長變動前之謄本（例如戶長搬家、過世、被遷出國外，這時戶籍謄本的標題就會是除戶謄本） （6）現戶謄本：現戶就是指現在這一戶的謄本，所以現戶謄本是最新版本的謄本。 （7）現戶含非現住人口：戶長沒有變動，但戶內人口有去世、搬家的狀況 ⭐️什麼是手抄謄本？手抄謄本指的是民國85年以前，戶籍資料還沒有電腦化時，當時的人都是用手寫作紀錄，現在戶所幾乎都已經把當時手寫的紙本資料掃描到系統中，所以現在申請的手抄謄本，都是當時手寫資料的影像複本。 👓小教室：如果在民國85年以前結婚，那麼現戶戶籍謄本就不會有結婚記事，那筆結婚記事就會在以前的手抄謄本上。而大家口中的族譜、日據時期戶籍謄本就是這個手抄謄本。 ✏️小明一家三口在同一本戶口名簿上，現在為了租金補貼，要申請全戶戶籍謄本詳細記事，請問他會看到什麼？ A：小明會看到他跟父母的姓名都列印出來，並且每個人的記事欄位都有他們搬家、結婚、出生等紀錄。 ⭐️怎麼知道要申請什麼樣的戶籍謄本？最正確的方式是詢問要求提供的機關，因為戶政人員也不知道各機關收受的條件是什麼，為避免來回奔波，最好先詢問過再來申請。 ————————— 最重要的是，我能不能申請戶籍謄本？ 1.本人為戶長、攜帶身分證：可以申請同戶者戶籍謄本。 2.本人為戶內人口、攜帶身分證：可以申請同戶者戶籍謄本，但寄居人口的部分不一定能申請。 3.本人為寄居、攜帶身分證：只能申請自己的戶籍謄本。 ⭐️另外，本人除了可申請自己的戶籍謄本外，也可以申請直系血親（即父母、子女、祖父母、孫子孫女）及配偶之戶籍謄本。但是，【前配偶、收養後之生家、公婆或岳父母戶籍謄本不能申請】 ⭐️那如果我想要申請卻不能申請怎麼辦？請可以申請的適格申請人寫委托書，由你當受託人前往辦理。 ⚠️委托書做成當下及申請當日，委託人必須【人在國內且意識清楚】 ⚠️如果委託人在監所或國外怎麼辦？ 1.監所：需要提供在監證明當作身分證件，以及提出在監委托書，由監所蓋章，才算是有效的委托書。 2.國外：由委托人將委托書拿到駐外館處驗證，之後將身分證件及委托書寄回台灣，由受託人提供給戶政事務所 ⚠️如果委託人不方便提供身分證或護照的正本呢？可提出影本，上面寫明與正本相符，並由委托人親筆簽名或蓋章（絕對絕對不接受照片或簽名完印影本，文件可以是影本但簽名必須是正本） 如果是申請不同戶的兄弟姐妹或債權人申請債務人的戶籍謄本，除了身分證要提供利害關係證明文件： 1.為了辦繼承事務要申請手足的戶籍謄本：提供財產清冊、完稅證明、繼承標的物（如土地謄本）、法院補正通知等文件，以證明其他手足與你同為繼承人，你們之間具有利害關係。 ⚠️利害關係人之戶籍謄本通常只能給省略記事，除非法院補正通知有要求，才會提供詳細記事的戶籍謄本。 2.為了申請債務人戶籍謄本：法院補正通知、債權憑證、判決確定證明書 ⚠️法院判決書因為有上訴期間的變動因素，需要等到判決確定證明書送達後，才能拿著確定證明到戶政事務所辦理 以上，如果覺得太複雜太難理解，最好先跟要求提供的機關詢問清楚，也跟戶政詢問清楚，文件備齊後再前往，以免來回奔波喔～</div>
+  <div class="p-meta">0 則補充 · 1 讚</div>
 </a><a class="pcard" href="p/622884ee-e5a2-4d05-a309-7fcdf05f2cf8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
   <div class="p-title">六歲以上未上小學塗氟</div>
   <div class="p-excerpt">115年5月14衛福部公文提到 因為學制的差異塗氟條件9/1更改為0歲至入小學當年度的8月31日</div>
   <div class="p-meta">0 則補充 · 1 讚</div>
 </a></div></details>
-<details class="sec-fold"><summary class="sec-label">我要發問　<span style="color:var(--sub);font-weight:400">344</span></summary><div class="fold-body"><a class="pcard" href="p/f08056ac-605c-4f82-b3f2-70127c9b2d68" style="animation-delay:0.00s">
+<details class="sec-fold"><summary class="sec-label">我要發問　<span style="color:var(--sub);font-weight:400">370</span></summary><div class="fold-body"><a class="pcard" href="p/f08056ac-605c-4f82-b3f2-70127c9b2d68" style="animation-delay:0.00s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">A</span><span class="who">Amy</span></div>
   <div class="p-title">股票怎麼看？</div>
   <div class="p-excerpt">升大學後就很多身旁的朋友在買股票看股票 但我完全不懂🥹 有人可以跟我解釋股票怎麼使用怎麼看嗎🥹🥹</div>
-  <div class="p-meta">6 則回答 · 82 讚</div>
+  <div class="p-meta">6 則回答 · 83 讚</div>
 </a><a class="pcard" href="p/e451bd81-2a79-496f-a6cd-9896f2a03e91" style="animation-delay:0.03s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">阿</span><span class="who">阿鵝</span></div>
   <div class="p-title">保險怎麼買</div>
   <div class="p-excerpt">小妹我自己家人沒幫我保任何保險 健保是在家人下面 工作有勞保相關什麼的 但最想了解的是什麼險最需要買以及該如何買比較好!!!!! 之前有出過車禍要賠償對方車損 沒保險真的負擔好大啊啊啊啊</div>
   <div class="p-meta">5 則回答 · 30 讚</div>
-</a><a class="pcard" href="p/06475c21-debb-4744-ae81-b92cf813c3e5" style="animation-delay:0.06s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">喵</span><span class="who">喵嗚</span></div>
-  <div class="p-title">面試時怎麼跟HR或主管談到理想的薪資</div>
-  <div class="p-excerpt">面試時怎麼跟HR或主管談到理想的薪資呢？ 通常都會遇到被砍價，該怎麼溝通才能有比較好的結果？ 有相關工作經驗並有多年資歷，但實際上只要想跳槽面試就幾乎都會被當作是0經驗新人壓低薪水。</div>
-  <div class="p-meta">1 則回答 · 22 讚</div>
-</a><a class="pcard" href="p/52b058bc-ccc3-4d7e-b6e0-e4dc0b38fa31" style="animation-delay:0.09s">
+</a><a class="pcard" href="p/52b058bc-ccc3-4d7e-b6e0-e4dc0b38fa31" style="animation-delay:0.06s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">扶</span><span class="who">扶老奶奶闖紅燈</span></div>
   <div class="p-title">可以扶老奶奶闖紅燈嗎</div>
   <div class="p-excerpt">有時候在馬路上斑馬線已經紅燈了 但長輩還在斑馬線上 如果這時候扶他穿越斑馬線 我會不會也被開罰</div>
-  <div class="p-meta">1 則回答 · 21 讚</div>
+  <div class="p-meta">1 則回答 · 22 讚</div>
+</a><a class="pcard" href="p/06475c21-debb-4744-ae81-b92cf813c3e5" style="animation-delay:0.09s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">喵</span><span class="who">喵嗚</span></div>
+  <div class="p-title">面試時怎麼跟HR或主管談到理想的薪資</div>
+  <div class="p-excerpt">面試時怎麼跟HR或主管談到理想的薪資呢？ 通常都會遇到被砍價，該怎麼溝通才能有比較好的結果？ 有相關工作經驗並有多年資歷，但實際上只要想跳槽面試就幾乎都會被當作是0經驗新人壓低薪水。</div>
+  <div class="p-meta">2 則回答 · 22 讚</div>
 </a><a class="pcard" href="p/8c69e3d7-ee77-4216-9fe5-aa09074c72b0" style="animation-delay:0.12s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">麻</span><span class="who">麻糬</span></div>
   <div class="p-title">心理素質該怎麼提升</div>
@@ -1023,7 +1062,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">奶</span><span class="who">奶油</span></div>
   <div class="p-title">每次做菜都亂煮一通</div>
   <div class="p-excerpt">我一直很想問冷鍋冷油、熱鍋冷油、熱鍋熱油分別適用於什麼樣的鍋子，又分別是做什麼樣的料理？</div>
-  <div class="p-meta">2 則回答 · 17 讚</div>
+  <div class="p-meta">3 則回答 · 17 讚</div>
 </a><a class="pcard" href="p/b3dc436c-81fd-4d15-8e70-0b05722c04d4" style="animation-delay:0.21s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">泥</span><span class="who">泥巴糰</span></div>
   <div class="p-title">大學宿舍應該注意的事情</div>
@@ -1044,16 +1083,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">坐飛機有什麼流程</div>
   <div class="p-excerpt">第一次坐飛機 不知道到機場要怎麼做 還有轉機那些未來可能會遇到的場景要怎麼處理</div>
   <div class="p-meta">2 則回答 · 9 讚</div>
-</a><a class="pcard" href="p/a107cb36-d5e0-4809-9c2e-a5424bac2c2d" style="animation-delay:0.33s">
+</a><a class="pcard" href="p/81fac50b-ed7e-4e69-843a-4e9475473bf5" style="animation-delay:0.33s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">松</span><span class="who">松鼠🐿️</span></div>
+  <div class="p-title">我要買二手車</div>
+  <div class="p-excerpt">最近考慮購買人生第一輛車，考慮購買二手車，但不確定要看哪些部分才不會被騙</div>
+  <div class="p-meta">1 則回答 · 9 讚</div>
+</a><a class="pcard" href="p/a107cb36-d5e0-4809-9c2e-a5424bac2c2d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">繃</span><span class="who">繃巴咧</span></div>
   <div class="p-title">高中生短期打工</div>
   <div class="p-excerpt">距離開學只剩不到一個月 有沒有收短期未成年兼職的 ✋🏻😭🤚🏻想要在開學前自己打工換個手機</div>
   <div class="p-meta">2 則回答 · 8 讚</div>
-</a><a class="pcard" href="p/81fac50b-ed7e-4e69-843a-4e9475473bf5" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">松</span><span class="who">松鼠🐿️</span></div>
-  <div class="p-title">我要買二手車</div>
-  <div class="p-excerpt">最近考慮購買人生第一輛車，考慮購買二手車，但不確定要看哪些部分才不會被騙</div>
-  <div class="p-meta">1 則回答 · 8 讚</div>
 </a><a class="pcard" href="p/f985babe-99a5-4e0d-bc12-a1f7129d41ab" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">我</span><span class="who">我還是小孩</span></div>
   <div class="p-title">第一次自己出國 要怎麼辦護照 需要準備什麼東西😭</div>
@@ -1099,6 +1138,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">入厝要怎麼拜！</div>
   <div class="p-excerpt">只知道要拜地基主跟擺床墊，還有什麼需要做的事嗎😔😔</div>
   <div class="p-meta">3 則回答 · 7 讚</div>
+</a><a class="pcard" href="p/1f6cce6c-232e-4a2f-a4b8-2791f0ee897a" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span></div>
+  <div class="p-title">有什麼問題想要問問高級大人的嗎？</div>
+  <div class="p-excerpt">只要是你想知道的問題都可以問，別害羞！讓我們陪你一起長大！</div>
+  <div class="p-meta">6 則回答 · 7 讚</div>
+</a><a class="pcard" href="p/12e8db9c-22d7-44dc-bbc6-dc0515f771f4" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">S</span><span class="who">Shiuan</span></div>
+  <div class="p-title">有推薦的投影機嗎</div>
+  <div class="p-excerpt">有推薦的投影機嗎 需求:預算約一萬,可到一萬三;六到七坪房間,投影距離兩到三公尺,可完全關燈,但偶爾希望開燈使用。用途 Netflix、YouTube、電影、Switch、電腦HDMI ，搭100吋手拉布幕</div>
+  <div class="p-meta">1 則回答 · 6 讚</div>
 </a><a class="pcard" href="p/c654bdba-3642-40b8-a728-13930c0d91ee" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">呱</span><span class="who">呱嘎</span></div>
   <div class="p-title">第一次見父母</div>
@@ -1129,11 +1178,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">好奇高級大人的人際關係</div>
   <div class="p-excerpt">想問高級大人怎麼處理人際關係的呢？像是建立同事之間界線，與他人說話的溝通方式、技巧，剛入職場覺得跟同事，尤其上司相處有些彆扭</div>
   <div class="p-meta">2 則回答 · 6 讚</div>
-</a><a class="pcard" href="p/1f6cce6c-232e-4a2f-a4b8-2791f0ee897a" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span></div>
-  <div class="p-title">有什麼問題想要問問高級大人的嗎？</div>
-  <div class="p-excerpt">只要是你想知道的問題都可以問，別害羞！讓我們陪你一起長大！</div>
-  <div class="p-meta">4 則回答 · 6 讚</div>
+</a><a class="pcard" href="p/aab65b3c-a846-4cdf-8744-424fb03cc200" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">簡</span><span class="who">簡毛毛</span></div>
+  <div class="p-title">求助！如何移除職場蟑螂！</div>
+  <div class="p-excerpt">有沒有 人有對付職場蟑螂的手段！ 希望有人可以教導一些應對方式🫠</div>
+  <div class="p-meta">1 則回答 · 5 讚</div>
 </a><a class="pcard" href="p/d193ec38-69dd-4fab-801f-a0f457712043" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小白</span></div>
   <div class="p-title">一個人能過的怎樣</div>
@@ -1154,11 +1203,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">什麼情況要補繳稅？</div>
   <div class="p-excerpt">工作四五年了，每次報稅大部分都是退稅給我，好像在手機上登入送出後就沒我的事一樣，會有什麼情況是我要多填資料或是要補繳稅的</div>
   <div class="p-meta">5 則回答 · 5 讚</div>
-</a><a class="pcard" href="p/12e8db9c-22d7-44dc-bbc6-dc0515f771f4" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">S</span><span class="who">Shiuan</span></div>
-  <div class="p-title">有推薦的投影機嗎</div>
-  <div class="p-excerpt">有推薦的投影機嗎 需求:預算約一萬,可到一萬三;六到七坪房間,投影距離兩到三公尺,可完全關燈,但偶爾希望開燈使用。用途 Netflix、YouTube、電影、Switch、電腦HDMI ，搭100吋手拉布幕</div>
-  <div class="p-meta">0 則回答 · 4 讚</div>
+</a><a class="pcard" href="p/3d873f2b-63f2-4bcf-b342-09ad00d72392" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">1</span><span class="who">1</span></div>
+  <div class="p-title">機票怎麼買比較便宜</div>
+  <div class="p-excerpt">目前想出國 但不知道大家是用什麼去買 怎麼去付 求推薦</div>
+  <div class="p-meta">1 則回答 · 4 讚</div>
+</a><a class="pcard" href="p/c91daaa6-c4b3-4c5e-ab47-853a6f1d3eb6" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">新</span><span class="who">新手小白轉大人</span></div>
+  <div class="p-title">18歲後該辦哪一家銀行除了郵局</div>
+  <div class="p-excerpt">看不太懂銀行應該辦哪一家，因為用郵局的金融卡Line Pay跟轉帳很不方便。也看不懂優惠跟利息有的沒的</div>
+  <div class="p-meta">2 則回答 · 4 讚</div>
 </a><a class="pcard" href="p/bdb124ab-c3d8-4b7b-ab18-3adc5cfa0adc" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">絲</span><span class="who">絲瓜芭年</span></div>
   <div class="p-title">蝦皮開公司</div>
@@ -1169,16 +1223,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">結婚前流程</div>
   <div class="p-excerpt">跟男友討論要結婚，結婚前流程及習俗要哪些，包括提親等等</div>
   <div class="p-meta">1 則回答 · 4 讚</div>
-</a><a class="pcard" href="p/aab65b3c-a846-4cdf-8744-424fb03cc200" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">簡</span><span class="who">簡毛毛</span></div>
-  <div class="p-title">求助！如何移除職場蟑螂！</div>
-  <div class="p-excerpt">有沒有 人有對付職場蟑螂的手段！ 希望有人可以教導一些應對方式🫠</div>
-  <div class="p-meta">1 則回答 · 4 讚</div>
 </a><a class="pcard" href="p/79faf1e9-a290-4834-8096-955af7702cad" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">🐟</span><span class="who">🐟</span></div>
   <div class="p-title">怎麼處理皮鞋/樂福鞋的摺痕</div>
   <div class="p-excerpt">皮鞋或樂福鞋穿久了前面的鞋面常有摺痕，想問一下怎麼緩解或清除🙏</div>
   <div class="p-meta">1 則回答 · 4 讚</div>
+</a><a class="pcard" href="p/13015fdd-8135-45f4-ac56-be0bdc77a622" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">T</span><span class="who">Ttt</span></div>
+  <div class="p-title">大行李箱怎麼丟</div>
+  <div class="p-excerpt">有一個壞掉的28吋行李箱 應該怎麼處理</div>
+  <div class="p-meta">2 則回答 · 4 讚</div>
 </a><a class="pcard" href="p/74d95b30-793f-4fd0-afc3-c786a26c0df5" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">不</span><span class="who">不知道</span></div>
   <div class="p-title">新娘秘書很難當嗎</div>
@@ -1228,12 +1282,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A0C4D8">皮</span><span class="who">皮皮</span></div>
   <div class="p-title">身障鑑定流程請益</div>
   <div class="p-excerpt">請問身障鑑定如果想申請鑑定兩個（或以上）的類別或卡片還沒過期想申請鑑定其他類別這樣的流程要怎麼跑？謝謝～</div>
-  <div class="p-meta">0 則回答 · 3 讚</div>
-</a><a class="pcard" href="p/c91daaa6-c4b3-4c5e-ab47-853a6f1d3eb6" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">新</span><span class="who">新手小白轉大人</span></div>
-  <div class="p-title">18歲後該辦哪一家銀行除了郵局</div>
-  <div class="p-excerpt">看不太懂銀行應該辦哪一家，因為用郵局的金融卡Line Pay跟轉帳很不方便。也看不懂優惠跟利息有的沒的</div>
-  <div class="p-meta">1 則回答 · 3 讚</div>
+  <div class="p-meta">2 則回答 · 3 讚</div>
 </a><a class="pcard" href="p/3eaace0f-ff71-4b30-9495-aad8a9d2fa5a" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Cabe Mom</span></div>
   <div class="p-title">求推薦 2026 現刷卡神卡</div>
@@ -1248,17 +1297,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">脆</span><span class="who">脆狗</span></div>
   <div class="p-title">求新手爸媽領取政府補助的流程，需要準備什麼？</div>
   <div class="p-excerpt">求新手爸媽領取政府補助的流程，需要準備什麼？ 準備要迎接新生命的到來，新手爸媽手腳忙亂，請問有人可以分享怎麼完全領取政府新生兒的補助嗎？</div>
-  <div class="p-meta">1 則回答 · 3 讚</div>
+  <div class="p-meta">2 則回答 · 3 讚</div>
 </a><a class="pcard" href="p/fa033c6b-3fcc-4c2d-bf91-8d51b6069c9b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">初</span><span class="who">初級大人</span></div>
   <div class="p-title">我想戴牙套</div>
   <div class="p-excerpt">想問 1.金屬牙套跟隱適美哪個比較不痛？ 2.一定會拔牙嗎？ 3.有蛀牙的話要先處理嗎？ 4.要先拔智齒嗎？（聽說要，不知道從哪聽來的🤣</div>
   <div class="p-meta">3 則回答 · 3 讚</div>
-</a><a class="pcard" href="p/13015fdd-8135-45f4-ac56-be0bdc77a622" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">T</span><span class="who">Ttt</span></div>
-  <div class="p-title">大行李箱怎麼丟</div>
-  <div class="p-excerpt">有一個壞掉的28吋行李箱 應該怎麼處理</div>
-  <div class="p-meta">2 則回答 · 3 讚</div>
 </a><a class="pcard" href="p/b5880159-aaeb-4ae6-88c8-c9859ebbc511" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">想</span><span class="who">想當厲害的大人</span></div>
   <div class="p-title">出國</div>
@@ -1309,11 +1353,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">外籍結婚來台需要為他準備什麼</div>
   <div class="p-excerpt">跟外籍的對象結婚，他來台灣我目前想到要幫他保保險、辦網路電話卡、開戶，還有什麼需要處理或注意的嗎？</div>
   <div class="p-meta">1 則回答 · 3 讚</div>
-</a><a class="pcard" href="p/3d873f2b-63f2-4bcf-b342-09ad00d72392" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">1</span><span class="who">1</span></div>
-  <div class="p-title">機票怎麼買比較便宜</div>
-  <div class="p-excerpt">目前想出國 但不知道大家是用什麼去買 怎麼去付 求推薦</div>
-  <div class="p-meta">0 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/f1c00c80-30f6-4cec-b664-714c91716aa7" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">L</span><span class="who">Lonny</span></div>
   <div class="p-title">新手煮飯該買哪些鍋具？</div>
@@ -1323,12 +1362,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">🎙</span><span class="who">🎙️👞🕺🏼</span></div>
   <div class="p-title">活著的目的是什麼</div>
   <div class="p-excerpt">為什麼我要活著 賺錢嗎 可是最後不是都會死嗎 我做的都有意義嗎</div>
-  <div class="p-meta">3 則回答 · 2 讚</div>
+  <div class="p-meta">4 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/1ec5056a-30a4-4de9-8ef0-484349195c5b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">陳</span><span class="who">陳陳</span></div>
   <div class="p-title">酪梨青草味重怎麼辦</div>
   <div class="p-excerpt">酪梨青草味重怎麼辦</div>
-  <div class="p-meta">4 則回答 · 2 讚</div>
+  <div class="p-meta">6 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/74ba7167-4460-4913-b267-b1294e1d9c1e" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">星</span><span class="who">星空</span></div>
   <div class="p-title">高中住宿要準備什麼 要怎麼跟室友相處</div>
@@ -1339,11 +1378,21 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">報稅但不用繳稅 有退稅嗎</div>
   <div class="p-excerpt">我去年有打工，年收不到45萬，今年媽媽有幫我報稅，那請問我會有退稅嗎 還是說有繳稅才會有退稅</div>
   <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="p/1882f574-ec5a-49a7-b49a-cd58249ca1ad" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">加</span><span class="who">加油蔡小葵</span></div>
+  <div class="p-title">該如何稱呼同事</div>
+  <div class="p-excerpt">剛入職準備到行政類公司上班 如果都還不認識任何人 第一句該如何稱呼同事呢 看到不少人都雷叫姐之類的 不知道該如何稱呼 以及辦公室穿著該如何穿呢</div>
+  <div class="p-meta">2 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/af986f2c-11f4-48d7-b677-3ebd23226b40" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">3</span><span class="who">33</span></div>
   <div class="p-title">買機車注意事項</div>
   <div class="p-excerpt">下禮拜考到駕照要去買機車 有什麼推薦的嗎？ 買機車要注意什麼事情呢？</div>
   <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="p/19ee2952-7eeb-488c-827d-386372a2497e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">🐻</span><span class="who">🐻</span></div>
+  <div class="p-title">請教尋麻疹&amp;汗皰疹的解法</div>
+  <div class="p-excerpt">請問有人知道長期慢性尋麻疹或汗皰疹怎麼解嗎😭</div>
+  <div class="p-meta">4 則回答 · 2 讚</div>
 </a><a class="pcard" href="p/a2eeabcb-134f-44f4-ae5d-f94618c8229f" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">想</span><span class="who">想當厲害的大人</span></div>
   <div class="p-title">騎機車</div>
@@ -1449,6 +1498,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">如何與愛情勒的親戚溝通</div>
   <div class="p-excerpt">我的哥哥是智能障礙者，但家人都不想帶他去找工作，他們認為很丟臉，所以叫我大學畢業後要照顧他，說是因為他們老了沒辦法照顧，只有我可以照顧我哥 可是我在就學期間他們根本都沒有給我任何資金，學費、住宿費都是我自己出的，以致於我根本存不了錢 我不知道我未來該怎麼辦，我只感到很絕望</div>
   <div class="p-meta">4 則回答 · 2 讚</div>
+</a><a class="pcard" href="p/4111e7db-e328-4987-ba0d-49ad0a24208f" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">傻</span><span class="who">傻傻的初級大人</span></div>
+  <div class="p-title">新手學化妝</div>
+  <div class="p-excerpt">想要學化妝 但我不知道要先從哪開始😭還有步驟看了好多都化不出那種感覺 有人可以教教我嗎😭✋🤚 還有 化妝品推薦 我是敏感肌 很常過敏所以不敢亂用😭謝謝</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/d488cdba-2dec-4604-a4af-8b3e88915b32" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">小</span><span class="who">小花</span></div>
   <div class="p-title">牙套相關問題</div>
@@ -1463,7 +1517,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">0</span><span class="who">001號人類</span></div>
   <div class="p-title">有什麼推薦的洗髮油嗎？</div>
   <div class="p-excerpt">頭髮是乾燥容易打結類型的，味道太濃不太行，不知道買哪種</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/d5dbd77a-48d8-4af2-b715-97d230a4437c" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">不</span><span class="who">不想長大</span></div>
   <div class="p-title">租房更換冷氣</div>
@@ -1473,12 +1527,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">E</span><span class="who">Emma</span></div>
   <div class="p-title">營業登記怎麼辦理</div>
   <div class="p-excerpt">最近開始創業了 營業登記需要準備什麼 要去哪裡辦理 拜託帥哥美女幫幫忙謝謝🥺🙏</div>
-  <div class="p-meta">0 則回答 · 1 讚</div>
-</a><a class="pcard" href="p/eaebf585-66a4-439e-a6dd-6eecde72c243" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">抓</span><span class="who">抓餅</span></div>
-  <div class="p-title">上班的同事</div>
-  <div class="p-excerpt">我是新人 剛進來一個月 可以承接業務了 他們就把東西放在我桌上 然後跟我講怎麼做 我以為是那種一步一步教你的 因為很複雜（在公家機關） 結果只跟我講 喔 這個是每年都會有的 啊有一家缺少東西你要跟他要 然後用完要發文 我聽完 ？？？？？？？？？？？？ 沒了？ 到底是我太草莓還是等著我去問他 每天都在內耗 好煩</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/33338a8e-1a56-4f13-aff1-4d3415d089e9" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">延</span><span class="who">延畢中的半個大人</span></div>
   <div class="p-title">新手健身注意事項有哪些</div>
@@ -1489,16 +1538,41 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">電表</div>
   <div class="p-excerpt">電表外殼模糊看不到裡面要怎麼辦</div>
   <div class="p-meta">1 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/71fcf957-a41b-4a03-aad1-00ad03a949aa" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">建</span><span class="who">建</span></div>
+  <div class="p-title">三家電信局哪一家比較推薦</div>
+  <div class="p-excerpt">最近要換續約 想知道綜合評估下哪一家的品質比較穩定</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/8654b164-df24-4ad7-bf21-f464d69bc48c" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">毛</span><span class="who">毛毛</span></div>
+  <div class="p-title">銀行卡的日期</div>
+  <div class="p-excerpt">想問銀行卡下面會有個日期 例如27/05 是代表2027年5月過期嗎 過期的話是要去銀行重辦嗎</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/a0cce742-e445-458c-a639-b91d6de9ae31" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">蓮</span><span class="who">蓮心</span></div>
   <div class="p-title">廚房</div>
   <div class="p-excerpt">花椰菜到底什麼洗最乾淨</div>
   <div class="p-meta">1 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/82bfcd40-8469-4930-8d14-d9df0476a97d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">4</span><span class="who">4321_8765</span></div>
+  <div class="p-title">電子書壞掉 要丟什麼類型</div>
+  <div class="p-excerpt">如題 因為電子書壞掉了，不知道要丟什麼類型的垃圾 希望有高級大人指點</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/4e91447f-ac8b-4f28-9e7c-29c317a0cab8" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">小</span><span class="who">小智</span></div>
+  <div class="p-title">保險 理賠如何申請</div>
+  <div class="p-excerpt">工作中我的摩托車放在店門口被貨車撞，當下有報警，約15天後摩托車才修好，目前初判單都出來了對方全責，有跟保險約好了，想請問這樣要怎麼寫理賠申請書與對方保險談理賠費用可以最大化</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/ae20d901-64b7-4b16-847e-eeed67400b30" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">m</span><span class="who">momo</span></div>
   <div class="p-title">我真的該付一半嗎</div>
   <div class="p-excerpt">事情是這樣的 我是在外面租房子的打工人 租屋的門是電子鎖 入住時原本是跟朋友合租所以我們一人一把鑰匙 上面配件事一個電梯磁扣一個門鎖磁扣 跟一個機械聲鑰匙 還有一個停車場門的感應鑰匙 這是我的部分 後來朋友退租 鑰匙放在家裡我又沒仔細看 朋友那把完全沒有機械式鑰匙 一直到前陣子我原本鑰匙停車場的鑰匙無法使用 我才換成朋友那把 我沒仔細看上面沒有機械鑰匙就這樣佩戴了好幾個月 因為公司放長假所以我選擇離開工作縣市一週 我在7/31 星期五晚上離開租屋處時 並沒有發現電子門鎖快沒電 之前二月換過一次電池 所以我知道快沒電時門會有bibi聲提示 但我在週五離開時並未聽到 在8/3回來的時候發現進不去家裡 當時有馬上想到要用機械鑰匙打開後來發現這把鑰匙沒有 才趕快打給房東 房東說他那邊沒有多的鑰匙了 他會請鎖匠來開 費用我支付這樣 我想說好吧只是解鎖我還能負擔 同時我也去問了電子鎖廠商遇到沒電有沒有機械鑰匙情況如何開門 他們說用9v電池按壓在門上的緊急供電處解鎖 我立馬去超商買了一顆 沒想到電路完全通不進去 鎖匠師傅也來了 他用了各種方法通電都表示沒用 甚至是重新啟動裝置 按了也沒有反應 當下師傅就說你這個應該是鎖壞掉不是沒電 既然機子壞掉又沒有辦法通電 也沒有鑰匙 那只能破門了 我也馬上跟房東講 你請來的師傅說機子壞了需要破門 房東連忙說不要不要我問看看原廠的人怎麼說 後來原廠的人說要請師傅來 出勤費就是1000（房東要我支付 ）原先的鎖匠師傅出勤費500我吸收了 後來的廠商出勤費我也願意支付 由於廠商來的時段剛好卡在我上班期間 因此解鎖至破門這段時間都只有師傅跟房東兩人的決議 我收到訊息時就是門已破鎖已換 因為我想搞懂事情經過我去賴廠商當時的情況 廠商說： 房東現場有用9V電池測試過了，確認無法開門 師傅去現場也是先用9V緊急供電 真的無法開門才破壞的唷! 如果有鑰匙，就可以進到室內讓師傅檢測，更換零件維修(就不需要破壞) 請記得把鑰匙放在室外(緊急備用) 更換電子鎖是因為破壞後(鑽鎖芯) 電子鎖無法使用，所以更換唷 9V無法緊急供電解鎖 有可能是IC版有異常 如果是可以進到室內的情況下，師傅就可以檢測並且維修 針對故障零件單獨做更換 鑰匙不受電量或故障影響，都是可以開門的唷~ 我問他說所以門鎖壞了也就是要換嗎 廠商說 不一定有鑰匙可以進入查看狀況是否需要全部換掉或是更換零件即可 也就是説今天這個鎖是真的壞了 我有沒有帶鑰匙的關鍵是 說不定不用整組換掉 鎖19000破門費3000共22000 房東說因為是我人為 沒有換電池倒置他死機壞了加上我又沒帶機械鑰匙 這一切都不是他造成的純屬我人為損害 他有理由要求我跟他五五分 但我覺得很不舒服 第一 門的保固只有兩年 據我所知已經過保了 再加上這個房子最少有4年 很難說離了保固的電子產品不會哪天突然壞掉 再加上我出門前門完全沒有警示沒電 我怎麼會料到我出去到這段時間他會沒電到死機 廠商與鎖匠師傅也說了 電充不進去 可能是機子壞了 我認為在這種情況下 應該就要算你租屋處物品消耗損壞 而不是算在我人為損害 我覺得我確實未帶機械鑰匙有問題我願意支付 但同時我也注意到 廠商說原本應該要有三把機械鑰匙的 也就是説家裡那把 跟被前室友弄丟的那把外應該還有一把在房東拿那 可是房東說找不到 對於這樣的說詞 我認為我很有理由說 沒帶鑰匙這件事不能完全歸在於我 我願意負擔3000的破門費 頂多在補貼門鎖兩千 最多就五千的費用 想問各位如果我直接跟房東談 我是站得住腳的那一方嗎？ 我真必須跟房東五五分這22000嗎</div>
   <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/505fc5b2-7450-4c6b-81de-671bcb9a785d" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">☆</span><span class="who">☆喜歡時團🍿 祺&amp;翔～小核桃🐮</span></div>
+  <div class="p-title">如何快速煮出好吃的食物？</div>
+  <div class="p-excerpt">怎麼樣能快速輕鬆做出一道好吃的料理？ 不要用電鍋 輕鬆好上手</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/3cc2b475-9944-4792-b692-281e11f4fff8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">莙</span><span class="who">莙</span></div>
   <div class="p-title">如何讓妝感看起來乾淨</div>
@@ -1594,20 +1668,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">社會小白</div>
   <div class="p-excerpt">想請教各位大人們是怎麼開始找工作的！！ 是這樣子的，小的今年是大一生了！ 想要憑自己的能力賺錢，趁暑假趕緊踏出第一步（累積經驗），做任何工作都很樂意！ 身邊的朋友陸陸續續都有兼差，好像大家都知道該怎麼做，有些問題問了他們的意見也大多數都有聽沒懂，大概是從出發點就不熟悉了，又不好意思一直打擾朋友😣 不清楚履歷的自我介紹要怎麼寫才符合商家的標準 才有機會錄取、 好像沒什麼優點能寫上去，不知道怎麼推薦自己 我呢，只是想要賺錢買快樂！ 但好像把找工作想得太簡單了！履歷怎麼投都上不了！ 如果、如果真的有找到工作了！ 那有哪些是要多加注意的事項呢。 暑期工讀會很難找嗎😣😣 因為大學和戶籍不在一個縣市..</div>
   <div class="p-meta">3 則回答 · 1 讚</div>
-</a><a class="pcard" href="p/1e7fa44e-d149-4590-bf16-4bbc509a317a" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">嚴</span><span class="who">嚴肅學習</span></div>
-  <div class="p-title">第一次打工該注意什麼？以及白天上學該怎麼安排打工時間最合適</div>
-  <div class="p-excerpt">大家好👋 1.最近想開始打工賺點生活費+買想要的東西，想投餐飲業打工（離家近），請問有做過餐飲業的人能告訴我該注意什麼嗎？ 2.之後9月開學怎麼安排打工時間最合適？ 3.大家一個月大概打工多久？</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/cc54e3eb-ad3c-4f03-903c-a8db8277341d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">嗚</span><span class="who">嗚啦！</span></div>
   <div class="p-title">新店到內湖通勤</div>
   <div class="p-excerpt">下個月要到內湖工作 從新店耕莘醫院站搭內科通勤10到西湖站 請問早上通常會有位置坐嗎？會不會客滿不載客 上班時間較彈性 8:30-10:00</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="p/1882f574-ec5a-49a7-b49a-cd58249ca1ad" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">加</span><span class="who">加油蔡小葵</span></div>
-  <div class="p-title">該如何稱呼同事</div>
-  <div class="p-excerpt">剛入職準備到行政類公司上班 如果都還不認識任何人 第一句該如何稱呼同事呢 看到不少人都雷叫姐之類的 不知道該如何稱呼 以及辦公室穿著該如何穿呢</div>
   <div class="p-meta">1 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/e8c56974-f6db-44fd-815c-242857808415" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">S</span><span class="who">Sylvia</span></div>
@@ -1619,11 +1683,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">15歲家裡單親去辦銀行帳戶需要家長雙方簽章嗎</div>
   <div class="p-excerpt">15歲家裡單親去辦銀行帳戶需要家長雙方簽章嗎</div>
   <div class="p-meta">2 則回答 · 1 讚</div>
-</a><a class="pcard" href="p/19ee2952-7eeb-488c-827d-386372a2497e" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">🐻</span><span class="who">🐻</span></div>
-  <div class="p-title">請教尋麻疹&amp;汗皰疹的解法</div>
-  <div class="p-excerpt">請問有人知道長期慢性尋麻疹或汗皰疹怎麼解嗎😭</div>
-  <div class="p-meta">4 則回答 · 1 讚</div>
 </a><a class="pcard" href="p/ebe3db2e-5a7b-4c6e-a7d1-a056e2830058" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">黃</span><span class="who">黃日青</span></div>
   <div class="p-title">Owala保冰水壺的清洗秘訣</div>
@@ -1739,16 +1798,141 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="p-title">關於雙倍薪</div>
   <div class="p-excerpt">之前的工作地方都會給 直到現在這份工作 去年有問過老闆 他說國定假日上班不給雙倍薪 這個是合法的嘛？我在餐廳上班</div>
   <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="p/cabb92e7-983f-4079-ad3b-da975ff45c69" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">V</span><span class="who">Vaisss</span></div>
+  <div class="p-title">衣服的污點怎麼洗掉？</div>
+  <div class="p-excerpt">有時候回家洗完衣服，發現衣服上面都有灰灰髒髒的污點，而且還是一大片的那種，試過漂白水、過酸碳納、網路上有說什麼白醋那些的方法都沒辦法解決，一般燈光下看不見，但如果是對著燈光照就會很明顯一片灰灰髒髒的，有的甚至完全看得到很髒的部分，被這個困擾很久了都不知道怎麼處理比較好😢</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/d9d028de-f447-47a7-91eb-864a0a901073" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">0</span><span class="who">001號人類</span></div>
+  <div class="p-title">頭洗完也癢癢的怎麼辦</div>
+  <div class="p-excerpt">很難受</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/27e2d593-4db7-442e-9448-40179c85dba3" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">F</span><span class="who">Fluency</span></div>
+  <div class="p-title">日本租屋注意事項</div>
+  <div class="p-excerpt">即將前往日本打工度假 現在有一份工作還在商議但錄取率高 可惜已經沒有員工宿舍的缺額了 想問在日本租屋有什麼一定要注意的事項？ 才不會被坑，謝謝大家</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/0d132d5d-b535-4800-b117-8e8083f181ee" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">H</span><span class="who">H</span></div>
+  <div class="p-title">🆘</div>
+  <div class="p-excerpt">有嶺東知情的新生或學長姐可以解惑嗎！ 因為我本身是新生 得知開學前一天才開放搬宿舍 也有先問班導 他讓我打電話問住宿中心 結果都沒有人接😭 - 也可以跟我介紹嶺東附近有什麼或是各種嶺東大小事 社團 科系各種都可以哈哈哈(￣▽￣) 因為我的Dcard沒辦法發文只好來這裡問問 謝謝各位的協助🫰🏻</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/3e926a79-9de8-4e34-be43-70ae0906af7e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">初</span><span class="who">初級</span></div>
+  <div class="p-title">疑似高薪低報怎麼處理</div>
+  <div class="p-excerpt">自己在家用自然人憑證查看勞保投保明細，顯示的金額是基本薪資，跟每月實領薪水有差距是高薪低報嗎？ 怎麼在不驚動公司行政情況下處理，因為是年資最淺的員工，不確定是不是全公司的人都跟我一樣的情況。</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/1e129981-74fd-4c2e-886a-7f1c356882d3" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">水</span><span class="who">水</span></div>
+  <div class="p-title">這樣奇怪嗎</div>
+  <div class="p-excerpt">姐夫姐姐妹妹睡在同一間房間，明明還有空房間</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/0e89a64a-d0c6-4a8f-85e5-69f457066b2b" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">幸</span><span class="who">幸子</span></div>
+  <div class="p-title">不要的烏克麗麗要怎麼處理</div>
+  <div class="p-excerpt">我有一把烏克麗麗想要丟掉 但不確定能不能直接丟回收車還是要請清潔隊來處理，亦或者是要請樂器店處理 有人知道嗎🥺</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/4e97ad97-8b53-4d5f-95bf-95413e190b80" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">迷</span><span class="who">迷茫的人</span></div>
+  <div class="p-title">先考教甄還是考代理呢😢</div>
+  <div class="p-excerpt">想聽聽過來人的經驗，目前正在教育實習當中，沒事的時候就在思考這件事情，想應屆考上正式但又擔心實戰經驗不夠，想去考代理但又擔心之後考不上正式。 現階段實習沒什麼事，所以開始在寫教甄的考古題，也上網查各區域代理的缺，可是看著看著更不確定自己未來的方向😞 不曉得各位老師有沒有過這樣的想法？</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/47c92914-c7ad-44c6-a464-c99394079b7e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">微</span><span class="who">微微</span></div>
+  <div class="p-title">新手化妝</div>
+  <div class="p-excerpt">新手化妝但是預算不多還沒買腮紅，ai跟我說可以用口紅抹在手臂上再輕輕塗開到臉上是真的嗎，還是有建議的便宜化妝品嗎？蝦皮建議買嗎？🥺🙇🏻‍♀️🙇🏻‍♀️</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/9bc34815-dbb6-4c74-bdbe-c1ab07e2e908" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">麻</span><span class="who">麻糬</span></div>
+  <div class="p-title">熬夜的壞處</div>
+  <div class="p-excerpt">真的很好奇，熬夜真的會讓人變醜嗎？ 又有哪些壞處，熬夜了隔天怎麼補救？？ 早睡是幾點對身體又真的有哪些好處？會變好看還是？？</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/37d0b5eb-a9d7-42a6-a9f9-fd0f5e1b3357" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">微</span><span class="who">微微</span></div>
+  <div class="p-title">交換學生</div>
+  <div class="p-excerpt">高中的交換學生怎麼樣比較容易被選上，我好想去但我才剛升高一😭</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/b028d236-dd93-49e2-a7e0-6c9484e83415" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">上</span><span class="who">上班好容易餓</span></div>
+  <div class="p-title">需要刷牙秘笈！！</div>
+  <div class="p-excerpt">上排門牙後面那排真的好難刷，常常沒辦法刷的古溜古溜的，有什麼技巧嗎🥹</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/45633c92-1370-470b-9799-c9f0ad4dd184" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">日</span><span class="who">日勻</span></div>
+  <div class="p-title">信用卡💳</div>
+  <div class="p-excerpt">剛出社會的初級大人！有正職工作 最近想培養信用！ 想問大家對於常在使用「網購、寶雅、711 、屈臣氏」等 有沒有推薦「高回饋、容易申請過、免年費」的信用卡呢？</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/0d12d5bf-bdb8-4bf7-8dce-3baac11676dd" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">小</span><span class="who">小妹</span></div>
+  <div class="p-title">急！！！！健保好幾個月沒繳到！</div>
+  <div class="p-excerpt">如題 我想問高級大人 我的勞健保只保到三月 然後就被我遺忘了。。。。。想說一次把勞健保的問題處理掉 去看了附近的工會 小妹我想問的是 如果我現在去工會保 那之前那幾個月沒繳的健保費工會會讓我一起繳掉嗎 還是我一定要先去處理掉要補繳的才能保新的？</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/ca03068a-6ffe-4d18-9aa0-d7a495d4f750" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">大</span><span class="who">大冠</span></div>
+  <div class="p-title">如何解除警示帳戶？</div>
+  <div class="p-excerpt">我的銀行帳戶因洗錢幫助罪被凍結，以執行完畢，但不知道是要回通報單位解除還是任何警察局都能解除，想求有經驗或是知道的人能提供協助，謝謝🙏</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/20d86ae6-5cf6-4462-aad0-c9eaa7af42a0" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">M</span><span class="who">Min</span></div>
+  <div class="p-title">想知道女生都是怎麼整理自己的房間的</div>
+  <div class="p-excerpt">房間已經被我弄的亂七八糟很久了 真的也不知道要怎麼收納 好奇女生都是怎麼收納你們的用品的 尤其我又有KPOP 周邊跟吉伊卡哇 完全沒有頭緒要怎麼收納-.- 希望有人給我一點建議跟參考！？</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/83020314-689d-421a-9ca6-81a50cb6a69a" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">想</span><span class="who">想睡覺💤</span></div>
+  <div class="p-title">家裡出現紅螞蟻😭</div>
+  <div class="p-excerpt">家裡又開始出現紅螞蟻，之前是處理過幾次但都是短暫消失（漂白水、螞蟻藥） 有一批在廚房出現，另一批在門口外的水溝裡。 廚房的會隨機刷新，偶爾有偶爾沒有（很少出現） 水溝蓋的只要我們當天要倒垃圾時會把垃圾拿出去放就會出現，如果騎樓有不小心掉的食物殘渣或前幾天有過小鳥屍體就會出現 想問問該怎麼處理才比較能杜絕後患，超難打死+被咬到真的很痛😭</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/2c390abb-be32-4830-80f2-b0a4e6bdcbdc" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">努</span><span class="who">努努</span></div>
+  <div class="p-title">孝親費</div>
+  <div class="p-excerpt">想問家裡要求給孝親費的話一個月都給多少？目前剛入職薪水為變動薪且不住家裡</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/ff152278-e930-44f4-b5c9-4a31f13960e4" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">努</span><span class="who">努努</span></div>
+  <div class="p-title">銀行開戶</div>
+  <div class="p-excerpt">已有薪轉戶及郵局帳戶，若想再額外開一個儲蓄帳戶是不是不能同間銀行及分行呢？ 再問請問銀行不能申請家用帳戶也是只能以個人名義做申請嗎？</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/a978c3c2-18b7-4fb6-b8d8-dbeb49d1ec20" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">努</span><span class="who">努努</span></div>
+  <div class="p-title">租屋補助</div>
+  <div class="p-excerpt">想知道如果申請租補但被房東要求說多收錢可以怎麼做，不是額外多收 是申請時直接加上去金額 例如：原本7500房租，因申請租補會酌收8100申報，變成如果租補不通過我還是要付8100請問該如何是好（這樣算是違法嗎）</div>
+  <div class="p-meta">0 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/19d66769-585d-429e-b6aa-871657566b16" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">努</span><span class="who">努努</span></div>
+  <div class="p-title">租屋家電大集合</div>
+  <div class="p-excerpt">最近剛升級為租房的新手小白，想了解有什麼電器是省電且功能性大的！房間內差不多一度電5.2左右，會自己煮東西吃，有考慮過想買吸塵器跟快煮鍋！主要是想省錢又想讓生活便利…</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/c90c5aef-4212-430b-906d-46239b35afa1" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">美</span><span class="who">美女</span></div>
+  <div class="p-title">第一次打耳洞要怎麼顧</div>
+  <div class="p-excerpt">我要贏來第一次打耳洞了 之前看很多人說顧不好容易發炎之類的 想問一下大致上要怎麼顧</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/db7d64c3-90b1-49ee-991c-cbf0d4cb80fe" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">Q</span><span class="who">Q.</span></div>
+  <div class="p-title">高中生長期打工</div>
+  <div class="p-excerpt">第一次打工需要注意什麼（餐飲）</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/6ab29394-fdf3-47ae-93f8-15ce67a9999f" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">軒</span><span class="who">軒軒</span></div>
+  <div class="p-title">狂掉頭髮</div>
+  <div class="p-excerpt">最近忽然掉一堆頭髮⋯有沒有什麼小妙招 看皮膚科有什麼作用嗎😣 保健品已經跟進！也拜託推薦！</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/ae02a33a-8e7b-4317-a90f-7ac8f280d0e3" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">J</span><span class="who">Jova</span></div>
+  <div class="p-title">電商創業</div>
+  <div class="p-excerpt">想問一下做電商創業有沒有需要注意的事情😭 各種的都可以！</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/f1c4498c-6358-465b-911d-a3888e6eeebf" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">C</span><span class="who">CCl</span></div>
   <div class="p-title">工作選擇題</div>
   <div class="p-excerpt">如果有農會這份穩定工作跟設備工程師這份工作，長期來看哪個比較好</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/4fc3718b-41a3-4ce4-aa7e-e52754de5d1d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">果</span><span class="who">果果</span></div>
   <div class="p-title">台灣 新住民 有哪些福利？</div>
   <div class="p-excerpt">目前已知的: 可以參加培訓，新住民學習。還有什麼嗎？</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/07fb70c6-8fc6-4afa-854e-771c94624b56" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">千</span><span class="who">千千</span></div>
   <div class="p-title">關於批發商品問題</div>
@@ -1758,17 +1942,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">A</span><span class="who">An</span></div>
   <div class="p-title">情人節禮物都送什麼啊啊啊啊啊啊</div>
   <div class="p-excerpt">因為男友什麼都不缺 平常也都會有手作禮物 想聽聽大家情人節都有什麼驚喜可以給對方？本人擁有強烈的求生意志👉🏻👈🏻</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/792a9c1b-be59-4f6b-ba97-5354dc663fd3" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">萊</span><span class="who">萊姆</span></div>
   <div class="p-title">關於車禍後續</div>
   <div class="p-excerpt">目前已經拿到初判表了 肇責比例要從哪裡獲得？ 還是可以直接開始談和解？ 車禍五天內沒打給強制險現在打還來得及嗎🥹 好需要第一次出車禍的處理流程⋯⋯</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/f82596a3-4b71-47ca-9d8c-6021d1369595" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">米</span><span class="who">米米</span></div>
   <div class="p-title">該去哪個網站租房子比較靠譜</div>
   <div class="p-excerpt">要上大學了從北部到南部去，不想因為自身問題打擾室友所以想自己租房子住，但是不知道該去哪裡租也不敢自己亂看房子</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/4baf5bcf-ee1d-4dfb-9712-ccb725731e6b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">鼠</span><span class="who">鼠標</span></div>
   <div class="p-title">沒有特別熱愛的科系 還有必要讀研究所嗎？</div>
@@ -1778,12 +1962,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">7</span><span class="who">7a1</span></div>
   <div class="p-title">身心科/心理諮商？</div>
   <div class="p-excerpt">我懷疑我生病了 但目前看醫生兩次 一次診所一次大醫院 都是過去 醫生看起來好像很趕時間 就匆匆帶過 不聽我講話 甚至對我口氣很差檢討我 然後開個藥給我 就結束了 我沒有吃他們開給我的藥 我主要是想知道我自己怎麼了 有這些不好的心情跟想法 情緒不穩定的情況 我想知道這是我生病了 還是我成長了正常會有的 我想要有個專業的 能信的人來告訴我 我有病 還是變成熟了 這世界真的難度這麼大 我想問問有沒有人也有過類似經驗 我應該繼續找身心科嗎 還是應該去心理諮商</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/046431b1-687f-4b21-bf08-47ec8f4fd209" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">柒</span><span class="who">柒柒</span></div>
   <div class="p-title">什麼時候知道可以生小孩了？</div>
   <div class="p-excerpt">好想知道高級大人都是在什麼情況下準備好生小孩的？</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/2cb4b0d6-26e2-4f38-a0e6-8a8cf06b4e8e" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">小</span><span class="who">小孩哥</span></div>
   <div class="p-title">嘴巴張大會痛</div>
@@ -1808,7 +1992,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">寶</span><span class="who">寶寶</span></div>
   <div class="p-title">關於勞基法代班規定</div>
   <div class="p-excerpt">如題，想問公司請假規定，不論什麼假，事假病假，甚至喪假、產檢假，只要當天排超過第二個人以後，須自行找代班，並自行跟對方協調還時數或支付代班費，這樣是符合勞基法的嗎？ 有訊問過主管，他說勞基法規定公司還是可以有自己內部規定，然後拿出一本請假規則給我看，說這本有給勞動部核准過，所以裡面的內容是沒有問題的。沒有不准假，所以沒有違法，但是就是要找代班，這是內部規定 上網查了一下，關於請假人力安排的部分是雇主的責任，不能要求員工找代班，更不能要員工承擔代班費用。這點我也有提，他說公司已經支付第一跟第二個人的了，所以第三個以上要自己負責 我是覺得找代班沒有問題，問題是還要我負擔，問過AI說這樣是變相扣薪，請假的那一天已經不支薪了，這樣還要多支付一筆代班費</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/58900195-70f1-4344-a537-c82eed28364e" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">森</span><span class="who">森</span></div>
   <div class="p-title">分科志願選填</div>
@@ -1823,7 +2007,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">搖</span><span class="who">搖滾的雞塊</span></div>
   <div class="p-title">衣櫥有一邊的門關不起來要找誰</div>
   <div class="p-excerpt">衣櫥有一邊的門關不起來，就是不管怎麼壓，都會浮起來，也沒有壓到衣服，上網查有調過那個葉片也沒有起效🥺 請問這種問題可以找誰？ 木工師傅嗎🥲</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/b1793481-9ee5-442a-90e5-10afcc0974cc" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">Q</span><span class="who">Q</span></div>
   <div class="p-title">沒聯絡的朋友</div>
@@ -1843,7 +2027,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">勾</span><span class="who">勾勾</span></div>
   <div class="p-title">自由潛水</div>
   <div class="p-excerpt">今年小孩也想接觸自由潛水，他們可以考兒少的 答案詢問後大多教練都希望家長自己先去考Aida後跟著孩子一起下水 現在好猶豫…這樣我要考A1還是A2 A2會不會一直被刷掉🫣 我現在只能說不怕水…自由式25、會仰飄…結束</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">1 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/eaebf585-66a4-439e-a6dd-6eecde72c243" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">抓</span><span class="who">抓餅</span></div>
+  <div class="p-title">上班的同事</div>
+  <div class="p-excerpt">我是新人 剛進來一個月 可以承接業務了 他們就把東西放在我桌上 然後跟我講怎麼做 我以為是那種一步一步教你的 因為很複雜（在公家機關） 結果只跟我講 喔 這個是每年都會有的 啊有一家缺少東西你要跟他要 然後用完要發文 我聽完 ？？？？？？？？？？？？ 沒了？ 到底是我太草莓還是等著我去問他 每天都在內耗 好煩</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/b8c0f4c3-8281-471b-a75f-e769cdbbf3b3" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">搖</span><span class="who">搖滾的雞塊</span></div>
   <div class="p-title">冷氣高於23°就會有異味 該怎麼辦🥹</div>
@@ -1863,16 +2052,6 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A8C6A1">C</span><span class="who">CHUN</span></div>
   <div class="p-title">聘金的金額</div>
   <div class="p-excerpt">有長輩說自己以前是多少，又聽到同輩的親戚是多少 那個數字落差之大 原本沒有預料到聘金金額💰數值的落差 對結婚充滿不安 🥲 1-5萬的差距，是還好 10-100萬以上差距 非常不舒服😞 我不知道為什麼要講給我聽 😭 大家都是怎麼過這關的？</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
-</a><a class="pcard" href="p/71fcf957-a41b-4a03-aad1-00ad03a949aa" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">建</span><span class="who">建</span></div>
-  <div class="p-title">三家電信局哪一家比較推薦</div>
-  <div class="p-excerpt">最近要換續約 想知道綜合評估下哪一家的品質比較穩定</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
-</a><a class="pcard" href="p/8654b164-df24-4ad7-bf21-f464d69bc48c" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">毛</span><span class="who">毛毛</span></div>
-  <div class="p-title">銀行卡的日期</div>
-  <div class="p-excerpt">想問銀行卡下面會有個日期 例如27/05 是代表2027年5月過期嗎 過期的話是要去銀行重辦嗎</div>
   <div class="p-meta">1 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/37579b86-4f7a-459b-a333-77066e7c4c5d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">翔</span><span class="who">翔</span></div>
@@ -1883,37 +2062,27 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#C8B8D8">米</span><span class="who">米🍚</span></div>
   <div class="p-title">硬鞋！</div>
   <div class="p-excerpt">有什麼推薦的東西可以貼在腳上，穿硬鞋時比較不容易破皮、不會掉。 貼ok蹦感覺很浪費、透氣膠帶有很容易破皮！ 🙏❤️</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/da799301-55a5-4552-b90e-a6e29b19ca80" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">新</span><span class="who">新生社畜兒</span></div>
   <div class="p-title">社畜人生</div>
   <div class="p-excerpt">到新環境要怎麼跟同事混熟 (不同年齡層！</div>
-  <div class="p-meta">0 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/732f0294-96e9-473a-bdcf-c224c6f6e2c6" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Cabe Mom</span></div>
   <div class="p-title">去美甲店時，你最希望美甲師主動做什麼？又有什麼是「想講／想問卻不敢開口」的？</div>
   <div class="p-excerpt">每次去美甲店，坐上美甲椅就是 1～3個小時起跳，大家是不是心裡都有很多小劇場 😰 想問大家在做指甲的過程🧐 1. 你最希望美甲師主動做什麼事？ 2. 有沒有哪些情況，是你「內心超想講／超想問，卻默默憋在心裡不敢開口」的？ 大家去美甲店時最在意哪一點？或是曾有過什麼不敢開口的內心小劇場？ 歡迎留言分享！😆</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/5d02660c-da0d-4bd4-8418-61fb58fd2afc" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">蓮</span><span class="who">蓮心</span></div>
   <div class="p-title">出國</div>
   <div class="p-excerpt">第一次出國要去芭堤雅，是跟一群男同事，想出去見世面但也不好意思什麼都問同事，有什麼要注意的還是女生去芭堤雅好買好去的地方嗎？</div>
   <div class="p-meta">0 則回答 · 0 讚</div>
-</a><a class="pcard" href="p/82bfcd40-8469-4930-8d14-d9df0476a97d" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">4</span><span class="who">4321_8765</span></div>
-  <div class="p-title">電子書壞掉 要丟什麼類型</div>
-  <div class="p-excerpt">如題 因為電子書壞掉了，不知道要丟什麼類型的垃圾 希望有高級大人指點</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/0dc32166-172c-44e0-a34d-1fc86ba38791" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">Y</span><span class="who">Yuki</span></div>
   <div class="p-title">記帳怎樣才不會忘</div>
   <div class="p-excerpt">每次記帳總是有漏掉的部分，想知道該怎麼記帳才能有效又持久。</div>
   <div class="p-meta">3 則回答 · 0 讚</div>
-</a><a class="pcard" href="p/4e91447f-ac8b-4f28-9e7c-29c317a0cab8" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">小</span><span class="who">小智</span></div>
-  <div class="p-title">保險 理賠如何申請</div>
-  <div class="p-excerpt">工作中我的摩托車放在店門口被貨車撞，當下有報警，約15天後摩托車才修好，目前初判單都出來了對方全責，有跟保險約好了，想請問這樣要怎麼寫理賠申請書與對方保險談理賠費用可以最大化</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/65a83ce7-d671-4da7-8dc7-7f1eb1e49030" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">火</span><span class="who">火腿</span></div>
   <div class="p-title">我長了子宮肌瘤不知道怎麼辦</div>
@@ -1923,12 +2092,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">大</span><span class="who">大學生</span></div>
   <div class="p-title">租房子要問什麼</div>
   <div class="p-excerpt">我要租房子 上網看過照片跟價格也知道地區 還有什麼是可以線上問的 還是要等看房子的時候再問</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
-</a><a class="pcard" href="p/505fc5b2-7450-4c6b-81de-671bcb9a785d" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">☆</span><span class="who">☆喜歡時團🍿 祺&amp;翔～小核桃🐮</span></div>
-  <div class="p-title">如何快速煮出好吃的食物？</div>
-  <div class="p-excerpt">怎麼樣能快速輕鬆做出一道好吃的料理？ 不要用電鍋 輕鬆好上手</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">3 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/29493679-acfe-411c-ac2c-bf271699a8b5" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">皮</span><span class="who">皮克敏狂熱竹子</span></div>
   <div class="p-title">收到台電的停電通知 有什麼必須要做的事情</div>
@@ -1958,7 +2122,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2D9A0">琹</span><span class="who">琹</span></div>
   <div class="p-title">怎麼去廟裡拜拜</div>
   <div class="p-excerpt">因為最近出太多意外，同事說可以去廟裡拜拜，但是家人不在身邊只能一個人拜拜 想問問怎麼拜拜才是正確的呢？ 拜拜地點是台南武廟 謝謝各位高級大人的教學😭</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
+  <div class="p-meta">3 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/2bd085f4-32d2-440d-af92-168e1c8342e4" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">嗯</span><span class="who">嗯</span></div>
   <div class="p-title">上班怎麼保持清醒</div>
@@ -1978,7 +2142,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">台</span><span class="who">台灣台中人</span></div>
   <div class="p-title">卡債危機重重⋯</div>
   <div class="p-excerpt">學生的時候在百貨工作，遇到很多信用卡業務，被成功推銷2張卡（因為學不會怎麼拒絕⋯）後來不懂的節制，為何買工作用的設備，又再辦了2張，一直相信我只要固定繳款，一定能在下一個月養成不刷卡的習慣，卻沒有預想到，自己的薪水根本入不敷出，一直循環利息，還大大減少信用分數，有沒有過來人是怎麼成功擺脫卡債的⋯希望初級大人這裡可以小力鞭⋯⋯。 目前的卡費在能力所及之下儘量交出最多能繳出，但都只能比最低應繳高一點⋯也沒有其他多餘資金可以投資（但我秉持擁有負債就不要投資的概念）任何卡債的錢都沒有跟家裡拿（事實上也沒有多餘的可以給我支援，很希望至少可以趕快拜託卡債危機⋯希望能聽到各位方向與卡債相處的過程（不管成功或失敗）希望能有這樣的紀錄，讓我或是其他有一樣困擾的人可以一起討論或是脫離困難！</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/e668e1c5-a463-46e3-b691-30000b1da998" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">咚</span><span class="who">咚</span></div>
   <div class="p-title">機車</div>
@@ -1988,7 +2152,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#E8A0A8">魚</span><span class="who">魚頭</span></div>
   <div class="p-title">勞保加入工會</div>
   <div class="p-excerpt">有沒有高級大人 做過自由業 知道勞保我想要加保在職業工會的話 這個工會我該怎麼找 跟怎麼加入</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/f79db06b-db08-4c32-9e5d-aad84a954d78" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">艾</span><span class="who">艾利</span></div>
   <div class="p-title">當兵</div>
@@ -2093,7 +2257,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">還</span><span class="who">還沒想到</span></div>
   <div class="p-title">單門冰箱食物保存</div>
   <div class="p-excerpt">請問高級大人們外面租屋的單門冰箱都怎麼保存食物？ 食物有蔬菜（高麗菜、櫛瓜）、肉片、海鮮</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/4fc49a89-6eff-4ebd-85e2-6065aaabeeda" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">a</span><span class="who">aB123</span></div>
   <div class="p-title">運動員一天需要補充多少蛋白質</div>
@@ -2162,13 +2326,13 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </a><a class="pcard" href="p/0bd9270f-cc2c-4664-83b5-89f8e71599cd" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">Y</span><span class="who">Y</span></div>
   <div class="p-title">信用卡分期問題</div>
-  <div class="p-excerpt">1.想請問大家信用卡分期0利率會影響自己的信用額度嗎？ 2.如果要分期的話是在百貨公司結帳跟店員說要分期他就會幫我設定好，還是我要再自己去app裡面設定呢？ 3.若我當下購買的時候沒有選擇分期，後續要改為分期是可以的嗎？ 4.信用卡分期跟每個月繳款最低限額是一樣的東西嗎 再麻煩各位幫我解答了，目前還是信用卡新手只有用信用卡繳保險而已其他都不太了解😭</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-excerpt">1.想請問大家信用卡分期0利率會影響自己的信用評分嗎？ 2.如果要分期的話是在百貨公司結帳跟店員說要分期他就會幫我設定好，還是我要再自己去app裡面設定呢？ 3.若我當下購買的時候沒有選擇分期，後續要改為分期是可以的嗎？ 4.信用卡分期跟每個月繳款最低限額是一樣的東西嗎 再麻煩各位幫我解答了，目前還是信用卡新手只有用信用卡繳保險而已其他都不太了解😭</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/2b42feae-185c-4532-8589-992fc2a2d4ae" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">終</span><span class="who">終（中）極（級）大人</span></div>
   <div class="p-title">晾衣服很困擾</div>
   <div class="p-excerpt">這是我搬進來的第1個月 前面我都是去外面的自助洗衣店洗衣服 因為我不敢用租房附的洗衣機 最近把洗衣機洗乾淨了 問題來了 根本沒有空間可以晾衣服 有夠困擾 買升縮桿子 又怕承重不夠</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
+  <div class="p-meta">3 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/a1f5d5f0-b8f2-46e5-9f70-b06a52ffef80" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">Y</span><span class="who">Y.</span></div>
   <div class="p-title">高速公路指示好亂</div>
@@ -2233,7 +2397,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">瑄</span><span class="who">瑄瑄</span></div>
   <div class="p-title">想買一台自己的機車，大約要存多少錢</div>
   <div class="p-excerpt">我目前騎家裡的車，我想換一台自己用薪水買的車，買二手的也行，但我一直夢想要改車</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/40a21414-17f4-4c7d-9b94-c272460eff7d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">🫪</span><span class="who">🫪</span></div>
   <div class="p-title">機車保險</div>
@@ -2258,7 +2422,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#A8C6A1">H</span><span class="who">Haru</span></div>
   <div class="p-title">初級大人請父母吃飯該怎麼選餐廳！</div>
   <div class="p-excerpt">大家有推薦適合跟家人一起吃飯的地方嗎！我跟哥哥都剛成年不久，有在打工所以想請爸比媽咪吃飯，希望是有點貴但很值得的那種地方，預算可能落在一個人一千初都還行！希望高級大人能給我一些建議～～～～</div>
-  <div class="p-meta">1 則回答 · 0 讚</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/1616e978-a704-43e8-8bed-ee6b58b32062" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">星</span><span class="who">星奈</span></div>
   <div class="p-title">信用卡是必要的嗎</div>
@@ -2393,11 +2557,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">九</span><span class="who">九桃</span></div>
   <div class="p-title">水蜜桃要怎麼處理</div>
   <div class="p-excerpt">水蜜桃要怎麼去皮怎麼切 可以帶皮吃嗎 但是水蜜桃上面有毛欸！！！</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
+  <div class="p-meta">3 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/7f4e9150-9d0b-4bb7-9dbb-e496d1a95635" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">莎</span><span class="who">莎</span></div>
   <div class="p-title">車禍調解</div>
   <div class="p-excerpt">我是綠燈直行，對方闖紅燈，我為了閃避他摔車，雙方無碰撞，但右腳踝有一個比較深的開放性傷口（五元硬幣大小）當時對方沒有停車直接開走，後來警察有找到人，對方表示會負責醫藥費及修車費，目前傷口已經復原但是有留疤，請問我該怎麼跟對方談和解呢？ （有朋友問認識的律師是說可以至少從30萬開始喊）</div>
+  <div class="p-meta">2 則回答 · 0 讚</div>
+</a><a class="pcard" href="p/1e7fa44e-d149-4590-bf16-4bbc509a317a" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">嚴</span><span class="who">嚴肅學習</span></div>
+  <div class="p-title">第一次打工該注意什麼？以及白天上學該怎麼安排打工時間最合適</div>
+  <div class="p-excerpt">大家好👋 1.最近想開始打工賺點生活費+買想要的東西，想投餐飲業打工（離家近），請問有做過餐飲業的人能告訴我該注意什麼嗎？ 2.之後9月開學怎麼安排打工時間最合適？ 3.大家一個月大概打工多久？</div>
   <div class="p-meta">2 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/69a73c8f-4fcc-435c-88ef-13e641b43790" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">菇</span><span class="who">菇妹</span></div>
@@ -2448,7 +2617,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">Z</span><span class="who">Zhen</span></div>
   <div class="p-title">讓經期順利來的方法</div>
   <div class="p-excerpt">經期偶爾會延後個幾天甚至半個月 看過網路上的很多小秘招 想知道還有哪些是可行的呢 - 目前知道的有： Dcard求經 喝超商剝皮辣椒雞 微波瑞穗巧克力牛奶 跟正在經期的朋友貼貼 穿白色褲子之類的 - 希望還能有其他的方法能試試.ᐟ.ᐟ‪</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
+  <div class="p-meta">3 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/a7793bcc-1773-406d-925f-fe2478de2bf8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">陳</span><span class="who">陳陳</span></div>
   <div class="p-title">Threads發文限流怎麼辦瀏覽數都在個位數</div>
@@ -2508,7 +2677,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#F2B5A0">N</span><span class="who">Norris</span></div>
   <div class="p-title">除蟎機 加濕器 空氣清淨機</div>
   <div class="p-excerpt">最近房間過敏越來越嚴重 想說買看看標題的三個家電試試看 有人有推薦的嗎</div>
-  <div class="p-meta">2 則回答 · 0 讚</div>
+  <div class="p-meta">3 則回答 · 0 讚</div>
 </a><a class="pcard" href="p/ccf9294f-de33-4658-b469-bd080cb1c93c" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">暮</span><span class="who">暮</span></div>
   <div class="p-title">第一次租房要注意什麼</div>
