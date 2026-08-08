@@ -52,6 +52,14 @@ header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
 .site-nav { margin-left:auto; display:flex; justify-content:flex-end; flex-wrap:wrap; gap:0.25rem 1rem; flex:none; }
 .site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); white-space:nowrap; }
 .site-nav a.on { color:var(--orange); }
+@media (max-width:700px) {
+  header.site .wrap { flex-wrap:wrap; gap:0.4rem 0.75rem; }
+  .site-nav { order:2; flex:1 0 100%; margin-left:0; padding:0.15rem 0 0.05rem;
+              justify-content:flex-start; flex-wrap:nowrap; gap:0.75rem; overflow-x:auto;
+              scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .site-nav::-webkit-scrollbar { display:none; }
+  .site-nav a { font-size:0.82rem; }
+}
 main { padding:0 0 3.5rem; }
 /* 文章頭圖：縮進欄寬、原尺寸、圓角（不滿版）*/
 .hero-wrap { max-width:var(--measure); margin:1.6rem auto 0; padding:0 1.25rem; }
@@ -238,11 +246,41 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .feedback-form textarea { resize:vertical; }
 .feedback-form .hint { font-size:0.82rem; font-weight:400; color:var(--sub); }
 .feedback-form .req { color:var(--orange); }
+.feedback-form .field-label { display:inline; }
 .feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
                       font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
 .page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
 .page-note h2 { font-size:var(--fs-card-title); margin-bottom:0.25rem; }
 .page-note p { font-size:var(--fs-card-body); color:var(--sub); }
+/* 排行圖：以回覆中的許願次數呈現需求，不公開個別回饋。 */
+.wish-section { margin-top:2.6rem; }
+.wish-section > h2 { font-size:var(--fs-block-title); margin:0; padding-left:0.7rem;
+                     border-left:4px solid var(--cat); line-height:1.5; }
+.ranking-chart { list-style:none; display:grid; gap:0.95rem; max-width:43rem; margin:1rem auto 0; padding:1.25rem 1.35rem;
+                 background:#fff; border-radius:18px; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.ranking-row { min-width:0; }
+.ranking-line { display:flex; align-items:baseline; justify-content:space-between; gap:0.8rem; }
+.ranking-label { min-width:0; font-size:var(--fs-card-body); font-weight:750; color:var(--ink); }
+.ranking-count { flex:none; font-size:var(--fs-note); color:var(--orange); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.ranking-track { display:block; height:0.5rem; margin-top:0.35rem; overflow:hidden; background:var(--cream); border-radius:999px; }
+.ranking-fill { display:block; width:0; height:100%; background:var(--orange); border-radius:inherit;
+                transition:width 850ms cubic-bezier(.2,.75,.25,1); }
+.ranking-chart.is-visible .ranking-fill { width:var(--bar-width); }
+.ranking-note { max-width:43rem; margin:0.6rem auto 0; color:var(--sub); font-size:var(--fs-note); }
+.wish-groups { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1rem; }
+.wish-group { background:#fff; border-radius:16px; padding:1.15rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.wish-group h3 { font-size:var(--fs-card-title); margin:0; }
+.wish-quotes { list-style:none; margin:0.75rem 0 0; padding:0.75rem 0 0; border-top:1px solid var(--line); display:grid; gap:0.45rem; }
+.wish-quotes li { font-size:var(--fs-note); color:var(--sub); line-height:1.65; padding-left:0.85rem; position:relative; }
+.wish-quotes li::before { content:"“"; position:absolute; left:0; color:var(--orange); font-weight:800; }
+.update-list { display:grid; gap:0.75rem; margin-top:1rem; }
+.update-item { background:#fff; border-radius:16px; padding:1.05rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.update-item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.8rem; }
+.update-item h3 { font-size:var(--fs-card-title); margin:0; }
+.update-date { color:var(--sub); font-size:var(--fs-note); white-space:nowrap; }
+.update-item p { color:var(--sub); font-size:var(--fs-card-body); line-height:1.65; margin:0.5rem 0 0; }
+.update-state { display:inline-block; margin-top:0.65rem; padding:0.2rem 0.55rem; border-radius:99px; background:#F1EBE3; color:#756B62; font-size:0.75rem; font-weight:700; }
+.update-state.done { background:#E8F0E3; color:#4C7A34; }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -338,6 +376,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="article-head about">
 <h1>更新日誌</h1>
 <p>內容更正、問題修正與功能更新會記在這裡。</p>
+<section class="wish-section">
+<h2>大家敲碗的功能</h2>
+<div class="wish-groups"><article class="wish-group"><h3>桌面小工具</h3><ul class="wish-quotes"><li>希望可以新增桌面小工具，讓一些文字內容直接出現在桌面上。</li><li>想要放在桌面上可愛的小工具，提醒我們學習。</li><li>重要報稅等是否可以在手機桌面快速查閱。</li></ul></article><article class="wish-group"><h3>提醒能自己設</h3><ul class="wish-quotes"><li>提醒週期想要自己設定，不是內建一個月、三個月、一年。</li><li>許願提醒功能可以自訂提醒時間，想選擇兩個月但是沒有。</li><li>車禍 SOP 設定提醒，有沒有辦法先自設時間再往後推 30 天？</li></ul></article><article class="wish-group"><h3>社群也想收藏</h3><ul class="wish-quotes"><li>社群上的提問或文章能夠收藏嗎？</li><li>把對自己有幫助的發問或留言也存起來。</li><li>許願收藏功能可以分門別類，之後撈資訊比較好找。</li></ul></article><article class="wish-group"><h3>依自己的生活條件看</h3><ul class="wish-quotes"><li>希望地區可以複選，住的地方和工作地方會是不同縣市。</li><li>希望地區精確到縣市，不同地方可以有不同的實體輔導資源。</li></ul></article><article class="wish-group"><h3>字可以再好讀一點</h3><ul class="wish-quotes"><li>希望能調整字體大小。</li><li>目前字級偏小，初級大人使用的話可以整體大一級。</li></ul></article></div>
+</section>
+<section class="wish-section">
+<h2>問題與內容追蹤</h2>
+<div class="update-list"><article class="update-item"><div class="update-item-top"><h3>首頁內容載入異常恢復</h3><time class="update-date">2026.07.30</time></div><p>上線初期部分使用者開啟「新手必看」時看見空白；服務恢復後持續觀察載入狀況。</p><span class="update-state done">已修正</span></article><article class="update-item"><div class="update-item-top"><h3>提醒與通知的入口不夠好找</h3><time class="update-date">2026.08.08</time></div><p>已調整提醒與通知設定的入口，讓第一次使用時更容易找到。</p><span class="update-state done">已修正</span></article><article class="update-item"><div class="update-item-top"><h3>外部查詢連結可能失效</h3><time class="update-date">2026.08.08</time></div><p>收到特定交通查詢連結無法開啟的回報；會持續確認主管機關網站改版與連結狀態。</p><span class="update-state">持續查核</span></article><article class="update-item"><div class="update-item-top"><h3>百科內容勘誤</h3><time class="update-date">2026.08.08</time></div><p>已收到健康篩檢資格與公路養管費名稱等勘誤；查證後會直接修正文內資訊。</p><span class="update-state">查證中</span></article></div>
+</section>
 </div>
 </div>
 </main>
@@ -353,5 +399,38 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <p class="foot-legal">內容僅供生活參考，實際金額、期限與規定以各主管機關當年公告為準。<br>
   © 2026 初級大人手冊</p>
 </div></footer>
+<script>
+(function () {
+  var charts = document.querySelectorAll('[data-ranking-chart]');
+  if (!charts.length) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function reveal(chart) {
+    if (chart.dataset.animated) return;
+    chart.dataset.animated = 'true';
+    chart.classList.add('is-visible');
+    chart.querySelectorAll('[data-count]').forEach(function (el) {
+      var target = Number(el.dataset.count);
+      if (reduced) { el.textContent = target.toLocaleString(); return; }
+      var start = performance.now(), duration = 850;
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased).toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  if (reduced || !('IntersectionObserver' in window)) {
+    charts.forEach(reveal); return;
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { reveal(entry.target); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.25 });
+  charts.forEach(function (chart) { observer.observe(chart); });
+})();
+</script>
 </body>
 </html>

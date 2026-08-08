@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
-<title>吃飯時間｜初級大人手冊 社群</title>
-<meta name="description" content="飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1小時或飯後2小時 隨餐 吃藥後立即吃飯，或吃飯時同時服藥 睡前 睡前半小時 「飯後」藥其實就是為了減少胃刺激或讓吸收比較好，通常">
+<title>吃飯時間｜飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1｜初級大人手冊 社群</title>
+<meta name="description" content="秘技｜吃飯時間｜飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1小時或飯後2小時 隨餐 吃藥後立即吃飯，或吃飯時同時服藥 睡前 睡前半小時 「飯後」藥其實就是為了減少胃刺激或讓吸收比較好，通常">
 <link rel="canonical" href="https://adultingguide.tw/community/p/e2cc52e5-d2c1-4777-a236-e704bbf2cab5">
 <link rel="icon" type="image/png" href="../../assets/app-icon.png">
 <link rel="apple-touch-icon" href="../../assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
-<meta property="og:title" content="吃飯時間｜初級大人手冊 社群">
-<meta property="og:description" content="飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1小時或飯後2小時 隨餐 吃藥後立即吃飯，或吃飯時同時服藥 睡前 睡前半小時 「飯後」藥其實就是為了減少胃刺激或讓吸收比較好，通常">
+<meta property="og:title" content="吃飯時間｜飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1｜初級大人手冊 社群">
+<meta property="og:description" content="秘技｜吃飯時間｜飯前 吃飯前半小時至1小時 飯後 吃完飯後半小時至１小時 空腹 吃飯前1小時或飯後2小時 隨餐 吃藥後立即吃飯，或吃飯時同時服藥 睡前 睡前半小時 「飯後」藥其實就是為了減少胃刺激或讓吸收比較好，通常">
 <meta property="og:url" content="https://adultingguide.tw/community/p/e2cc52e5-d2c1-4777-a236-e704bbf2cab5">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -52,6 +52,14 @@ header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
 .site-nav { margin-left:auto; display:flex; justify-content:flex-end; flex-wrap:wrap; gap:0.25rem 1rem; flex:none; }
 .site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); white-space:nowrap; }
 .site-nav a.on { color:var(--orange); }
+@media (max-width:700px) {
+  header.site .wrap { flex-wrap:wrap; gap:0.4rem 0.75rem; }
+  .site-nav { order:2; flex:1 0 100%; margin-left:0; padding:0.15rem 0 0.05rem;
+              justify-content:flex-start; flex-wrap:nowrap; gap:0.75rem; overflow-x:auto;
+              scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .site-nav::-webkit-scrollbar { display:none; }
+  .site-nav a { font-size:0.82rem; }
+}
 main { padding:0 0 3.5rem; }
 /* 文章頭圖：縮進欄寬、原尺寸、圓角（不滿版）*/
 .hero-wrap { max-width:var(--measure); margin:1.6rem auto 0; padding:0 1.25rem; }
@@ -238,11 +246,41 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .feedback-form textarea { resize:vertical; }
 .feedback-form .hint { font-size:0.82rem; font-weight:400; color:var(--sub); }
 .feedback-form .req { color:var(--orange); }
+.feedback-form .field-label { display:inline; }
 .feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
                       font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
 .page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
 .page-note h2 { font-size:var(--fs-card-title); margin-bottom:0.25rem; }
 .page-note p { font-size:var(--fs-card-body); color:var(--sub); }
+/* 排行圖：以回覆中的許願次數呈現需求，不公開個別回饋。 */
+.wish-section { margin-top:2.6rem; }
+.wish-section > h2 { font-size:var(--fs-block-title); margin:0; padding-left:0.7rem;
+                     border-left:4px solid var(--cat); line-height:1.5; }
+.ranking-chart { list-style:none; display:grid; gap:0.95rem; max-width:43rem; margin:1rem auto 0; padding:1.25rem 1.35rem;
+                 background:#fff; border-radius:18px; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.ranking-row { min-width:0; }
+.ranking-line { display:flex; align-items:baseline; justify-content:space-between; gap:0.8rem; }
+.ranking-label { min-width:0; font-size:var(--fs-card-body); font-weight:750; color:var(--ink); }
+.ranking-count { flex:none; font-size:var(--fs-note); color:var(--orange); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.ranking-track { display:block; height:0.5rem; margin-top:0.35rem; overflow:hidden; background:var(--cream); border-radius:999px; }
+.ranking-fill { display:block; width:0; height:100%; background:var(--orange); border-radius:inherit;
+                transition:width 850ms cubic-bezier(.2,.75,.25,1); }
+.ranking-chart.is-visible .ranking-fill { width:var(--bar-width); }
+.ranking-note { max-width:43rem; margin:0.6rem auto 0; color:var(--sub); font-size:var(--fs-note); }
+.wish-groups { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1rem; }
+.wish-group { background:#fff; border-radius:16px; padding:1.15rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.wish-group h3 { font-size:var(--fs-card-title); margin:0; }
+.wish-quotes { list-style:none; margin:0.75rem 0 0; padding:0.75rem 0 0; border-top:1px solid var(--line); display:grid; gap:0.45rem; }
+.wish-quotes li { font-size:var(--fs-note); color:var(--sub); line-height:1.65; padding-left:0.85rem; position:relative; }
+.wish-quotes li::before { content:"“"; position:absolute; left:0; color:var(--orange); font-weight:800; }
+.update-list { display:grid; gap:0.75rem; margin-top:1rem; }
+.update-item { background:#fff; border-radius:16px; padding:1.05rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.update-item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.8rem; }
+.update-item h3 { font-size:var(--fs-card-title); margin:0; }
+.update-date { color:var(--sub); font-size:var(--fs-note); white-space:nowrap; }
+.update-item p { color:var(--sub); font-size:var(--fs-card-body); line-height:1.65; margin:0.5rem 0 0; }
+.update-state { display:inline-block; margin-top:0.65rem; padding:0.2rem 0.55rem; border-radius:99px; background:#F1EBE3; color:#756B62; font-size:0.75rem; font-weight:700; }
+.update-state.done { background:#E8F0E3; color:#4C7A34; }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -328,6 +366,29 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .comm-hero { padding:2.4rem 0 0.4rem; }
 .comm-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .comm-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
+.comm-stats { display:grid; grid-template-columns:repeat(3, 1fr); gap:0.6rem; margin-top:1.3rem; }
+.comm-stats div { padding:0.85rem 0.7rem; text-align:center; background:#fff; border-radius:14px; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.comm-stats strong { display:block; color:var(--orange); font-size:1.25rem; line-height:1.25; }
+.comm-stats span { display:block; margin-top:0.12rem; color:var(--sub); font-size:0.78rem; }
+.comm-door-grid { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.25rem; }
+@media (min-width:640px) { .comm-door-grid { grid-template-columns:repeat(2, 1fr); } }
+.comm-door { background:#fff; border-radius:16px; box-shadow:0 1px 2px rgba(69,63,58,0.04); overflow:hidden; }
+.comm-door > summary { list-style:none; cursor:pointer; padding:1.15rem 1.2rem; }
+.comm-door > summary::-webkit-details-marker { display:none; }
+.comm-door > summary:focus { outline:none; }
+.comm-door > summary:focus-visible { outline:3px solid #F2C89A; outline-offset:-3px; border-radius:16px; }
+.comm-door > summary > strong { display:block; font-size:var(--fs-card-title); }
+.comm-door > summary > span { display:block; margin-top:0.28rem; font-size:var(--fs-card-body); color:var(--sub); line-height:1.55; }
+.comm-door > summary > em { display:block; margin-top:0.7rem; color:var(--orange); font-style:normal; font-size:var(--fs-note); font-weight:700; }
+.comm-door .fold-body { padding:0 1.2rem 1rem; }
+.comm-door-more { display:block; margin-top:0.85rem; color:var(--orange); font-size:var(--fs-note); font-weight:700; }
+.community-note { margin-top:0.9rem; padding:0.65rem 0.85rem; border-radius:12px; background:#F1EBE3;
+                  color:var(--sub); font-size:var(--fs-note); line-height:1.65; }
+.community-note a { font-weight:700; color:var(--ink); }
+.collection-pages { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1.2rem; }
+.collection-pages a { min-width:2rem; padding:0.3rem 0.55rem; border-radius:8px; background:#F1EBE3;
+                      color:var(--ink); font-size:var(--fs-note); font-weight:700; text-align:center; }
+.collection-pages a[aria-current="page"] { background:var(--orange); color:#fff; }
 .readonly-note { margin-top:1rem; display:inline-flex; align-items:center; gap:0.4rem;
                  font-size:0.85rem; color:var(--sub); background:#F1EBE3;
                  padding:0.4rem 0.9rem; border-radius:99px; }

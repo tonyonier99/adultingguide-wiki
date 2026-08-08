@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://adultingguide.tw/a/benefit-15">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "新鮮人求職最高領 4.8 萬", "description": "剛畢業還沒著落？求職空窗期其實有津貼可領。", "image": "https://adultingguide.tw/assets/cat_benefits.png", "datePublished": "2026-07-04", "dateModified": "2026-07-04", "inLanguage": "zh-Hant-TW", "mainEntityOfPage": "https://adultingguide.tw/a/benefit-15", "author": {"@type": "Organization", "name": "初級大人手冊"}, "publisher": {"@type": "Organization", "name": "初級大人手冊"}, "citation": ["https://special.taiwanjobs.gov.tw/internet/2025/YNGSRH/page-05.html", "https://www.mol.gov.tw/1607/1632/1640/79914/", "https://www.wda.gov.tw（勞動部勞動力發展署，依當年公告為準）"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "新手福利包", "item": "https://adultingguide.tw/c/benefits"}, {"@type": "ListItem", "position": 3, "name": "新鮮人求職最高領 4.8 萬", "item": "https://adultingguide.tw/a/benefit-15"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "新鮮人求職最高領 4.8 萬", "description": "剛畢業還沒著落？求職空窗期其實有津貼可領。", "image": "https://adultingguide.tw/assets/cat_benefits.png", "datePublished": "2026-07-04", "dateModified": "2026-07-04", "inLanguage": "zh-Hant-TW", "mainEntityOfPage": "https://adultingguide.tw/a/benefit-15", "author": {"@type": "Organization", "name": "初級大人手冊"}, "publisher": {"@type": "Organization", "name": "初級大人手冊"}, "citation": ["https://special.taiwanjobs.gov.tw/internet/2025/YNGSRH/page-05.html", "https://www.mol.gov.tw/1607/1632/1640/79914/"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://adultingguide.tw/"}, {"@type": "ListItem", "position": 2, "name": "新手福利包", "item": "https://adultingguide.tw/c/benefits"}, {"@type": "ListItem", "position": 3, "name": "新鮮人求職最高領 4.8 萬", "item": "https://adultingguide.tw/a/benefit-15"}]}]</script>
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -52,6 +52,14 @@ header.site .wrap { display:flex; align-items:center; gap:0.75rem; }
 .site-nav { margin-left:auto; display:flex; justify-content:flex-end; flex-wrap:wrap; gap:0.25rem 1rem; flex:none; }
 .site-nav a { font-size:0.9rem; font-weight:700; color:var(--sub); white-space:nowrap; }
 .site-nav a.on { color:var(--orange); }
+@media (max-width:700px) {
+  header.site .wrap { flex-wrap:wrap; gap:0.4rem 0.75rem; }
+  .site-nav { order:2; flex:1 0 100%; margin-left:0; padding:0.15rem 0 0.05rem;
+              justify-content:flex-start; flex-wrap:nowrap; gap:0.75rem; overflow-x:auto;
+              scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .site-nav::-webkit-scrollbar { display:none; }
+  .site-nav a { font-size:0.82rem; }
+}
 main { padding:0 0 3.5rem; }
 /* 文章頭圖：縮進欄寬、原尺寸、圓角（不滿版）*/
 .hero-wrap { max-width:var(--measure); margin:1.6rem auto 0; padding:0 1.25rem; }
@@ -238,11 +246,41 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .feedback-form textarea { resize:vertical; }
 .feedback-form .hint { font-size:0.82rem; font-weight:400; color:var(--sub); }
 .feedback-form .req { color:var(--orange); }
+.feedback-form .field-label { display:inline; }
 .feedback-form .btn { justify-self:start; border:0; background:var(--orange); color:#fff; font:inherit; font-size:0.95rem;
                       font-weight:700; padding:0.65rem 1.35rem; border-radius:99px; cursor:pointer; }
 .page-note { margin-top:2rem; padding:1rem 1.15rem; background:var(--cream); border-radius:14px; }
 .page-note h2 { font-size:var(--fs-card-title); margin-bottom:0.25rem; }
 .page-note p { font-size:var(--fs-card-body); color:var(--sub); }
+/* 排行圖：以回覆中的許願次數呈現需求，不公開個別回饋。 */
+.wish-section { margin-top:2.6rem; }
+.wish-section > h2 { font-size:var(--fs-block-title); margin:0; padding-left:0.7rem;
+                     border-left:4px solid var(--cat); line-height:1.5; }
+.ranking-chart { list-style:none; display:grid; gap:0.95rem; max-width:43rem; margin:1rem auto 0; padding:1.25rem 1.35rem;
+                 background:#fff; border-radius:18px; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.ranking-row { min-width:0; }
+.ranking-line { display:flex; align-items:baseline; justify-content:space-between; gap:0.8rem; }
+.ranking-label { min-width:0; font-size:var(--fs-card-body); font-weight:750; color:var(--ink); }
+.ranking-count { flex:none; font-size:var(--fs-note); color:var(--orange); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.ranking-track { display:block; height:0.5rem; margin-top:0.35rem; overflow:hidden; background:var(--cream); border-radius:999px; }
+.ranking-fill { display:block; width:0; height:100%; background:var(--orange); border-radius:inherit;
+                transition:width 850ms cubic-bezier(.2,.75,.25,1); }
+.ranking-chart.is-visible .ranking-fill { width:var(--bar-width); }
+.ranking-note { max-width:43rem; margin:0.6rem auto 0; color:var(--sub); font-size:var(--fs-note); }
+.wish-groups { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1rem; }
+.wish-group { background:#fff; border-radius:16px; padding:1.15rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.wish-group h3 { font-size:var(--fs-card-title); margin:0; }
+.wish-quotes { list-style:none; margin:0.75rem 0 0; padding:0.75rem 0 0; border-top:1px solid var(--line); display:grid; gap:0.45rem; }
+.wish-quotes li { font-size:var(--fs-note); color:var(--sub); line-height:1.65; padding-left:0.85rem; position:relative; }
+.wish-quotes li::before { content:"“"; position:absolute; left:0; color:var(--orange); font-weight:800; }
+.update-list { display:grid; gap:0.75rem; margin-top:1rem; }
+.update-item { background:#fff; border-radius:16px; padding:1.05rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
+.update-item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.8rem; }
+.update-item h3 { font-size:var(--fs-card-title); margin:0; }
+.update-date { color:var(--sub); font-size:var(--fs-note); white-space:nowrap; }
+.update-item p { color:var(--sub); font-size:var(--fs-card-body); line-height:1.65; margin:0.5rem 0 0; }
+.update-state { display:inline-block; margin-top:0.65rem; padding:0.2rem 0.55rem; border-radius:99px; background:#F1EBE3; color:#756B62; font-size:0.75rem; font-weight:700; }
+.update-state.done { background:#E8F0E3; color:#4C7A34; }
 /* 文章列表卡（分類頁）：兩欄網格，篇數多也不用滑太久 */
 .cat-subsec { font-size:1rem; font-weight:800; color:var(--ink); margin:1.8rem 0 0.1rem;
               padding-left:0.6rem; border-left:4px solid var(--cat); }
@@ -354,7 +392,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </article>
 <section class="sources">
   <h3>官方來源</h3>
-  <a class="src-btn" href="https://special.taiwanjobs.gov.tw/internet/2025/YNGSRH/page-05.html" rel="noopener"><span class="src-txt"><span class="src-org">勞動部勞動力發展署</span>支援青年就業計畫專區</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.mol.gov.tw/1607/1632/1640/79914/" rel="noopener"><span class="src-txt"><span class="src-org">勞動部</span>青年就業零距離 全方位就業支援</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.wda.gov.tw（勞動部勞動力發展署，依當年公告為準）" rel="noopener"><span class="src-txt"><span class="src-org">官方</span>官方說明</span><span class="src-arrow">↗</span></a>
+  <a class="src-btn" href="https://special.taiwanjobs.gov.tw/internet/2025/YNGSRH/page-05.html" rel="noopener"><span class="src-txt"><span class="src-org">勞動部勞動力發展署</span>支援青年就業計畫專區</span><span class="src-arrow">↗</span></a><a class="src-btn" href="https://www.mol.gov.tw/1607/1632/1640/79914/" rel="noopener"><span class="src-txt"><span class="src-org">勞動部</span>青年就業零距離 全方位就業支援</span><span class="src-arrow">↗</span></a>
 </section>
 <div class="errata">
   <span class="errata-hd">發現錯誤或過時了？</span>這本手冊是我們邊長大、邊整理出來的，難免有疏漏，<a href="mailto:tonyonier99@gmail.com?subject=%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%EF%BD%9C%E5%8B%98%E8%AA%A4&body=%E5%97%A8%EF%BC%8C%E6%88%91%E7%99%BC%E7%8F%BE%E9%80%99%E7%AF%87%E7%99%BE%E7%A7%91%E6%9C%89%E9%9C%80%E8%A6%81%E4%BF%AE%E6%AD%A3%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%9A%0A%0A%E3%83%BB%E6%96%87%E7%AB%A0%EF%BC%9A%E6%96%B0%E9%AE%AE%E4%BA%BA%E6%B1%82%E8%81%B7%E6%9C%80%E9%AB%98%E9%A0%98+4.8+%E8%90%AC%0A%E3%83%BB%E5%93%AA%E8%A3%A1%E6%80%AA%E6%80%AA%E7%9A%84%EF%BC%9A%0A%E3%83%BB%E6%AD%A3%E7%A2%BA%E7%9A%84%E6%87%89%E8%A9%B2%E6%98%AF%EF%BC%9A%0A">告訴我們一起修正 →</a>
@@ -382,5 +420,38 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <p class="foot-legal">內容僅供生活參考，實際金額、期限與規定以各主管機關當年公告為準。<br>
   © 2026 初級大人手冊</p>
 </div></footer>
+<script>
+(function () {
+  var charts = document.querySelectorAll('[data-ranking-chart]');
+  if (!charts.length) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function reveal(chart) {
+    if (chart.dataset.animated) return;
+    chart.dataset.animated = 'true';
+    chart.classList.add('is-visible');
+    chart.querySelectorAll('[data-count]').forEach(function (el) {
+      var target = Number(el.dataset.count);
+      if (reduced) { el.textContent = target.toLocaleString(); return; }
+      var start = performance.now(), duration = 850;
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased).toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  if (reduced || !('IntersectionObserver' in window)) {
+    charts.forEach(reveal); return;
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { reveal(entry.target); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.25 });
+  charts.forEach(function (chart) { observer.observe(chart); });
+})();
+</script>
 </body>
 </html>
