@@ -126,6 +126,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
               font-size:0.78rem; color:var(--sub); line-height:1.7; }
 .foot-nav { display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem; margin-bottom:0.9rem; }
 .foot-nav a { color:var(--ink); font-weight:600; font-size:0.85rem; }
+.foot-download { display:inline-flex; align-items:baseline; flex-wrap:wrap; gap:0.35rem; }
+.foot-download small { color:var(--orange); font-size:0.72rem; font-weight:700; }
 .foot-legal { font-size:0.76rem; color:var(--sub); line-height:1.7; }
 /* 關於頁 */
 .about h2 { font-size:var(--fs-block-title); margin:2rem 0 0.6rem; padding-left:0.7rem;
@@ -160,6 +162,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .home-hero { padding:2.6rem 0 0.6rem; }
 .home-hero h1 { font-size:var(--fs-page-title); line-height:1.4; }
 .home-hero p { color:var(--sub); margin-top:0.5rem; font-size:1rem; }
+.cta-proof { color:var(--orange) !important; margin:0.55rem 0 0 !important; font-size:0.9rem !important; font-weight:700; }
 .cat-title { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
              color:var(--cat); background:var(--cat-bg); padding:0.22rem 0.7rem;
              border-radius:99px; margin-bottom:0.4rem; }
@@ -272,9 +275,14 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .wish-group-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.8rem; }
 .wish-group h3 { font-size:var(--fs-card-title); margin:0; }
 .wish-group-top .update-state { margin-top:0; flex-shrink:0; }
+.wish-section-intro { max-width:43rem; margin:0.55rem 0 0; color:var(--sub); font-size:var(--fs-card-body); line-height:1.65; }
 .wish-quotes { list-style:none; margin:0.75rem 0 0; padding:0.75rem 0 0; border-top:1px solid var(--line); display:grid; gap:0.45rem; }
 .wish-quotes li { font-size:var(--fs-note); color:var(--sub); line-height:1.65; padding-left:0.85rem; position:relative; }
 .wish-quotes li::before { content:"“"; position:absolute; left:0; color:var(--orange); font-weight:800; }
+.wish-details { margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--line); }
+.wish-details summary { color:var(--cat); cursor:pointer; font-size:var(--fs-note); font-weight:700; }
+.wish-details[open] summary { margin-bottom:0.65rem; }
+.wish-details .wish-quotes { margin:0; padding-top:0; border-top:0; }
 .update-list { display:grid; gap:0.75rem; margin-top:1rem; }
 .update-item { background:#fff; border-radius:16px; padding:1.05rem 1.2rem; box-shadow:0 1px 2px rgba(69,63,58,0.04); }
 .update-item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.8rem; }
@@ -519,6 +527,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>
+  <p class="cta-proof">已超過 10 萬人使用初級大人手冊</p>
   <a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
 </div>
 </div></main>
@@ -529,7 +538,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="../../support">支援</a>
     <a href="../../privacy">隱私政策</a>
     <a href="../../terms">使用條款</a>
-    <a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a>
+    <span class="foot-download"><a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a><small>已超過 10 萬人使用初級大人手冊</small></span>
   </nav>
   <p class="foot-legal">這些都是網友自己發表的發問和經驗分享。想加入一起聊，App 裡見。<br>
   © 2026 初級大人手冊</p>
