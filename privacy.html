@@ -114,14 +114,27 @@ section.sources h3 { font-size:1rem; margin-bottom:0.8rem; font-weight:700; }
 .cta .cta-txt { flex:1; }
 .cta strong { display:block; margin-bottom:0.25rem; font-size:1.05rem; }
 .cta p { font-size:0.92rem; color:var(--sub); margin-bottom:0; line-height:1.6; }
+.cta-actions { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:flex-end; }
 .cta a.btn { display:inline-block; background:var(--orange); color:#fff; font-weight:700;
              font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; white-space:nowrap;
              transition:transform 0.2s cubic-bezier(.645,.045,.355,1); }
 .cta a.btn:hover { text-decoration:none; transform:translateY(-1px); }
 @media (max-width:560px) {
   .cta { flex-direction:column; align-items:stretch; gap:0.9rem; }
+  .cta-actions { justify-content:stretch; }
+  .cta-actions a.btn { flex:1; }
   .cta a.btn { text-align:center; }
 }
+.download-options { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0.8rem; margin-top:1.4rem; }
+.download-option { display:flex; flex-direction:column; gap:0.25rem; align-items:center; justify-content:center;
+                  min-height:7.5rem; padding:1.1rem; background:#fff; border:1px solid var(--line);
+                  border-radius:16px; color:var(--ink); text-align:center;
+                  box-shadow:0 1px 2px rgba(69,63,58,0.04);
+                  transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.download-option:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.08); }
+.download-option strong { color:var(--orange); font-size:1.25rem; }
+.download-option span { color:var(--sub); font-size:0.88rem; }
+@media (max-width:480px) { .download-options { grid-template-columns:1fr; } }
 footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
               font-size:0.78rem; color:var(--sub); line-height:1.7; }
 .foot-nav { display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem; margin-bottom:0.9rem; }
@@ -385,16 +398,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="wrap">
 <div class="article-head about">
 <h1>隱私權政策</h1>
-<p class="foot-legal" style="margin-bottom:1.4rem">App 名稱：初級大人手冊（AdultingGuide）｜最後更新：2026-08-08</p>
+<p class="foot-legal" style="margin-bottom:1.4rem">App 名稱：初級大人手冊（AdultingGuide）｜iOS／Android｜最後更新：2026-08-13</p>
 
 <p>我們重視你的隱私。本政策說明「初級大人手冊」蒐集哪些資料、如何使用，以及你的權利。</p>
 
 <h2>一、我們蒐集的資料</h2>
 <ul>
-  <li><strong>帳號資料</strong>：你以 Apple 登入時，我們會儲存帳號的唯一識別碼；若你選擇提供，亦包含 Email。用於識別你的內容與跨裝置同步。</li>
-  <li><strong>你建立的內容</strong>：暱稱、投稿（秘技/發問）、回答、收藏、按讚、頭貼。其中投稿、回答、暱稱、頭貼會公開顯示於社群，並可能以原樣（含暱稱）公開顯示於本服務的官方網站。</li>
+  <li><strong>帳號資料</strong>：iOS 使用 Apple 登入、Android 使用 Google 登入時，我們會儲存帳號唯一識別碼及登入服務提供的 Email（若有）。這些資料用於識別你的內容與跨裝置同步。</li>
+  <li><strong>你建立的內容</strong>：暱稱、投稿（秘技／發問）、回答、留言、收藏、按讚、檢舉、封鎖設定與頭貼。其中投稿、回答、留言、暱稱、頭貼會公開顯示於社群；部分內容可能以原樣（含暱稱）公開顯示於本服務的官方網站。</li>
+  <li><strong>推播資料</strong>：若你允許通知，Android 會使用 Firebase Cloud Messaging 裝置權杖傳送推播；iOS 使用 Apple 的推播服務。</li>
   <li><strong>裝置本機資料</strong>：測驗結果、提醒設定等儲存在你的裝置上，不會主動上傳。</li>
-  <li><strong>App 使用統計</strong>：我們使用 TelemetryDeck 蒐集匿名、彙總的使用數據以改善 App，不含可識別個人身分的資訊。</li>
+  <li><strong>App 使用統計</strong>：iOS App 使用 TelemetryDeck 蒐集匿名、彙總的使用數據以改善 App；Android 目前不使用 App 行為分析工具。</li>
   <li><strong>網站使用統計</strong>：網站使用 Google Analytics 4（GA4）與 GoatCounter 了解頁面瀏覽、內容成效與網站使用情形。我們不主動將姓名、Email 或其他個人識別資訊送入分析工具；GA4 可能使用 Cookie 或類似技術，Google 會依其<a href="https://policies.google.com/technologies/partner-sites?hl=zh-TW" rel="noopener">隱私權政策</a>處理資料。</li>
 </ul>
 
@@ -404,15 +418,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <h2>三、第三方服務</h2>
 <ul>
   <li><strong>Supabase</strong>：提供資料庫與檔案儲存（存放你的帳號、投稿、頭貼等）。</li>
-  <li><strong>Apple Sign in with Apple</strong>：提供登入。</li>
-  <li><strong>TelemetryDeck</strong>：App 的匿名使用分析。</li>
+  <li><strong>Apple Sign in with Apple／Google OAuth</strong>：提供 iOS／Android 登入。</li>
+  <li><strong>Firebase Cloud Messaging（Android）與 Apple 推播服務（iOS）</strong>：傳送通知。</li>
+  <li><strong>TelemetryDeck（iOS）</strong>：App 的匿名使用分析。</li>
   <li><strong>Google Analytics 4（GA4）與 GoatCounter</strong>：網站流量與內容成效分析。</li>
 </ul>
 
-<h2>四、你的權利</h2>
+<h2>四、資料與帳戶刪除</h2>
 <ul>
-  <li><strong>刪除帳號</strong>：可在 App 內「我的 → 刪除帳號」永久刪除你的帳號與所有相關資料（投稿、回答、收藏、按讚、頭貼、暱稱），不可復原。</li>
-  <li><strong>編輯/撤回</strong>：可隨時編輯或刪除自己的投稿與回答；不希望特定內容公開於官方網站，可來信要求移除。</li>
+  <li><strong>刪除帳戶與關聯資料</strong>：iOS／Android 均可在 App 內「我的 → 刪除帳號」提出刪除。這會刪除帳戶、登入識別資料、個人資料、投稿、回答、留言、收藏、按讚、頭貼及推播裝置權杖，刪除後不可復原。</li>
+  <li><strong>刪除部分資料</strong>：可在 App 內刪除自己可管理的投稿、收藏等內容；若要撤回回答、留言或移除網站上的特定內容，請寄信至下方 Email，並提供登入 Email 或使用者 ID 與要刪除的內容。</li>
+  <li><strong>處理時間與保留</strong>：刪除申請會在 30 日內處理。除法律或資安義務要求外，不會額外保留已刪除的帳戶資料；依法必須保留的紀錄僅保留必要期間。</li>
   <li><strong>檢舉與封鎖</strong>：可檢舉不當內容、封鎖其他使用者。</li>
 </ul>
 
@@ -420,7 +436,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <p>本 App 含使用者產生的內容。我們對冒犯性內容與濫用行為採零容忍，會在 24 小時內審理檢舉、移除違規內容，並對違規帳號採取行動（包含停權）。</p>
 
 <h2>六、兒少</h2>
-<p>本 App 不針對 13 歲以下兒童設計，亦不會在知情下蒐集其個人資料。</p>
+<p>本 App 可供 13 歲以上使用者使用，不針對 13 歲以下兒童設計，亦不會在知情下蒐集其個人資料。</p>
 
 <h2>七、政策更新</h2>
 <p>本政策若有更新會於此頁公告。</p>
@@ -438,7 +454,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="support">支援</a>
     <a href="privacy">隱私政策</a>
     <a href="terms">使用條款</a>
-    <span class="foot-download"><a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a><small>已超過 10 萬人使用初級大人手冊</small></span>
+    <span class="foot-download"><a href="download">下載 App</a></span>
   </nav>
   <p class="foot-legal">內容僅供生活參考，實際金額、期限與規定以各主管機關當年公告為準。<br>
   © 2026 初級大人手冊</p>

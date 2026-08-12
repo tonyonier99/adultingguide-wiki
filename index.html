@@ -114,14 +114,27 @@ section.sources h3 { font-size:1rem; margin-bottom:0.8rem; font-weight:700; }
 .cta .cta-txt { flex:1; }
 .cta strong { display:block; margin-bottom:0.25rem; font-size:1.05rem; }
 .cta p { font-size:0.92rem; color:var(--sub); margin-bottom:0; line-height:1.6; }
+.cta-actions { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:flex-end; }
 .cta a.btn { display:inline-block; background:var(--orange); color:#fff; font-weight:700;
              font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; white-space:nowrap;
              transition:transform 0.2s cubic-bezier(.645,.045,.355,1); }
 .cta a.btn:hover { text-decoration:none; transform:translateY(-1px); }
 @media (max-width:560px) {
   .cta { flex-direction:column; align-items:stretch; gap:0.9rem; }
+  .cta-actions { justify-content:stretch; }
+  .cta-actions a.btn { flex:1; }
   .cta a.btn { text-align:center; }
 }
+.download-options { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0.8rem; margin-top:1.4rem; }
+.download-option { display:flex; flex-direction:column; gap:0.25rem; align-items:center; justify-content:center;
+                  min-height:7.5rem; padding:1.1rem; background:#fff; border:1px solid var(--line);
+                  border-radius:16px; color:var(--ink); text-align:center;
+                  box-shadow:0 1px 2px rgba(69,63,58,0.04);
+                  transition:transform 0.2s cubic-bezier(.645,.045,.355,1), box-shadow 0.2s cubic-bezier(.645,.045,.355,1); }
+.download-option:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.08); }
+.download-option strong { color:var(--orange); font-size:1.25rem; }
+.download-option span { color:var(--sub); font-size:0.88rem; }
+@media (max-width:480px) { .download-options { grid-template-columns:1fr; } }
 footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
               font-size:0.78rem; color:var(--sub); line-height:1.7; }
 .foot-nav { display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem; margin-bottom:0.9rem; }
@@ -388,7 +401,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <section class="wish-section"><h2>大家想搞懂什麼</h2><ol class="ranking-chart" data-ranking-chart><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">理財／投資／稅務</span><span class="ranking-count"><span data-count="4868">4,868</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:100.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">菜市場／料理</span><span class="ranking-count"><span data-count="1284">1,284</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:26.38%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">保險／醫療</span><span class="ranking-count"><span data-count="1062">1,062</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:21.82%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">工作／職場</span><span class="ranking-count"><span data-count="879">879</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:18.06%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">租屋／買房／搬家</span><span class="ranking-count"><span data-count="793">793</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:16.29%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">拜拜／禮俗</span><span class="ranking-count"><span data-count="571">571</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:11.73%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">感情／人際</span><span class="ranking-count"><span data-count="562">562</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:11.54%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">生活家務</span><span class="ranking-count"><span data-count="424">424</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:8.71%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">交通／車輛</span><span class="ranking-count"><span data-count="265">265</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:5.44%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">育兒／家庭</span><span class="ranking-count"><span data-count="178">178</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:3.66%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">法律／權益</span><span class="ranking-count"><span data-count="173">173</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:3.55%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">旅行／出國</span><span class="ranking-count"><span data-count="83">83</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:1.71%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">語言／翻譯</span><span class="ranking-count"><span data-count="16">16</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:0.33%"></span></span></li></ol></section>
 <h2 class="home-sec">精選</h2>
 <a class="cat-card featured" href="c/benefits" style="animation-delay:0.00s"><div class="cover-wrap"><img class="cover" src="assets/cat_benefits.png" alt="新手福利包"><span class="feat-flag">免費資源</span></div><div class="cc-body"><h3>新手福利包</h3><div class="cc-sub">政府補助、免費資源、隱藏撇步</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">40 篇</span></div></a>
-<div class="cta"><div class="cta-txt"><strong>初級大人手冊 App</strong><p>報稅、租屋、看醫生……大人生活的大小事，一支 App 全查得到。</p><p class="cta-proof">已超過 10 萬人使用初級大人手冊</p></div><a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">前往 App Store</a></div>
+<div class="cta"><div class="cta-txt"><strong>初級大人手冊 App</strong><p>報稅、租屋、看醫生……大人生活的大小事，一支 App 全查得到。</p><p class="cta-proof">已超過 10 萬人使用初級大人手冊</p></div><div class="cta-actions"><a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">iOS 版</a><a class="btn" href="https://play.google.com/store/apps/details?id=com.paperclip.adultingguide" rel="noopener">Android 版</a></div></div>
 </div>
 </main>
 <footer class="site"><div class="wrap">
@@ -398,7 +411,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
     <a href="support">支援</a>
     <a href="privacy">隱私政策</a>
     <a href="terms">使用條款</a>
-    <span class="foot-download"><a href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">下載 App</a><small>已超過 10 萬人使用初級大人手冊</small></span>
+    <span class="foot-download"><a href="download">下載 App</a></span>
   </nav>
   <p class="foot-legal">內容僅供生活參考，實際金額、期限與規定以各主管機關當年公告為準。<br>
   © 2026 初級大人手冊</p>
