@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -423,7 +430,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="article-head about">
 <h1>合作</h1>
 <p class="summary">站長實際用過、推薦過的東西，還有配合的廣告內容，整理在這裡。</p>
-<div class="promo-list"><a class="promo-card anim-up" href="4b22bec3-e0dd-43b6-bc1d-880dfe196df2"><div class="cover-wrap"><img class="cover" src="https://ezdlslagivrgwtbvpimf.supabase.co/storage/v1/object/public/announcement_images/4b22bec3-e0dd-43b6-bc1d-880dfe196df2.jpg" alt="站長團購：ROICHEN 正脊坐墊"></div><div class="pc-body"><span class="promo-meta"><span class="badge live">進行中</span><span class="badge gray">8/27 – 9/13</span></span><h2>站長團購：ROICHEN 正脊坐墊</h2><p>剛出社會的你，可能一坐就是八小時，腰痠背痛慢慢變成日常。這張坐墊用弧形設計撐住你的腰椎，兩側導引區幫忙固定骨盆，坐著的時候比較不會不自覺歪一邊。…</p><span class="pl-go">看完整介紹 →</span></div></a></div>
+<div class="promo-list"><a class="promo-card anim-up" href="4b22bec3-e0dd-43b6-bc1d-880dfe196df2"><div class="cover-wrap"><img class="cover" src="https://ezdlslagivrgwtbvpimf.supabase.co/storage/v1/object/public/announcement_images/4b22bec3-e0dd-43b6-bc1d-880dfe196df2.jpg" alt="站長團購：ROICHEN 正脊坐墊"></div><div class="pc-body"><span class="promo-meta"><span class="badge live">進行中</span><span class="badge gray">8/27 – 9/13</span></span><h2>站長團購：ROICHEN 正脊坐墊</h2><p>耶～第一次開團是我很喜歡的 ROICHEN 正脊坐墊！</p><span class="pl-go">看完整介紹 →</span></div></a></div>
 <section class="page-note"><h2>廠商合作洽詢</h2><p>有想推薦給初級大人的商品或服務，歡迎來信 <a href="mailto:tonyonier99@gmail.com?subject=%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%EF%BD%9C%E5%90%88%E4%BD%9C%E6%B4%BD%E8%A9%A2&body=%E5%97%A8%EF%BC%8C%E6%88%91%E6%83%B3%E8%B7%9F%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%E8%AB%87%E5%90%88%E4%BD%9C%EF%BC%9A%0A%0A%E3%83%BB%E5%93%81%E7%89%8C%EF%BC%8F%E5%95%86%E5%93%81%EF%BC%9A%0A%E3%83%BB%E6%83%B3%E5%90%88%E4%BD%9C%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A%0A%E3%83%BB%E6%83%B3%E6%89%BE%E6%88%91%E8%81%8A%E8%81%8A%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A%0A">tonyonier99@gmail.com</a> 聊聊唷～</p></section>
 </div>
 </div>

@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -442,10 +449,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </ul>
 <h2>打 119 要講什麼（順序）</h2>
 <ol>
-<li>1. 先講「在哪裡」——地址或明顯地標、相對位置（手機報案，地點最重要）。</li>
-<li>2. 再講發生什麼事（火災？有人受傷？昏倒？）。</li>
-<li>3. 幾個人、什麼狀況。</li>
-<li>4. 聽接線員問答，不要自己先掛電話。</li>
+<li>先講「在哪裡」——地址或明顯地標、相對位置（手機報案，地點最重要）。</li>
+<li>再講發生什麼事（火災？有人受傷？昏倒？）。</li>
+<li>幾個人、什麼狀況。</li>
+<li>聽接線員問答，不要自己先掛電話。</li>
 </ol>
 <h2>基本 CPR（成人）</h2>
 <ul>

@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -452,10 +459,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </ul>
 <h2>徵兵流程（徵兵四部曲）</h2>
 <ol>
-<li>1. 兵籍調查：依通知書帶身分證、戶口名簿受調查，或在期限前用郵寄、傳真、電子郵件、網路完成申報。</li>
-<li>2. 徵兵檢查：到指定醫院做體格檢查，判定體位，分為常備役體位、替代役體位、免役體位、體位未定。</li>
-<li>3. 抽籤：常備役體位者抽籤決定軍種與入營順序；替代役體位者抽籤決定入營順序。本人不能到場可委託家屬代抽。</li>
-<li>4. 徵集入營：入營 10 日前兵役單位會把徵集令送達，依指定時間、地點報到。</li>
+<li>兵籍調查：依通知書帶身分證、戶口名簿受調查，或在期限前用郵寄、傳真、電子郵件、網路完成申報。</li>
+<li>徵兵檢查：到指定醫院做體格檢查，判定體位，分為常備役體位、替代役體位、免役體位、體位未定。</li>
+<li>抽籤：常備役體位者抽籤決定軍種與入營順序；替代役體位者抽籤決定入營順序。本人不能到場可委託家屬代抽。</li>
+<li>徵集入營：入營 10 日前兵役單位會把徵集令送達，依指定時間、地點報到。</li>
 </ol>
 <h2>在學可申請緩徵</h2>
 <ul>

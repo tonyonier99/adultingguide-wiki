@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -439,11 +446,11 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <aside class="callout">重點：一般人代步要考的是「普通重型機車」駕照，18 歲就能考；想騎大型重機要先有普通重型駕照、滿 20 歲並上駕訓班。</aside>
 <h2>機車怎麼考（普通輕型、普通重型）</h2>
 <ol>
-<li>1. 報名：到監理站（管理車輛與駕照的政府機關）臨櫃，或先上監理服務網（mvdis.gov.tw）線上預約。</li>
-<li>2. 體檢：到公立醫院、衛生所，或監理機關指定的體檢代辦所做駕照體檢（視力、辨色力等），拿到體檢合格的登記書，有效期 1 年。</li>
-<li>3. 筆試：考交通規則與號誌，題目從公路局公開題庫出。</li>
-<li>4. 路考：在考場騎指定路線（直線平衡、轉彎、停讓等），普通輕型機車也要考路考。</li>
-<li>5. 領照：兩關都過就當場領照。</li>
+<li>報名：到監理站（管理車輛與駕照的政府機關）臨櫃，或先上監理服務網（mvdis.gov.tw）線上預約。</li>
+<li>體檢：到公立醫院、衛生所，或監理機關指定的體檢代辦所做駕照體檢（視力、辨色力等），拿到體檢合格的登記書，有效期 1 年。</li>
+<li>筆試：考交通規則與號誌，題目從公路局公開題庫出。</li>
+<li>路考：在考場騎指定路線（直線平衡、轉彎、停讓等），普通輕型機車也要考路考。</li>
+<li>領照：兩關都過就當場領照。</li>
 </ol>
 <ul>
 <li>機車可以自己練習（自學），不一定要上駕訓班；考大型重型機車才規定一定要駕訓班結業。</li>
@@ -470,8 +477,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <li>兩個例外：</li>
 </ul>
 <ol>
-<li>1. 出國要在當地開車：國外不認逾期駕照，出國前先換一張新駕照，再辦國際駕照。</li>
-<li>2. 高齡駕駛：自 115 年 5 月 31 日起新制，換照年齡下修到 70 歲。70 歲起：體檢合格＋上 2 小時高齡換照講習，就能換發效期到 75 歲的駕照（這一級免認知功能測驗）；75 歲以上：改成每 3 年換一次，除了體檢和講習，還要通過認知功能測驗（或提出無中度以上失智的證明）。職業駕照另有定期審驗規定。</li>
+<li>出國要在當地開車：國外不認逾期駕照，出國前先換一張新駕照，再辦國際駕照。</li>
+<li>高齡駕駛：自 115 年 5 月 31 日起新制，換照年齡下修到 70 歲。70 歲起：體檢合格＋上 2 小時高齡換照講習，就能換發效期到 75 歲的駕照（這一級免認知功能測驗）；75 歲以上：改成每 3 年換一次，除了體檢和講習，還要通過認知功能測驗（或提出無中度以上失智的證明）。職業駕照另有定期審驗規定。</li>
 </ol>
 <ul>
 <li>各分類細部規定若有調整，以監理服務網與公路局最新公告為準。</li>

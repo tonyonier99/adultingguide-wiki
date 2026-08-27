@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -440,10 +447,10 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </ul>
 <h2>持香的姿勢</h2>
 <ol>
-<li>1. 點燃後用手搧熄火苗，不能用嘴吹</li>
-<li>2. 雙手握香舉到眉心高度，香頭朝上</li>
-<li>3. 男生左手在上、右手在下；女生相反</li>
-<li>4. 拜的時候香保持垂直</li>
+<li>點燃後用手搧熄火苗，不能用嘴吹</li>
+<li>雙手握香舉到眉心高度，香頭朝上</li>
+<li>男生左手在上、右手在下；女生相反</li>
+<li>拜的時候香保持垂直</li>
 </ol>
 <h2>合十怎麼做</h2>
 <ul>
@@ -467,12 +474,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </ul>
 <h2>拜拜流程</h2>
 <ol>
-<li>1. 進廟從龍門（右邊）進、虎門（左邊）出，中門是神走的</li>
-<li>2. 門檻不能踩，要跨過去</li>
-<li>3. 先拜主神，再依序拜陪祀</li>
-<li>4. 每尊神明前自報家門：姓名、地址、生辰、祈求的事</li>
-<li>5. 上香後等香燒過 1/3 以上再燒金紙</li>
-<li>6. 擲筊確認神明收到（3 次聖筊最好）</li>
+<li>進廟從龍門（右邊）進、虎門（左邊）出，中門是神走的</li>
+<li>門檻不能踩，要跨過去</li>
+<li>先拜主神，再依序拜陪祀</li>
+<li>每尊神明前自報家門：姓名、地址、生辰、祈求的事</li>
+<li>上香後等香燒過 1/3 以上再燒金紙</li>
+<li>擲筊確認神明收到（3 次聖筊最好）</li>
 </ol>
 <h2>日常禁忌</h2>
 <ul>

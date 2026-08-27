@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -446,17 +453,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 </ul>
 <h2>退租前先做這些</h2>
 <ol>
-<li>1. 點交前每個房間 360 度拍照錄影，牆面、地板、家具狀態全留證</li>
-<li>2. 拿入住時的照片對比</li>
-<li>3. 要求房東開「修繕明細」：什麼壞了、要修什麼、報價多少</li>
-<li>4. 不同意的項目用書面回覆</li>
+<li>點交前每個房間 360 度拍照錄影，牆面、地板、家具狀態全留證</li>
+<li>拿入住時的照片對比</li>
+<li>要求房東開「修繕明細」：什麼壞了、要修什麼、報價多少</li>
+<li>不同意的項目用書面回覆</li>
 </ol>
 <h2>房東不退押金怎麼辦</h2>
 <ol>
-<li>1. 寄存證信函（郵局辦，一份約 100–150 元起，視頁數），要求 7 日內退還</li>
-<li>2. 打 1950 消費者保護專線，或找各縣市消保官申訴</li>
-<li>3. 申請「租賃爭議調解」（各縣市地政局都有），免費又快</li>
-<li>4. 還不行就走小額訴訟（10 萬以下），訴訟費幾百元</li>
+<li>寄存證信函（郵局辦，一份約 100–150 元起，視頁數），要求 7 日內退還</li>
+<li>打 1950 消費者保護專線，或找各縣市消保官申訴</li>
+<li>申請「租賃爭議調解」（各縣市地政局都有），免費又快</li>
+<li>還不行就走小額訴訟（10 萬以下），訴訟費幾百元</li>
 </ol>
 <aside class="callout">重點：押金是你的錢不是房東的，別怕麻煩就放棄。</aside>
 </article>
