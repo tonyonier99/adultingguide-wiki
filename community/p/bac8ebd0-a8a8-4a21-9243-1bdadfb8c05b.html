@@ -65,6 +65,10 @@ main { padding:0 0 3.5rem; }
 .hero-wrap { max-width:var(--measure); margin:1.6rem auto 0; padding:0 1.25rem; }
 .hero-img { width:100%; aspect-ratio:780/320; object-fit:cover; display:block;
             border-radius:16px; }
+/* 合作／團購頭圖：站長自己上傳的圖，固定用 1200×630（OG 社群分享標準比例），
+   跟百科的 780/320 頭圖分開一組 class，才不會互相裁切走樣。 */
+.promo-hero-img { width:100%; aspect-ratio:1200/630; object-fit:cover; display:block;
+                   border-radius:16px; }
 .hero-band { aspect-ratio:780/240; display:flex; align-items:flex-end; padding:1.1rem 1.2rem;
              border-radius:16px; background:linear-gradient(135deg, var(--cat-bg), var(--paper) 150%); }
 .hero-band .glyph { font-size:0.82rem; font-weight:700; color:var(--cat);
@@ -202,6 +206,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .cat-card .cc-sub { font-size:0.9rem; color:var(--sub); margin-top:0.2rem; }
 .cat-card .cc-count { display:inline-block; margin-top:0.7rem; font-size:0.78rem; font-weight:700;
                       color:var(--cat); background:var(--cat-bg); padding:0.2rem 0.7rem; border-radius:99px; }
+.cat-card .cc-note { font-size:var(--fs-note); color:var(--sub); margin-top:0.5rem; }
 /* 置頂招牌卡（福利包）*/
 .cat-card.featured { box-shadow:0 3px 16px rgba(230,81,0,0.13); margin-top:1.4rem; }
 .cat-card.featured:hover { box-shadow:0 10px 30px rgba(230,81,0,0.18); }
@@ -210,6 +215,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
              font-size:0.72rem; font-weight:800; padding:0.28rem 0.8rem; border-radius:99px;
              box-shadow:0 2px 10px rgba(0,0,0,0.18); }
 .cat-card.featured h3 { font-size:1.4rem; }
+/* 首頁「現在合作中」招牌卡：沿用福利包招牌卡的視覺，圖片改對齊 1200×630，不套 780/320 那組比例 */
+.cat-card.featured.promo-featured .cover { aspect-ratio:1200/630; }
 .home-sec { font-size:var(--fs-section-label); font-weight:700; letter-spacing:0.06em; color:var(--sub);
             margin:2.2rem 0 0.2rem; }
 /* 首頁島嶼地圖介紹區 */
@@ -244,13 +251,24 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
            padding:0.14rem 0.55rem; border-radius:99px; }
 .pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
 .pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
-/* 團購與回報頁：沿用文章頁的字級與欄寬，只補卡片和表單排版 */
-.promo-list { display:grid; gap:0.9rem; margin-top:1.4rem; }
-.promo-card { background:#fff; border-radius:16px; padding:1.2rem 1.3rem;
-              box-shadow:0 1px 2px rgba(69,63,58,0.04); }
-.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0 0 0.45rem; }
-.promo-card p { font-size:var(--fs-card-body); line-height:1.85; margin:0.45rem 0; }
-.promo-card img { width:100%; display:block; border-radius:12px; margin:0 0 0.9rem; }
+/* 團購列表：跟首頁分類卡一樣的「電商格狀」排版——圖在上、資訊在下、兩欄起跳 */
+.promo-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; margin-top:1.4rem; }
+@media (min-width:680px) { .promo-list { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
+.promo-card { display:block; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
+              box-shadow:0 1px 3px rgba(69,63,58,0.05);
+              transition:transform 0.25s cubic-bezier(.645,.045,.355,1), box-shadow 0.25s cubic-bezier(.645,.045,.355,1); }
+.promo-card:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 8px 26px rgba(69,63,58,0.09); }
+.promo-card .cover { width:100%; aspect-ratio:1200/630; object-fit:cover; display:block;
+                      transition:transform 0.4s cubic-bezier(.2,.7,.2,1); }
+.promo-card:hover .cover { transform:scale(1.03); }
+.promo-card .pc-body { padding:0.9rem 1rem 1.05rem; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.45; margin:0.5rem 0 0.35rem; font-weight:800; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.7; color:var(--sub); margin:0.3rem 0 0.7rem;
+                display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.promo-card .pl-go { display:inline-block; }
+.promo-meta { display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; }
+.promo-inline-img { width:100%; display:block; border-radius:12px; margin:1.1rem 0; }
+.badge.live::before { content:""; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
 .promo-card .btn:hover { text-decoration:none; }
@@ -352,14 +370,16 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .rel-card:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 5px 16px rgba(69,63,58,0.07); }
 .rel-card .rc-title { font-size:0.92rem; font-weight:700; line-height:1.45;
                       display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.rel-card .rc-sub { font-size:var(--fs-note); color:var(--sub); margin-top:0.35rem; line-height:1.6;
+                    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 /* 進場動畫 */
 @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
 @keyframes heroIn { from { opacity:0; transform:scale(1.02); } to { opacity:1; transform:none; } }
 .cat-card, .acard, .anim-up { animation:fadeUp 0.5s cubic-bezier(.2,.7,.2,1) both; }
-.hero-wrap .hero-img, .hero-wrap .hero-band { animation:heroIn 0.6s cubic-bezier(.2,.7,.2,1) both; }
+.hero-wrap .hero-img, .hero-wrap .hero-band, .hero-wrap .promo-hero-img { animation:heroIn 0.6s cubic-bezier(.2,.7,.2,1) both; }
 .article-head, .comm-hero, .home-hero { animation:fadeUp 0.5s cubic-bezier(.2,.7,.2,1) both; }
 @media (prefers-reduced-motion: reduce) {
-  .cat-card, .acard, .anim-up, .hero-img, .hero-band, .article-head, .comm-hero,
+  .cat-card, .acard, .anim-up, .hero-img, .hero-band, .promo-hero-img, .article-head, .comm-hero,
   .home-hero, * { animation:none !important; }
 }
 /* 每日一學入口（/wiki 上的橫幅） */
@@ -476,7 +496,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <header class="site"><div class="wrap">
   <a class="brand" href="../../"><img class="logo-icon" src="../../assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span></span></a>
-  <nav class="site-nav"><a href="../../wiki" class="">百科</a><a href="../../community/" class="on">社群</a><a href="../../group-buy" class="">團購</a><a href="../../picks" class="">島嶼地圖</a><a href="../../updates" class="">更新日誌</a><a href="../../feedback" class="">回報／建議</a></nav>
+  <nav class="site-nav"><a href="../../wiki" class="">百科</a><a href="../../community/" class="on">社群</a><a href="../../group-buy/" class="">合作</a><a href="../../picks" class="">島嶼地圖</a><a href="../../updates" class="">更新日誌</a><a href="../../feedback" class="">回報／建議</a></nav>
 </div></header>
 <main><div class="wrap">
 <nav class="crumb"><a href="../">社群討論</a> › 秘技</nav>
@@ -491,7 +511,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="join-cta">
   <strong>想回答這一題，或有自己的問題想問？</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>
-  <p class="cta-proof">已超過 10 萬人使用初級大人手冊</p>
+  <p class="cta-proof">已超過 15 萬人使用初級大人手冊</p>
   <div><a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">iOS 版</a> <a class="btn" href="https://play.google.com/store/apps/details?id=com.paperclip.adultingguide" rel="noopener">Android 版</a></div>
 </div>
 </div></main>
