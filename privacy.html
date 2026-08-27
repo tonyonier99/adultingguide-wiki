@@ -408,7 +408,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <li><strong>你建立的內容</strong>：暱稱、投稿（秘技／發問）、回答、留言、收藏、按讚、檢舉、封鎖設定與頭貼。其中投稿、回答、留言、暱稱、頭貼會公開顯示於社群；部分內容可能以原樣（含暱稱）公開顯示於本服務的官方網站。</li>
   <li><strong>推播資料</strong>：若你允許通知，Android 會使用 Firebase Cloud Messaging 裝置權杖傳送推播；iOS 使用 Apple 的推播服務。</li>
   <li><strong>裝置本機資料</strong>：測驗結果、提醒設定等儲存在你的裝置上，不會主動上傳。</li>
-  <li><strong>App 使用統計</strong>：iOS App 使用 TelemetryDeck 蒐集匿名、彙總的使用數據以改善 App；Android 目前不使用 App 行為分析工具。</li>
+  <li><strong>App 使用統計</strong>：iOS 與 Android 都將 App 開啟、分頁瀏覽、文章瀏覽、登入完成與通知點擊等低敏行為先經 Supabase，再送到 Google Analytics。只傳送雜湊後的安裝識別值，不包含姓名、Email、帳號 ID、推播權杖、廣告 ID 或內容全文。iOS 切換期間仍可能由 TelemetryDeck 收到舊版事件，驗證完成後會移除。</li>
   <li><strong>網站使用統計</strong>：網站使用 Google Analytics 4（GA4）與 GoatCounter 了解頁面瀏覽、內容成效與網站使用情形。我們不主動將姓名、Email 或其他個人識別資訊送入分析工具；GA4 可能使用 Cookie 或類似技術，Google 會依其<a href="https://policies.google.com/technologies/partner-sites?hl=zh-TW" rel="noopener">隱私權政策</a>處理資料。</li>
 </ul>
 
@@ -420,7 +420,8 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <li><strong>Supabase</strong>：提供資料庫與檔案儲存（存放你的帳號、投稿、頭貼等）。</li>
   <li><strong>Apple Sign in with Apple／Google OAuth</strong>：提供 iOS／Android 登入。</li>
   <li><strong>Firebase Cloud Messaging（Android）與 Apple 推播服務（iOS）</strong>：傳送通知。</li>
-  <li><strong>TelemetryDeck（iOS）</strong>：App 的匿名使用分析。</li>
+  <li><strong>Google Analytics</strong>：接收經 Supabase 轉送的匿名、彙總 App 使用分析。</li>
+  <li><strong>TelemetryDeck（iOS，過渡期間）</strong>：舊版匿名使用分析。</li>
   <li><strong>Google Analytics 4（GA4）與 GoatCounter</strong>：網站流量與內容成效分析。</li>
 </ul>
 
