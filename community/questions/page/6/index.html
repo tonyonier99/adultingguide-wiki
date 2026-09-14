@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
 <title>我要發問（第 6 頁）｜初級大人手冊 社群</title>
-<meta name="description" content="第一次遇到的生活難題，看看大家怎麼問、怎麼回答。第 6 頁，共 513 則。">
+<meta name="description" content="第一次遇到的生活難題，看看大家怎麼問、怎麼回答。第 6 頁，共 588 則。">
 <link rel="canonical" href="https://adultingguide.tw/community/questions/page/6/">
 <link rel="icon" type="image/png" href="../../../../assets/app-icon.png">
 <link rel="apple-touch-icon" href="../../../../assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
 <meta property="og:title" content="我要發問（第 6 頁）｜初級大人手冊 社群">
-<meta property="og:description" content="第一次遇到的生活難題，看看大家怎麼問、怎麼回答。第 6 頁，共 513 則。">
+<meta property="og:description" content="第一次遇到的生活難題，看看大家怎麼問、怎麼回答。第 6 頁，共 588 則。">
 <meta property="og:url" content="https://adultingguide.tw/community/questions/page/6/">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -252,22 +259,32 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
 .pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 團購列表：跟首頁分類卡一樣的「電商格狀」排版——圖在上、資訊在下、兩欄起跳 */
-.promo-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; margin-top:1.4rem; }
-@media (min-width:680px) { .promo-list { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
-.promo-card { display:block; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
+/* auto-fit（不是 auto-fill）：只有一檔合作時要讓卡片吃滿整行，
+   不能像 repeat(2,1fr) 那樣即使只有一格也硬切一半、標題被擠成三行。 */
+/* auto-fit 算欄數時，若 minmax 兩端都是定值會拿「較大值」去除可用寬度，
+   兩端都定值時反而擠成一欄——上限改回 1fr，改用卡片自己的 max-width 封頂單張卡的寬度。 */
+.promo-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem; margin-top:1.4rem; }
+@media (min-width:680px) { .promo-list { gap:1rem; } }
+.promo-card { display:block; max-width:340px; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
               box-shadow:0 1px 3px rgba(69,63,58,0.05);
               transition:transform 0.25s cubic-bezier(.645,.045,.355,1), box-shadow 0.25s cubic-bezier(.645,.045,.355,1); }
 .promo-card:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 8px 26px rgba(69,63,58,0.09); }
 .promo-card .cover { width:100%; aspect-ratio:1200/630; object-fit:cover; display:block;
                       transition:transform 0.4s cubic-bezier(.2,.7,.2,1); }
 .promo-card:hover .cover { transform:scale(1.03); }
-.promo-card .pc-body { padding:0.9rem 1rem 1.05rem; }
-.promo-card h2 { font-size:var(--fs-card-title); line-height:1.45; margin:0.5rem 0 0.35rem; font-weight:800; }
-.promo-card p { font-size:var(--fs-card-body); line-height:1.7; color:var(--sub); margin:0.3rem 0 0.7rem;
+.promo-card .pc-body { padding:1.2rem 1.3rem 1.4rem; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0.9rem 0 0.5rem; font-weight:800; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.8; color:var(--sub); margin:0.4rem 0 1rem;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .promo-card .pl-go { display:inline-block; }
 .promo-meta { display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; }
 .promo-inline-img { width:100%; display:block; border-radius:12px; margin:1.1rem 0; }
+/* 推薦人抬頭（@站長推薦 標記，批次 3.5.5）：單欄，頭貼＋名字＋認證勾一列，下方接分隔線。 */
+.promo-recommender { display:flex; align-items:center; gap:0.5rem; margin:1.3rem 0 0; }
+.promo-recommender-avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; }
+.promo-recommender-name { font-weight:700; font-size:0.95rem; color:var(--ink); }
+.promo-recommender-badge { width:14px; height:14px; flex:none; color:var(--orange); }
+.promo-recommender-divider { border:0; border-top:1px solid var(--line); margin:0.8rem 0 1.1rem; }
 .badge.live::before { content:""; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
@@ -502,129 +519,129 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <nav class="crumb"><a href="../../../">社群討論</a> › 我要發問</nav>
 <div class="comm-hero"><h1>我要發問</h1><p>第一次遇到的生活難題，看看大家怎麼問、怎麼回答。</p>
 <p class="community-note">這裡是大家的發問與生活經驗；官方規定請以 <a href="../../../../wiki">百科</a> 和主管機關公告為準。</p></div>
-<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">513　·　第 6/22 頁</span></h2>
-<a class="pcard" href="../../../p/506dda71-8683-4dbe-b54b-ceee33ba01e4" style="animation-delay:0.00s">
+<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">588　·　第 6/25 頁</span></h2>
+<a class="pcard" href="../../../p/e1e2c6bd-f293-4810-baf3-8ffe73dff0c1" style="animation-delay:0.00s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">Y</span><span class="who">Yin</span></div>
+  <div class="p-title">第一次開車上高速公路怎麼克服</div>
+  <div class="p-excerpt">上高速公路心理壓力很大因為車速很快 然後在從匝道匯進來的時機是什麼</div>
+  <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/6e9dba08-75be-4503-80ff-6c5ac91fcf67" style="animation-delay:0.03s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">☁</span><span class="who">☁️胖</span></div>
+  <div class="p-title">怎麼洗洗衣機 好髒好髒</div>
+  <div class="p-excerpt">洗完衣服上面都會有一片一片像海帶的東西 超噁的啦</div>
+  <div class="p-meta">2 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/ad007193-fb5e-4e20-950a-af2637372605" style="animation-delay:0.06s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">愛</span><span class="who">愛麗絲</span></div>
+  <div class="p-title">衣服泛黃、沾到番茄醬、咖喱醬怎麼辦？</div>
+  <div class="p-excerpt">如題，請問該怎麼拯救這些衣服？我已經嘗試用熱水+漂白粉浸泡了，但依舊很難洗掉😭</div>
+  <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/fbfefe99-f2e5-4978-a3db-38338940d5ba" style="animation-delay:0.09s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">抹</span><span class="who">抹茶人</span></div>
+  <div class="p-title">怎麼開始接第一個家教的</div>
+  <div class="p-excerpt">寫論文的空檔想要嘗試接家教賺一點生活費，但很多都是希望有教學經驗的，請問大家第一個家教是怎麼接到的？還是說要從陪讀做起？</div>
+  <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/5d41553c-83b9-4088-a73c-7579b092fdbb" style="animation-delay:0.12s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">芋</span><span class="who">芋頭醬</span></div>
+  <div class="p-title">最快尋找到我擁有的所有證書的方式？</div>
+  <div class="p-excerpt">我弄丟了好多啊⋯</div>
+  <div class="p-meta">2 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/52037423-397b-4c8d-b827-1488055aa97f" style="animation-delay:0.15s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">薇</span><span class="who">薇菈</span></div>
+  <div class="p-title">想投資該怎麼辦</div>
+  <div class="p-excerpt">我有15000預算，有什麼可以投資的嗎？</div>
+  <div class="p-meta">4 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/f0ccfb80-2b0e-4efa-9da5-0e0ac14a8795" style="animation-delay:0.18s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">M</span><span class="who">Monka</span></div>
+  <div class="p-title">合格的成年人</div>
+  <div class="p-excerpt">這個問題之前一直在想到底每一件是要做到什麼程度才能算是所謂的合格</div>
+  <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/9750547b-d86e-49a7-92ff-73084e2300d6" style="animation-delay:0.21s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">龍</span><span class="who">龍蝦</span></div>
+  <div class="p-title">畢業後感到迷茫</div>
+  <div class="p-excerpt">大學快畢業了 然後也不知道有學到什麼 之後工作也不想走有關這個科系的 想先試試看不同路線的工作 機會成本大概需要多少</div>
+  <div class="p-meta">3 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/29db1726-c0c4-4f03-b30e-6e8dc7bdd163" style="animation-delay:0.24s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">X</span><span class="who">Xxxxxxin</span></div>
+  <div class="p-title">如何與愛情勒的親戚溝通</div>
+  <div class="p-excerpt">我的哥哥是智能障礙者，但家人都不想帶他去找工作，他們認為很丟臉，所以叫我大學畢業後要照顧他，說是因為他們老了沒辦法照顧，只有我可以照顧我哥 可是我在就學期間他們根本都沒有給我任何資金，學費、住宿費都是我自己出的，以致於我根本存不了錢 我不知道我未來該怎麼辦，我只感到很絕望</div>
+  <div class="p-meta">4 則回答 · 2 讚</div>
+</a><a class="pcard" href="../../../p/d9845dfa-450d-4ac4-b377-9d7a9ddbd335" style="animation-delay:0.27s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">賴</span><span class="who">賴賴</span></div>
+  <div class="p-title">出生證明怎麼查？</div>
+  <div class="p-excerpt">最近迷上算命🔮有找靠譜的算命師，大家不用擔心 算命很多都需要出生時辰，但我不知道，老師說可以看出生證明，出生時醫院或診所都會給 但我不知道我出生證明在哪，問了父母也說不知道、忘了 請問大家知道哪裡可以查嗎？</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/a819b930-b383-4e5d-a10b-1703c05cf885" style="animation-delay:0.30s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">a</span><span class="who">an.</span></div>
+  <div class="p-title">生活好無趣的時候你們都會做點什麼？</div>
+  <div class="p-excerpt">感覺生活陷入了每天複製貼上的循環，讓人覺得特別無趣、提不起勁～</div>
+  <div class="p-meta">6 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/4655bd39-3798-47d2-a540-35b90990b039" style="animation-delay:0.33s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">a</span><span class="who">aB123</span></div>
+  <div class="p-title">雷射跟除毛儀那個比較好</div>
+  <div class="p-excerpt">雷射會痛嗎？要怎麼自己去雷射？會很貴嗎？有推薦的地方嗎？ 除毛儀感覺是比較便宜？但不確定效果？</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/dc49d44f-e701-4020-87e8-90a91713f682" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">柒</span><span class="who">柒柒</span></div>
+  <div class="p-title">大學原民專班</div>
+  <div class="p-excerpt">有原民專班的哥哥姊姊嗎上大學不知道往哪方面走</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/08947299-c4a3-4097-b6f4-4c2aba9a4a21" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">D</span><span class="who">Ditto</span></div>
+  <div class="p-title">租屋處飲水機面板凹陷（房東不修）</div>
+  <div class="p-excerpt">如標題所述 一直住到第二年才發現房東這麼不負責任 甚至公共空間的燈壞掉兩三週，每次問就是說會修，叫我們等 電梯也都沒有掛牌照等很多可以檢舉的 目前比較想解決飲水機問題 依然可以使用，觸控面板比較兩光 補充：分租套房好幾間，不想當出頭鳥去寄存證信函</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/c5dbfb5c-7535-48c4-bc8a-aa92cb77bfc2" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">陳</span><span class="who">陳陳</span></div>
+  <div class="p-title">常忘記喝水怎麼辦</div>
+  <div class="p-excerpt">怎麼辦</div>
+  <div class="p-meta">4 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/1598205c-df8a-4f88-a692-e67f86c6582b" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">我</span><span class="who">我</span></div>
+  <div class="p-title">租屋初學者</div>
+  <div class="p-excerpt">第一次想要搬出去租屋，但很好奇的是；租屋押金是要先付2個月的押金嗎，啊什麼時候退，他會退嗎？還是？</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/a62792f3-ec1f-41c5-8ee6-afdcdb1d2296" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">牧</span><span class="who">牧牧</span></div>
+  <div class="p-title">初次打工！履歷表期望待遇怎麼填？</div>
+  <div class="p-excerpt">如題，在104投完履歷之後被電話過來，說面試要帶履歷表，想請問一下如果只是應徵打工的話，希望待遇要怎麼填</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/506dda71-8683-4dbe-b54b-ceee33ba01e4" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">森</span><span class="who">森</span></div>
   <div class="p-title">MacBook螢幕清潔</div>
   <div class="p-excerpt">最近入手一台MacBook Air，不過螢幕好像挺嬌貴的，想問大家都用什麼清潔（有建議的布嗎？純水酒精異丙醇？）</div>
   <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/b6173f03-64cb-436b-9aa7-38b5962adbe8" style="animation-delay:0.03s">
+</a><a class="pcard" href="../../../p/a88f3a3d-33ba-4ec2-965e-1a00b7b49865" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">V</span><span class="who">Vincent</span></div>
+  <div class="p-title">辭職</div>
+  <div class="p-excerpt">最近打工要換工作了，想問問大家都怎麼提離職的？</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/c727abe8-198e-4c46-a639-2ce04c9323b8" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">N</span><span class="who">Na</span></div>
+  <div class="p-title">保潔墊推薦或防月經沾染到床墊的方法</div>
+  <div class="p-excerpt">想問問有沒有推薦的保潔墊很怕月經滴到床墊🥲 或是可以防月經沾染到床墊</div>
+  <div class="p-meta">1 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/b6173f03-64cb-436b-9aa7-38b5962adbe8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">N</span><span class="who">Nn🤍</span></div>
   <div class="p-title">關於幼犬的飼養指南</div>
   <div class="p-excerpt">請問有沒有人整理關於幼犬每年要打什麼疫苗/吃什麼驅蟲藥，大約幾歲要絕育等等的內容呢🥹🥹</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/fc594d1b-8844-4951-a87c-22ec6cfadb5f" style="animation-delay:0.06s">
+  <div class="p-meta">3 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/fc594d1b-8844-4951-a87c-22ec6cfadb5f" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Crystal</span></div>
   <div class="p-title">過期食用油怎麼丟？</div>
   <div class="p-excerpt">想請問各位高級大人過期的大半瓶食用油要怎麼丟棄處理？🥹</div>
   <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/f9d49b22-fb6a-4a4d-a9db-f20082c60ff4" style="animation-delay:0.09s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">a</span><span class="who">aB123</span></div>
-  <div class="p-title">要買Ulike除毛的儀器嗎</div>
-  <div class="p-excerpt">因為本身毛很快長出來，而且很濃密，想了解買這個適合嗎？好用嗎？</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/f37720c3-854e-475f-86de-132dc6810b17" style="animation-delay:0.12s">
+</a><a class="pcard" href="../../../p/2373e330-51f0-41ed-b492-a4792f767f3a" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">雞</span><span class="who">雞蛋糕</span></div>
+  <div class="p-title">飛機遇到颱風延後或取消怎麼辦</div>
+  <div class="p-excerpt">最近要出國去日本東京 剛好可能會遇到颱風🥲 有買不便險了 （聽麻麻說的要趕快先買 但完全不知道為啥要買） 但完全不清楚使用的規則和當下的SOP 上網爬文感覺是先看有沒有延後四小時嗎 有延後才有理賠 啊我要怎麼讓保險公司理賠 還有如果飛機延後 我當下就等原班機機重新起飛嗎 可是會不會訂其他班機比較快起…</div>
+  <div class="p-meta">2 則回答 · 1 讚</div>
+</a><a class="pcard" href="../../../p/f37720c3-854e-475f-86de-132dc6810b17" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">3</span><span class="who">3</span></div>
   <div class="p-title">吃麵包</div>
   <div class="p-excerpt">麵包店入口有放夾子跟盤子，可是我只要一兩塊麵包，而且他所有櫥窗裡的麵包都有用袋子分裝好，還要拿夾子夾嗎？還是可以直接拿</div>
   <div class="p-meta">2 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/fbdd038e-5d08-47b4-99f9-90907fc0d142" style="animation-delay:0.15s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">は</span><span class="who">はな</span></div>
-  <div class="p-title">大學注意事項</div>
-  <div class="p-excerpt">我升大一（科大）我想知道大學都在做什麼、上課的模式是什麼、還有要準備什麼 （沒有住校）、開學要帶什麼東西 如果有知道的人們幫我解答一下謝謝泥悶😭🙏</div>
-  <div class="p-meta">2 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/296994a1-5c1f-460b-be00-bbca0578bcc3" style="animation-delay:0.18s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">兔</span><span class="who">兔子</span></div>
-  <div class="p-title">第一次上班有什麼需要注意的嗎</div>
-  <div class="p-excerpt">明天第一天要去公司上班了 是行政職那種 有點緊張</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/0fdf5108-aed4-41e5-bcf0-e854dd245ef3" style="animation-delay:0.21s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">咩</span><span class="who">咩咩</span></div>
-  <div class="p-title">大學前準備</div>
-  <div class="p-excerpt">放榜感覺一下子多了很多事情，查課表 搬宿舍 學費 打工 考駕照之類的，有沒有建議哪些事情先做，不然好焦慮</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/759423c7-ec5f-4740-a4cb-3aa7a57cb1c2" style="animation-delay:0.24s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">🌈</span><span class="who">🌈☁️</span></div>
-  <div class="p-title">離家焦慮</div>
-  <div class="p-excerpt">我下個禮拜就要去屏東上大學了！第一次離開桃園的家，感覺以後能回來看家人時間真的不多🥲（一想到就又想哭了我又不能哭，因為我眼睛會腫起來，雙眼皮會變超開🤣）去一個人生地不熟的地方，我真的好害怕啊啊啊😭😭（但奶奶家在高雄）想請問大家都是怎麼克服離家焦慮的？</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/5a549460-44cf-48ef-9cde-e6c665ef88dd" style="animation-delay:0.27s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">失</span><span class="who">失敗的人</span></div>
-  <div class="p-title">泰國曼谷有什麼好玩的</div>
-  <div class="p-excerpt">11月已經預訂機票會去泰國曼谷看演唱會 目前打算停留一個禮拜左右 有什麼是推薦好玩好吃要去的景點 去泰國旅遊有需要注意什麼嗎？ 目前打算體驗看看哈們而已哈哈 歡迎大家提供意見讓小弟參考</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/888d9792-7caa-450d-868b-c17ec6e6a47d" style="animation-delay:0.30s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">S</span><span class="who">Sherry</span></div>
-  <div class="p-title">澳洲打工</div>
-  <div class="p-excerpt">22歲 大學休學 三年了 工作到現在好想去澳洲打工 有去過的人可以給我一點建議嗎？ 值不值得/建議嗎/需要準備什麼/黑暗面都歡迎分享 好迷茫</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/c174f2c1-76c6-4b42-9232-890fd501be93" style="animation-delay:0.33s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">u</span><span class="who">u6</span></div>
-  <div class="p-title">牙套所得稅</div>
-  <div class="p-excerpt">帶牙套滿兩年可以減免隔年的所得稅嗎</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/70b76129-fda8-400c-87aa-407b479b3668" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">企</span><span class="who">企鵝</span></div>
-  <div class="p-title">想問問關於冷氣👉🏻👈🏻</div>
-  <div class="p-excerpt">我想問一下！ 之前有看到說冷氣不要太常開關，但我上課出發就會關，回家再開。聽有人說一直開著冷氣電費會比一直開關便宜:O</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/d1d62ad7-ad43-47af-bbd2-85751a5e4489" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">風</span><span class="who">風風</span></div>
-  <div class="p-title">租屋安全</div>
-  <div class="p-excerpt">學生一個人在外面租套房 想問問有什麼可以提升安全性的秘訣 拜託各位高級大人解答了🙏🙏🙏</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/2a9df104-6add-436e-b3fb-ea2bc22dd5ce" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">陳</span><span class="who">陳陳</span></div>
-  <div class="p-title">傳說threads刪文會限流是真的嗎？</div>
-  <div class="p-excerpt">傳說threads刪文會限流是真的嗎？</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/c9a8a739-5317-487a-a3b5-4aedc0de596d" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">喵</span><span class="who">喵喵</span></div>
-  <div class="p-title">出國換錢</div>
-  <div class="p-excerpt">想詢問大家出國都是現金換一點，其他都用信用卡支付嗎？ 因不太想辦信用卡（怕消費過度😵‍💫) 但又聽人家說不要全換現金比較好，請問還有什麼方法嗎～～</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/b5e52385-8933-45bf-8b40-23cb5d6dc4a2" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">李</span><span class="who">李小心</span></div>
-  <div class="p-title">請師傅洗冷氣</div>
-  <div class="p-excerpt">請問如果我請師傅來洗冷氣，但我的床就剛好在冷氣正下方（租屋小套房），可以請師傅幫我鋪防塵布嗎？</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/5e66cc04-a208-419d-87dd-d6ad9915ff31" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">🐟</span><span class="who">🐟</span></div>
-  <div class="p-title">衣服</div>
-  <div class="p-excerpt">想問衣服沾到漂髮劑該怎麼處理</div>
-  <div class="p-meta">0 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/c3edfa53-a981-4b1b-9647-bc8e422a5964" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">小</span><span class="who">小黑</span></div>
-  <div class="p-title">要怎麼用證卷的app</div>
-  <div class="p-excerpt">我是開戶在元大，有載投資先生，但不敢亂按所以一直不敢下單… 原本想說定期定額買0050，或者買一些只持一股就可以領股東紀念品，但不知道怎麼開始😖</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/5468a32d-47b1-43f8-9f34-e8443b8cd384" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">H</span><span class="who">HA</span></div>
-  <div class="p-title">今年要去當兵</div>
-  <div class="p-excerpt">做為即將踏入社會前的初級大人前的一項成就便是當兵 想請問各位 有什麼技能是當兵前先學會 進去當兵之後會比較不容易被電的嗎 感謝各位高級大人 初級大人會努力學習的！</div>
-  <div class="p-meta">2 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/0c2b863b-1edd-4ad0-babb-e4cfc6a69b49" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">G</span><span class="who">Grey</span></div>
-  <div class="p-title">想投資ETF想詢問要怎麼買？</div>
-  <div class="p-excerpt">我是用台新的 想詢問要如果購買 購買後就放著不用管他了嗎？</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/961ef9c5-a5c6-4b8b-ac6d-9ab68f334440" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">瑪</span><span class="who">瑪姬</span></div>
-  <div class="p-title">足部</div>
-  <div class="p-excerpt">有人知道怎麼去除腳臭嗎</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/11ce6d33-6d7c-4a83-a6c3-6862c1a39ef6" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">L</span><span class="who">Lapis</span></div>
-  <div class="p-title">白色衣服沾到防曬洗不掉</div>
-  <div class="p-excerpt">看了萬秀洗衣的瑞夫介紹，說白色衣服沾到防曬的話可以先用洗碗精搓洗，但這個方法是不是只適用在剛沾到24小時內@@？ 在我意識到的時候，我的白衣服已經換洗過兩三次以上，袖口已經有一圈發黃的痕跡了😭用了洗碗精還是洗不掉怎麼辦😭跪求大神解救😭😭😭🙏🏻</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
-</a><a class="pcard" href="../../../p/abfb53e2-618b-4e32-b89f-255116a3b8ba" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">X</span><span class="who">XIA</span></div>
-  <div class="p-title">有無推薦的旅行社</div>
-  <div class="p-excerpt">想帶爸媽到日本跟團旅遊，有沒有哪家旅行社的行程是適合長輩的？（爛腳人包含我自己）</div>
-  <div class="p-meta">1 則回答 · 1 讚</div>
 </a>
-<nav class="collection-pages" aria-label="我要發問頁碼"><a href="/community/questions/">1</a><a href="/community/questions/page/2/">2</a><a href="/community/questions/page/3/">3</a><a href="/community/questions/page/4/">4</a><a href="/community/questions/page/5/">5</a><a href="/community/questions/page/6/" aria-current="page">6</a><a href="/community/questions/page/7/">7</a><a href="/community/questions/page/8/">8</a><a href="/community/questions/page/9/">9</a><a href="/community/questions/page/10/">10</a><a href="/community/questions/page/11/">11</a><a href="/community/questions/page/12/">12</a><a href="/community/questions/page/13/">13</a><a href="/community/questions/page/14/">14</a><a href="/community/questions/page/15/">15</a><a href="/community/questions/page/16/">16</a><a href="/community/questions/page/17/">17</a><a href="/community/questions/page/18/">18</a><a href="/community/questions/page/19/">19</a><a href="/community/questions/page/20/">20</a><a href="/community/questions/page/21/">21</a><a href="/community/questions/page/22/">22</a></nav>
+<nav class="collection-pages" aria-label="我要發問頁碼"><a href="/community/questions/">1</a><a href="/community/questions/page/2/">2</a><a href="/community/questions/page/3/">3</a><a href="/community/questions/page/4/">4</a><a href="/community/questions/page/5/">5</a><a href="/community/questions/page/6/" aria-current="page">6</a><a href="/community/questions/page/7/">7</a><a href="/community/questions/page/8/">8</a><a href="/community/questions/page/9/">9</a><a href="/community/questions/page/10/">10</a><a href="/community/questions/page/11/">11</a><a href="/community/questions/page/12/">12</a><a href="/community/questions/page/13/">13</a><a href="/community/questions/page/14/">14</a><a href="/community/questions/page/15/">15</a><a href="/community/questions/page/16/">16</a><a href="/community/questions/page/17/">17</a><a href="/community/questions/page/18/">18</a><a href="/community/questions/page/19/">19</a><a href="/community/questions/page/20/">20</a><a href="/community/questions/page/21/">21</a><a href="/community/questions/page/22/">22</a><a href="/community/questions/page/23/">23</a><a href="/community/questions/page/24/">24</a><a href="/community/questions/page/25/">25</a></nav>
 <div class="join-cta">
   <strong>想分享自己的經驗，或有問題想問？</strong>
   <p>在 App 裡，你也可以發問、回答，把自己的經驗分享給下一個新手。</p>

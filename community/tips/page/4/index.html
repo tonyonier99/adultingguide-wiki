@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
 <title>大人秘技（第 4 頁）｜初級大人手冊 社群</title>
-<meta name="description" content="大家分享的生活撇步與實用經驗。第 4 頁，共 149 則。">
+<meta name="description" content="大家分享的生活撇步與實用經驗。第 4 頁，共 167 則。">
 <link rel="canonical" href="https://adultingguide.tw/community/tips/page/4/">
 <link rel="icon" type="image/png" href="../../../../assets/app-icon.png">
 <link rel="apple-touch-icon" href="../../../../assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
 <meta property="og:title" content="大人秘技（第 4 頁）｜初級大人手冊 社群">
-<meta property="og:description" content="大家分享的生活撇步與實用經驗。第 4 頁，共 149 則。">
+<meta property="og:description" content="大家分享的生活撇步與實用經驗。第 4 頁，共 167 則。">
 <meta property="og:url" content="https://adultingguide.tw/community/tips/page/4/">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -252,22 +259,32 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
 .pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 團購列表：跟首頁分類卡一樣的「電商格狀」排版——圖在上、資訊在下、兩欄起跳 */
-.promo-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; margin-top:1.4rem; }
-@media (min-width:680px) { .promo-list { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
-.promo-card { display:block; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
+/* auto-fit（不是 auto-fill）：只有一檔合作時要讓卡片吃滿整行，
+   不能像 repeat(2,1fr) 那樣即使只有一格也硬切一半、標題被擠成三行。 */
+/* auto-fit 算欄數時，若 minmax 兩端都是定值會拿「較大值」去除可用寬度，
+   兩端都定值時反而擠成一欄——上限改回 1fr，改用卡片自己的 max-width 封頂單張卡的寬度。 */
+.promo-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem; margin-top:1.4rem; }
+@media (min-width:680px) { .promo-list { gap:1rem; } }
+.promo-card { display:block; max-width:340px; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
               box-shadow:0 1px 3px rgba(69,63,58,0.05);
               transition:transform 0.25s cubic-bezier(.645,.045,.355,1), box-shadow 0.25s cubic-bezier(.645,.045,.355,1); }
 .promo-card:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 8px 26px rgba(69,63,58,0.09); }
 .promo-card .cover { width:100%; aspect-ratio:1200/630; object-fit:cover; display:block;
                       transition:transform 0.4s cubic-bezier(.2,.7,.2,1); }
 .promo-card:hover .cover { transform:scale(1.03); }
-.promo-card .pc-body { padding:0.9rem 1rem 1.05rem; }
-.promo-card h2 { font-size:var(--fs-card-title); line-height:1.45; margin:0.5rem 0 0.35rem; font-weight:800; }
-.promo-card p { font-size:var(--fs-card-body); line-height:1.7; color:var(--sub); margin:0.3rem 0 0.7rem;
+.promo-card .pc-body { padding:1.2rem 1.3rem 1.4rem; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0.9rem 0 0.5rem; font-weight:800; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.8; color:var(--sub); margin:0.4rem 0 1rem;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .promo-card .pl-go { display:inline-block; }
 .promo-meta { display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; }
 .promo-inline-img { width:100%; display:block; border-radius:12px; margin:1.1rem 0; }
+/* 推薦人抬頭（@站長推薦 標記，批次 3.5.5）：單欄，頭貼＋名字＋認證勾一列，下方接分隔線。 */
+.promo-recommender { display:flex; align-items:center; gap:0.5rem; margin:1.3rem 0 0; }
+.promo-recommender-avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; }
+.promo-recommender-name { font-weight:700; font-size:0.95rem; color:var(--ink); }
+.promo-recommender-badge { width:14px; height:14px; flex:none; color:var(--orange); }
+.promo-recommender-divider { border:0; border-top:1px solid var(--line); margin:0.8rem 0 1.1rem; }
 .badge.live::before { content:""; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
@@ -502,77 +519,107 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <nav class="crumb"><a href="../../../">社群討論</a> › 大人秘技</nav>
 <div class="comm-hero"><h1>大人秘技</h1><p>大家分享的生活撇步與實用經驗。</p>
 <p class="community-note">這裡是大家的發問與生活經驗；官方規定請以 <a href="../../../../wiki">百科</a> 和主管機關公告為準。</p></div>
-<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">149　·　第 4/7 頁</span></h2>
-<a class="pcard" href="../../../p/49f81b0f-2b91-4689-9a6a-6627b1987ca3" style="animation-delay:0.00s">
+<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">167　·　第 4/7 頁</span></h2>
+<a class="pcard" href="../../../p/cae7d40f-7d0e-4480-a5b5-4da79fc78aa9" style="animation-delay:0.00s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">茉</span><span class="who">茉</span></div>
+  <div class="p-title">男生相處模式</div>
+  <div class="p-excerpt">若有多個出現=此男意圖不軌 1.讓你上他的車，不告訴你要去哪 2.一直問你要不要喝9 3.詢問你過往的男友性經驗 4.告訴你他家沒人 5.你若是去他家了，在成人的世界基本上=同意打砲，除非你夠堅定要離開，不然男生基本上會一直盧小小 不要輕易去不熟男生家ㄛ！</div>
+  <div class="p-meta">0 則補充 · 54 讚</div>
+</a><a class="pcard" href="../../../p/9f8dd4d0-25eb-4f75-895e-d91e59dc8fa1" style="animation-delay:0.03s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">錢</span><span class="who">錢包丟了的課程</span></div>
+  <div class="p-title">漂白水要濃縮著用（注意事項）</div>
+  <div class="p-excerpt">1. 不要直接倒進除濕機，以為可以除臭，對肺很不好的！ 2.不要直接倒進水管，容易侵蝕水管造成漏水… 3.打掃時使用注意稀釋比例！還有要戴口罩😷避免肺部受傷。 4.可以用來洗洗衣機唷，一個月洗一次吧， 按照自家洗衣機的容量調配1:100至1:500的漂白水：水比例，可以直接設定洗衣，浸泡不超過3小時…</div>
+  <div class="p-meta">0 則補充 · 54 讚</div>
+</a><a class="pcard" href="../../../p/bd3efa69-a712-476e-9906-9498157d9ea7" style="animation-delay:0.06s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">信用小白的第一課-聯徵信用報告</div>
+  <div class="p-excerpt">重點：無論辦信用卡、申請貸款、確認有沒有遲繳紀錄、檢查信用資料是否異常、了解自己目前信用分數大概在哪都會用到 簡單來說，它就是銀行評估你信用條件時，會參考的重要資料之一。 怎麼查： 1.可以到聯徵中心官網線上查閱，使用自然人憑證，或銀行、證券、保險業核發的軟體金融憑證查詢。 2.雙北的朋友可以到台北…</div>
+  <div class="p-meta">0 則補充 · 53 讚</div>
+</a><a class="pcard" href="../../../p/6774f57f-3b60-4fcd-a5fa-fdb57868d12f" style="animation-delay:0.09s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">好</span><span class="who">好</span></div>
+  <div class="p-title">水餃不用退冰，水大滾直接放</div>
+  <div class="p-excerpt">水要夠多，等水大滾後再放入冷凍水餃。 輕輕攪拌：下鍋後立刻用湯勺背沿著鍋底輕輕推動，避免水餃黏在鍋底。 ⚠️切忌再凍：如果不小心退冰導致水餃全軟了，千萬不要再冰回冷凍庫，否則皮會完全爛掉。</div>
+  <div class="p-meta">0 則補充 · 52 讚</div>
+</a><a class="pcard" href="../../../p/7851bbd5-fa46-4f54-9dcd-26a2a0ddfeb2" style="animation-delay:0.12s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
+  <div class="p-title">台灣高鐵每月送兩次88折優惠</div>
+  <div class="p-excerpt">於「台灣高鐵」APP（白色的）內兌換，路徑如下： TGO會員-兌換專區-兌換車票-選擇優惠方案（注意月份）-填妥下方及後續資料。 記下訂位代號（8碼）-打開「T-EX行動購票」（橘色的）-載入訂位-輸入資料-取票-大功告成！ 提醒：非疏運期為週一到四，不包含連假，詳情要看高鐵公告。</div>
+  <div class="p-meta">0 則補充 · 52 讚</div>
+</a><a class="pcard" href="../../../p/d8804903-cef3-4fb7-a91c-086d37dd1ff3" style="animation-delay:0.15s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
+  <div class="p-title">考機車駕照一律推薦直接報考駕訓班</div>
+  <div class="p-excerpt">報考駕訓班有幾個好處： 1. 100%搶得到名額 2. 不會報錯車種與場次 3. 上路後可以更快適應交通環境</div>
+  <div class="p-meta">0 則補充 · 52 讚</div>
+</a><a class="pcard" href="../../../p/3e6e7370-1727-4cf1-903d-8a51eef8508d" style="animation-delay:0.18s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">颱風天沒地方停車？其實可以停路邊！？</div>
+  <div class="p-excerpt">颱風期間，紅黃線不會自動開放停車，還是必須要等各縣市政府正式公告喔！ 各地規定不同，部分縣市會限制只有 8公尺、10公尺或15公尺以上的道路才能停放，因此還是要以當地政府公告為準～ 提醒： 即使開放，路口、公車站、消防栓、人行道、橋梁及隧道等地點仍禁止停車。車輛應順向靠邊、不可併排，並保留雙向通行及…</div>
+  <div class="p-meta">0 則補充 · 52 讚</div>
+</a><a class="pcard" href="../../../p/5c5c58b7-9c41-4cd9-b4a2-09cbf015a749" style="animation-delay:0.21s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">狗</span><span class="who">狗媽媽</span></div>
+  <div class="p-title">蓮蓬頭出水變很刺怎麼辦</div>
+  <div class="p-excerpt">蓮蓬頭用一陣子之後出水孔會被累積的水垢、鐵屑之類的雜質堵住，導致孔洞變小。 可以先把出水的面板拆下來，用清水沖洗掉大部分雜質，再用衛生紙或洗臉巾沾滿檸檬酸稀釋液（比例是 檸檬酸15公克:溫水1公升）包住整個面板，等15分鐘再用海綿輕輕把附著的水垢搓洗乾淨就好了喔！ 廁所的水垢尿垢都可以用檸檬酸洗掉，…</div>
+  <div class="p-meta">0 則補充 · 51 讚</div>
+</a><a class="pcard" href="../../../p/8a42bf09-4256-4f50-a013-00cc41344de1" style="animation-delay:0.24s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
+  <div class="p-title">請想想上一次清洗冷氣濾網是什麼時候？</div>
+  <div class="p-excerpt">如題，如果你還沒想到的話 可以開始拆冷氣了 從簡單到困難的冷氣清洗： 第一級：清潔外殼與出風口 1. 關閉冷氣。 2. 切斷電源或關閉專用斷路器。 3. 使用微濕的柔軟抹布擦拭外殼。 4. 用小刷子或吸塵器清除出風口灰塵。 5. 再用乾布擦乾。 不要直接朝冷氣噴水，也不要使用酒精、強鹼、漂白水或具腐…</div>
+  <div class="p-meta">0 則補充 · 51 讚</div>
+</a><a class="pcard" href="../../../p/49f81b0f-2b91-4689-9a6a-6627b1987ca3" style="animation-delay:0.27s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
   <div class="p-title">機車直接左轉的方法</div>
   <div class="p-excerpt">#如何直接左轉 一、在路口前 50 至 60 公尺準備靠左，打左轉方向燈，並靠向車道左側準備變換車道 二、找到適當時機匯入內側車道右側 三、行駛到路口中心停等，觀察對向車流，確認沒有直行車，同時評估視覺死角內是否有來車。尤其當對向也有車輛要左轉時更要注意(EP08曾提到這類死角)，死角會出現在該左轉…</div>
+  <div class="p-meta">0 則補充 · 51 讚</div>
+</a><a class="pcard" href="../../../p/d5c5ace2-de79-4683-8df5-5873c0557a37" style="animation-delay:0.30s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">煞</span><span class="who">煞氣乂林亭</span></div>
+  <div class="p-title">感到孤獨何解</div>
+  <div class="p-excerpt">身為一個一天到晚都在看別人手牽手一起吃飯的人 有時候真的會孤單到心裡空空的 如果你也有這樣的感覺可以試看看我的撇步～ 1.好好吃一餐 對於當下真的很寂寞的人不建議去那種揪團吃的 （火鍋、烤肉、快炒、沒有單人座位的店等） 除非是外帶，不然看別人一起吃的有聲有色 也是一種煎熬（心ㄧ跳～） 真的不行就朝面…</div>
   <div class="p-meta">0 則補充 · 50 讚</div>
-</a><a class="pcard" href="../../../p/410b5fb3-9d1f-4568-bb51-27953c5fb363" style="animation-delay:0.03s">
+</a><a class="pcard" href="../../../p/bd72f1c6-60c7-4b44-8a35-6d14a983de11" style="animation-delay:0.33s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">L</span><span class="who">LIN</span></div>
+  <div class="p-title">身體癢時該怎麼辦？或怎麼快速止癢？</div>
+  <div class="p-excerpt">如果您遇到身體全身各部位搔癢時，請伸出你的左手或右手，然後手指保持U字型，然後再癢的地方抓一抓就好了。倘若未止癢，麻煩要擦藥膏或是就診了！</div>
+  <div class="p-meta">0 則補充 · 50 讚</div>
+</a><a class="pcard" href="../../../p/410b5fb3-9d1f-4568-bb51-27953c5fb363" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A8C6A1">趴</span><span class="who">趴嚕醬</span></div>
   <div class="p-title">地球上的凡士林大妙用</div>
   <div class="p-excerpt">大家好我是來自外星球的趴嚕醬 以下分享在地球研究的小小成果 ✨凡士林大妙用✨ 1.鎖水（乳液擦完使用） 2.護髮（用了很多次，不會很油，但不要用太多） 3.卸妝（沒帶卸妝水我都拿來用） 4.嘴唇乾、皮膚乾可以擦 凡士林雖然後便宜，但成分很單純，也有很大的妙用，各位初級地球人可以研究看看唷</div>
   <div class="p-meta">0 則補充 · 50 讚</div>
-</a><a class="pcard" href="../../../p/9f8dd4d0-25eb-4f75-895e-d91e59dc8fa1" style="animation-delay:0.06s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">錢</span><span class="who">錢包丟了的課程</span></div>
-  <div class="p-title">漂白水要濃縮著用（注意事項）</div>
-  <div class="p-excerpt">1. 不要直接倒進除濕機，以為可以除臭，對肺很不好的！ 2.不要直接倒進水管，容易侵蝕水管造成漏水… 3.打掃時使用注意稀釋比例！還有要戴口罩😷避免肺部受傷。 4.可以用來洗洗衣機唷，一個月洗一次吧， 按照自家洗衣機的容量調配1:100至1:500的漂白水：水比例，可以直接設定洗衣，浸泡不超過3小時…</div>
-  <div class="p-meta">0 則補充 · 49 讚</div>
-</a><a class="pcard" href="../../../p/7851bbd5-fa46-4f54-9dcd-26a2a0ddfeb2" style="animation-delay:0.09s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
-  <div class="p-title">台灣高鐵每月送兩次88折優惠</div>
-  <div class="p-excerpt">於「台灣高鐵」APP（白色的）內兌換，路徑如下： TGO會員-兌換專區-兌換車票-選擇優惠方案（注意月份）-填妥下方及後續資料。 記下訂位代號（8碼）-打開「T-EX行動購票」（橘色的）-載入訂位-輸入資料-取票-大功告成！ 提醒：非疏運期為週一到四，不包含連假，詳情要看高鐵公告。</div>
-  <div class="p-meta">0 則補充 · 49 讚</div>
-</a><a class="pcard" href="../../../p/d8804903-cef3-4fb7-a91c-086d37dd1ff3" style="animation-delay:0.12s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">吉</span><span class="who">吉吉</span></div>
-  <div class="p-title">考機車駕照一律推薦直接報考駕訓班</div>
-  <div class="p-excerpt">報考駕訓班有幾個好處： 1. 100%搶得到名額 2. 不會報錯車種與場次 3. 上路後可以更快適應交通環境</div>
-  <div class="p-meta">0 則補充 · 49 讚</div>
-</a><a class="pcard" href="../../../p/b1b5835e-e8e0-4735-abe8-625730fc0a3d" style="animation-delay:0.15s">
+</a><a class="pcard" href="../../../p/b1b5835e-e8e0-4735-abe8-625730fc0a3d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">T</span><span class="who">Toastfestival</span></div>
   <div class="p-title">性創傷復原免費資源</div>
   <div class="p-excerpt">取自暖暖 Sunshine協會匿名社群： 暖暖友善地圖： https://maps.app.goo.gl/4u5ppsgpjPW2NcvEA?g_st=i （包含諮商中心、事務所、身心診所等等⋯） 性創傷復原中心：適用於 ⚠️成年 ⚠️且案件未進入司法程序者（部分縣市規定可能不同） 提供心理諮商、社…</div>
   <div class="p-meta">0 則補充 · 49 讚</div>
-</a><a class="pcard" href="../../../p/8a42bf09-4256-4f50-a013-00cc41344de1" style="animation-delay:0.18s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">菜</span><span class="who">菜逼八</span></div>
-  <div class="p-title">請想想上一次清洗冷氣濾網是什麼時候？</div>
-  <div class="p-excerpt">如題，如果你還沒想到的話 可以開始拆冷氣了 從簡單到困難的冷氣清洗： 第一級：清潔外殼與出風口 1. 關閉冷氣。 2. 切斷電源或關閉專用斷路器。 3. 使用微濕的柔軟抹布擦拭外殼。 4. 用小刷子或吸塵器清除出風口灰塵。 5. 再用乾布擦乾。 不要直接朝冷氣噴水，也不要使用酒精、強鹼、漂白水或具腐…</div>
-  <div class="p-meta">0 則補充 · 48 讚</div>
-</a><a class="pcard" href="../../../p/bd72f1c6-60c7-4b44-8a35-6d14a983de11" style="animation-delay:0.21s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">L</span><span class="who">LIN</span></div>
-  <div class="p-title">身體癢時該怎麼辦？或怎麼快速止癢？</div>
-  <div class="p-excerpt">如果您遇到身體全身各部位搔癢時，請伸出你的左手或右手，然後手指保持U字型，然後再癢的地方抓一抓就好了。倘若未止癢，麻煩要擦藥膏或是就診了！</div>
-  <div class="p-meta">0 則補充 · 48 讚</div>
-</a><a class="pcard" href="../../../p/c5e336df-a239-477f-8311-2207f8eb188b" style="animation-delay:0.24s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">I</span><span class="who">I don’t 呱</span></div>
-  <div class="p-title">殘膠處理</div>
-  <div class="p-excerpt">大部分的標籤紙殘膠可以用含有油脂類的產品去處（乳液、護手霜、食用油、護髮油等），比較適合在不會滲透的材質 市售除膠劑使用時要注意殘膠面的材質，譬如壓克力塑膠有些除膠劑會腐蝕表面</div>
-  <div class="p-meta">0 則補充 · 48 讚</div>
-</a><a class="pcard" href="../../../p/836f74b5-a3f0-4842-a6db-8b8f6650a305" style="animation-delay:0.27s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">阿</span><span class="who">阿齊</span></div>
-  <div class="p-title">關掉IG右下跟下面的文字</div>
-  <div class="p-excerpt">食指跟大拇指按著螢幕捏一下🤏就可以變成沒有任何文字的全螢幕，再捏一下回復有文字的狀態</div>
-  <div class="p-meta">0 則補充 · 47 讚</div>
-</a><a class="pcard" href="../../../p/746f0406-5de7-4d87-a019-12540a693b3b" style="animation-delay:0.30s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
-  <div class="p-title">死亡證明要請幾份</div>
-  <div class="p-excerpt">一般來說死亡證明可以請10-20份或者更多 因為除了該跑的政府流程需要外 銀行、保險等等一家公司就需要給一張</div>
-  <div class="p-meta">0 則補充 · 46 讚</div>
-</a><a class="pcard" href="../../../p/e0d692b3-345a-41da-9744-1cb0403d1dce" style="animation-delay:0.33s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">斑</span><span class="who">斑比</span></div>
-  <div class="p-title">台灣藥局買不到EVE</div>
-  <div class="p-excerpt">日本EVE止痛藥含有異丙乙酸尿（Allylisopropylacetylurea）是一種鎮定劑成分，台灣尚未核准使用於市售成藥中。這也是為什麼有些人覺得吃EVE比較有效，而台灣買的消炎止痛藥比較無效。但主要止痛成分是是布洛芬（Ibuprofen）台灣藥局都有販售同成分的止痛藥。</div>
-  <div class="p-meta">0 則補充 · 45 讚</div>
 </a><a class="pcard" href="../../../p/a188971d-279e-48c3-b9d7-18e1d3aefd34" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#C8B8D8">W</span><span class="who">Woolly</span></div>
   <div class="p-title">透過敲蘋果判斷脆蘋果或面蘋果</div>
   <div class="p-excerpt">敲起來硬硬的像是敲桌子的聲音就會是脆脆的蘋果，敲起來聲音悶悶的就是面蘋果，不會聽也可以試著問問攤販讓攤販幫忙挑選。</div>
+  <div class="p-meta">0 則補充 · 48 讚</div>
+</a><a class="pcard" href="../../../p/c5e336df-a239-477f-8311-2207f8eb188b" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">I</span><span class="who">I don’t 呱</span></div>
+  <div class="p-title">殘膠處理</div>
+  <div class="p-excerpt">大部分的標籤紙殘膠可以用含有油脂類的產品去處（乳液、護手霜、食用油、護髮油等），比較適合在不會滲透的材質 市售除膠劑使用時要注意殘膠面的材質，譬如壓克力塑膠有些除膠劑會腐蝕表面</div>
+  <div class="p-meta">0 則補充 · 48 讚</div>
+</a><a class="pcard" href="../../../p/e0d692b3-345a-41da-9744-1cb0403d1dce" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">斑</span><span class="who">斑比</span></div>
+  <div class="p-title">台灣藥局買不到EVE</div>
+  <div class="p-excerpt">日本EVE止痛藥含有異丙乙酸尿（Allylisopropylacetylurea）是一種鎮定劑成分，台灣尚未核准使用於市售成藥中。這也是為什麼有些人覺得吃EVE比較有效，而台灣買的消炎止痛藥比較無效。但主要止痛成分是是布洛芬（Ibuprofen）台灣藥局都有販售同成分的止痛藥。</div>
+  <div class="p-meta">0 則補充 · 47 讚</div>
+</a><a class="pcard" href="../../../p/746f0406-5de7-4d87-a019-12540a693b3b" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
+  <div class="p-title">死亡證明要請幾份</div>
+  <div class="p-excerpt">一般來說死亡證明可以請10-20份或者更多 因為除了該跑的政府流程需要外 銀行、保險等等一家公司就需要給一張</div>
+  <div class="p-meta">0 則補充 · 46 讚</div>
+</a><a class="pcard" href="../../../p/0390477c-7cc2-490d-ac34-a5a127e5c54a" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">熙</span><span class="who">熙然</span></div>
+  <div class="p-title">在捷運站沒有要搭車但想如廁不需刷卡</div>
+  <div class="p-excerpt">可以直接到詢問處領取通行票後出站回收</div>
   <div class="p-meta">0 則補充 · 45 讚</div>
 </a><a class="pcard" href="../../../p/6099081c-3b2b-456d-85b5-bbf17f3b8d31" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">超</span><span class="who">超級德生</span></div>
   <div class="p-title">韓國租車須知</div>
   <div class="p-excerpt">1. 紅燈右轉可以但要讓行人和直行車，左轉要等左轉箭頭，除非是有藍色左轉箭頭牌子的路口綠燈就可轉（那個牌子叫做 無保護左轉），路牌或地上畫迴轉箭頭的地方才可以迴轉 2. 帶國際駕照租車 不要帶日本租車用的那個翻譯本 3. 21歲以上才能租 26歲以上租更便宜 4. 保險選最貴的那個 5. 建議租樂天…</div>
-  <div class="p-meta">0 則補充 · 43 讚</div>
+  <div class="p-meta">0 則補充 · 44 讚</div>
 </a><a class="pcard" href="../../../p/588da653-753e-4647-8a1a-2f6811c6dd3d" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">2</span><span class="who">22Y畢業即失業</span></div>
   <div class="p-title">7月燃料費🛵</div>
@@ -582,47 +629,17 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <div class="byline"><span class="avatar" style="background:#B8D0A0">S</span><span class="who">S</span></div>
   <div class="p-title">流鼻血止血</div>
   <div class="p-excerpt">小孩12歲前頻繁流鼻血很正常， 可能每個月都會來一次， 拿橡皮筋或髮圈綁中指第二指節， 當指頭稍微變色時拆掉等待恢復正常指頭顏色， 如果還沒止血再綁回去， 這樣來來回回直到止血， 從右邊鼻孔流就綁左手， 從左邊鼻孔流就綁右手， 通常止血速度都很快， 如果很久很久很久沒有止血請自行就醫！</div>
-  <div class="p-meta">0 則補充 · 40 讚</div>
-</a><a class="pcard" href="../../../p/6774f57f-3b60-4fcd-a5fa-fdb57868d12f" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">好</span><span class="who">好</span></div>
-  <div class="p-title">水餃不用退冰，水大滾直接放</div>
-  <div class="p-excerpt">水要夠多，等水大滾後再放入冷凍水餃。 輕輕攪拌：下鍋後立刻用湯勺背沿著鍋底輕輕推動，避免水餃黏在鍋底。 ⚠️切忌再凍：如果不小心退冰導致水餃全軟了，千萬不要再冰回冷凍庫，否則皮會完全爛掉。</div>
-  <div class="p-meta">0 則補充 · 38 讚</div>
+  <div class="p-meta">0 則補充 · 41 讚</div>
+</a><a class="pcard" href="../../../p/c1519981-b643-4b70-b709-c0a3a7908439" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">嚐</span><span class="who">嚐百草小弟</span></div>
+  <div class="p-title">體味管理 大補帖</div>
+  <div class="p-excerpt">🏫【體味管理之國教篇】🔥🔥🔥🔥🔥 從油膩到清爽乾淨，我的體味管理通識課【上篇】 嚐百草小弟在此🙋 礙於篇幅長度將分為上、下篇 下篇一樣精彩喔😎 之前看到有人建議「體味管理應列入國民義務教育」 這句話我舉雙手雙腳贊成。 身為一個從小全身超會出油 鼻子又敏感的爆汗體質 我花了非常多時間撰寫、實測 才找到…</div>
+  <div class="p-meta">0 則補充 · 39 讚</div>
 </a><a class="pcard" href="../../../p/269bc94d-d2c6-4da6-ad73-6ea13bd84d42" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
   <div class="p-title">萌寵小知識</div>
   <div class="p-excerpt">幼貓結紮時間要選好，公貓至少要滿7個月再結紮，母貓則是5-6個月以上，公貓太早結紮容易引發泌尿道問題，輕則尿另外堵塞，重者需做尿道造口！</div>
-  <div class="p-meta">0 則補充 · 38 讚</div>
-</a><a class="pcard" href="../../../p/5c5c58b7-9c41-4cd9-b4a2-09cbf015a749" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">狗</span><span class="who">狗媽媽</span></div>
-  <div class="p-title">蓮蓬頭出水變很刺怎麼辦</div>
-  <div class="p-excerpt">蓮蓬頭用一陣子之後出水孔會被累積的水垢、鐵屑之類的雜質堵住，導致孔洞變小。 可以先把出水的面板拆下來，用清水沖洗掉大部分雜質，再用衛生紙或洗臉巾沾滿檸檬酸稀釋液（比例是 檸檬酸15公克:溫水1公升）包住整個面板，等15分鐘再用海綿輕輕把附著的水垢搓洗乾淨就好了喔！ 廁所的水垢尿垢都可以用檸檬酸洗掉，…</div>
-  <div class="p-meta">0 則補充 · 37 讚</div>
-</a><a class="pcard" href="../../../p/bac8ebd0-a8a8-4a21-9243-1bdadfb8c05b" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">您</span><span class="who">您今夜的呼喚，就是我服務的開端</span></div>
-  <div class="p-title">其實台鐵也有會員點數</div>
-  <div class="p-excerpt">如果各位用台鐵app訂票，每次訂票都會有點數，可以用這個點數折抵下一次的訂票折扣(2點換1元)，也可以拿來換台鐵便當</div>
-  <div class="p-meta">0 則補充 · 37 讚</div>
-</a><a class="pcard" href="../../../p/2d914990-149a-4220-9da5-6f937237a75d" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
-  <div class="p-title">如何看高鐵等有沒有行駛？Rail Island 鐵道地圖</div>
-  <div class="p-excerpt">一樣先告知此網站非官方網站，使用前還是要自己斟酌 可以直接在Google搜尋：Rail Island 鐵道地圖 我自己常出差都會看高鐵動線，不過 1.高鐵 2.台鐵 3.捷運 4.輕軌 都可以直接查看路線、停靠站與列車資訊，介面簡潔、操作直覺，比對路線時非常方便。</div>
-  <div class="p-meta">0 則補充 · 37 讚</div>
-</a><a class="pcard" href="../../../p/58dfa867-61d3-4de4-923b-7625296bbac7" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#E8A0A8">打</span><span class="who">打狗</span></div>
-  <div class="p-title">辦台胞證+護照小提醒</div>
-  <div class="p-excerpt">護照大約需要兩個禮拜左右的工作時間才能領到，所以如果要護照+台胞證，至少留一個半月-兩個月的時間會比較穩妥。 如果有要去中國玩的小大人不知道怎麼辦護照跟台胞證的話，我是用Klook上門取件，他會先跟你收護照+兩寸照片 辦台胞證如果不是穿黑色（還是深色）的衣服就不給過，所以去拍大頭貼的時候除了化妝讓自…</div>
-  <div class="p-meta">0 則補充 · 37 讚</div>
-</a><a class="pcard" href="../../../p/f676bdba-b876-4b08-8ce1-b8ae9c701b98" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">地</span><span class="who">地瓜球</span></div>
-  <div class="p-title">滷東西加蒜</div>
-  <div class="p-excerpt">我媽教我的 滷東西的時候如果要加蒜頭 蒜皮不要剝掉 這樣蒜頭才不會散開讓湯髒髒的</div>
-  <div class="p-meta">0 則補充 · 33 讚</div>
-</a><a class="pcard" href="../../../p/d5c5ace2-de79-4683-8df5-5873c0557a37" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">煞</span><span class="who">煞氣乂林亭</span></div>
-  <div class="p-title">感到孤獨何解</div>
-  <div class="p-excerpt">身為一個一天到晚都在看別人手牽手一起吃飯的人 有時候真的會孤單到心裡空空的 如果你也有這樣的感覺可以試看看我的撇步～ 1.好好吃一餐 對於當下真的很寂寞的人不建議去那種揪團吃的 （火鍋、烤肉、快炒、沒有單人座位的店等） 除非是外帶，不然看別人一起吃的有聲有色 也是一種煎熬（心ㄧ跳～） 真的不行就朝面…</div>
-  <div class="p-meta">0 則補充 · 32 讚</div>
+  <div class="p-meta">0 則補充 · 39 讚</div>
 </a>
 <nav class="collection-pages" aria-label="大人秘技頁碼"><a href="/community/tips/">1</a><a href="/community/tips/page/2/">2</a><a href="/community/tips/page/3/">3</a><a href="/community/tips/page/4/" aria-current="page">4</a><a href="/community/tips/page/5/">5</a><a href="/community/tips/page/6/">6</a><a href="/community/tips/page/7/">7</a></nav>
 <div class="join-cta">

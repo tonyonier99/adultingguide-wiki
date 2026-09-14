@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
 <title>大人秘技（第 6 頁）｜初級大人手冊 社群</title>
-<meta name="description" content="大家分享的生活撇步與實用經驗。第 6 頁，共 149 則。">
+<meta name="description" content="大家分享的生活撇步與實用經驗。第 6 頁，共 167 則。">
 <link rel="canonical" href="https://adultingguide.tw/community/tips/page/6/">
 <link rel="icon" type="image/png" href="../../../../assets/app-icon.png">
 <link rel="apple-touch-icon" href="../../../../assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
 <meta property="og:title" content="大人秘技（第 6 頁）｜初級大人手冊 社群">
-<meta property="og:description" content="大家分享的生活撇步與實用經驗。第 6 頁，共 149 則。">
+<meta property="og:description" content="大家分享的生活撇步與實用經驗。第 6 頁，共 167 則。">
 <meta property="og:url" content="https://adultingguide.tw/community/tips/page/6/">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -252,22 +259,32 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
 .pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 團購列表：跟首頁分類卡一樣的「電商格狀」排版——圖在上、資訊在下、兩欄起跳 */
-.promo-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; margin-top:1.4rem; }
-@media (min-width:680px) { .promo-list { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
-.promo-card { display:block; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
+/* auto-fit（不是 auto-fill）：只有一檔合作時要讓卡片吃滿整行，
+   不能像 repeat(2,1fr) 那樣即使只有一格也硬切一半、標題被擠成三行。 */
+/* auto-fit 算欄數時，若 minmax 兩端都是定值會拿「較大值」去除可用寬度，
+   兩端都定值時反而擠成一欄——上限改回 1fr，改用卡片自己的 max-width 封頂單張卡的寬度。 */
+.promo-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem; margin-top:1.4rem; }
+@media (min-width:680px) { .promo-list { gap:1rem; } }
+.promo-card { display:block; max-width:340px; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
               box-shadow:0 1px 3px rgba(69,63,58,0.05);
               transition:transform 0.25s cubic-bezier(.645,.045,.355,1), box-shadow 0.25s cubic-bezier(.645,.045,.355,1); }
 .promo-card:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 8px 26px rgba(69,63,58,0.09); }
 .promo-card .cover { width:100%; aspect-ratio:1200/630; object-fit:cover; display:block;
                       transition:transform 0.4s cubic-bezier(.2,.7,.2,1); }
 .promo-card:hover .cover { transform:scale(1.03); }
-.promo-card .pc-body { padding:0.9rem 1rem 1.05rem; }
-.promo-card h2 { font-size:var(--fs-card-title); line-height:1.45; margin:0.5rem 0 0.35rem; font-weight:800; }
-.promo-card p { font-size:var(--fs-card-body); line-height:1.7; color:var(--sub); margin:0.3rem 0 0.7rem;
+.promo-card .pc-body { padding:1.2rem 1.3rem 1.4rem; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0.9rem 0 0.5rem; font-weight:800; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.8; color:var(--sub); margin:0.4rem 0 1rem;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .promo-card .pl-go { display:inline-block; }
 .promo-meta { display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; }
 .promo-inline-img { width:100%; display:block; border-radius:12px; margin:1.1rem 0; }
+/* 推薦人抬頭（@站長推薦 標記，批次 3.5.5）：單欄，頭貼＋名字＋認證勾一列，下方接分隔線。 */
+.promo-recommender { display:flex; align-items:center; gap:0.5rem; margin:1.3rem 0 0; }
+.promo-recommender-avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; }
+.promo-recommender-name { font-weight:700; font-size:0.95rem; color:var(--ink); }
+.promo-recommender-badge { width:14px; height:14px; flex:none; color:var(--orange); }
+.promo-recommender-divider { border:0; border-top:1px solid var(--line); margin:0.8rem 0 1.1rem; }
 .badge.live::before { content:""; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
@@ -502,127 +519,127 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <nav class="crumb"><a href="../../../">社群討論</a> › 大人秘技</nav>
 <div class="comm-hero"><h1>大人秘技</h1><p>大家分享的生活撇步與實用經驗。</p>
 <p class="community-note">這裡是大家的發問與生活經驗；官方規定請以 <a href="../../../../wiki">百科</a> 和主管機關公告為準。</p></div>
-<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">149　·　第 6/7 頁</span></h2>
-<a class="pcard" href="../../../p/506821bb-6f56-4336-955e-441033263bc9" style="animation-delay:0.00s">
+<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">167　·　第 6/7 頁</span></h2>
+<a class="pcard" href="../../../p/38a97b6d-1190-43ac-86de-3b3ca1f16775" style="animation-delay:0.00s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">入職必備-良民證</div>
+  <div class="p-excerpt">正式名稱叫 警察刑事紀錄證明 主要是看你在台灣有沒有任何刑事案件。 不光是入職才需要，像出國簽證、留學、移民、海外工作、金融業或教育相關職缺都會需要 申請： 線上申請，分為郵寄及去各縣市警察局領，不受戶籍地限制。 費用： 一般每份 新台幣100元，同一次申請第2份起，如果證明內容相同，每份加收 20…</div>
+  <div class="p-meta">0 則補充 · 26 讚</div>
+</a><a class="pcard" href="../../../p/ac625d0e-4138-4133-84ee-e0a7dec41ddb" style="animation-delay:0.03s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">鼠</span><span class="who">鼠爺</span></div>
+  <div class="p-title">機車建議要保第三責任險，替自己的風險把關。</div>
+  <div class="p-excerpt">剛出社會沒什麼金錢，但拿到車後一定要拿錢去買保險，尤其是第三責任險，當然最基本的車險是一定要的，只是第三責任險可以在你還沒出事的時候預防可能會有一筆大的支出。身邊的人也有因為沒有保保險而賠好幾十萬。當作被騙，當作買個心安也好，總之出門在外一定要替自己的風險把關。</div>
+  <div class="p-meta">0 則補充 · 25 讚</div>
+</a><a class="pcard" href="../../../p/9242baf2-53b3-4c7c-819b-ebbc9f6b2107" style="animation-delay:0.06s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">勞保／勞退，自己眼見為實</div>
+  <div class="p-excerpt">重點： 確認公司有沒有幫你加保、查勞保年資、查勞退提撥紀錄、核對投保薪資、辦離職或轉職前確認權益 查詢： 搜尋 勞保局 e 化服務系統，可以直接用 1.行動電話認證（門號本人） 2.自然人憑證、行動自然人憑證、 3.金融電子憑證等方式登入 可以查到什麼： 個人投保年資、詳細投保資料、勞工退休金個人專…</div>
+  <div class="p-meta">0 則補充 · 25 讚</div>
+</a><a class="pcard" href="../../../p/cf1bcbfa-0a16-44ce-bd9d-c99d6314a2fb" style="animation-delay:0.09s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Calvin.W</span></div>
+  <div class="p-title">保險存摺，了解自己到底有什麼保障</div>
+  <div class="p-excerpt">自己有做過保經可以很負責的說 先了解自己有沒有保險、整理爸媽以前幫你買的保單、確認車險是否有效，才能讓自己多份保障也不會被保險人員唬 除了查壽險等等之外 財產保險也有 保單存摺查詢平台，可以查詢像強制汽車責任保險、任意車險、火災保險等財產保險保單</div>
+  <div class="p-meta">0 則補充 · 24 讚</div>
+</a><a class="pcard" href="../../../p/506821bb-6f56-4336-955e-441033263bc9" style="animation-delay:0.12s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">G</span><span class="who">Garnet</span></div>
   <div class="p-title">每次銀行/郵局開戶 要間隔3個月</div>
   <div class="p-excerpt">剛高中畢業 最近辦了才知道 3個月內重複開戶 甚至開戶用途也一樣的話 會很難審核通過唷 （可以問能補充什麼資訊 幫助通過審核） （但請不要盧到變奧客）</div>
+  <div class="p-meta">0 則補充 · 21 讚</div>
+</a><a class="pcard" href="../../../p/a2ea72d5-6f0b-4ac2-a7b1-df5363e883f6" style="animation-delay:0.15s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">P</span><span class="who">Potato</span></div>
+  <div class="p-title">養貓人的基本技能</div>
+  <div class="p-excerpt">前獸醫助理分享常見養貓人困境 Q1. 需要在家在家餵膠囊的時候貓怎麼樣都不開口，跟在醫院裡判若兩貓。 A1. 給還有健康貓貓的初級大人們，平常可以練習檢查貓咪眼耳屎的量+精神食慾，日常互動的時候可以嘗試讓貓開嘴（檢查口腔跟餵藥練習） 小撇步：固定貓貓後，手從貓頭上往下，用手指把貓咪鬍鬚附近的嘴邊肉往…</div>
+  <div class="p-meta">0 則補充 · 19 讚</div>
+</a><a class="pcard" href="../../../p/9e24216b-99bb-4ac3-b9c5-7b689e1abaec" style="animation-delay:0.18s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">C</span><span class="who">Chengggg</span></div>
+  <div class="p-title">擦傷怎麼處理傷口</div>
+  <div class="p-excerpt">準備：棉棒 石蠟紗布 普通紗布 透氣膠帶 生理食鹽水 先清潔傷口 再蓋上石蠟紗布 再蓋上普通紗布（厚度依組織液分泌量而異 受傷初期組織液分泌量大 可以多蓋幾層以免滲出來）最後用透氣膠帶黏好 如果沒有石蠟紗布 可以去買外傷藥膏（利膚、使皮新等等）塗一層在傷口上 再蓋上普通紗布 只是這樣換藥時會比較痛…</div>
+  <div class="p-meta">0 則補充 · 19 讚</div>
+</a><a class="pcard" href="../../../p/0d4450be-925f-4c8d-916a-4825cafc4e7b" style="animation-delay:0.21s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">登</span><span class="who">登</span></div>
+  <div class="p-title">生熟食砧板怎麼分？為什麼需要兩塊砧板</div>
+  <div class="p-excerpt">處理食材、食物時，食品安全衛生的考量一定要將熟食砧板跟生食砧板分開以免交叉污染造成食物中毒！2026年4月爆發的沙門氏菌食物中毒事件便是交叉污染造成(可能是手部清潔不佳或是未分類砧板造成)，沙門氏菌不耐熱，攝氏60度加熱20分鐘以上即被殺滅。 熟食：不會再經過高溫加熱的食物。如：煎好的菜圃蛋、煮熟的…</div>
+  <div class="p-meta">0 則補充 · 19 讚</div>
+</a><a class="pcard" href="../../../p/3227b3dc-7c28-45d1-8eae-47c9fa715fda" style="animation-delay:0.24s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
+  <div class="p-title">突然想踏入婚姻的墳墓該怎麼辦</div>
+  <div class="p-excerpt">今天如果真的很確定想跟某個人結婚 最簡單的就是雙方帶著身份證、150元跟兩個證婚人去戶政事務所登記結婚，也可以自己簽完結婚證書預約戶政事務所的結婚登記。 如果雙方家人要走儀式流程大致如下； （我之前在飯店做婚禮企劃走的算簡化版，要再更傳統就要找家中長輩討論，僅提供大概要幹嗎不要讓自己很無措焦慮） 男…</div>
+  <div class="p-meta">0 則補充 · 19 讚</div>
+</a><a class="pcard" href="../../../p/87abf990-6de1-4772-ae26-11ea5a10154d" style="animation-delay:0.27s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
+  <div class="p-title">障礙大人秘笈大學生篇：四年和學校和平共處的方法</div>
+  <div class="p-excerpt">各位新障礙大人大家好，大學快開學了，我畢業了幾年，雖然說，在大學裡面稱不上是頂尖，但還是非常平安的畢業了，我的大學生活雖不上完美，甚至有過一些小狀況，不過也算是平安順利的度過，你的大學校園內非常友善，資源教室給予很多協助和溫暖，那恭喜你，這四年肯定能過得更舒心，但很多時候，可能不是這樣的，甚至很多人…</div>
   <div class="p-meta">0 則補充 · 18 讚</div>
-</a><a class="pcard" href="../../../p/e3c8a4dc-fd0b-4a5a-9907-e219268b880c" style="animation-delay:0.03s">
+</a><a class="pcard" href="../../../p/43a26e44-ae23-415e-90d1-c7067be30365" style="animation-delay:0.30s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">小</span><span class="who">小顏</span></div>
+  <div class="p-title">注意瓦斯筒期限（每年記得更換）</div>
+  <div class="p-excerpt">平時家裡煮飯次數不多， 所以一年以上沒有更換瓦斯筒了， 因為瓦斯過期了，老闆說需要多收取檢驗費用！ 所以提醒大家瓦斯要注意不要超過期限了， 可以先請瓦斯行的人幫你換新的瓦斯桶， 至於沒有用完的瓦斯可以扣錢！！！</div>
+  <div class="p-meta">0 則補充 · 17 讚</div>
+</a><a class="pcard" href="../../../p/e3c8a4dc-fd0b-4a5a-9907-e219268b880c" style="animation-delay:0.33s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Charles</span></div>
   <div class="p-title">急重症動物（Critically ill animals）的臨床症狀</div>
   <div class="p-excerpt">1. 心血管系統（Cardiovascular system）異常： Tachycardia（心搏過速）或 Bradycardia（心搏過緩，貓常見）。 Pale mucous membranes（蒼白黏膜）或 Hyperemic mucous membranes（充血性黏膜）。 Prolonged…</div>
   <div class="p-meta">0 則補充 · 17 讚</div>
-</a><a class="pcard" href="../../../p/380daaaf-8d13-4fdb-a639-56ea087873e4" style="animation-delay:0.06s">
+</a><a class="pcard" href="../../../p/380daaaf-8d13-4fdb-a639-56ea087873e4" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#F2B5A0">I</span><span class="who">I don’t 呱</span></div>
   <div class="p-title">一點點修繕技巧</div>
   <div class="p-excerpt">更換水龍頭起泡器時，如果鉗子轉不開，可以嘗試下列技巧 1.刮除交界處水垢、髒污 2.隔著洗臉巾、抹布再夾 3.往交界處上一點油 螺絲崩牙的時候可以放一節橡皮筋或貼電火布在牙處再轉，如果是電器、3C產品較小螺絲，可以使用橡皮擦屑 組裝櫃子或其他需要槌子但沒有的時候可以用老虎鉗平面處敲擊 使用任何膠帶時…</div>
   <div class="p-meta">0 則補充 · 17 讚</div>
-</a><a class="pcard" href="../../../p/f45f0c4f-89cd-48dc-b958-2c3001bf2d08" style="animation-delay:0.09s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">花</span><span class="who">花卷</span></div>
-  <div class="p-title">調味料罐卡在底部</div>
-  <div class="p-excerpt">通常玻璃調味料底部就會有齒輪狀的凸起物，當你的調料粉卡在底部倒不出來時，可以拿兩罐帶有齒輪狀凸起物，互相磨玻璃罐底部，粉就會輕鬆掉下來ㄛ～小磨坊那種的罐子</div>
-  <div class="p-meta">0 則補充 · 16 讚</div>
-</a><a class="pcard" href="../../../p/43a26e44-ae23-415e-90d1-c7067be30365" style="animation-delay:0.12s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">小</span><span class="who">小顏</span></div>
-  <div class="p-title">注意瓦斯筒期限（每年記得更換）</div>
-  <div class="p-excerpt">平時家裡煮飯次數不多， 所以一年以上沒有更換瓦斯筒了， 因為瓦斯過期了，老闆說需要多收取檢驗費用！ 所以提醒大家瓦斯要注意不要超過期限了， 可以先請瓦斯行的人幫你換新的瓦斯桶， 至於沒有用完的瓦斯可以扣錢！！！</div>
-  <div class="p-meta">0 則補充 · 16 讚</div>
-</a><a class="pcard" href="../../../p/31cb00a9-89bd-4dc0-8444-5c16052f11d4" style="animation-delay:0.15s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">瑄</span><span class="who">瑄瑄</span></div>
-  <div class="p-title">家中70歲以上長者換照</div>
-  <div class="p-excerpt">70-74歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 換照後有效期限至75歲 75歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 （3）認知功能測驗 每3年重新換照 安全教育課程需至監理站預約上課 體格檢查可去附近診所或衛生所做詢問 從115年起有2年緩衝期 大家可以帶家中長…</div>
-  <div class="p-meta">0 則補充 · 15 讚</div>
-</a><a class="pcard" href="../../../p/0815d6a3-5cb8-426f-b95f-33e4fcf86039" style="animation-delay:0.18s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">咪</span><span class="who">咪咪</span></div>
-  <div class="p-title">愛吃香瓜的！</div>
-  <div class="p-excerpt">香瓜挑選果皮表面無黑點（蠅蟲產卵，會導致果肉腐爛）、香瓜底部無汁液、開裂的（放室溫太久以後會爆炸哦） 還有這幾個月就是香瓜的產季了！也是可以推薦購買的水果！</div>
-  <div class="p-meta">0 則補充 · 15 讚</div>
-</a><a class="pcard" href="../../../p/98aa9230-1621-48c5-a8c3-d135c13fbc14" style="animation-delay:0.21s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">笨</span><span class="who">笨蛋</span></div>
-  <div class="p-title">吃藥</div>
-  <div class="p-excerpt">今天學到教訓 真的一定要吃飽才能吃西藥 西藥藥效很強 拔智齒後沒吃飽再吃藥 今天從2.30不舒服到9. 吃藥需要間隔4～6小時</div>
-  <div class="p-meta">0 則補充 · 14 讚</div>
-</a><a class="pcard" href="../../../p/eca877bc-8261-44ac-bd89-7cd2ffd570e1" style="animation-delay:0.24s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">W</span><span class="who">Woolly</span></div>
-  <div class="p-title">蓮子吃起來苦苦的解決辦法以及蓮子芯功用</div>
-  <div class="p-excerpt">蓮子吃起來苦苦的是因為裡面的芯苦，去除方法很簡單，灰色的頭朝上剝掉灰色的那一小圈後，用筷子或者類似形狀的物品，從蓮子屁股正中間往上方戳綠色的芯就會完整跑出來了！ 蓮子芯也可以泡茶不過大多數是用乾燥蓮子芯，生蓮子芯會比乾燥的還要苦！可以去火甚至降低壓力助眠哦～</div>
-  <div class="p-meta">0 則補充 · 13 讚</div>
-</a><a class="pcard" href="../../../p/5995e134-bcd5-4f58-a6a9-6d95d8266b3f" style="animation-delay:0.27s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">小</span><span class="who">小魚</span></div>
-  <div class="p-title">信用卡</div>
-  <div class="p-excerpt">現在哪張信用卡最好用！想要再辦一張 我很少出國 都是國內消費～ 外送 網購 平常出門都是刷卡居多</div>
-  <div class="p-meta">0 則補充 · 13 讚</div>
-</a><a class="pcard" href="../../../p/ff7aae43-6f7b-43ac-8964-9997d54844db" style="animation-delay:0.30s">
+</a><a class="pcard" href="../../../p/ff7aae43-6f7b-43ac-8964-9997d54844db" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">熙</span><span class="who">熙然</span></div>
   <div class="p-title">悠遊卡搭大眾運輸被鎖卡怎麼辦？</div>
   <div class="p-excerpt">如果搭乘客運被鎖卡，只要下一次再搭乘該客運即可 捷運的話可以去詢問處問問看 如果搭乘輕軌被鎖卡，人剛好在北車，北車有放置淡海、安坑及高雄輕軌的刷卡機，刷了扣款後就可以解卡</div>
-  <div class="p-meta">0 則補充 · 11 讚</div>
-</a><a class="pcard" href="../../../p/69dccd79-dfad-40ef-a8d4-5db0600c53ca" style="animation-delay:0.33s">
-  <div class="byline"><span class="avatar" style="background:#A0C4D8">努</span><span class="who">努力成為大人</span></div>
-  <div class="p-title">香腸怎麼用？</div>
-  <div class="p-excerpt">一開始要用沸騰的水先燙香腸，過一段時間後把香腸夾起來，再拿來煎就完成了！</div>
-  <div class="p-meta">0 則補充 · 11 讚</div>
+  <div class="p-meta">0 則補充 · 16 讚</div>
 </a><a class="pcard" href="../../../p/42b6123c-049b-4924-a114-f444250f554e" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">K</span><span class="who">K.s</span></div>
   <div class="p-title">酒吧內的疑問</div>
   <div class="p-excerpt">敝人是一位不專業調酒師 有什麼飲酒或是在酒吧內想問卻不敢問的問題都可以問我呦🫶🏻</div>
-  <div class="p-meta">0 則補充 · 10 讚</div>
+  <div class="p-meta">0 則補充 · 15 讚</div>
+</a><a class="pcard" href="../../../p/31cb00a9-89bd-4dc0-8444-5c16052f11d4" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">瑄</span><span class="who">瑄瑄</span></div>
+  <div class="p-title">家中70歲以上長者換照</div>
+  <div class="p-excerpt">70-74歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 換照後有效期限至75歲 75歲以上換照要做 （1）體格檢查 （2）2小時安全教育課程 （3）認知功能測驗 每3年重新換照 安全教育課程需至監理站預約上課 體格檢查可去附近診所或衛生所做詢問 從115年起有2年緩衝期 大家可以帶家中長…</div>
+  <div class="p-meta">0 則補充 · 15 讚</div>
+</a><a class="pcard" href="../../../p/0815d6a3-5cb8-426f-b95f-33e4fcf86039" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">咪</span><span class="who">咪咪</span></div>
+  <div class="p-title">愛吃香瓜的！</div>
+  <div class="p-excerpt">香瓜挑選果皮表面無黑點（蠅蟲產卵，會導致果肉腐爛）、香瓜底部無汁液、開裂的（放室溫太久以後會爆炸哦） 還有這幾個月就是香瓜的產季了！也是可以推薦購買的水果！</div>
+  <div class="p-meta">0 則補充 · 15 讚</div>
 </a><a class="pcard" href="../../../p/181c4a0c-993b-4259-9ce2-9748395d662a" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">H</span><span class="who">Hua</span></div>
   <div class="p-title">交通事故保險的種類及運作</div>
   <div class="p-excerpt">強制險與第三責任險的差異 （一）險種差異： 1、強制險：「不論責任」提供最基礎的醫療保障，如有金錢上的急迫需要，開立診斷證明書、收據及相關證明，請任何一家「代送」；但限制他方當事人需為「車輛」，且肇事人（駕駛人）未領有適當駕照或是駕駛的資格異常及涉犯酒後駕車案件，且另一方是車輛時，強制險「不賠」！…</div>
-  <div class="p-meta">0 則補充 · 10 讚</div>
+  <div class="p-meta">0 則補充 · 14 讚</div>
 </a><a class="pcard" href="../../../p/9603bbf1-4468-43e4-bbf6-37547c3786ec" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">木</span><span class="who">木頭🪵</span></div>
   <div class="p-title">鋰離子電池起火用水滅</div>
   <div class="p-excerpt">澆水降溫 等火熄滅後泡水 鋰「離子 」電池澆水泡水 鋰「金屬 」電池鐵桶隔絕</div>
-  <div class="p-meta">0 則補充 · 10 讚</div>
-</a><a class="pcard" href="../../../p/9c289040-0402-4b0b-96ec-a2cc4db96fbb" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#F2D9A0">有</span><span class="who">有方向感的沙漠之舟</span></div>
-  <div class="p-title">為什麼今年的七夕情人節是8/19？</div>
-  <div class="p-excerpt">七夕情人節是＂農曆七月初七＂ 相對應是今年＂國曆八月十九日＂ 所以不要在7/7準備情人節禮物給另一半喔！ 要先知道該年度是哪一天～</div>
-  <div class="p-meta">0 則補充 · 10 讚</div>
-</a><a class="pcard" href="../../../p/ac625d0e-4138-4133-84ee-e0a7dec41ddb" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">鼠</span><span class="who">鼠爺</span></div>
-  <div class="p-title">機車建議要保第三責任險，替自己的風險把關。</div>
-  <div class="p-excerpt">剛出社會沒什麼金錢，但拿到車後一定要拿錢去買保險，尤其是第三責任險，當然最基本的車險是一定要的，只是第三責任險可以在你還沒出事的時候預防可能會有一筆大的支出。身邊的人也有因為沒有保保險而賠好幾十萬。當作被騙，當作買個心安也好，總之出門在外一定要替自己的風險把關。</div>
-  <div class="p-meta">0 則補充 · 9 讚</div>
-</a><a class="pcard" href="../../../p/3c86953b-789b-41c8-9a81-329f6ee09363" style="animation-delay:0.36s">
+  <div class="p-meta">0 則補充 · 14 讚</div>
+</a><a class="pcard" href="../../../p/98aa9230-1621-48c5-a8c3-d135c13fbc14" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">笨</span><span class="who">笨蛋</span></div>
-  <div class="p-title">關於金針菇</div>
-  <div class="p-excerpt">金針菇吃太多會堵住自己 會想吐！</div>
-  <div class="p-meta">0 則補充 · 9 讚</div>
-</a><a class="pcard" href="../../../p/987c9859-aac1-4bae-8132-bffb49c4e5ab" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Charles</span></div>
-  <div class="p-title">健康動物的標準臨床表現應具備以下特徵：</div>
-  <div class="p-excerpt">Mentation（精神狀態）：Bright, alert, and responsive (BAR，精神良好且反應敏銳)，對環境刺激有正常交互作用。 Body condition score（體態評分）：WSAVA標準 4-5/9 或 3/5；肋骨可輕易觸摸但不可視。 Muscle conditi…</div>
-  <div class="p-meta">0 則補充 · 9 讚</div>
+  <div class="p-title">吃藥</div>
+  <div class="p-excerpt">今天學到教訓 真的一定要吃飽才能吃西藥 西藥藥效很強 拔智齒後沒吃飽再吃藥 今天從2.30不舒服到9. 吃藥需要間隔4～6小時</div>
+  <div class="p-meta">0 則補充 · 14 讚</div>
+</a><a class="pcard" href="../../../p/eca877bc-8261-44ac-bd89-7cd2ffd570e1" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">W</span><span class="who">Woolly</span></div>
+  <div class="p-title">蓮子吃起來苦苦的解決辦法以及蓮子芯功用</div>
+  <div class="p-excerpt">蓮子吃起來苦苦的是因為裡面的芯苦，去除方法很簡單，灰色的頭朝上剝掉灰色的那一小圈後，用筷子或者類似形狀的物品，從蓮子屁股正中間往上方戳綠色的芯就會完整跑出來了！ 蓮子芯也可以泡茶不過大多數是用乾燥蓮子芯，生蓮子芯會比乾燥的還要苦！可以去火甚至降低壓力助眠哦～</div>
+  <div class="p-meta">0 則補充 · 13 讚</div>
+</a><a class="pcard" href="../../../p/5995e134-bcd5-4f58-a6a9-6d95d8266b3f" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">小</span><span class="who">小魚</span></div>
+  <div class="p-title">信用卡</div>
+  <div class="p-excerpt">現在哪張信用卡最好用！想要再辦一張 我很少出國 都是國內消費～ 外送 網購 平常出門都是刷卡居多</div>
+  <div class="p-meta">0 則補充 · 13 讚</div>
+</a><a class="pcard" href="../../../p/69dccd79-dfad-40ef-a8d4-5db0600c53ca" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">努</span><span class="who">努力成為大人</span></div>
+  <div class="p-title">香腸怎麼用？</div>
+  <div class="p-excerpt">一開始要用沸騰的水先燙香腸，過一段時間後把香腸夾起來，再拿來煎就完成了！</div>
+  <div class="p-meta">0 則補充 · 12 讚</div>
 </a><a class="pcard" href="../../../p/8cce4a8f-0869-45d2-8c2f-862f1ccd51fa" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#B8D0A0">H</span><span class="who">Hua</span></div>
   <div class="p-title">交通事故如何和解</div>
   <div class="p-excerpt">（一）雙方「傷勢」及「車損」確定後，所產生的損失金額雙方自行協調，若有共識則可私下和解。 （二）若無法私下和解或和解金額較高，要走保險，流程如下： 1、完成筆錄後警方會提供道路交通事故登記聯單，會是一張複寫紙（部分地區會是小張列印紙）， 2、聯單提供給保險公司承保人員或是送至保險公司據點開始初險。…</div>
-  <div class="p-meta">0 則補充 · 8 讚</div>
-</a><a class="pcard" href="../../../p/cba136ef-3f84-490d-afc1-69048c302060" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#B8D0A0">H</span><span class="who">Hua</span></div>
-  <div class="p-title">交通事故相關資料的申請</div>
-  <div class="p-excerpt">資料申請！ 發生車禍後7日後可以申請「現場圖」、「現場照片」，1個月以後可以申請「道路交通事故出初判表」。 「現場圖」：記載道路現場狀況及車輛行向 「現場照片」：僅拍攝道路標誌標線、車損外觀等 「道路交通事故初判表」：提供當事人參考道路違規事項，但不會提供責任判比，該表僅有參考性質，「不具」法規效力…</div>
-  <div class="p-meta">0 則補充 · 7 讚</div>
-</a><a class="pcard" href="../../../p/bd43e340-c2e3-4f7c-865d-f80076c5bc27" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
-  <div class="p-title">障礙大人交通：第一次申請和乘坐富康巴士就上手</div>
-  <div class="p-excerpt">什麼是富康巴士 各縣市政府社會局和交通局為了讓行動不便的障礙朋友和需要長期照顧服務的失能長者方便維持正常生活和社會參與，特別設計的交通方式，，例如輪椅停放和固定點，設備，鐵板，司機也需要服務障礙者的S O P訓練才能上路，有費用補助，對於行動不便的障礙朋友來說儼然成為非常舒適安心的交通方式，以下整理…</div>
-  <div class="p-meta">0 則補充 · 7 讚</div>
-</a><a class="pcard" href="../../../p/a9a8c603-f2bd-4caa-a2b1-974885d05bd8" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">軒</span><span class="who">軒</span></div>
-  <div class="p-title">牙齒問題</div>
-  <div class="p-excerpt">想問問牙齒重建比較好還是植牙比較好 從小沒照顧牙齒都蛀牙蛀光光了 然後就是用牙齒有保險嗎</div>
-  <div class="p-meta">0 則補充 · 7 讚</div>
-</a><a class="pcard" href="../../../p/38fb9f51-10db-4dde-939f-f5c90b60eab6" style="animation-delay:0.36s">
-  <div class="byline"><span class="avatar" style="background:#A8C6A1">新</span><span class="who">新生社畜兒</span></div>
-  <div class="p-title">新鮮人</div>
-  <div class="p-excerpt">當社畜後第一件事是習慣早8晚5的生活 先學會不要犯困😪</div>
-  <div class="p-meta">0 則補充 · 6 讚</div>
+  <div class="p-meta">0 則補充 · 12 讚</div>
 </a>
 <nav class="collection-pages" aria-label="大人秘技頁碼"><a href="/community/tips/">1</a><a href="/community/tips/page/2/">2</a><a href="/community/tips/page/3/">3</a><a href="/community/tips/page/4/">4</a><a href="/community/tips/page/5/">5</a><a href="/community/tips/page/6/" aria-current="page">6</a><a href="/community/tips/page/7/">7</a></nav>
 <div class="join-cta">

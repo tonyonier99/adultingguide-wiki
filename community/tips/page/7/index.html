@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
 <title>大人秘技（第 7 頁）｜初級大人手冊 社群</title>
-<meta name="description" content="大家分享的生活撇步與實用經驗。第 7 頁，共 149 則。">
+<meta name="description" content="大家分享的生活撇步與實用經驗。第 7 頁，共 167 則。">
 <link rel="canonical" href="https://adultingguide.tw/community/tips/page/7/">
 <link rel="icon" type="image/png" href="../../../../assets/app-icon.png">
 <link rel="apple-touch-icon" href="../../../../assets/app-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="初級大人手冊">
 <meta property="og:title" content="大人秘技（第 7 頁）｜初級大人手冊 社群">
-<meta property="og:description" content="大家分享的生活撇步與實用經驗。第 7 頁，共 149 則。">
+<meta property="og:description" content="大家分享的生活撇步與實用經驗。第 7 頁，共 167 則。">
 <meta property="og:url" content="https://adultingguide.tw/community/tips/page/7/">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -77,6 +77,13 @@ main { padding:0 0 3.5rem; }
 .crumb { font-size:0.8rem; color:var(--sub); margin-bottom:0.9rem; }
 .crumb a { color:var(--sub); }
 h1 { font-size:var(--fs-page-title); line-height:1.4; letter-spacing:0.01em; font-weight:800; }
+/* 合作詳情頁：標題旁邊放購買按鈕，給想直接看商品、不想先讀完介紹的人一個捷徑 */
+.promo-title-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.promo-title-row h1 { flex:1; min-width:0; }
+.promo-title-row .btn { display:inline-block; flex:none; white-space:nowrap; background:var(--orange); color:#fff;
+                         font-weight:700; font-size:0.95rem; padding:0.6rem 1.4rem; border-radius:99px; }
+.promo-title-row .btn:hover { text-decoration:none; }
+@media (max-width:480px) { .promo-title-row .btn { flex:1 0 100%; text-align:center; } }
 .meta { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin:0.9rem 0 1.5rem; }
 .badge { font-size:0.76rem; padding:0.22rem 0.7rem; border-radius:99px;
          background:var(--cat-bg); color:var(--cat); font-weight:700; }
@@ -252,22 +259,32 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .pillar p { font-size:0.9rem; color:var(--sub); line-height:1.7; flex:1; margin:0; }
 .pl-go { margin-top:0.85rem; font-weight:700; color:var(--orange); font-size:0.9rem; }
 /* 團購列表：跟首頁分類卡一樣的「電商格狀」排版——圖在上、資訊在下、兩欄起跳 */
-.promo-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.8rem; margin-top:1.4rem; }
-@media (min-width:680px) { .promo-list { grid-template-columns:repeat(3, 1fr); gap:1rem; } }
-.promo-card { display:block; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
+/* auto-fit（不是 auto-fill）：只有一檔合作時要讓卡片吃滿整行，
+   不能像 repeat(2,1fr) 那樣即使只有一格也硬切一半、標題被擠成三行。 */
+/* auto-fit 算欄數時，若 minmax 兩端都是定值會拿「較大值」去除可用寬度，
+   兩端都定值時反而擠成一欄——上限改回 1fr，改用卡片自己的 max-width 封頂單張卡的寬度。 */
+.promo-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.8rem; margin-top:1.4rem; }
+@media (min-width:680px) { .promo-list { gap:1rem; } }
+.promo-card { display:block; max-width:340px; background:#fff; border-radius:18px; overflow:hidden; color:var(--ink);
               box-shadow:0 1px 3px rgba(69,63,58,0.05);
               transition:transform 0.25s cubic-bezier(.645,.045,.355,1), box-shadow 0.25s cubic-bezier(.645,.045,.355,1); }
 .promo-card:hover { text-decoration:none; transform:translateY(-3px); box-shadow:0 8px 26px rgba(69,63,58,0.09); }
 .promo-card .cover { width:100%; aspect-ratio:1200/630; object-fit:cover; display:block;
                       transition:transform 0.4s cubic-bezier(.2,.7,.2,1); }
 .promo-card:hover .cover { transform:scale(1.03); }
-.promo-card .pc-body { padding:0.9rem 1rem 1.05rem; }
-.promo-card h2 { font-size:var(--fs-card-title); line-height:1.45; margin:0.5rem 0 0.35rem; font-weight:800; }
-.promo-card p { font-size:var(--fs-card-body); line-height:1.7; color:var(--sub); margin:0.3rem 0 0.7rem;
+.promo-card .pc-body { padding:1.2rem 1.3rem 1.4rem; }
+.promo-card h2 { font-size:var(--fs-card-title); line-height:1.5; margin:0.9rem 0 0.5rem; font-weight:800; }
+.promo-card p { font-size:var(--fs-card-body); line-height:1.8; color:var(--sub); margin:0.4rem 0 1rem;
                 display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .promo-card .pl-go { display:inline-block; }
 .promo-meta { display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; }
 .promo-inline-img { width:100%; display:block; border-radius:12px; margin:1.1rem 0; }
+/* 推薦人抬頭（@站長推薦 標記，批次 3.5.5）：單欄，頭貼＋名字＋認證勾一列，下方接分隔線。 */
+.promo-recommender { display:flex; align-items:center; gap:0.5rem; margin:1.3rem 0 0; }
+.promo-recommender-avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; }
+.promo-recommender-name { font-weight:700; font-size:0.95rem; color:var(--ink); }
+.promo-recommender-badge { width:14px; height:14px; flex:none; color:var(--orange); }
+.promo-recommender-divider { border:0; border-top:1px solid var(--line); margin:0.8rem 0 1.1rem; }
 .badge.live::before { content:""; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
                    font-weight:700; font-size:0.95rem; line-height:1.3; padding:0.65rem 1.35rem; border-radius:99px; }
@@ -502,32 +519,122 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <nav class="crumb"><a href="../../../">社群討論</a> › 大人秘技</nav>
 <div class="comm-hero"><h1>大人秘技</h1><p>大家分享的生活撇步與實用經驗。</p>
 <p class="community-note">這裡是大家的發問與生活經驗；官方規定請以 <a href="../../../../wiki">百科</a> 和主管機關公告為準。</p></div>
-<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">149　·　第 7/7 頁</span></h2>
-<a class="pcard" href="../../../p/db36fc16-69da-4f05-a13f-4e8633f4135d" style="animation-delay:0.00s">
+<h2 class="sec-label">全部　<span style="color:var(--sub);font-weight:400">167　·　第 7/7 頁</span></h2>
+<a class="pcard" href="../../../p/9c289040-0402-4b0b-96ec-a2cc4db96fbb" style="animation-delay:0.00s">
+  <div class="byline"><span class="avatar" style="background:#F2D9A0">有</span><span class="who">有方向感的沙漠之舟</span></div>
+  <div class="p-title">為什麼今年的七夕情人節是8/19？</div>
+  <div class="p-excerpt">七夕情人節是＂農曆七月初七＂ 相對應是今年＂國曆八月十九日＂ 所以不要在7/7準備情人節禮物給另一半喔！ 要先知道該年度是哪一天～</div>
+  <div class="p-meta">0 則補充 · 10 讚</div>
+</a><a class="pcard" href="../../../p/1f11a265-8a27-48c2-8d98-bc95fb61dc20" style="animation-delay:0.03s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">巷</span><span class="who">巷口雞排飯</span></div>
+  <div class="p-title">養兔小知識1</div>
+  <div class="p-excerpt">兔子主食不是紅蘿蔔。 兔子主食是牧草，無限量供應。 兔子需要喝水，無限量供應。</div>
+  <div class="p-meta">0 則補充 · 9 讚</div>
+</a><a class="pcard" href="../../../p/cba136ef-3f84-490d-afc1-69048c302060" style="animation-delay:0.06s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">H</span><span class="who">Hua</span></div>
+  <div class="p-title">交通事故相關資料的申請</div>
+  <div class="p-excerpt">資料申請！ 發生車禍後7日後可以申請「現場圖」、「現場照片」，1個月以後可以申請「道路交通事故出初判表」。 「現場圖」：記載道路現場狀況及車輛行向 「現場照片」：僅拍攝道路標誌標線、車損外觀等 「道路交通事故初判表」：提供當事人參考道路違規事項，但不會提供責任判比，該表僅有參考性質，「不具」法規效力…</div>
+  <div class="p-meta">0 則補充 · 9 讚</div>
+</a><a class="pcard" href="../../../p/3c86953b-789b-41c8-9a81-329f6ee09363" style="animation-delay:0.09s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">笨</span><span class="who">笨蛋</span></div>
+  <div class="p-title">關於金針菇</div>
+  <div class="p-excerpt">金針菇吃太多會堵住自己 會想吐！</div>
+  <div class="p-meta">0 則補充 · 9 讚</div>
+</a><a class="pcard" href="../../../p/987c9859-aac1-4bae-8132-bffb49c4e5ab" style="animation-delay:0.12s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">C</span><span class="who">Charles</span></div>
+  <div class="p-title">健康動物的標準臨床表現應具備以下特徵：</div>
+  <div class="p-excerpt">Mentation（精神狀態）：Bright, alert, and responsive (BAR，精神良好且反應敏銳)，對環境刺激有正常交互作用。 Body condition score（體態評分）：WSAVA標準 4-5/9 或 3/5；肋骨可輕易觸摸但不可視。 Muscle conditi…</div>
+  <div class="p-meta">0 則補充 · 9 讚</div>
+</a><a class="pcard" href="../../../p/37527724-6acc-44fa-b44c-dca217207bfb" style="animation-delay:0.15s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">阿</span><span class="who">阿齊</span></div>
+  <div class="p-title">男生到女生家裡該怎麼上廁所</div>
+  <div class="p-excerpt">能坐著上就坐著上，或是把座墊抬起來，上完要拿衛生紙把噴濺到的地方擦乾淨之後再把座墊放下來 不然會容易滋生尿騷味導致你被扣分🫵🫵🫵</div>
+  <div class="p-meta">0 則補充 · 8 讚</div>
+</a><a class="pcard" href="../../../p/9996af71-97fb-4a6f-95b4-4e770985863b" style="animation-delay:0.18s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
+  <div class="p-title">萌寵小知識2</div>
+  <div class="p-excerpt">如果家中貓貓食欲不振，不要覺得他只是挑食，擔心多一點，更能保護他，且毛孩建議每六個月就健康檢查一次，因為期間都有可能有身體上的問題出現，只是發現不了，特別是貓，他們特別會忍痛。</div>
+  <div class="p-meta">0 則補充 · 7 讚</div>
+</a><a class="pcard" href="../../../p/bd43e340-c2e3-4f7c-865d-f80076c5bc27" style="animation-delay:0.21s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">瞎</span><span class="who">瞎眼蝸牛</span></div>
+  <div class="p-title">障礙大人交通：第一次申請和乘坐富康巴士就上手</div>
+  <div class="p-excerpt">什麼是富康巴士 各縣市政府社會局和交通局為了讓行動不便的障礙朋友和需要長期照顧服務的失能長者方便維持正常生活和社會參與，特別設計的交通方式，，例如輪椅停放和固定點，設備，鐵板，司機也需要服務障礙者的S O P訓練才能上路，有費用補助，對於行動不便的障礙朋友來說儼然成為非常舒適安心的交通方式，以下整理…</div>
+  <div class="p-meta">0 則補充 · 7 讚</div>
+</a><a class="pcard" href="../../../p/db36fc16-69da-4f05-a13f-4e8633f4135d" style="animation-delay:0.24s">
   <div class="byline"><span class="avatar" style="background:#F2D9A0">끌</span><span class="who">끌</span></div>
   <div class="p-title">有什麼來韓旅遊的問題可以留言</div>
   <div class="p-excerpt">突然發現這個有趣平台，但人不住台灣，滿多項目都用不到ㄉ 想說有緣的話可以幫一下大家？？</div>
+  <div class="p-meta">0 則補充 · 7 讚</div>
+</a><a class="pcard" href="../../../p/a9a8c603-f2bd-4caa-a2b1-974885d05bd8" style="animation-delay:0.27s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">軒</span><span class="who">軒</span></div>
+  <div class="p-title">牙齒問題</div>
+  <div class="p-excerpt">想問問牙齒重建比較好還是植牙比較好 從小沒照顧牙齒都蛀牙蛀光光了 然後就是用牙齒有保險嗎</div>
+  <div class="p-meta">0 則補充 · 7 讚</div>
+</a><a class="pcard" href="../../../p/3880eda5-29b9-4dd3-af8d-baa482de8000" style="animation-delay:0.30s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
+  <div class="p-title">萌寵小知識3</div>
+  <div class="p-excerpt">如果家中貓貓精神不好、流口水、食慾不佳，可以提前察覺是不是因為口腔問題，有可能是牙結石導致牙齒搖晃或是口炎問題，盡早處理對貓咪更好</div>
+  <div class="p-meta">0 則補充 · 6 讚</div>
+</a><a class="pcard" href="../../../p/38fb9f51-10db-4dde-939f-f5c90b60eab6" style="animation-delay:0.33s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">新</span><span class="who">新生社畜兒</span></div>
+  <div class="p-title">新鮮人</div>
+  <div class="p-excerpt">當社畜後第一件事是習慣早8晚5的生活 先學會不要犯困😪</div>
+  <div class="p-meta">0 則補充 · 6 讚</div>
+</a><a class="pcard" href="../../../p/d7c542d4-1bd3-412f-8f7d-38a35a50ae02" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#E8A0A8">第</span><span class="who">第一次當母親</span></div>
+  <div class="p-title">原來市場沒有賣棒棒腿</div>
+  <div class="p-excerpt">跑去市場要買棒棒腿給兒子當手食物，才知道棒棒腿要全聯、大全聯、萬家福那種才買得到。</div>
   <div class="p-meta">0 則補充 · 5 讚</div>
-</a><a class="pcard" href="../../../p/f449692f-1826-4e5f-8426-bcc510de483b" style="animation-delay:0.03s">
+</a><a class="pcard" href="../../../p/ea4e7df3-00d5-4274-9c79-143d92e6000e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
+  <div class="p-title">萌寵小知識4</div>
+  <div class="p-excerpt">家中寵物有政府補助絕育對荷包很好，但是不能輕忽絕育前的健康檢查，因為不確定貓貓有沒有潛在的身體疾病，像是腎臟肝臟指標若有問題不建議進行麻醉手術，建議先治療該問題再另約時間進行絕育，不要為了便宜而輕忽麻醉的風險！</div>
+  <div class="p-meta">0 則補充 · 5 讚</div>
+</a><a class="pcard" href="../../../p/f6432db5-b1bc-457f-aca3-41d532803810" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">P</span><span class="who">Potato</span></div>
+  <div class="p-title">工作用郵局寄送大量便利袋</div>
+  <div class="p-excerpt">公務機關通常都是用郵局寄送必要物資或文件 有收發室的機關大部分只能提供公版信封，寄平信或掛號，也有固定收件時間。 因為特殊需求我這次寄了50個便利袋，致電詢問收發室沒有非信封/紙箱類的包材寄送經驗。 1.便利袋的尺寸有1～3號，可以至郵局購買空袋，不含郵資，基本上是寄一公斤以下非流質、非易碎物品。…</div>
+  <div class="p-meta">0 則補充 · 5 讚</div>
+</a><a class="pcard" href="../../../p/f449692f-1826-4e5f-8426-bcc510de483b" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">顏</span><span class="who">顏某</span></div>
   <div class="p-title">關於職場性騷擾</div>
   <div class="p-excerpt">我想知道關於職場男女之間的互都怎樣才不算性騷擾，或是如何的言語</div>
   <div class="p-meta">0 則補充 · 5 讚</div>
-</a><a class="pcard" href="../../../p/9996af71-97fb-4a6f-95b4-4e770985863b" style="animation-delay:0.06s">
-  <div class="byline"><span class="avatar" style="background:#F2B5A0">蛋</span><span class="who">蛋媽</span></div>
-  <div class="p-title">萌寵小知識2</div>
-  <div class="p-excerpt">如果家中貓貓食欲不振，不要覺得他只是挑食，擔心多一點，更能保護他，且毛孩建議每六個月就健康檢查一次，因為期間都有可能有身體上的問題出現，只是發現不了，特別是貓，他們特別會忍痛。</div>
-  <div class="p-meta">0 則補充 · 4 讚</div>
-</a><a class="pcard" href="../../../p/107d75f7-fdb9-4a0e-9243-79e4eb19f9c0" style="animation-delay:0.09s">
+</a><a class="pcard" href="../../../p/3198eb9d-c9b6-4a78-a612-43fb4541c327" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A8C6A1">P</span><span class="who">Potato</span></div>
+  <div class="p-title">保險合約以及遺產稅相關知識</div>
+  <div class="p-excerpt">（非保險業務，純分享） 1.開始進入需要為自己規劃保單的年紀，利用自己目前有被保的單位在網路上加入會員，可以查看自己名下的保單、理賠紀錄。 2.長輩通常會很擔心就胡亂買一些低費率的保險求安心，甚至祭出長輩繳保費叫你不要擔心，配合業務員簽名就好等理由嘗試說服你，如果覺得不需要可以不接受續約，直接向業務…</div>
+  <div class="p-meta">0 則補充 · 3 讚</div>
+</a><a class="pcard" href="../../../p/107d75f7-fdb9-4a0e-9243-79e4eb19f9c0" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#E8A0A8">漂</span><span class="who">漂流木先生</span></div>
   <div class="p-title">瓦斯式熱水器怎麼調？</div>
   <div class="p-excerpt">水量跟水溫有時候很難調到剛好不會熄火，又不會太熱的平衡</div>
   <div class="p-meta">0 則補充 · 2 讚</div>
-</a><a class="pcard" href="../../../p/622884ee-e5a2-4d05-a309-7fcdf05f2cf8" style="animation-delay:0.12s">
+</a><a class="pcard" href="../../../p/1db80dc9-4c15-4784-a263-5060a8e9850e" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#B8D0A0">阿</span><span class="who">阿蛤</span></div>
+  <div class="p-title">老舊房屋換蓮蓬頭後熱水變超燙的解決辦法</div>
+  <div class="p-excerpt">先說明，我家是用瓦斯的熱水器，房屋至少40年了，由於以前到現在買了很多組蓮蓬頭都沒辦法解決裝上去熱水變很燙的問題。 後來偶然查到，也許是連接蓮蓬頭的水管口徑可能太小，才導致熱水加熱時間變長就變燙了。 於是，上蝦皮買了比市售常見款還大的口徑的水管+最普通（無加壓無多段式）的傳統蓮蓬頭，就解決了這個問題…</div>
+  <div class="p-meta">0 則補充 · 1 讚</div>
+</a><a class="pcard" href="../../../p/d84abb7f-1e7e-4854-b069-dcbba710efc3" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">長</span><span class="who">長大中</span></div>
+  <div class="p-title">摩托車沒有倒車檔</div>
+  <div class="p-excerpt">摩托車要往後要靠腳滑！！</div>
+  <div class="p-meta">0 則補充 · 1 讚</div>
+</a><a class="pcard" href="../../../p/246e7971-7986-4e49-a04b-81cbac64603c" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#A0C4D8">站</span><span class="who">站長老大</span></div>
+  <div class="p-title">哈哈</div>
+  <div class="p-excerpt">鯊魚</div>
+  <div class="p-meta">0 則補充 · 1 讚</div>
+</a><a class="pcard" href="../../../p/622884ee-e5a2-4d05-a309-7fcdf05f2cf8" style="animation-delay:0.36s">
   <div class="byline"><span class="avatar" style="background:#A0C4D8">阿</span><span class="who">阿君</span></div>
   <div class="p-title">六歲以上未上小學塗氟</div>
   <div class="p-excerpt">115年5月14衛福部公文提到 因為學制的差異塗氟條件9/1更改為0歲至入小學當年度的8月31日</div>
   <div class="p-meta">0 則補充 · 1 讚</div>
+</a><a class="pcard" href="../../../p/e984dabf-5049-4ff1-899e-84ddccac1485" style="animation-delay:0.36s">
+  <div class="byline"><span class="avatar" style="background:#C8B8D8">M</span><span class="who">Mz.吳</span></div>
+  <div class="p-title">嘉義市免費健康篩檢預約截止至115/10/15</div>
+  <div class="p-excerpt">資格： 設籍嘉義市市民 30-39歲每五年一次 40-64歲每三年一次 65歲以上、55歲以上原住民、35歲小兒麻痺每年一次 檢查內容： 詳看嘉義市政府衛生局（不是我偷懶，是有點多項） https://health.chiayi.gov.tw/cp.aspx?n=6028</div>
+  <div class="p-meta">0 則補充 · 0 讚</div>
 </a>
 <nav class="collection-pages" aria-label="大人秘技頁碼"><a href="/community/tips/">1</a><a href="/community/tips/page/2/">2</a><a href="/community/tips/page/3/">3</a><a href="/community/tips/page/4/">4</a><a href="/community/tips/page/5/">5</a><a href="/community/tips/page/6/">6</a><a href="/community/tips/page/7/" aria-current="page">7</a></nav>
 <div class="join-cta">
