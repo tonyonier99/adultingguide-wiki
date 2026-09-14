@@ -279,14 +279,13 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .promo-card .pl-go { display:inline-block; }
 .promo-meta { display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; }
 .promo-inline-img { width:100%; display:block; border-radius:12px; margin:1.1rem 0; }
-/* 推薦人抬頭（2026-09-14 起固定顯示，不再靠內文標記；同日排版 B 改到內容區最上方，
-   日期併進這一列）：單欄，頭貼＋名字＋認證勾＋日期一列。分隔線獨立成一條，
-   改放在揭露文字（或標題）下方、內文上方，不再直接接在抬頭下面。 */
-.promo-recommender { display:flex; align-items:center; gap:0.5rem; margin:0 0 1.3rem; }
-.promo-recommender-avatar { width:32px; height:32px; border-radius:50%; object-fit:cover; flex:none; }
+/* 推薦人抬頭（2026-09-14 起固定顯示，不再靠內文標記；同日排版 B 曾改到內容區最上方並把
+   日期併進這一列，站長實機看過後改回標題下方，日期沒有併回來）：單欄，頭貼＋名字＋認證勾
+   一列，頭貼還原成排版 B 之前的大小（36）。分隔線獨立成一條，放在抬頭下方、內文上方。 */
+.promo-recommender { display:flex; align-items:center; gap:0.5rem; margin:1.3rem 0 0; }
+.promo-recommender-avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; flex:none; }
 .promo-recommender-name { font-weight:700; font-size:0.95rem; color:var(--ink); }
 .promo-recommender-badge { width:14px; height:14px; flex:none; color:var(--orange); }
-.promo-recommender-date { font-size:0.85rem; color:var(--sub); }
 .promo-recommender-divider { border:0; border-top:1px solid var(--line); margin:0.8rem 0 1.1rem; }
 .badge.live::before { content:""; }
 .promo-card .btn { display:inline-block; margin-top:0.8rem; background:var(--orange); color:#fff;
@@ -439,13 +438,12 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="wrap">
 <div class="article-head">
 <nav class="crumb"><a href="../">合作</a></nav>
-<div class="promo-recommender"><img class="promo-recommender-avatar" src="https://ezdlslagivrgwtbvpimf.supabase.co/storage/v1/object/public/avatars/4a0247c3-f496-4b0c-b42c-895b574c2730.jpg?v=e82a7b084c66" alt=""><span class="promo-recommender-name">站長老大</span><svg class="promo-recommender-badge" viewBox="0 0 24 24" role="img" aria-label="官方認證帳號"><path fill="currentColor" d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3l-3.4-1.46-1.89 3.18-3.61.82.34 3.69L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></svg><span class="promo-recommender-date"> · 2026年7月15日</span></div>
 <div class="promo-title-row"><h1>站長團購：ROICHEN 正脊坐墊</h1></div>
 <div class="meta">
   <span class="badge gray">已結束</span>
   <span class="badge gray">開團 7/15 – 9/13</span>
 </div>
-<p class="summary">此為站長個人團購推薦，非官方查證內容</p>
+<div class="promo-recommender"><img class="promo-recommender-avatar" src="https://ezdlslagivrgwtbvpimf.supabase.co/storage/v1/object/public/avatars/4a0247c3-f496-4b0c-b42c-895b574c2730.jpg?v=e82a7b084c66" alt=""><span class="promo-recommender-name">站長老大</span><svg class="promo-recommender-badge" viewBox="0 0 24 24" role="img" aria-label="官方認證帳號"><path fill="currentColor" d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3l-3.4-1.46-1.89 3.18-3.61.82.34 3.69L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></svg></div>
 <hr class="promo-recommender-divider">
 <article>
 <p>耶～第一次開團是我很喜歡的 ROICHEN 正脊坐墊！</p>
@@ -469,6 +467,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <p>這次是第一次開團推薦，團購價格滿優惠的，賣場也有其他許多選項，大家可以參考看看！</p>
 <p>【團購期間限定：8/28 - 9/13】</p>
 </article>
+<p class="summary">此為站長個人團購推薦，非官方查證內容</p>
 <div class="cta"><div class="cta-txt"><strong>此檔已結束</strong><p>感謝關注，下一檔會公告在這裡。</p></div></div>
 </div>
 </div>
