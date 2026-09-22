@@ -437,7 +437,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="wrap">
 <div class="article-head about">
 <h1>隱私權政策</h1>
-<p class="foot-legal" style="margin-bottom:1.4rem">App 名稱：初級大人手冊（AdultingGuide）｜iOS／Android｜最後更新：2026-08-13</p>
+<p class="foot-legal" style="margin-bottom:1.4rem">App 名稱：初級大人手冊（AdultingGuide）｜iOS／Android｜最後更新：2026-09-22</p>
 
 <p>我們重視你的隱私。本政策說明「初級大人手冊」蒐集哪些資料、如何使用，以及你的權利。</p>
 
@@ -446,17 +446,19 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   <li><strong>帳號資料</strong>：iOS 使用 Apple 登入、Android 使用 Google 登入時，我們會儲存帳號唯一識別碼及登入服務提供的 Email（若有）。這些資料用於識別你的內容與跨裝置同步。</li>
   <li><strong>你建立的內容</strong>：暱稱、投稿（秘技／發問）、回答、留言、收藏、按讚、檢舉、封鎖設定與頭貼。其中投稿、回答、留言、暱稱、頭貼會公開顯示於社群；部分內容可能以原樣（含暱稱）公開顯示於本服務的官方網站。</li>
   <li><strong>推播資料</strong>：若你允許通知，Android 會使用 Firebase Cloud Messaging 裝置權杖傳送推播；iOS 使用 Apple 的推播服務。</li>
-  <li><strong>裝置本機資料</strong>：測驗結果、提醒設定等儲存在你的裝置上，不會主動上傳。</li>
+  <li><strong>生活工具與同步資料</strong>：登入後，你在提醒管家、人生訂閱、準備清單、挑地方、重要資料夾、生活挑戰與回顧等功能建立的項目、狀態、日期、備註及設定，會儲存在 Supabase，讓同一帳號可在裝置間同步。未登入時，部分資料可能只暫存在裝置上。</li>
+  <li><strong>私人照片與文件</strong>：你主動加入「生活挑戰與回顧」、「重要資料夾」或「挑地方」的照片時，登入狀態下會上傳到只有該帳號可存取的私人 Supabase Storage；App 也可能保留本機快取，以便顯示與離線使用。這些照片不會公開顯示於社群或官方網站。</li>
+  <li><strong>行事曆資料</strong>：你允許行事曆權限並使用同步功能時，App 會在裝置的系統行事曆建立、更新或刪除由本 App 管理的提醒事件。App 不會將你原本行事曆中的其他事件上傳到我們的伺服器。</li>
   <li><strong>App 使用統計</strong>：iOS 與 Android 都將 App 開啟、分頁瀏覽、文章瀏覽、登入完成與通知點擊等低敏行為先經 Supabase，再送到 Google Analytics。只傳送雜湊後的安裝識別值，不包含姓名、Email、帳號 ID、推播權杖、廣告 ID 或內容全文。iOS 切換期間仍可能由 TelemetryDeck 收到舊版事件，驗證完成後會移除。</li>
   <li><strong>網站使用統計</strong>：網站使用 Google Analytics 4（GA4）與 GoatCounter 了解頁面瀏覽、內容成效與網站使用情形。我們不主動將姓名、Email 或其他個人識別資訊送入分析工具；GA4 可能使用 Cookie 或類似技術，Google 會依其<a href="https://policies.google.com/technologies/partner-sites?hl=zh-TW" rel="noopener">隱私權政策</a>處理資料。</li>
 </ul>
 
 <h2>二、資料如何被使用</h2>
-<p>僅用於提供與維運 App 功能：顯示你的內容、社群互動、改善體驗。我們<strong>不</strong>販售或分享你的個人資料給第三方做行銷、<strong>不</strong>跨 App 追蹤你、<strong>不</strong>投放第三方廣告。</p>
+<p>僅用於提供與維運 App 功能：顯示你的內容、同步生活工具資料、建立你要求的行事曆事件、提供社群互動及改善體驗。我們<strong>不</strong>販售或分享你的個人資料給第三方做行銷、<strong>不</strong>跨 App 追蹤你、<strong>不</strong>投放第三方廣告。</p>
 
 <h2>三、第三方服務</h2>
 <ul>
-  <li><strong>Supabase</strong>：提供資料庫與檔案儲存（存放你的帳號、投稿、頭貼等）。</li>
+  <li><strong>Supabase</strong>：提供帳號驗證、資料庫、Edge Functions 與檔案儲存（存放帳號、社群內容、頭貼、生活工具同步資料及你主動上傳的私人照片）。</li>
   <li><strong>Apple Sign in with Apple／Google OAuth</strong>：提供 iOS／Android 登入。</li>
   <li><strong>Firebase Cloud Messaging（Android）與 Apple 推播服務（iOS）</strong>：傳送通知。</li>
   <li><strong>Google Analytics</strong>：接收經 Supabase 轉送的匿名、彙總 App 使用分析。</li>
@@ -466,7 +468,7 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 
 <h2>四、資料與帳戶刪除</h2>
 <ul>
-  <li><strong>刪除帳戶與關聯資料</strong>：iOS／Android 均可在 App 內「我的 → 刪除帳號」提出刪除。這會刪除帳戶、登入識別資料、個人資料、投稿、回答、留言、收藏、按讚、頭貼及推播裝置權杖，刪除後不可復原。</li>
+  <li><strong>刪除帳戶與關聯資料</strong>：iOS／Android 均可在 App 內「我的 → 刪除帳號」提出刪除。這會刪除帳戶、登入識別資料、個人資料、投稿、回答、留言、收藏、按讚、頭貼、推播裝置權杖、生活工具同步資料，以及生活挑戰、重要資料夾與挑地方所上傳的私人照片，刪除後不可復原。</li>
   <li><strong>刪除部分資料</strong>：可在 App 內刪除自己可管理的投稿、收藏等內容；若要撤回回答、留言或移除網站上的特定內容，請寄信至下方 Email，並提供登入 Email 或使用者 ID 與要刪除的內容。</li>
   <li><strong>處理時間與保留</strong>：刪除申請會在 30 日內處理。除法律或資安義務要求外，不會額外保留已刪除的帳戶資料；依法必須保留的紀錄僅保留必要期間。</li>
   <li><strong>檢舉與封鎖</strong>：可檢舉不當內容、封鎖其他使用者。</li>
