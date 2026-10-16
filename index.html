@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://adultingguide.tw/">
 <meta property="og:image" content="https://adultingguide.tw/assets/cat_benefits.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "name": "初級大人手冊", "url": "https://adultingguide.tw/", "logo": "https://adultingguide.tw/assets/app-icon.png"}, {"@context": "https://schema.org", "@type": "WebSite", "name": "初級大人手冊", "url": "https://adultingguide.tw/", "potentialAction": {"@type": "SearchAction", "target": "https://adultingguide.tw/search?q={search_term_string}", "query-input": "required name=search_term_string"}}]</script>
+
 <style>
 /* 規格來源：GOV.UK / NHS / 法律百科 / 報導者 / 北歐店 / Headspace / Notion 實測值 */
 :root { --orange:#E65100; --cream:#FBF1E7; --ink:#453F3A; --sub:#8A817A; --line:#EDE4D9;
@@ -424,28 +424,639 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 .daily-item .d-tip { font-size:0.98rem; font-weight:600; line-height:1.7; }
 .daily-item .d-more { display:inline-block; margin-top:0.5rem; font-size:0.78rem; font-weight:700; color:var(--cat);
                       white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+
+:root { --orange:#C9553A; --coral:#E8856B; --cream:#FFF1EA; --ink:#2F2A27; --sub:#6F6762; --line:#EFE5DE;
+        --paper:#FFFBF7; --cat:#C9553A; --cat-bg:#FFF1EA; }
+html { scroll-behavior:smooth; }
+header.site { background:rgba(255,251,247,0.94); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+header.site .wrap, footer.site .wrap { max-width:1120px; }
+.logo span { color:var(--coral); }
+.site-nav { align-items:center; }
+.site-nav a { transition:color .2s; }
+/* 下載 App 跟選單分開：電腦版放最右邊、前面一條分隔線；手機版放第一排右上，跟「初級大人手冊」同一排，選單換到第二排 */
+header.site .nav-cta { flex:none; position:relative; margin-left:1.6rem; background:var(--orange); color:#fff; font-weight:800; font-size:0.9rem;
+  padding:0.42rem 1.05rem; border-radius:12px; box-shadow:0 3px 0 rgba(150,60,35,0.16); white-space:nowrap; transition:transform .2s; }
+header.site .nav-cta::before { content:""; position:absolute; left:-0.85rem; top:18%; bottom:18%; width:1px; background:var(--line); }
+header.site .nav-cta:hover { text-decoration:none; transform:translateY(-1px); }
+@media (max-width:700px) {
+  header.site .nav-cta { order:1; margin-left:auto; font-size:0.85rem; padding:0.36rem 0.9rem; }
+  header.site .nav-cta::before { display:none; }
+}
+main { padding-bottom:0; }
+footer.site { margin-top:3rem; }
+.article-head h1, .home-hero h1 { font-size:clamp(1.8rem,4vw,2.4rem); line-height:1.35; }
+.cta { background:#fff; border:1px solid var(--line); border-radius:22px; }
+.cta a.btn, .promo-card .btn, .promo-title-row .btn, .pick-form .btn, .feedback-form .btn, .home-search button {
+  display:inline-flex; align-items:center; justify-content:center; min-height:46px; border-radius:12px; font-weight:800;
+  background:var(--orange); color:#fff; box-shadow:0 4px 0 rgba(150,60,35,0.16); transition:transform .2s, box-shadow .2s; }
+.cta a.btn:hover, .promo-card .btn:hover, .promo-title-row .btn:hover { transform:translateY(-2px); }
+.acard, .rel-card, .daily-item, .update-item, .wish-group, .search-results a, .src-btn, .pillar, .isl-card, .promo-card, .cat-card,
+.download-option, .daily-entry { border:1px solid var(--line); box-shadow:none; border-radius:18px;
+  transition:transform .25s, border-color .25s, box-shadow .25s; }
+.acard:hover, .rel-card:hover, .daily-item:hover, .search-results a:hover, .src-btn:hover, .pillar:hover, .promo-card:hover,
+.cat-card:hover, .download-option:hover, .daily-entry:hover { border-color:var(--orange); box-shadow:0 12px 28px rgba(120,70,40,0.09); transform:translateY(-3px); }
+.home-search input, .search-box, .feedback-form input, .feedback-form select, .feedback-form textarea,
+.pick-form input, .pick-form select, .pick-form textarea { border-radius:12px; min-height:46px; }
+.errata, .page-note, .ranking-chart { border-radius:18px; }
+.cat-card.featured { box-shadow:0 3px 16px rgba(201,85,58,0.12); }
+.about ul { margin:0.65rem 0 1rem 1.4rem; }
+.about li { margin:0.35rem 0; padding-left:0.2rem; }
+.about li::marker { color:var(--cat); }
+
+@view-transition { navigation:auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration:.35s; }
+.js [data-reveal] { opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.js [data-reveal].in { opacity:1; transform:none; }
+.js [data-stagger] > * { opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+.js [data-stagger].in > * { opacity:1; transform:none; }
+.js [data-stagger].in > *:nth-child(2) { transition-delay:.06s; } .js [data-stagger].in > *:nth-child(3) { transition-delay:.12s; }
+.js [data-stagger].in > *:nth-child(4) { transition-delay:.18s; } .js [data-stagger].in > *:nth-child(5) { transition-delay:.24s; }
+.js [data-stagger].in > *:nth-child(6) { transition-delay:.3s; } .js [data-stagger].in > *:nth-child(7) { transition-delay:.36s; }
+.js [data-stagger].in > *:nth-child(8) { transition-delay:.42s; } .js [data-stagger].in > *:nth-child(n+9) { transition-delay:.48s; }
+.marquee { overflow:hidden; padding:1.1rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff; }
+.marquee-row { display:flex; gap:0.7rem; width:max-content; animation:marquee 48s linear infinite; }
+.marquee-row.rev { animation-direction:reverse; margin-top:0.7rem; animation-duration:56s; }
+.marquee:hover .marquee-row { animation-play-state:paused; }
+.marquee a { flex:none; padding:0.45rem 1rem; border-radius:999px; background:var(--paper); border:1px solid var(--line); color:var(--ink);
+             font-weight:700; font-size:0.95rem; white-space:nowrap; }
+.marquee a:hover { text-decoration:none; border-color:var(--orange); color:var(--orange); }
+@keyframes marquee { to { transform:translateX(-50%); } }
+.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+@media (min-width:760px) { .stats { grid-template-columns:repeat(4,1fr); } }
+.stat { background:#fff; border:1px solid var(--line); border-radius:20px; padding:1.3rem 1.2rem; }
+.stat b { display:block; font-size:clamp(1.9rem,4vw,2.6rem); font-weight:800; color:var(--ink); line-height:1.1; font-variant-numeric:tabular-nums; }
+.stat span { display:block; color:var(--sub); font-size:0.92rem; margin-top:0.4rem; }
+.bento { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:2rem; }
+@media (min-width:900px) { .bento { grid-template-columns:repeat(6,1fr); } .b-4 { grid-column:span 4; } .b-3 { grid-column:span 3; } .b-2 { grid-column:span 2; } }
+.tile { position:relative; overflow:hidden; background:#fff; border:1px solid var(--line); border-radius:24px; padding:1.5rem;
+        transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+.tile:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(120,70,40,0.10); }
+.tile .t-eyebrow { font-size:0.82rem; font-weight:800; color:var(--orange); letter-spacing:0.04em; }
+.tile h3 { font-size:1.3rem; font-weight:800; color:var(--ink); line-height:1.4; margin-top:0.3rem; }
+.tile p { color:var(--sub); font-size:0.94rem; line-height:1.7; margin-top:0.35rem; }
+.tile .t-note { font-size:0.75rem; color:#A39A94; margin-top:0.8rem; }
+.tile-flex { display:flex; flex-wrap:wrap; gap:1.2rem; align-items:center; margin-top:1rem; }
+.metric-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; flex:1; min-width:220px; }
+.metric-row div { background:var(--paper); border-radius:14px; padding:0.7rem 0.8rem; }
+.metric-row small { display:block; color:var(--sub); font-size:0.78rem; }
+.metric-row b { display:block; color:var(--ink); font-size:1.15rem; margin-top:0.15rem; font-variant-numeric:tabular-nums; }
+.legend { display:grid; gap:0.3rem; font-size:0.86rem; color:var(--ink); }
+.legend i { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:0.45rem; }
+.bars { display:grid; gap:0.55rem; margin-top:1rem; }
+.bar { display:grid; grid-template-columns:6.5rem 1fr auto; gap:0.7rem; align-items:center; font-size:0.88rem; color:var(--ink); }
+.bar a { color:var(--ink); font-weight:700; } .bar a:hover { color:var(--orange); }
+.bar-track { height:10px; background:#F3ECE6; border-radius:999px; overflow:hidden; }
+.bar-fill { display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#E8856B,#F2B880);
+            transition:width 1.1s cubic-bezier(.2,.75,.25,1); }
+.in .bar-fill, .bar-fill.grown { width:var(--w); }
+.bar small { color:var(--sub); font-variant-numeric:tabular-nums; }
+.pixels { display:grid; grid-template-columns:repeat(12,1fr); gap:5px; margin-top:1rem; }
+.pixels i { aspect-ratio:1; border-radius:4px; background:#F3ECE6; transform:scale(.6); opacity:0; transition:transform .4s, opacity .4s, background .4s; }
+.in .pixels i { transform:none; opacity:1; }
+.pixels i.on { background:#E8856B; } .pixels i.mid { background:#F6BFA9; }
+.pixels-legend { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--sub); margin-top:0.5rem; }
+.ring { position:relative; width:110px; height:110px; flex:none; }
+.ring svg { transform:rotate(-90deg); }
+.ring circle.seg { transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1); }
+.ring b { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:var(--ink); }
+.mini-list { display:grid; gap:0.5rem; margin-top:1rem; flex:1; min-width:200px; }
+.mini-list div { display:flex; justify-content:space-between; gap:0.6rem; background:var(--paper); border-radius:12px; padding:0.6rem 0.8rem; font-size:0.9rem; color:var(--ink); }
+.mini-list em { font-style:normal; color:var(--orange); font-weight:800; font-size:0.82rem; white-space:nowrap; }
+/* 2026-10-16 站長：長條「顏色太深」→ 由深橘實色改成淺珊瑚到杏色的漸層，底軌也調淡 */
+.ranking-track { background:#F7EFEA; } .ranking-fill { background:linear-gradient(90deg,#F0A089,#F7CBA9); }
+a.ranking-label { color:var(--ink); } a.ranking-label:hover { color:var(--orange); text-decoration:none; }
+.tile .ranking-chart { box-shadow:none; padding:0.6rem 0 0; margin:0.4rem 0 0; max-width:none; background:none; }
+.pagehead { position:relative; overflow:hidden; padding:3.2rem 0 2.6rem; background:linear-gradient(180deg,#FFF1E9 0%,var(--paper) 100%); }
+.pagehead::before { content:""; position:absolute; width:340px; height:340px; border-radius:50%; background:#FFE0D3; right:-90px; top:-120px; opacity:.7; animation:drift 12s ease-in-out infinite; }
+.pagehead .sc-in { position:relative; }
+.pagehead h1 { font-size:clamp(2rem,5vw,3rem); font-weight:800; color:var(--ink); line-height:1.25; margin-top:0.4rem; }
+.pagehead p.lead { color:var(--sub); font-size:1.06rem; line-height:1.8; margin-top:0.7rem; max-width:40rem; }
+.pagehead .crumb { margin-bottom:0.4rem; }
+.pagehead-img { display:grid; grid-template-columns:1fr; gap:1.6rem; align-items:center; }
+@media (min-width:900px) { .pagehead-img { grid-template-columns:1.1fr 0.9fr; } }
+.pagehead-img img { width:100%; border-radius:24px; box-shadow:0 18px 40px rgba(120,70,40,0.12); aspect-ratio:780/320; object-fit:cover; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row { animation:none; flex-wrap:wrap; width:auto; } .pagehead::before { animation:none; }
+  .js [data-reveal], .js [data-stagger] > * { opacity:1; transform:none; transition:none; }
+}
+
+.sc-stage { display:flex; flex-direction:column; align-items:center; }
+.sc-card { background:linear-gradient(160deg,#FFE9DF,#FFF4EC); border-radius:28px; padding:2rem 1rem 1.2rem; width:100%;
+           display:flex; flex-direction:column; align-items:center; position:relative; overflow:hidden; }
+.sc-card::before, .sc-card::after { content:""; position:absolute; border-radius:50%; filter:blur(2px); opacity:.55; }
+.sc-card::before { width:160px; height:160px; background:#FFD5C4; top:-50px; right:-40px; animation:drift 9s ease-in-out infinite; }
+.sc-card::after { width:120px; height:120px; background:#FFE7B8; bottom:-40px; left:-30px; animation:drift 11s ease-in-out infinite reverse; }
+@keyframes drift { 50% { transform:translate(14px,10px) scale(1.06); } }
+.sc-note { font-size:0.78rem; color:var(--sub); margin-top:0.8rem; position:relative; }
+.ph { position:relative; z-index:1; width:min(300px,84vw); height:600px; border-radius:46px; background:#1F1D1C; padding:10px;
+      box-shadow:0 24px 50px rgba(120,70,40,0.22); }
+.float .ph { animation:float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform:translateY(-10px); } }
+.ph-screen { position:relative; width:100%; height:100%; border-radius:37px; background:#fff; overflow:hidden;
+             display:flex; flex-direction:column; color:#444; font-size:14px; line-height:1.45; }
+.ph-status { height:34px; flex:none; padding:10px 24px 0; font-size:12px; font-weight:700; color:#1A1A1A; }
+.ph-body { flex:1; overflow-y:auto; overflow-x:hidden; padding:4px 14px 12px; scrollbar-width:none; position:relative; }
+.ph-body::-webkit-scrollbar { display:none; }
+.ph-title { font-size:24px; font-weight:800; color:#1A1A1A; margin:2px 2px 10px; }
+.ph-tabs { flex:none; display:grid; grid-template-columns:repeat(5,1fr); border-top:1px solid #EEE; padding:9px 4px 18px; background:#fff; }
+.ph-tabs span { text-align:center; font-size:11.5px; color:#AAA; font-weight:700; }
+.ph-tabs span.on { color:#E8856B; }
+.tap { position:absolute; z-index:5; width:38px; height:38px; margin:-19px 0 0 -19px; border-radius:50%;
+       background:rgba(232,133,107,.35); border:2px solid rgba(232,133,107,.9); pointer-events:none; animation:tap .65s ease-out forwards; }
+@keyframes tap { from { transform:scale(.4); opacity:1; } to { transform:scale(1.5); opacity:0; } }
+.ph-sec { background:#F9F9F9; border-radius:14px; padding:12px; margin-bottom:12px; }
+.ph-sec-h { display:flex; justify-content:space-between; align-items:center; font-weight:800; font-size:15px; color:#1A1A1A; margin-bottom:8px; }
+.ph-sec-h small { font-weight:700; font-size:12px; color:#E8856B; }
+.cal-head { display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:13px; margin-bottom:6px; color:#1A1A1A; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; text-align:center; }
+.cal-grid .wd { font-size:10.5px; color:#AAA; padding:2px 0; }
+.cal-day { position:relative; height:30px; line-height:30px; font-size:12.5px; border-radius:50%; cursor:pointer; border:0; background:none; color:#444;
+           font-family:inherit; transition:background .25s, color .25s, transform .25s; }
+.cal-day:active { transform:scale(.9); }
+.cal-day.dot::after { content:""; position:absolute; left:50%; bottom:2px; width:4px; height:4px; margin-left:-2px; border-radius:50%; background:#E8856B; }
+.cal-day.today { color:#E8856B; font-weight:800; }
+.cal-day.sel { background:#E8856B; color:#fff; font-weight:800; }
+.cal-day.sel::after { background:#fff; }
+.cal-list { margin-top:8px; border-top:1px solid #EEE; padding-top:8px; min-height:44px; }
+.cal-item, .cal-empty { animation:popIn .35s cubic-bezier(.2,.8,.2,1); }
+@keyframes popIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+.cal-item { display:flex; justify-content:space-between; gap:8px; background:#fff; border-radius:10px; padding:8px 10px; font-size:13px; }
+.cal-item em { font-style:normal; font-size:11px; color:#E8856B; font-weight:700; white-space:nowrap; }
+.cal-empty { text-align:center; color:#AAA; font-size:12.5px; padding:6px 0; }
+.ch-seg { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; background:#F2F2F2; border-radius:10px; padding:3px; margin-bottom:10px; }
+.ch-seg button { border:0; background:none; font-family:inherit; font-size:12px; font-weight:700; color:#777; padding:6px 0; border-radius:8px; cursor:pointer; transition:background .25s, color .25s; }
+.ch-seg button.on { background:#fff; color:#1A1A1A; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.ch-card { display:flex; align-items:center; gap:10px; background:#fff; border-radius:12px; padding:10px; margin-bottom:8px; }
+.ch-card.new { animation:popIn .4s cubic-bezier(.2,.8,.2,1); }
+.ch-pool .ch-card { animation:popIn .35s cubic-bezier(.2,.8,.2,1) both; }
+.ch-card div { flex:1; min-width:0; }
+.ch-card strong { display:block; font-size:13.5px; color:#1A1A1A; transition:color .3s; }
+.ch-card span { display:block; font-size:11.5px; color:#999; }
+.ch-add { flex:none; border:0; background:#FFF0EB; color:#C9553A; font-family:inherit; font-weight:800; font-size:12px; padding:6px 10px; border-radius:999px; cursor:pointer; }
+.ch-add:disabled { background:#F2F2F2; color:#AAA; cursor:default; }
+.ch-prog { height:6px; background:#EEE; border-radius:999px; overflow:hidden; margin:2px 0 10px; }
+.ch-prog i { display:block; height:100%; width:0; background:#E8856B; transition:width .5s cubic-bezier(.2,.8,.2,1); }
+.chk { flex:none; width:22px; height:22px; border-radius:50%; border:2px solid #DDD; background:#fff; cursor:pointer; padding:0; position:relative; transition:background .25s, border-color .25s, transform .25s; }
+.chk.done { background:#E8856B; border-color:#E8856B; transform:scale(1.08); }
+.chk.done::after { content:""; position:absolute; left:6px; top:2px; width:5px; height:10px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg); }
+.ch-card strong.done, .tb-item.done div strong { text-decoration:line-through; color:#AAA; }
+.ch-empty { font-size:12px; color:#AAA; text-align:center; padding:6px 0 10px; }
+.tb-views { position:relative; }
+.tb-home, .tb-list { transition:transform .45s cubic-bezier(.2,.8,.2,1), opacity .35s; }
+.tb-list { position:absolute; inset:0 0 auto 0; transform:translateX(105%); opacity:0; pointer-events:none; }
+.tb-views.open .tb-home { transform:translateX(-30%); opacity:0; pointer-events:none; }
+.tb-views.open .tb-list { transform:none; opacity:1; pointer-events:auto; }
+.tb-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.tb-tool { text-align:left; border:0; background:#F9F9F9; border-radius:12px; padding:10px; font-family:inherit; cursor:pointer; transition:transform .2s; }
+.tb-tool:active { transform:scale(.96); }
+.tb-tool strong { display:block; font-size:13.5px; color:#1A1A1A; }
+.tb-tool span { display:block; font-size:11px; color:#999; margin-top:2px; }
+.tb-tool.live { outline:2px solid #E8856B; }
+.tb-hint { font-size:11.5px; color:#999; margin:10px 2px 0; min-height:16px; }
+.tb-back { border:0; background:none; color:#E8856B; font-family:inherit; font-weight:700; font-size:13px; padding:0; cursor:pointer; margin-bottom:4px; }
+.tb-phase { font-weight:800; font-size:13px; color:#1A1A1A; margin:12px 2px 6px; }
+.tb-item { display:flex; gap:10px; align-items:flex-start; background:#F9F9F9; border-radius:10px; padding:9px 10px; margin-bottom:6px; cursor:pointer; }
+.tb-item div strong { display:block; font-size:13px; color:#1A1A1A; font-weight:700; transition:color .3s; }
+.tb-item div span { display:block; font-size:11px; color:#999; }
+.rm-item { display:flex; align-items:center; gap:10px; background:#F9F9F9; border-radius:12px; padding:11px 12px; margin-bottom:8px; }
+.rm-item div { flex:1; min-width:0; }
+.rm-item strong { display:block; font-size:14px; color:#1A1A1A; }
+.rm-item span { display:block; font-size:11px; color:#999; }
+.rm-next { display:block; font-size:12px; font-weight:800; color:#E8856B; margin-top:3px; }
+.rm-next.bump { animation:bump .6s cubic-bezier(.2,.8,.2,1); }
+@keyframes bump { 30% { transform:scale(1.15); color:#C9553A; } }
+.rm-done { flex:none; border:0; background:#E8856B; color:#fff; font-family:inherit; font-weight:800; font-size:12px; padding:6px 11px; border-radius:999px; cursor:pointer; }
+.rm-toast { font-size:11.5px; color:#23694B; background:#DCF0E5; border-radius:10px; padding:7px 10px; margin-top:6px; opacity:0; transition:opacity .3s; }
+.rm-toast.on { opacity:1; }
+.sb-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.sb-metrics div { background:#fff; border-radius:10px; padding:8px; }
+.sb-metrics small { display:block; font-size:10.5px; color:#999; }
+.sb-metrics b { display:block; font-size:14px; color:#1A1A1A; margin-top:2px; }
+.sb-toggle { margin-top:10px; border:0; background:#FFF0EB; color:#C9553A; font-family:inherit; font-weight:800; font-size:12px; padding:6px 12px; border-radius:999px; cursor:pointer; }
+.sb-analytics { display:grid; grid-template-columns:96px 1fr; gap:10px; align-items:center; overflow:hidden; max-height:0; opacity:0;
+                transition:max-height .5s cubic-bezier(.2,.8,.2,1), opacity .4s, margin .4s; }
+.sb-analytics.open { max-height:140px; opacity:1; margin-top:10px; }
+.sb-legend { display:grid; gap:3px; font-size:11px; }
+.sb-legend i { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; }
+.sb-row { display:flex; justify-content:space-between; align-items:center; background:#F9F9F9; border-radius:10px; padding:9px 11px; margin-bottom:6px; font-size:13px; }
+.sb-row em { font-style:normal; font-size:10.5px; color:#999; margin-left:6px; }
+.sb-row b { color:#1A1A1A; }
+.donut circle.seg { transition:stroke-dasharray 1s cubic-bezier(.2,.8,.2,1), stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1); }
+@media (prefers-reduced-motion: reduce) { .float .ph, .sc-card::before, .sc-card::after { animation:none; } }
+
+.sc-in { max-width:1120px; margin:0 auto; padding:0 1.25rem; }
+.sc-split { display:grid; grid-template-columns:1fr; gap:2.4rem; align-items:center; }
+@media (min-width:900px) { .sc-split { grid-template-columns:1fr 1fr; gap:3.5rem; } .sc-split.flip > :last-child { order:-1; } }
+.sc-hero { padding:3.4rem 0 3.8rem; background:radial-gradient(1200px 500px at 85% 10%,#FFE6DA 0%,rgba(255,230,218,0) 60%); }
+.sc-eyebrow { font-size:0.9rem; font-weight:800; color:var(--orange); letter-spacing:0.04em; }
+.sc-copy h1, .sc-copy h2 { color:var(--ink); font-weight:800; letter-spacing:0.01em; }
+.sc-copy h1 { font-size:clamp(2.2rem,5.4vw,3.4rem); line-height:1.25; margin-top:0.5rem; }
+.sc-copy h1 em { font-style:normal; background:linear-gradient(transparent 62%,#FFD9C9 62%); }
+.sc-copy h2 { font-size:clamp(1.7rem,3.6vw,2.4rem); line-height:1.3; margin-top:0.45rem; }
+.sc-copy p.sc-lead { color:var(--sub); font-size:1.08rem; line-height:1.9; margin-top:1rem; max-width:32rem; }
+.sc-actions { display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1.6rem; }
+.sc-btn { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 1.6rem; border-radius:14px;
+          background:var(--orange); color:#fff; font-weight:800; font-size:1.04rem; border:2px solid var(--orange);
+          box-shadow:0 6px 0 rgba(150,60,35,0.18); transition:transform .2s, box-shadow .2s; }
+.sc-btn:hover { text-decoration:none; transform:translateY(-2px); box-shadow:0 8px 0 rgba(150,60,35,0.18); }
+.sc-btn:active { transform:translateY(3px); box-shadow:0 2px 0 rgba(150,60,35,0.18); }
+.sc-btn.outline { background:#fff; color:var(--orange); box-shadow:0 6px 0 rgba(201,85,58,0.12); }
+.sc-proof { color:var(--sub); font-size:0.9rem; margin-top:1.1rem; }
+.sc-band { padding:4.4rem 0; }
+.sc-band.tint { background:#FFF5EF; }
+.sc-points { list-style:none; margin-top:1.3rem; display:grid; gap:0.65rem; }
+.sc-points li { color:var(--ink); font-size:1.02rem; line-height:1.7; padding-left:1.6rem; position:relative; }
+.sc-points li::before { content:""; position:absolute; left:0.15rem; top:0.55em; width:0.7rem; height:0.7rem; border-radius:50%;
+                        background:#FFD9C9; box-shadow:inset 0 0 0 3px var(--coral); }
+.sc-sec-head { text-align:center; max-width:42rem; margin:0 auto; }
+.sc-sec-head h2 { font-size:clamp(1.7rem,3.6vw,2.4rem); font-weight:800; color:var(--ink); line-height:1.3; }
+.sc-sec-head p { color:var(--sub); margin-top:0.6rem; font-size:1.04rem; line-height:1.8; }
+.sc-search { display:flex; gap:0.5rem; margin-top:1.4rem; max-width:30rem; }
+.sc-search input { flex:1; min-height:50px; font-size:1rem; padding:0 1rem; border:1.5px solid var(--line); border-radius:14px; background:#fff; color:var(--ink); }
+.sc-search input:focus { outline:none; border-color:var(--orange); box-shadow:0 0 0 4px #FFE3D8; }
+.sc-search button { min-height:50px; padding:0 1.3rem; border:0; border-radius:14px; background:var(--orange); color:#fff; font-weight:800; font-size:1rem; cursor:pointer; }
+.sc-reads { display:grid; gap:0.7rem; width:100%; }
+.sc-read { display:block; background:#fff; border:1px solid var(--line); border-radius:18px; padding:1rem 1.15rem; color:var(--ink);
+           transition:transform .25s, border-color .25s, box-shadow .25s; }
+.sc-read:hover { text-decoration:none; border-color:var(--orange); transform:translateX(4px); box-shadow:0 10px 24px rgba(120,70,40,0.08); }
+.sc-read strong { display:block; font-size:1.03rem; line-height:1.5; }
+.sc-read span { display:block; font-size:0.88rem; color:var(--sub); margin-top:0.2rem; line-height:1.6; }
+.sc-read::after { content:"閱讀 →"; display:block; margin-top:0.45rem; font-size:0.85rem; font-weight:800; color:var(--orange); }
+.sc-topics { display:grid; grid-template-columns:repeat(2,1fr); gap:0.75rem; margin-top:2rem; }
+@media (min-width:760px) { .sc-topics { grid-template-columns:repeat(5,1fr); } }
+.sc-topic { display:block; background:#fff; border:1px solid var(--line); border-radius:18px; padding:1rem 1.05rem; color:var(--ink);
+            transition:transform .25s, border-color .25s, box-shadow .25s; }
+.sc-topic:hover { text-decoration:none; border-color:var(--orange); transform:translateY(-4px); box-shadow:0 14px 30px rgba(120,70,40,0.09); }
+.sc-topic strong { display:block; font-size:1.04rem; }
+.sc-topic span { display:block; font-size:0.82rem; color:var(--sub); margin-top:0.25rem; line-height:1.55; }
+.sc-promo { max-width:880px; margin:2rem auto 0; }
+.sc-promo .cat-card { margin-top:0; border-radius:24px; box-shadow:0 14px 34px rgba(120,70,40,0.10); }
+@media (min-width:760px) {
+  .sc-promo .cat-card { display:grid; grid-template-columns:1.1fr 1fr; }
+  .sc-promo .cat-card .cover { height:100%; min-height:270px; aspect-ratio:auto; }
+  .sc-promo .cc-body { display:flex; flex-direction:column; justify-content:center; padding:1.6rem 1.9rem; }
+}
+.sc-promo-actions { display:flex; flex-wrap:wrap; gap:0.7rem; justify-content:center; margin-top:1.4rem; }
+.sc-final { text-align:center; background:linear-gradient(135deg,#FFE3D6,#FFF3E6); border-radius:32px; margin:2.4rem 1.25rem 3rem;
+            padding:4rem 1.25rem; position:relative; overflow:hidden; }
+.sc-final::before, .sc-final::after { content:""; position:absolute; border-radius:50%; opacity:.6; animation:drift 10s ease-in-out infinite; }
+.sc-final::before { width:220px; height:220px; background:#FFD2C0; left:-60px; top:-70px; }
+.sc-final::after { width:180px; height:180px; background:#FFE9BF; right:-40px; bottom:-60px; animation-direction:reverse; }
+.sc-final > * { position:relative; }
+.sc-final .sc-actions { justify-content:center; }
+@media (min-width:1170px) { .sc-final { max-width:1120px; margin:2.4rem auto 3rem; } }
+
+.cards { display:grid; grid-template-columns:1fr; gap:0.85rem; margin-top:1.4rem; }
+@media (min-width:640px) { .cards { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:980px) { .cards { grid-template-columns:repeat(3,1fr); } }
+.card { display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:20px; padding:1.15rem 1.2rem; color:var(--ink);
+        transition:transform .25s, border-color .25s, box-shadow .25s; }
+.card:hover { text-decoration:none; border-color:var(--orange); transform:translateY(-4px); box-shadow:0 14px 30px rgba(120,70,40,0.09); }
+.card strong { font-size:1.05rem; line-height:1.5; }
+.card span { color:var(--sub); font-size:0.9rem; line-height:1.65; margin-top:0.3rem; flex:1; }
+.card small { display:flex; justify-content:space-between; align-items:center; margin-top:0.8rem; color:#A39A94; font-size:0.78rem; }
+.card small::after { content:"閱讀 →"; color:var(--orange); font-weight:800; font-size:0.85rem; }
+.card.tool small::after { content:"看功能 →"; }
+.sec-title { display:flex; align-items:baseline; gap:0.6rem; margin-top:2.6rem; }
+.sec-title h2 { font-size:1.4rem; font-weight:800; color:var(--ink); }
+.sec-title span { color:var(--sub); font-size:0.95rem; }
+.chips { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.2rem; }
+.chips a { padding:0.45rem 0.95rem; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:0.9rem; }
+.chips a:hover { text-decoration:none; border-color:var(--orange); color:var(--orange); }
+.count-chip { display:inline-block; margin-top:0.9rem; padding:0.3rem 0.85rem; border-radius:999px; background:#fff; border:1px solid var(--line);
+              color:var(--ink); font-weight:800; font-size:0.9rem; }
+.cat-tiles { display:grid; grid-template-columns:repeat(2,1fr); gap:0.9rem; margin-top:1.4rem; }
+@media (min-width:900px) { .cat-tiles { grid-template-columns:repeat(4,1fr); } }
+.cat-tile { display:block; background:#fff; border:1px solid var(--line); border-radius:22px; overflow:hidden; color:var(--ink);
+            transition:transform .3s, box-shadow .3s; }
+.cat-tile:hover { text-decoration:none; transform:translateY(-5px); box-shadow:0 18px 36px rgba(120,70,40,0.11); }
+.cat-tile img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+.cat-tile:hover img { transform:scale(1.05); }
+.cat-tile div { padding:0.85rem 1rem 1rem; }
+.cat-tile strong { display:block; font-size:1.05rem; }
+.cat-tile span { display:block; font-size:0.84rem; color:var(--sub); margin-top:0.2rem; line-height:1.5; }
+.cat-tile em { display:inline-block; font-style:normal; margin-top:0.55rem; font-size:0.78rem; font-weight:800; color:var(--orange); }
+.feature-banner { display:grid; grid-template-columns:1fr; gap:0; background:#fff; border:1px solid var(--line); border-radius:26px; overflow:hidden;
+                  color:var(--ink); margin-top:1.6rem; transition:transform .3s, box-shadow .3s; }
+.feature-banner:hover { text-decoration:none; transform:translateY(-4px); box-shadow:0 18px 40px rgba(120,70,40,0.11); }
+@media (min-width:900px) { .feature-banner { grid-template-columns:1.1fr 1fr; } }
+.feature-banner img { width:100%; height:100%; min-height:220px; object-fit:cover; display:block; }
+.feature-banner div { padding:1.8rem 2rem; display:flex; flex-direction:column; justify-content:center; }
+.feature-banner small { color:var(--orange); font-weight:800; font-size:0.85rem; }
+.feature-banner strong { font-size:1.6rem; margin-top:0.3rem; }
+.feature-banner span { color:var(--sub); margin-top:0.4rem; line-height:1.7; }
+.feature-banner em { font-style:normal; margin-top:1rem; color:var(--orange); font-weight:800; }
+.duo { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:1.6rem; }
+@media (min-width:900px) { .duo { grid-template-columns:1fr 1fr; } }
+.tool-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:0.7rem; margin-top:1rem; }
+.store-big { display:grid; grid-template-columns:1fr; gap:0.8rem; margin-top:1.8rem; max-width:32rem; }
+@media (min-width:560px) { .store-big { grid-template-columns:1fr 1fr; } }
+.store-big a { display:flex; flex-direction:column; gap:0.2rem; background:#fff; border:2px solid var(--line); border-radius:20px; padding:1.1rem 1.2rem;
+               color:var(--ink); transition:transform .25s, border-color .25s, box-shadow .25s; }
+.store-big a:hover { text-decoration:none; border-color:var(--orange); transform:translateY(-3px); box-shadow:0 12px 26px rgba(120,70,40,0.1); }
+.store-big strong { font-size:1.25rem; color:var(--orange); } .store-big span { color:var(--sub); font-size:0.9rem; }
+.v2-note { font-size:0.85rem; color:var(--sub); margin-top:1.4rem; line-height:1.7; }
+.stats.stats-3 { grid-template-columns:repeat(3,1fr); margin-top:1.4rem; max-width:36rem; gap:0.7rem; }
+.stats.stats-3 .stat { padding:0.95rem 1rem; } .stats.stats-3 .stat b { font-size:clamp(1.5rem,3.5vw,2.1rem); }
+.tile .stats.stats-3 { margin-top:auto; padding-top:1rem; max-width:none; }
+#community { display:flex; flex-direction:column; } .tile .stat { background:var(--paper); border:0; }
+.sc-extra { margin-top:2.4rem; } .sc-extra .bento { margin-top:0; }
+.jump { position:sticky; top:58px; z-index:5; background:rgba(255,251,247,0.94); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+        border-bottom:1px solid var(--line); }
+.jump .sc-in { display:flex; gap:0.45rem; overflow-x:auto; padding-top:0.6rem; padding-bottom:0.6rem; scrollbar-width:none; }
+.jump .sc-in::-webkit-scrollbar { display:none; }
+.jump a { flex:none; padding:0.35rem 0.85rem; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink); font-weight:700; font-size:0.86rem; }
+@media (max-width:700px) { .jump { position:static; } }
+.jump a:hover { text-decoration:none; border-color:var(--orange); color:var(--orange); }
+.tool-all { display:grid; grid-template-columns:repeat(2,1fr); gap:0.7rem; margin-top:1.2rem; }
+@media (min-width:900px) { .tool-all { grid-template-columns:repeat(4,1fr); } }
+.tool-all div { background:#fff; border:1px solid var(--line); border-radius:18px; padding:0.95rem 1rem; }
+.tool-all strong { display:block; color:var(--ink); font-size:1rem; } .tool-all span { display:block; color:var(--sub); font-size:0.85rem; margin-top:0.2rem; }
+.sub-list div span small { color:var(--sub); margin-left:0.35rem; font-size:0.78rem; }
+
+.reading { max-width:760px; margin:0 auto; padding-top:1.8rem; }
+.reading.wide { max-width:none; }
+.pagehead .lead strong { color:var(--ink); }
+.pagehead .sc-search { margin-top:1.4rem; }
+.reading .page-note { background:#fff; border:1px solid var(--line); border-radius:18px; padding:1.1rem 1.25rem; }
+.reading .cta { margin-top:2.4rem; }
+@media (min-width:900px) {
+  .reading.wide .wish-groups { grid-template-columns:repeat(2,1fr); }
+  .reading.wide .update-list { grid-template-columns:repeat(2,1fr); }
+}
+.reading.wide .promo-list { grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.1rem; }
+.reading.wide .promo-card { max-width:none; }
+.reading .isl-grid { gap:0.9rem; }
+@media (min-width:700px) { .reading .isl-grid { grid-template-columns:repeat(3,1fr); } }
+.reading .isl-card { border:1px solid var(--line); border-radius:18px; }
+.head-narrow { max-width:760px; margin:0 auto; }
+.reading .pick-form label { display:block; }
+.reading .pick-form input, .reading .pick-form select, .reading .pick-form textarea { display:block; width:100%; margin-top:0.4rem; }
+.thread-band { background:linear-gradient(180deg,#FFF1E9 0%,var(--paper) 340px); }
+.thread-band .hero-wrap { margin-top:0; padding-top:1.6rem; }
+.reading .pick-form, .reading .feedback-form { background:#fff; border:1px solid var(--line); border-radius:22px; padding:1.4rem 1.3rem; }
+.chips.lite a { font-size:0.85rem; padding:0.35rem 0.85rem; }
+.nf-actions { justify-content:flex-start; }
+.read-progress { position:fixed; top:0; left:0; right:0; height:3px; z-index:30; pointer-events:none; }
+.read-progress i { display:block; height:100%; background:linear-gradient(90deg,var(--coral),var(--orange)); transform-origin:0 50%; transform:scaleX(0); }
+.art-head h1 { font-size:clamp(1.7rem,3.8vw,2.5rem); }
+.art-head .meta { margin:1.1rem 0 0; }
+.art-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:2.2rem; padding-top:2rem; }
+@media (min-width:1000px) { .art-grid { grid-template-columns:minmax(0,1fr) 300px; gap:3.4rem; } }
+.art-main { min-width:0; max-width:740px; }
+.art-main article { font-size:1.05rem; line-height:1.95; }
+.art-main article h2 { scroll-margin-top:96px; }
+.art-main .sources { margin-top:2.4rem; }
+.art-aside { display:flex; flex-direction:column; gap:1rem; min-width:0; }
+@media (min-width:1000px) { .art-aside { position:sticky; top:88px; align-self:start; max-height:calc(100vh - 104px); overflow:auto; } }
+.aside-card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:1.1rem 1.15rem; }
+.aside-card .t-eyebrow { font-size:0.82rem; font-weight:800; color:var(--orange); letter-spacing:0.04em; }
+.aside-card .aside-sub { color:var(--sub); font-size:0.85rem; margin-top:0.2rem; }
+.aside-card .tool-cards { grid-template-columns:1fr; margin-top:0.8rem; }
+.aside-card .card { padding:0.9rem 1rem; border-radius:16px; }
+.aside-card strong.aside-title { display:block; font-size:1.05rem; color:var(--ink); }
+.aside-card p.aside-copy { color:var(--sub); font-size:0.88rem; line-height:1.65; margin-top:0.3rem; }
+.aside-dl .sc-actions { margin-top:0.9rem; gap:0.5rem; }
+.aside-dl .sc-btn { flex:1; min-height:44px; padding:0 0.8rem; font-size:0.9rem; }
+.toc { display:flex; flex-direction:column; margin-top:0.6rem; }
+.toc a { display:block; padding:0.42rem 0.75rem; border-left:2px solid var(--line); color:var(--sub); font-size:0.9rem; line-height:1.5;
+         transition:color .2s, border-color .2s, background .2s; }
+.toc a:hover { text-decoration:none; color:var(--ink); }
+.toc a.on { color:var(--orange); border-color:var(--orange); background:#FFF5EF; font-weight:700; }
+.toc-mobile { background:#fff; border:1px solid var(--line); border-radius:18px; padding:0.9rem 1.1rem; margin-bottom:1.4rem; }
+.toc-mobile summary { cursor:pointer; font-weight:800; color:var(--ink); }
+@media (min-width:1000px) { .toc-mobile { display:none; } }
+@media (max-width:999px) { .art-aside .toc-card, .art-aside .aside-dl { display:none; } }
+.daily-grid { display:grid; grid-template-columns:1fr; gap:0.85rem; margin-top:1.1rem; }
+@media (min-width:700px) { .daily-grid { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1000px) { .daily-grid { grid-template-columns:repeat(3,1fr); } }
+.dcard { position:relative; display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:20px;
+         padding:1.25rem 1.2rem 1rem; color:var(--ink); overflow:hidden; transition:transform .25s, border-color .25s, box-shadow .25s; }
+.dcard::before { content:"\201C"; position:absolute; right:0.8rem; top:-0.6rem; font-size:4.6rem; font-weight:800; color:#FFE3D6; line-height:1; }
+.dcard:hover { text-decoration:none; border-color:var(--orange); transform:translateY(-4px); box-shadow:0 14px 30px rgba(120,70,40,0.09); }
+.dcard strong { position:relative; font-size:1rem; font-weight:700; line-height:1.75; flex:1; }
+.dcard small { margin-top:0.8rem; color:var(--orange); font-weight:800; font-size:0.8rem; line-height:1.5; }
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CFXBV5V5S9"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("set", {"event_source":"website"}); gtag("config", "G-CFXBV5V5S9", {"event_source":"website"});</script><script data-goatcounter="https://adultingguide.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+<script>document.documentElement.classList.add('js')</script>
 <header class="site"><div class="wrap">
   <a class="brand" href="./"><img class="logo-icon" src="assets/app-icon.png" alt="">
     <span class="brand-txt"><span class="logo">初級大人<span>手冊</span></span></span></a>
-  <nav class="site-nav"><a href="wiki" class="">百科</a><a href="community/" class="">社群</a><a href="group-buy/" class="">合作</a><a href="picks" class="">島嶼地圖</a><a href="updates" class="">更新日誌</a><a href="feedback" class="">回報／建議</a></nav>
+  <nav class="site-nav"><a href="features" class="">功能</a><a href="wiki" class="">百科</a><a href="community/" class="">社群</a><a href="group-buy/" class="">合作</a><a href="picks" class="">島嶼地圖</a><a href="updates" class="">更新日誌</a><a href="feedback" class="">回報／建議</a></nav><a class="nav-cta" href="download">下載 App</a>
 </div></header>
 <main>
-<div class="wrap">
-<div class="home-hero"><h1>大人的每一件麻煩事，先來這裡看看</h1><p>報稅、租屋、拜拜、看醫生，第一次遇到不用慌，這裡都幫你整理好了。</p><form class="home-search" action="search" method="get" role="search"><input type="search" name="q" placeholder="搜尋報稅、租屋、勞健保…" aria-label="搜尋全站"><button type="submit">搜尋</button></form></div>
-<h2 class="home-sec">現在合作中</h2>
-<a class="cat-card featured promo-featured" href="group-buy/67bb4129-b04a-4552-8815-f21b30bb286c"><div class="cover-wrap"><img class="cover" src="https://ezdlslagivrgwtbvpimf.supabase.co/storage/v1/object/public/announcement_images/draft/67BB4129-B04A-4552-8815-F21B30BB286C/cover-B18DF544-F74D-490C-8296-49DA4EECB6B4.jpg" alt="站長推薦：《呀沙係・引力》"><span class="feat-flag">進行中</span></div><div class="cc-body"><h3>站長推薦：《呀沙係・引力》</h3><div class="cc-sub">嗨大家～這次的合作對象是我自己！哈哈哈！</div></div></a>
-<div class="cta"><div class="cta-txt"><p>最新消息會在第一時間公布在社群裡，<br>合作也歡迎來信聊聊唷～</p></div><div class="cta-actions"><a class="btn" href="https://line.me/ti/g2/NvF1VXHWjhHNu6-Hb4txJ6zZb8oQ2tIlmVDk7Q" rel="noopener">LINE 社群</a><a class="btn" href="mailto:tonyonier99@gmail.com?subject=%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%EF%BD%9C%E5%90%88%E4%BD%9C%E6%B4%BD%E8%A9%A2&amp;body=%E5%97%A8%EF%BC%8C%E6%88%91%E6%83%B3%E8%B7%9F%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%E8%AB%87%E5%90%88%E4%BD%9C%EF%BC%9A%0A%0A%E3%83%BB%E5%93%81%E7%89%8C%EF%BC%8F%E5%95%86%E5%93%81%EF%BC%9A%0A%E3%83%BB%E6%83%B3%E5%90%88%E4%BD%9C%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A%0A%E3%83%BB%E6%83%B3%E6%89%BE%E6%88%91%E8%81%8A%E8%81%8A%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A%0A">合作邀約</a></div></div>
-<div class="pillars"><a class="pillar anim-up" href="wiki" style="animation-delay:0.00s"><div class="pl-top"><h3>百科</h3><span class="pl-count">112 篇</span></div><p>各種生活主題的完整文章，可分類瀏覽、關鍵字搜尋、收藏備查。</p><span class="pl-go">開始查 →</span></a><a class="pillar anim-up" href="community/" style="animation-delay:0.06s"><div class="pl-top"><h3>社群</h3><span class="pl-count">838 則討論</span></div><p>「大人秘技」分享你的撇步、「我要發問」有想知道的就來問。</p><span class="pl-go">去逛逛 →</span></a><a class="pillar anim-up" href="group-buy/" style="animation-delay:0.12s"><div class="pl-top"><h3>合作</h3><span class="pl-count">進行中</span></div><p>站長實際用過、推薦過的東西，還有配合的廣告內容，整理在這裡。</p><span class="pl-go">看看合作 →</span></a><a class="pillar anim-up" href="picks" style="animation-delay:0.18s"><div class="pl-top"><h3>島嶼地圖</h3><span class="pl-flag">準備中</span></div><p>台灣做得好的東西，農特產、工藝、設計，歡迎投稿，實地拜訪後上架。</p><span class="pl-go">看看這是什麼 →</span></a><a class="pillar anim-up" href="updates" style="animation-delay:0.24s"><div class="pl-top"><h3>更新日誌</h3></div><p>內容更正、問題修正與功能更新都記在這裡。</p><span class="pl-go">查看更新 →</span></a><a class="pillar anim-up" href="feedback" style="animation-delay:0.30s"><div class="pl-top"><h3>回報／建議</h3></div><p>找不到功能、看到錯誤，或有想敲碗的事都可以說。</p><span class="pl-go">告訴我們 →</span></a></div>
-<h2 class="home-sec">新手必看</h2>
-<a class="cat-card featured" href="c/benefits" style="animation-delay:0.00s"><div class="cover-wrap"><img class="cover" src="assets/cat_benefits.png" alt="新手福利包"><span class="feat-flag">免費資源</span></div><div class="cc-body"><h3>新手福利包</h3><div class="cc-sub">政府補助、免費資源、隱藏撇步</div><span class="cc-count" style="color:#E65100;background:#FFF3E0">40 篇</span></div></a>
-<h2 class="home-sec">精選百科</h2><div class="related-grid"><a class="rel-card anim-up" href="a/tax-1" style="animation-delay:0.00s"><div class="rc-title">第一次報稅完整教學（手機版）</div><div class="rc-sub">第一次報稅不用慌，手機加健保卡就能報，從要不要報、怎麼登入到看懂自己是繳還是退，一步步帶你做完。</div></a><a class="rel-card anim-up" href="a/house-1" style="animation-delay:0.06s"><div class="rc-title">第一次租屋完整清單</div><div class="rc-sub">看房、簽約、押金該注意的，都幫你整理好了。</div></a><a class="rel-card anim-up" href="a/traffic-2" style="animation-delay:0.12s"><div class="rc-title">車禍 SOP：黃金 10 分鐘做哪 5 件事</div><div class="rc-sub">車禍當下別慌，10 分鐘做完這 5 件事，理賠和肇責才有保障。</div></a><a class="rel-card anim-up" href="a/med-1" style="animation-delay:0.18s"><div class="rc-title">不知道要看哪科？症狀對應科別指南</div><div class="rc-sub">不舒服又不知道該看哪一科？常見症狀對應科別都幫你列好。</div></a><a class="rel-card anim-up" href="a/etq-4" style="animation-delay:0.24s"><div class="rc-title">拜拜基本禮節：香幾炷、怎麼合十、神明桌規矩</div><div class="rc-sub">第一次自己拜拜怕失禮？香幾炷、怎麼拜，一次搞懂。</div></a><a class="rel-card anim-up" href="a/account-security-1" style="animation-delay:0.30s"><div class="rc-title">帳號被盜、個資外洩怎麼辦</div><div class="rc-sub">帳號被盜、個資外洩，第一時間怎麼止損——改密碼、開兩步驟、通知止付。</div></a></div>
-<section class="wish-section"><h2>大家想搞懂什麼</h2><ol class="ranking-chart" data-ranking-chart><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">理財／投資／稅務</span><span class="ranking-count"><span data-count="4868">4,868</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:100.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">菜市場／料理</span><span class="ranking-count"><span data-count="1284">1,284</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:26.38%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">保險／醫療</span><span class="ranking-count"><span data-count="1062">1,062</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:21.82%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">工作／職場</span><span class="ranking-count"><span data-count="879">879</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:18.06%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">租屋／買房／搬家</span><span class="ranking-count"><span data-count="793">793</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:16.29%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">拜拜／禮俗</span><span class="ranking-count"><span data-count="571">571</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:11.73%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">感情／人際</span><span class="ranking-count"><span data-count="562">562</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:11.54%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">生活家務</span><span class="ranking-count"><span data-count="424">424</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:8.71%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">交通／車輛</span><span class="ranking-count"><span data-count="265">265</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:5.44%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">育兒／家庭</span><span class="ranking-count"><span data-count="178">178</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:3.66%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">法律／權益</span><span class="ranking-count"><span data-count="173">173</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:3.55%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">旅行／出國</span><span class="ranking-count"><span data-count="83">83</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:1.71%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">語言／翻譯</span><span class="ranking-count"><span data-count="16">16</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:0.33%"></span></span></li></ol></section>
-<div class="cta"><div class="cta-txt"><strong>初級大人手冊 App</strong><p>報稅、租屋、看醫生……大人生活的大小事，<br>一支 App 全查得到。</p><p class="cta-proof">已超過 15 萬人使用初級大人手冊</p></div><div class="cta-actions"><a class="btn" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">iOS 版</a><a class="btn" href="https://play.google.com/store/apps/details?id=com.paperclip.adultingguide" rel="noopener">Android 版</a></div></div>
-</div>
+<style>
+.tv-panes { position:relative; flex:1; overflow:hidden; }
+.tv-pane { position:absolute; inset:0; opacity:0; transform:scale(.97); transition:opacity .35s, transform .35s; pointer-events:none; }
+.tv-pane.on { opacity:1; transform:none; pointer-events:auto; }
+.tv-view { position:absolute; inset:0; overflow-y:auto; overflow-x:hidden; padding:4px 14px 14px; background:#fff; scrollbar-width:none;
+           transform:translateX(105%); transition:transform .45s cubic-bezier(.2,.8,.2,1); }
+.tv-view::-webkit-scrollbar { display:none; }
+.tv-view.on { transform:none; } .tv-view.on.under { transform:translateX(-28%); }
+.tv-back { border:0; background:none; color:#E8856B; font-family:inherit; font-weight:700; font-size:13px; padding:2px 0 6px; cursor:pointer; }
+.tv-tabs button { border:0; background:none; font-family:inherit; text-align:center; font-size:11.5px; color:#AAA; font-weight:700; cursor:pointer; padding:0; }
+.tv-tabs button.on { color:#E8856B; }
+.tv-search { display:block; width:100%; text-align:left; border:0; background:#F3F3F3; border-radius:999px; padding:9px 14px; color:#999;
+             font-family:inherit; font-size:13px; margin-bottom:12px; cursor:pointer; }
+.tv-brand small { display:block; font-size:11px; letter-spacing:2px; color:#999; font-weight:700; }
+.tv-brand b { display:block; font-size:24px; color:#1A1A1A; margin-bottom:10px; }
+.tv-daily { background:#FFF4EE; border-radius:14px; padding:12px; margin-bottom:12px; }
+.tv-daily small { color:#E8856B; font-weight:800; font-size:12px; } .tv-daily strong { display:block; color:#1A1A1A; font-size:14px; margin-top:4px; line-height:1.55; }
+.tv-banners { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+.tv-banner { border-radius:14px; padding:11px; background:#FFF0E8; } .tv-banner.alt { background:#EEF6EF; }
+.tv-banner strong { display:block; font-size:14px; color:#1A1A1A; } .tv-banner span { display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4; }
+.tv-row { display:flex; width:100%; justify-content:space-between; align-items:center; border:0; background:#F9F9F9; border-radius:12px; padding:11px 12px;
+          margin-bottom:6px; font-family:inherit; font-size:14px; color:#1A1A1A; font-weight:700; text-align:left; }
+.tv-row span { font-size:12px; color:#AAA; font-weight:700; white-space:nowrap; } button.tv-row { cursor:pointer; }
+.tv-sub { font-size:12px; color:#999; margin:-6px 2px 10px; }
+.tv-art-title { font-size:19px; font-weight:800; color:#1A1A1A; line-height:1.4; margin:2px 0 8px; }
+.tv-badges { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+.tv-badges span { font-size:10.5px; padding:2px 8px; border-radius:999px; background:#FFF0E8; color:#C9553A; font-weight:700; }
+.tv-badges span + span { background:#F2F2F2; color:#888; }
+.tv-art p { font-size:13px; color:#666; line-height:1.7; } .tv-art h4 { font-size:14.5px; color:#1A1A1A; margin:12px 0 6px; padding-left:8px; border-left:3px solid #E8856B; }
+.tv-art li { font-size:12.5px; color:#444; line-height:1.65; margin:0 0 4px 16px; }
+.tv-seg { grid-template-columns:1fr 1fr; }
+.cm-list { display:none; } .cm-list.on { display:block; animation:popIn .35s cubic-bezier(.2,.8,.2,1); }
+.cm-card { display:block; width:100%; text-align:left; border:0; background:#F9F9F9; border-radius:14px; padding:11px 12px; margin-bottom:8px; font-family:inherit; }
+button.cm-card { cursor:pointer; }
+.cm-by { display:flex; align-items:center; gap:6px; font-size:11.5px; color:#888; font-weight:700; }
+.cm-by i { width:20px; height:20px; border-radius:50%; background:#F6CDBE; color:#fff; font-style:normal; font-size:11px; display:flex; align-items:center; justify-content:center; }
+.cm-card strong { display:block; font-size:13.5px; color:#1A1A1A; margin-top:5px; line-height:1.5; }
+.cm-card span { display:block; font-size:11px; color:#AAA; margin-top:4px; }
+.tv-post p { font-size:13px; color:#555; line-height:1.75; margin-top:8px; }
+.tv-input { width:100%; border:1.5px solid #E8856B; border-radius:999px; padding:9px 14px; font-family:inherit; font-size:13.5px; color:#1A1A1A; outline:none; margin-bottom:10px; }
+.tv-results a { display:block; background:#F9F9F9; border-radius:12px; padding:9px 11px; margin-bottom:6px; color:#1A1A1A; font-size:13px; font-weight:700;
+                animation:popIn .3s cubic-bezier(.2,.8,.2,1) both; }
+.tv-results a:hover { text-decoration:none; }
+.tv-results em { font-style:normal; font-size:10px; color:#C9553A; background:#FFF0E8; border-radius:999px; padding:1px 7px; margin-right:6px; }
+.tv-empty { font-size:12px; color:#AAA; text-align:center; padding:10px 0; }
+@media (prefers-reduced-motion: reduce) { .tv-pane, .tv-view { transition:none; } }
+
+.tv-label { font-size:13px; font-weight:800; color:#1A1A1A; margin:4px 2px 8px; }
+.tv-season { position:relative; display:block; width:100%; aspect-ratio:780/320; border:0; padding:0; border-radius:14px; overflow:hidden;
+             background:linear-gradient(135deg,#E8856B,#F2A08A); cursor:pointer; margin-bottom:12px; }
+.tv-season img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .6s; }
+.tv-season img.on { opacity:1; }
+.tv-season-cap { position:absolute; left:0; right:0; bottom:0; padding:18px 12px 8px; text-align:left; color:#fff; font-size:13px; font-weight:800;
+                 font-family:inherit; background:linear-gradient(180deg,transparent,rgba(0,0,0,.45)); }
+.tv-produce { display:flex; gap:10px; align-items:flex-start; background:#F9F9F9; border-radius:12px; padding:9px 10px; margin-bottom:6px; }
+.tv-produce img { width:40px; height:40px; flex:none; }
+.tv-produce strong { display:block; font-size:13.5px; color:#1A1A1A; } .tv-produce span { display:block; font-size:11px; color:#888; line-height:1.5; }
+.tv-produce em { display:block; font-style:normal; font-size:11px; color:#C9553A; margin-top:2px; line-height:1.5; }
+.tv-me { display:flex; gap:12px; align-items:center; background:#FFF4EE; border-radius:16px; padding:12px; margin-bottom:12px; }
+.tv-me img { width:52px; height:52px; border-radius:50%; background:#fff; }
+.tv-me strong { display:block; font-size:14.5px; color:#1A1A1A; } .tv-me span { display:block; font-size:11.5px; color:#C9553A; font-weight:700; margin-top:2px; }
+.tv-card { background:#F9F9F9; border-radius:14px; padding:10px 12px; margin-bottom:8px; }
+.tv-card strong { display:block; font-size:13.5px; color:#1A1A1A; } .tv-card span { display:block; font-size:11px; color:#999; margin-top:1px; }
+.tv-toggle { display:flex; gap:10px; align-items:center; background:#F9F9F9; border-radius:12px; padding:9px 11px; margin-bottom:6px; }
+.tv-toggle div { flex:1; min-width:0; } .tv-toggle strong { display:block; font-size:13px; color:#1A1A1A; } .tv-toggle span { display:block; font-size:10.5px; color:#999; }
+.tv-switch { flex:none; width:40px; height:24px; border-radius:999px; border:0; background:#DDD; position:relative; cursor:pointer; transition:background .25s; }
+.tv-switch::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:transform .25s; box-shadow:0 1px 2px rgba(0,0,0,.2); }
+.tv-switch.on { background:#E8856B; } .tv-switch.on::after { transform:translateX(16px); }
+</style><section class="sc-hero"><div class="sc-in sc-split"><div class="sc-copy" data-reveal><p class="sc-eyebrow">台灣年輕人的生活使用手冊</p><h1>第一次當大人，<br>有本<em>生活使用手冊</em></h1><p class="sc-lead">初級大人手冊把台灣生活常遇到的問題，用白話整理成知識與工具。想知道的事可以查，想做的事可以安排，做完也能留下自己的生活記錄。</p><div class="sc-actions"><a class="sc-btn" data-store="ios" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">iPhone 下載</a><a class="sc-btn outline" data-store="android" href="https://play.google.com/store/apps/details?id=com.paperclip.adultingguide" rel="noopener">Android 下載</a></div><p class="sc-proof">已超過 15 萬人使用初級大人手冊</p></div><div data-reveal><div class="sc-stage float"><div class="sc-card"><div class="ph" data-tour><div class="ph-screen"><div class="ph-status">9:41</div><div class="tv-panes"><section class="tv-pane on" data-pane="生活"><div class="tv-view on" data-view="life"><div class="ph-title">生活</div><div class="ph-sec" data-cal="[[5, &quot;繳房租&quot;, &quot;提醒&quot;], [12, &quot;洗牙&quot;, &quot;提醒管家&quot;], [18, &quot;約一位很久沒見的朋友見面&quot;, &quot;挑戰&quot;], [25, &quot;串流平台扣款&quot;, &quot;人生訂閱&quot;]]"><div class="cal-head"><span>‹</span><span class="cal-month"></span><span>›</span></div><div class="cal-grid"><span class="wd">日</span><span class="wd">一</span><span class="wd">二</span><span class="wd">三</span><span class="wd">四</span><span class="wd">五</span><span class="wd">六</span></div><div class="cal-list"></div></div><div class="ph-sec"><div class="ph-sec-h">這個月的挑戰<small class="tv-chcount"></small></div><div class="ch-card"><button type="button" class="chk done" aria-label="完成"></button><div><strong class="done">陪家人好好吃一頓飯</strong><span>與家人</span></div></div><div class="ch-card"><button type="button" class="chk" aria-label="完成"></button><div><strong class="">約一位很久沒見的朋友見面</strong><span>與朋友</span></div></div><div class="ch-card"><button type="button" class="chk" aria-label="完成"></button><div><strong class="">挑戰一道沒做過的料理</strong><span>與自己</span></div></div></div><div class="ph-sec-h" style="margin:4px 2px 8px">大人工具箱</div><div class="tb-grid"><button type="button" class="tb-tool" data-push="reminder"><strong>提醒管家</strong><span>重要日期幫你記</span></button><button type="button" class="tb-tool" data-push="subs"><strong>人生訂閱</strong><span>固定支出與續約日</span></button><button type="button" class="tb-tool"><strong>準備清單</strong><span>出發前一項一項勾</span></button><button type="button" class="tb-tool"><strong>紙本在哪</strong><span>拍起來就不會忘</span></button></div></div><div class="tv-view" data-view="reminder"><button type="button" class="tv-back">‹ 生活</button><div class="ph-title">提醒管家</div><div class="ph-sec-h">內建提醒<small>完成後重算</small></div><div class="rm-item" data-days="9" data-months="6"><div><strong>洗牙</strong><span>每半年一次</span><b class="rm-next"></b></div><button type="button" class="rm-done">完成</button></div><div class="rm-item" data-days="40" data-months="36"><div><strong>成人健檢</strong><span>30–39歲每5年；40–64歲每3年</span><b class="rm-next"></b></div><button type="button" class="rm-done">完成</button></div><div class="rm-item" data-days="63" data-months="12"><div><strong>機車排氣定期檢驗</strong><span>出廠滿5年後，每年一次</span><b class="rm-next"></b></div><button type="button" class="rm-done">完成</button></div><div class="rm-toast"></div></div><div class="tv-view" data-view="subs"><button type="button" class="tv-back">‹ 生活</button><div class="ph-title">人生訂閱</div><div class="ph-sec"><div class="sb-metrics"><div><small>本月預計扣款</small><b>NT$2,178</b></div><div><small>必要支出</small><b>NT$699</b></div><div><small>串流訂閱</small><b>NT$390</b></div></div><div class="sb-analytics open"><svg class="donut" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="支出分析"><circle cx="50" cy="50" r="40" fill="none" stroke="#F1ECE8" stroke-width="14"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#E8856B" stroke-width="14" stroke-dasharray="0 251.33" stroke-dashoffset="-0.00" data-dash="115.28 136.05" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#F2B880" stroke-width="14" stroke-dasharray="0 251.33" stroke-dashoffset="-115.28" data-dash="69.12 182.21" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#8CC5B4" stroke-width="14" stroke-dasharray="0 251.33" stroke-dashoffset="-184.40" data-dash="45.00 206.32" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#8FB8DE" stroke-width="14" stroke-dasharray="0 251.33" stroke-dashoffset="-229.40" data-dash="11.54 239.79" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#C3A6E0" stroke-width="14" stroke-dasharray="0 251.33" stroke-dashoffset="-240.94" data-dash="10.39 240.94" transform="rotate(-90 50 50)"/></svg><div class="sb-legend">支出分析</div></div></div><div class="sb-row"><span>手機門號<em>電信</em></span><b>NT$599</b></div><div class="sb-row"><span>影音串流<em>影音</em></span><b>NT$390</b></div><div class="sb-row"><span>健身房<em>生活</em></span><b>NT$999</b></div><div class="sb-row"><span>雲端空間<em>雲端</em></span><b>NT$90</b></div><div class="sb-row"><span>機車強制險（年繳）<em>保險</em></span><b>NT$100</b></div></div></section><section class="tv-pane" data-pane="百科"><div class="tv-view on" data-view="wiki"><div class="ph-title">百科</div><div class="tv-search">搜尋百科...</div><div class="tv-banners"><div class="tv-banner"><strong>新手必看</strong><span>第一次當大人，先看這幾篇</span></div><div class="tv-banner alt"><strong>新手福利包</strong><span>補助、免費資源與申請期限</span></div></div><div class="tv-row">居家生活<span>16 篇 ›</span></div><button type="button" class="tv-row" data-push="cat"><span style="color:#1A1A1A">金錢與保險</span><span>12 篇 ›</span></button><div class="tv-row">工作與創業<span>10 篇 ›</span></div><div class="tv-row">人際與禮俗<span>8 篇 ›</span></div><div class="tv-row">證件與政府<span>8 篇 ›</span></div><div class="tv-row">醫療健康<span>7 篇 ›</span></div><div class="tv-row">交通與旅遊<span>7 篇 ›</span></div><div class="tv-row">數位與防詐<span>4 篇 ›</span></div></div><div class="tv-view" data-view="cat"><button type="button" class="tv-back">‹ 百科</button><div class="ph-title">金錢與保險</div><p class="tv-sub">理財、報稅、保險、勞退</p><button type="button" class="tv-row" data-push="art">信用卡入門：年費、循環利率、最低應繳<span>›</span></button><div class="tv-row">第一次報稅完整教學（手機版）<span>›</span></div><div class="tv-row">創業稅入門：營業稅三段級距，先記死<span>›</span></div><div class="tv-row">免稅額、扣除額怎麼算（114 年度）<span>›</span></div><div class="tv-row">列舉扣除額：哪些能扣、跟標準怎麼選（114 年度）<span>›</span></div></div><div class="tv-view tv-art" data-view="art"><button type="button" class="tv-back">‹ 金錢與保險</button><div class="tv-art-title">信用卡入門：年費、循環利率、最低應繳</div><div class="tv-badges"><span>官方來源查證</span><span>最後查證 2026-07-04</span></div><p>第一張信用卡別亂辦，這幾個地雷先搞懂再刷。</p><h4>三種卡的差別</h4><ul><li><strong>簽帳卡（Debit）</strong>：綁活存帳戶，刷多少扣多少，帳戶沒錢就刷不過、不會欠錢。適合剛出社會、不想背卡債的人。</li><li><strong>信用卡（Credit）</strong>：銀行先墊錢，下個月結帳日再繳。有 30–55 天免息期，有回饋（現金 1%–3%、里程、點數）。</li><li><strong>預付卡（Prepaid）</strong>：先儲值再消費，不綁帳戶、不用審核。適合小孩零用金、海外短期旅遊，代表：悠遊付、icash Pay。</li></ul></div></section><section class="tv-pane" data-pane="社群"><div class="tv-view on" data-view="comm"><div class="ph-title">社群</div><div class="ch-seg tv-seg"><button type="button" class="on" data-seg="tips">大人秘技</button><button type="button" data-seg="asks">我要發問</button></div><div class="tv-search tv-seg-search">搜尋秘技...</div><div class="cm-list on" data-list="tips"><div class="cm-card"><div class="cm-by"><i>M</i>Meow</div><strong>機車內必備</strong><span>0 則補充 · 567 讚</span></div><div class="cm-card"><div class="cm-by"><i>努</i>努力發掘生活冷知識の觀察家</div><strong>UNIQLO打折時間分享(⁎⁍̴̛ᴗ⁍̴̛⁎)</strong><span>0 則補充 · 472 讚</span></div><div class="cm-card"><div class="cm-by"><i>怪</i>怪魚</div><strong>星巴克點餐技巧</strong><span>0 則補充 · 347 讚</span></div></div><div class="cm-list" data-list="asks"><button class="cm-card" type="button" data-push="post"><div class="cm-by"><i>A</i>Amy</div><strong>股票怎麼看？</strong><span>6 則回答 · 84 讚</span></button><div class="cm-card"><div class="cm-by"><i>阿</i>阿鵝</div><strong>保險怎麼買</strong><span>5 則回答 · 31 讚</span></div><div class="cm-card"><div class="cm-by"><i>扶</i>扶老奶奶闖紅燈</div><strong>可以扶老奶奶闖紅燈嗎</strong><span>2 則回答 · 22 讚</span></div></div></div><div class="tv-view tv-post" data-view="post"><button type="button" class="tv-back">‹ 社群</button><div class="cm-by"><i>A</i>Amy</div><div class="tv-art-title" style="margin-top:8px">股票怎麼看？</div><p>升大學後就很多身旁的朋友在買股票看股票 但我完全不懂🥹 有人可以跟我解釋股票怎麼使用怎麼看嗎🥹🥹…</p><div class="ph-sec-h" style="margin-top:14px">6 則回答</div><div class="cm-card"><div class="cm-by"><i>有</i>有狗有貓陪伴的Lillian</div><span style="color:#555;font-size:12.5px;line-height:1.7">我也沒有到很專業，但是我覺得新手可以先不用焦慮要懂得看k線、知道各種專有名詞等等，等後面真的有興趣再來學也不急 若是想投入股市我自己剛開始就是買0050，畢竟0…</span></div></div></section><section class="tv-pane" data-pane="首頁"><div class="tv-view on" data-view="home"><div class="tv-brand"><small>初級大人</small><b>生活使用手冊</b></div><button type="button" class="tv-search" data-push="search">搜尋百科、工具、福利...</button><div class="tv-label">當季尚青</div><button type="button" class="tv-season" data-push="season" data-season="{&quot;months&quot;: {&quot;1&quot;: {&quot;fruits&quot;: [&quot;草莓&quot;, &quot;橘子&quot;, &quot;蓮霧&quot;], &quot;vegetables&quot;: [&quot;高麗菜&quot;, &quot;白蘿蔔&quot;, &quot;青花菜&quot;]}, &quot;2&quot;: {&quot;fruits&quot;: [&quot;草莓&quot;, &quot;蓮霧&quot;, &quot;番茄&quot;], &quot;vegetables&quot;: [&quot;白蘿蔔&quot;, &quot;大白菜&quot;, &quot;青花菜&quot;]}, &quot;3&quot;: {&quot;fruits&quot;: [&quot;鳳梨&quot;, &quot;草莓&quot;, &quot;蓮霧&quot;], &quot;vegetables&quot;: [&quot;高麗菜&quot;, &quot;洋蔥&quot;, &quot;小黃瓜&quot;]}, &quot;4&quot;: {&quot;fruits&quot;: [&quot;鳳梨&quot;, &quot;李子&quot;, &quot;蓮霧&quot;], &quot;vegetables&quot;: [&quot;竹筍&quot;, &quot;茄子&quot;, &quot;小黃瓜&quot;]}, &quot;5&quot;: {&quot;fruits&quot;: [&quot;芒果&quot;, &quot;荔枝&quot;, &quot;西瓜&quot;], &quot;vegetables&quot;: [&quot;苦瓜&quot;, &quot;絲瓜&quot;, &quot;竹筍&quot;]}, &quot;6&quot;: {&quot;fruits&quot;: [&quot;荔枝&quot;, &quot;西瓜&quot;, &quot;火龍果&quot;], &quot;vegetables&quot;: [&quot;絲瓜&quot;, &quot;冬瓜&quot;, &quot;苦瓜&quot;]}, &quot;7&quot;: {&quot;fruits&quot;: [&quot;西瓜&quot;, &quot;芒果&quot;, &quot;龍眼&quot;], &quot;vegetables&quot;: [&quot;冬瓜&quot;, &quot;苦瓜&quot;, &quot;絲瓜&quot;]}, &quot;8&quot;: {&quot;fruits&quot;: [&quot;葡萄&quot;, &quot;火龍果&quot;, &quot;龍眼&quot;], &quot;vegetables&quot;: [&quot;絲瓜&quot;, &quot;茄子&quot;, &quot;冬瓜&quot;]}, &quot;9&quot;: {&quot;fruits&quot;: [&quot;柿子&quot;, &quot;葡萄柚&quot;, &quot;釋迦&quot;], &quot;vegetables&quot;: [&quot;南瓜&quot;, &quot;冬瓜&quot;, &quot;茄子&quot;]}, &quot;10&quot;: {&quot;fruits&quot;: [&quot;柿子&quot;, &quot;釋迦&quot;, &quot;火龍果&quot;], &quot;vegetables&quot;: [&quot;南瓜&quot;, &quot;菠菜&quot;, &quot;青蔥&quot;]}, &quot;11&quot;: {&quot;fruits&quot;: [&quot;橘子&quot;, &quot;柿子&quot;, &quot;芭樂&quot;], &quot;vegetables&quot;: [&quot;白蘿蔔&quot;, &quot;高麗菜&quot;, &quot;菠菜&quot;]}, &quot;12&quot;: {&quot;fruits&quot;: [&quot;草莓&quot;, &quot;柳丁&quot;, &quot;葡萄柚&quot;], &quot;vegetables&quot;: [&quot;大白菜&quot;, &quot;白蘿蔔&quot;, &quot;青花菜&quot;]}}, &quot;items&quot;: {&quot;草莓&quot;: [&quot;icon_草莓&quot;, &quot;冬末春初最甜最便宜&quot;, &quot;顏色鮮紅均勻，果尖也要紅&quot;], &quot;芒果&quot;: [&quot;icon_芒果&quot;, &quot;五六月最甜，七月後偏酸&quot;, &quot;輕壓有彈性不過軟&quot;], &quot;荔枝&quot;: [&quot;icon_荔枝&quot;, &quot;六月產量最多最便宜&quot;, &quot;外殼鮮紅，突起明顯&quot;], &quot;西瓜&quot;: [&quot;icon_西瓜&quot;, &quot;夏天最甜，颱風前後要注意品質&quot;, &quot;拍打聲音渾厚低沉（咚咚像拍胸口）才是熟的；清脆高亢是還沒熟，悶濁沉重可能過熟或空心&quot;], &quot;芭樂&quot;: [&quot;icon_芭樂&quot;, &quot;全年都有，秋冬最好吃&quot;, &quot;皮色鮮綠均勻&quot;], &quot;鳳梨&quot;: [&quot;icon_鳳梨&quot;, &quot;三四月最甜最便宜，七月後品質下降&quot;, &quot;葉片翠綠新鮮&quot;], &quot;橘子&quot;: [&quot;icon_橘子&quot;, &quot;冬天最甜最便宜，過年前後需求大&quot;, &quot;皮薄有彈性、好剝&quot;], &quot;柳丁&quot;: [&quot;icon_柳丁&quot;, &quot;冬天最甜，台灣柳丁品質好又便宜&quot;, &quot;重量重表示汁多&quot;], &quot;葡萄&quot;: [&quot;icon_葡萄&quot;, &quot;夏果（6-8 月）跟冬果（12-1 月）兩季&quot;, &quot;果粒飽滿緊實&quot;], &quot;番茄&quot;: [&quot;icon_番茄&quot;, &quot;冬春最甜，夏天偏酸&quot;, &quot;顏色鮮紅均勻&quot;], &quot;蓮霧&quot;: [&quot;icon_蓮霧&quot;, &quot;冬末春初最甜，黑珍珠、黑金剛品種最貴&quot;, &quot;底部（開口處）張開越大越甜&quot;], &quot;柿子&quot;: [&quot;icon_柿子&quot;, &quot;秋天是產季，中秋節前後最甜&quot;, &quot;顏色橙紅均勻&quot;], &quot;火龍果&quot;: [&quot;icon_火龍果&quot;, &quot;夏秋盛產，紅肉比白肉貴，一斤 $40-80&quot;, &quot;果皮鮮紅、龍鬚（鱗片）翠綠不枯黃&quot;], &quot;釋迦&quot;: [&quot;icon_釋迦&quot;, &quot;秋冬盛產，台東主產，一斤 $80-150&quot;, &quot;表面突起飽滿、果柄處微微下陷&quot;], &quot;龍眼&quot;: [&quot;icon_龍眼&quot;, &quot;夏末初秋盛產，台南、中南部主產&quot;, &quot;果殼黃褐、飽滿不乾扁&quot;], &quot;葡萄柚&quot;: [&quot;icon_葡萄柚&quot;, &quot;秋冬盛產，一顆約 $30-50&quot;, &quot;拿起來重（水分足）&quot;], &quot;李子&quot;: [&quot;icon_李子&quot;, &quot;春末夏初盛產，中部主產&quot;, &quot;表面果粉均勻（新鮮標誌）&quot;], &quot;高麗菜&quot;: [&quot;icon_高麗菜&quot;, &quot;盛產期每斤 $10-20，夏天可能漲到 $40-60&quot;, &quot;拿起來要有沉甸甸的感覺，代表水分飽滿&quot;], &quot;菠菜&quot;: [&quot;icon_菠菜&quot;, &quot;冬季盛產每把 $20-30，夏天量少價格翻倍&quot;, &quot;葉片深綠挺立，不要選軟趴趴或發黃的&quot;], &quot;白蘿蔔&quot;: [&quot;icon_白蘿蔔&quot;, &quot;冬天盛產每斤 $10-15，非常划算&quot;, &quot;表皮光滑潔白沒有裂痕，拿起來有份量&quot;], &quot;竹筍&quot;: [&quot;icon_竹筍&quot;, &quot;夏季綠竹筍盛產每斤 $40-80&quot;, &quot;筍尖沒有變綠，綠色代表已經照到光會苦&quot;], &quot;苦瓜&quot;: [&quot;icon_苦瓜&quot;, &quot;夏天盛產每斤 $25-40&quot;, &quot;表面顆粒越大越稀疏，苦味越淡；顆粒越小越密集越苦&quot;], &quot;絲瓜&quot;: [&quot;icon_絲瓜&quot;, &quot;夏天盛產每條 $20-30&quot;, &quot;表皮翠綠有光澤，紋路清楚不模糊&quot;], &quot;茄子&quot;: [&quot;icon_茄子&quot;, &quot;夏天盛產每斤 $20-35&quot;, &quot;表皮紫色有光澤，摸起來光滑飽滿&quot;], &quot;青蔥&quot;: [&quot;icon_青蔥&quot;, &quot;冬天盛產每把 $15-25，夏天颱風季可能飆到 $100 以上&quot;, &quot;蔥白長且飽滿，蔥綠挺立不軟趴&quot;], &quot;大白菜&quot;: [&quot;icon_大白菜&quot;, &quot;冬天盛產每斤 $10-20，火鍋季必備&quot;, &quot;葉片白綠分明，白色部分厚實有水分&quot;], &quot;青花菜&quot;: [&quot;icon_青花菜&quot;, &quot;冬天盛產每斤 $25-40，進口的較貴&quot;, &quot;花蕾緊密深綠色，沒有變黃或開花&quot;], &quot;洋蔥&quot;: [&quot;icon_洋蔥&quot;, &quot;屏東恆春洋蔥 2-4 月盛產，每斤 $20-30&quot;, &quot;外皮乾燥完整有光澤，沒有發芽或發霉&quot;], &quot;南瓜&quot;: [&quot;icon_南瓜&quot;, &quot;產季長，3-10 月為主；秋冬到初春的西洋南瓜（栗子、東昇）最鬆甜，栗子南瓜較貴&quot;, &quot;表皮硬實、顏色深沉均勻代表成熟度夠&quot;], &quot;小黃瓜&quot;: [&quot;icon_小黃瓜&quot;, &quot;盛產期每斤 $20-35&quot;, &quot;表面刺刺的越多越新鮮，摸起來有點扎手最好&quot;], &quot;冬瓜&quot;: [&quot;icon_冬瓜&quot;, &quot;夏季盛產，常切塊秤重賣，一斤約 $15-25&quot;, &quot;整顆表面白霜均勻、硬實有重量&quot;]}}" aria-label="當季尚青"><img alt="" data-kind="fruit"><img alt="" data-kind="veg"><span class="tv-season-cap"></span></button><div class="tv-daily"><small>每日一學</small><strong>比 OK 手勢，把麵線塞滿就是一人份。</strong></div><div class="tv-label">別忘了</div><div class="sb-row"><span>洗牙</span><em style="color:#E8856B;font-weight:800">每半年一次</em></div><div class="sb-row"><span>成人健檢</span><em style="color:#E8856B;font-weight:800">30–39歲每5年</em></div><div class="sb-row"><span>機車排氣定期檢驗</span><em style="color:#E8856B;font-weight:800">出廠滿5年後，每年一次</em></div></div><div class="tv-view" data-view="season"><button type="button" class="tv-back">‹ 首頁</button><div class="ph-title">當季尚青</div><div class="tv-season-list"></div></div><div class="tv-view" data-view="search"><button type="button" class="tv-back">‹ 首頁</button><input class="tv-input" type="search" placeholder="搜尋百科、工具、福利..." aria-label="搜尋示範" data-index="[[&quot;新手福利包&quot;, &quot;新手福利包 能領的補助 / 免費資源 福利 補助 免費 健檢 洗牙 租金 津貼 獎勵 篩檢 疫苗 諮商&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;提醒管家&quot;, &quot;提醒管家 重要日期幫你記 提醒 行事曆 到期 驗車 報稅 續約 洗牙&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;人生訂閱&quot;, &quot;人生訂閱 固定支出與續約日 訂閱 保險 房貸 車貸 手機 串流 續約 扣款&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;準備清單&quot;, &quot;準備清單 出發前一項一項勾 搬家 出國 退租 遷移 換地址 水電 網路搬遷&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;挑地方&quot;, &quot;挑地方 比一比再決定 看房 租屋 買房 房子 評分 水壓 採光 格局 比較&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;紙本在哪&quot;, &quot;紙本在哪 拍起來就不會忘 紙本 文件 重要資料 資料夾 租約 權狀 保單 保固 存摺 戶口名簿 證件 照片&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;單位換算&quot;, &quot;單位換算 坪 / 公分 / 杯 / 度 單位 換算 坪 公分 公升 杯 度 盎司 台斤&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;垃圾分類&quot;, &quot;垃圾分類 這個要丟哪 垃圾 分類 回收 廚餘 資源回收 丟&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;洗滌標籤&quot;, &quot;洗滌標籤 衣服標籤符號 洗衣 洗滌 標籤 衣服 水洗 乾洗 熨燙 符號&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;拜拜供品&quot;, &quot;拜拜供品 拜什麼 / 幾炷香 拜拜 供品 香 金紙 祭祀 地基主 神明 祖先&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;紅包計算機&quot;, &quot;紅包計算機 包多少不失禮 紅包 包多少 禮金 婚禮 白包 奠儀 彌月 禮數&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;緊急電話&quot;, &quot;緊急電話 報案 / 求助一鍵撥 緊急 電話 報案 110 119 165 113 求助&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;災害 SOP&quot;, &quot;災害 SOP 災害發生怎麼辦 災害 防災 颱風 豪雨 淹水 地震 海嘯 土石流 堰塞湖 火災 瓦斯 一氧化碳 觸電 復電 避難 急救 溺水 燒燙傷 噎到 出血 詐騙 遭竊 職災 家暴 性侵 性騷擾 車禍&quot;, &quot;features#tools&quot;, &quot;工具&quot;], [&quot;第一次報稅完整教學（手機版）&quot;, &quot;第一次報稅完整教學（手機版） 第一次報稅不用慌，手機加健保卡就能報，從要不要報、怎麼登入到看懂自己是繳還是退，一步步帶你做完。 報稅 新鮮人 手機報稅&quot;, &quot;a/tax-1&quot;, &quot;百科&quot;], [&quot;信用卡入門：年費、循環利率、最低應繳&quot;, &quot;信用卡入門：年費、循環利率、最低應繳 第一張信用卡別亂辦，這幾個地雷先搞懂再刷。 信用卡 理財 新鮮人&quot;, &quot;a/money-2&quot;, &quot;百科&quot;], [&quot;創業稅入門：營業稅三段級距，先記死&quot;, &quot;創業稅入門：營業稅三段級距，先記死 開始營業最常被搞糊的『我要不要繳營業稅、要不要開發票』——三段級距一次講白。 創業 報稅 營業稅 年度查&quot;, &quot;a/startup-3&quot;, &quot;百科&quot;], [&quot;免稅額、扣除額怎麼算（114 年度）&quot;, &quot;免稅額、扣除額怎麼算（114 年度） 報稅前先搞懂這幾個數字，才知道自己要不要繳、能退多少。 報稅 稅務 金錢&quot;, &quot;a/tax-2&quot;, &quot;百科&quot;], [&quot;列舉扣除額：哪些能扣、跟標準怎麼選（114 年度）&quot;, &quot;列舉扣除額：哪些能扣、跟標準怎麼選（114 年度） 列舉扣除算得好，退稅多幾千甚至上萬——這些支出記得留單據。 報稅 稅務 金錢&quot;, &quot;a/tax-3&quot;, &quot;百科&quot;], [&quot;日常省錢眉角&quot;, &quot;日常省錢眉角 省錢不用刻意省吃儉用，這些小地方留意一下就能少花。 省錢 發票 機車 超商 購物&quot;, &quot;a/money-7&quot;, &quot;百科&quot;], [&quot;投資入門：開戶、ETF、定期定額&quot;, &quot;投資入門：開戶、ETF、定期定額 想開始投資但不知從哪起步？開戶到買進的基本概念一次看懂。 投資 理財 金錢&quot;, &quot;a/invest-1&quot;, &quot;百科&quot;], [&quot;怎麼查自己有哪些保險&quot;, &quot;怎麼查自己有哪些保險 買之前先查自己已經有哪些——勞保局、健保署、保險存摺、公司人資，四個地方一次盤點。 保險 金錢&quot;, &quot;a/insurance-3&quot;, &quot;百科&quot;], [&quot;買賣股票、ETF 要付哪些錢&quot;, &quot;買賣股票、ETF 要付哪些錢 下單前先知道手續費和證交稅怎麼算，免得獲利被吃掉。 投資 理財 金錢&quot;, &quot;a/invest-2&quot;, &quot;百科&quot;], [&quot;保險入門：三種人、常見險種&quot;, &quot;保險入門：三種人、常見險種 要保人、被保險人、受益人是誰？實支實付、意外、重疾各保什麼，一次搞懂。 保險 金錢&quot;, &quot;a/insurance-1&quot;, &quot;百科&quot;], [&quot;健保 vs 商業保險、年輕人怎麼配&quot;, &quot;健保 vs 商業保險、年輕人怎麼配 健保保大、商業補小——剛出社會的保險怎麼排優先順序。 保險 金錢&quot;, &quot;a/insurance-2&quot;, &quot;百科&quot;], [&quot;國民年金 vs 勞保退休、換工作空檔&quot;, &quot;國民年金 vs 勞保退休、換工作空檔 離職沒工作那段，國保自動接手；國保和勞保退休差在哪，一次看懂。 年金 勞保 金錢&quot;, &quot;a/pension-1&quot;, &quot;百科&quot;], [&quot;不知道要看哪科？症狀對應科別指南&quot;, &quot;不知道要看哪科？症狀對應科別指南 不舒服又不知道該看哪一科？常見症狀對應科別都幫你列好。 看診 醫療 健保&quot;, &quot;a/med-1&quot;, &quot;百科&quot;], [&quot;掛急診還是看診？&quot;, &quot;掛急診還是看診？ 急診不是先到先看，是看誰病情急——什麼狀況該掛急診，什麼看診所就好。 急診 就醫 健保&quot;, &quot;a/emergency-room-1&quot;, &quot;百科&quot;], [&quot;緊急電話、CPR、AED&quot;, &quot;緊急電話、CPR、AED 110、119、113、165、1925 各打哪支；CPR 和 AED 基本步驟。 急救 緊急 健康&quot;, &quot;a/emergency-1&quot;, &quot;百科&quot;], [&quot;看牙：健保給付什麼、什麼要自費&quot;, &quot;看牙：健保給付什麼、什麼要自費 洗牙、補牙、根管、拔牙健保都有給付；假牙、植牙、矯正才要自費。 牙科 健保 就醫&quot;, &quot;a/dental-1&quot;, &quot;百科&quot;], [&quot;心理諮商：免費和補助管道&quot;, &quot;心理諮商：免費和補助管道 心情撐不住不用硬扛——安心專線、社區心衛中心，還有 15–45 歲免費諮商方案。 心理健康 諮商 補助&quot;, &quot;a/mental-health-1&quot;, &quot;百科&quot;], [&quot;身體小毛病自救&quot;, &quot;身體小毛病自救 抽筋、喉嚨痛、睡不好，其實自己就能處理。 健康 睡眠 咖啡 運動 身體保養&quot;, &quot;a/med-6&quot;, &quot;百科&quot;], [&quot;久坐族的腰痠肩痛&quot;, &quot;久坐族的腰痠肩痛 椅子、螢幕、坐姿這樣調，坐一整天也不卡。 姿勢 辦公室 久坐 頸椎 工學&quot;, &quot;a/med-8&quot;, &quot;百科&quot;], [&quot;第一次租屋完整清單&quot;, &quot;第一次租屋完整清單 看房、簽約、押金該注意的，都幫你整理好了。 租屋 押金 合約&quot;, &quot;a/house-1&quot;, &quot;百科&quot;], [&quot;押金規定：最多只能收 2 個月，房東不退怎麼辦&quot;, &quot;押金規定：最多只能收 2 個月，房東不退怎麼辦 押金不是房東說了算，被多扣、不退都有辦法處理。 租屋 押金 消費申訴&quot;, &quot;a/house-3&quot;, &quot;百科&quot;], [&quot;第一次煮飯：電鍋萬用 5 道菜&quot;, &quot;第一次煮飯：電鍋萬用 5 道菜 剛搬出來不會煮？一台電鍋、外鍋一杯水，新手也能煮出五道菜。 料理 電鍋 新手料理 五道菜&quot;, &quot;a/life-2&quot;, &quot;百科&quot;], [&quot;租約陷阱、房東不修怎麼辦&quot;, &quot;租約陷阱、房東不修怎麼辦 簽約前看哪些條款、東西壞了房東不修、想提前搬走，怎麼自保。 租屋 居家&quot;, &quot;a/house-7&quot;, &quot;百科&quot;], [&quot;租屋怎麼省電費&quot;, &quot;租屋怎麼省電費 住套房或租屋，幾個小習慣改一改，電費就降下來了。 租屋 省電 冷氣 濾網 熱水器 待機&quot;, &quot;a/house-6&quot;, &quot;百科&quot;], [&quot;下廚省力小撇步&quot;, &quot;下廚省力小撇步 下廚總有些卡手的小地方，學會幾招就順多了。 料理 廚房 烹飪技巧 雞蛋 省力&quot;, &quot;a/life-6&quot;, &quot;百科&quot;], [&quot;食材延長保鮮&quot;, &quot;食材延長保鮮 東西買回來沒幾天就壞？幾個正確放法讓它們更耐放。 料理 食材 保存 冰箱 減少浪費 馬鈴薯 冷凍&quot;, &quot;a/life-7&quot;, &quot;百科&quot;], [&quot;居家清潔妙招&quot;, &quot;居家清潔妙招 家裡最難清的那幾個角落，用廚房就有的東西也能搞定。 居家 清潔 除黴 省錢 微波爐&quot;, &quot;a/life-8&quot;, &quot;百科&quot;], [&quot;颱風防災與瓦斯安全&quot;, &quot;颱風防災與瓦斯安全 颱風來之前先準備好這些，停水停電才不會慌。 居家 颱風 防災 瓦斯 停電&quot;, &quot;a/life-9&quot;, &quot;百科&quot;], [&quot;蔬菜水果怎麼挑&quot;, &quot;蔬菜水果怎麼挑 在市場或超市怎麼一眼挑到好的，看得到摸得到的判斷。 食材 買菜&quot;, &quot;a/food-1&quot;, &quot;百科&quot;], [&quot;肉品海鮮怎麼挑&quot;, &quot;肉品海鮮怎麼挑 生鮮新不新鮮，看顏色、氣味、彈性三個重點。 食材 買菜&quot;, &quot;a/food-2&quot;, &quot;百科&quot;], [&quot;居家修繕 DIY：燈泡、馬桶、水龍頭&quot;, &quot;居家修繕 DIY：燈泡、馬桶、水龍頭 燈泡怎麼換、馬桶堵了怎麼通、WD-40 到底幹嘛用，自己搞定省師傅錢。 居家 修繕&quot;, &quot;a/house-fix-1&quot;, &quot;百科&quot;], [&quot;洗衣機、冷氣、冰箱怎麼用跟清&quot;, &quot;洗衣機、冷氣、冰箱怎麼用跟清 洗衣機功能不會按、冷氣濾網多久洗、冰箱結霜怎麼辦，家電基本照顧。 居家 家電&quot;, &quot;a/home-appliance-1&quot;, &quot;百科&quot;], [&quot;煮飯基礎：電鍋水量、食材處理&quot;, &quot;煮飯基礎：電鍋水量、食材處理 電鍋外鍋加多少水、菜要不要洗、肉怎麼退冰，煮飯前的基本功。 煮飯 食材&quot;, &quot;a/cook-1&quot;, &quot;百科&quot;], [&quot;微波爐怎麼用、什麼不能放&quot;, &quot;微波爐怎麼用、什麼不能放 金屬不能放、保鮮膜要戳洞，微波爐安全用法和加熱訣竅。 家電 煮飯&quot;, &quot;a/microwave-1&quot;, &quot;百科&quot;], [&quot;蟑螂、蚊蟲、黴和污漬怎麼處理&quot;, &quot;蟑螂、蚊蟲、黴和污漬怎麼處理 家裡出現蟑螂、螞蟻或洗不掉的污漬？廚房就有的東西也能搞定。 居家 清潔&quot;, &quot;a/clean-2&quot;, &quot;百科&quot;], [&quot;勞基法基礎：加班費、特休、試用期&quot;, &quot;勞基法基礎：加班費、特休、試用期 加班費怎麼算、特休幾天、試用期有沒有保障，被凹之前先懂這些。 勞權 職場&quot;, &quot;a/labor-1&quot;, &quot;百科&quot;], [&quot;離職與資遣：你能拿到什麼&quot;, &quot;離職與資遣：你能拿到什麼 離職方式不同，能拿到的補償差很多，先搞清楚再走。 離職 資遣 勞權&quot;, &quot;a/resign-1&quot;, &quot;百科&quot;], [&quot;個人接案、行號、開公司：我該選哪個&quot;, &quot;個人接案、行號、開公司：我該選哪個 差在登記門檻、欠債誰扛、怎麼課稅，選錯代價不小。 創業 接案 公司登記&quot;, &quot;a/startup-1&quot;, &quot;百科&quot;], [&quot;新人到職要確認的事&quot;, &quot;新人到職要確認的事 勞健保有沒有保、勞退有沒有提繳，到職後自己就能查。 到職 勞保 勞權&quot;, &quot;a/onboard-1&quot;, &quot;百科&quot;], [&quot;開公司、行號的流程：實際怎麼跑一遍&quot;, &quot;開公司、行號的流程：實際怎麼跑一遍 決定好型態後，名稱預查到稅籍登記怎麼走、規費多少、要不要找會計師，一次看懂。 創業 公司登記 流程&quot;, &quot;a/startup-2&quot;, &quot;百科&quot;], [&quot;被欠薪、勞資爭議怎麼辦&quot;, &quot;被欠薪、勞資爭議怎麼辦 被欠薪、被超時凹班別自己忍，有幾條免費管道能求助。 勞資爭議 欠薪 勞權&quot;, &quot;a/dispute-1&quot;, &quot;百科&quot;], [&quot;接案、開業後，勞健保勞退怎麼自己顧&quot;, &quot;接案、開業後，勞健保勞退怎麼自己顧 沒有雇主幫你保了——這幾種身分怎麼接續，別讓它斷保。 創業 勞保 健保&quot;, &quot;a/startup-4&quot;, &quot;百科&quot;], [&quot;網路創業的法規：七天解除權、個資、商標&quot;, &quot;網路創業的法規：七天解除權、個資、商標 網路開店有幾條法規容易誤踩，一次搞懂會被罰在哪。 創業 網路 商標&quot;, &quot;a/startup-5&quot;, &quot;百科&quot;], [&quot;創業有哪些政府資源、怎麼找&quot;, &quot;創業有哪些政府資源、怎麼找 創業資源其實不少，先認得三個官方入口就能找到。 創業 補助 政府資源 年度查&quot;, &quot;a/startup-6&quot;, &quot;百科&quot;], [&quot;商標怎麼註冊、要多少錢&quot;, &quot;商標怎麼註冊、要多少錢 品牌沒登記商標，別人用一樣的名字你很難主張。 創業 商標 智財&quot;, &quot;a/startup-7&quot;, &quot;百科&quot;], [&quot;車禍 SOP：黃金 10 分鐘做哪 5 件事&quot;, &quot;車禍 SOP：黃金 10 分鐘做哪 5 件事 車禍當下別慌，10 分鐘做完這 5 件事，理賠和肇責才有保障。 車禍 SOP 保險&quot;, &quot;a/traffic-2&quot;, &quot;百科&quot;], [&quot;騎車搭車的眉角&quot;, &quot;騎車搭車的眉角 上路前先知道這些，遇到狀況才不會踩雷、吃虧。 交通 悠遊卡 機車 高鐵 安全帽 台鐵 行車記錄器&quot;, &quot;a/traffic-6&quot;, &quot;百科&quot;], [&quot;第一次搭飛機、出國&quot;, &quot;第一次搭飛機、出國 液體怎麼帶、護照效期、提早多久到機場，第一次出國不慌。 出國 交通&quot;, &quot;a/flight-1&quot;, &quot;百科&quot;], [&quot;機車保養、驗車、強制險&quot;, &quot;機車保養、驗車、強制險 機油多久換、要不要驗車、強制險和第三人責任險差在哪。 機車 交通&quot;, &quot;a/vehicle-1&quot;, &quot;百科&quot;], [&quot;海外換匯與刷卡&quot;, &quot;海外換匯與刷卡 出國前換多少現金、刷卡手續費、被問幣別選哪個，搞懂少花冤枉錢。 出國 換匯 刷卡&quot;, &quot;a/travel-money-1&quot;, &quot;百科&quot;], [&quot;海外上網：漫遊、網卡、eSIM&quot;, &quot;海外上網：漫遊、網卡、eSIM 漫遊、當地網卡、eSIM 三種怎麼選，出國前先設定好落地就能用。 出國 上網 eSIM&quot;, &quot;a/travel-internet-1&quot;, &quot;百科&quot;], [&quot;人在國外出狀況怎麼辦&quot;, &quot;人在國外出狀況怎麼辦 護照掉了、被偷、生病——國外急難先找駐外館處，記下外交部緊急聯絡中心。 出國 急難救助 護照&quot;, &quot;a/travel-emergency-1&quot;, &quot;百科&quot;], [&quot;拜拜基本禮節：香幾炷、怎麼合十、神明桌規矩&quot;, &quot;拜拜基本禮節：香幾炷、怎麼合十、神明桌規矩 第一次自己拜拜怕失禮？香幾炷、怎麼拜，一次搞懂。 拜拜 禮俗 民俗&quot;, &quot;a/etq-4&quot;, &quot;百科&quot;], [&quot;拜拜進階：順序、日子、公司怎麼拜&quot;, &quot;拜拜進階：順序、日子、公司怎麼拜 初一十五、神明祖先地基主，順序和日子一次搞懂。 拜拜 禮俗&quot;, &quot;a/etq-5&quot;, &quot;百科&quot;], [&quot;職場與人際應對&quot;, &quot;職場與人際應對 職場進退、怎麼拒絕、怎麼開口，幾個讓相處更順的原則。 人際 職場&quot;, &quot;a/social-1&quot;, &quot;百科&quot;], [&quot;婚禮、彌月、入厝禮俗&quot;, &quot;婚禮、彌月、入厝禮俗 同事朋友辦喜事、生小孩、搬新家，包多少送什麼看這篇。 禮俗 紅包&quot;, &quot;a/wedding-1&quot;, &quot;百科&quot;], [&quot;親人過世，前幾天和後續要辦什麼&quot;, &quot;親人過世，前幾天和後續要辦什麼 家人走了，慌亂中該先做什麼、哪些有期限，照順序來。 後事 禮俗 證件&quot;, &quot;a/funeral-1&quot;, &quot;百科&quot;], [&quot;參加喪禮：白包與該注意的禮數&quot;, &quot;參加喪禮：白包與該注意的禮數 第一次參加告別式怕失禮——白包包多少、穿什麼、什麼話不能說。 喪禮 白包 禮俗&quot;, &quot;a/condolence-1&quot;, &quot;百科&quot;], [&quot;探病禮節：送什麼、避什麼&quot;, &quot;探病禮節：送什麼、避什麼 探病送錯禮反而失禮——什麼能送、什麼有諧音忌諱、什麼時候去。 探病 送禮 禮俗&quot;, &quot;a/visit-sick-1&quot;, &quot;百科&quot;], [&quot;送禮的諧音與數字禁忌&quot;, &quot;送禮的諧音與數字禁忌 鐘、傘、鞋為什麼不能送？常見送禮諧音和數字禁忌一次整理。 送禮 禁忌 禮俗&quot;, &quot;a/gift-taboo-1&quot;, &quot;百科&quot;], [&quot;自然人憑證是什麼、怎麼辦&quot;, &quot;自然人憑證是什麼、怎麼辦 報稅、查勞健保都會用到的政府網路身分證，怎麼辦一次看懂。 自然人憑證 證件 報稅&quot;, &quot;a/natcert-1&quot;, &quot;百科&quot;], [&quot;考駕照：機車與汽車&quot;, &quot;考駕照：機車與汽車 第一次考駕照？機車汽車的年齡、流程、規費和題庫都幫你整理好。 駕照 交通&quot;, &quot;a/license-1&quot;, &quot;百科&quot;], [&quot;身分證怎麼辦&quot;, &quot;身分證怎麼辦 身分證不見了、想換照片、剛滿 14 歲？辦法一次講清楚。 身分證 證件&quot;, &quot;a/idcard-1&quot;, &quot;百科&quot;], [&quot;第一次辦護照&quot;, &quot;第一次辦護照 準備第一次出國？護照怎麼辦、要帶什麼、規費效期和役男注意事項一次看。 護照 出國 役男&quot;, &quot;a/passport-1&quot;, &quot;百科&quot;], [&quot;長大後要從爸媽手上接過來的事&quot;, &quot;長大後要從爸媽手上接過來的事 健保、戶籍、帳戶、保單、門號…成年後該自己接手的，一次盤點去哪查。 成年盤點 政府 證件&quot;, &quot;a/handover-1&quot;, &quot;百科&quot;], [&quot;戶籍遷徙怎麼辦&quot;, &quot;戶籍遷徙怎麼辦 搬家、租屋、獨立成戶，戶籍要不要遷、去哪辦、帶什麼，一次看懂。 戶籍 搬家 租屋&quot;, &quot;a/household-1&quot;, &quot;百科&quot;], [&quot;印鑑登記與印鑑證明&quot;, &quot;印鑑登記與印鑑證明 辦過戶、繼承、重大委任常被要求附印鑑證明，這篇講清楚怎麼登記、怎麼申請。 印鑑證明 證件&quot;, &quot;a/seal-1&quot;, &quot;百科&quot;], [&quot;兵役怎麼辦&quot;, &quot;兵役怎麼辦 快到當兵年紀，從誰要服役、役期多長到流程怎麼走，一次看懂。 兵役 役男&quot;, &quot;a/military-1&quot;, &quot;百科&quot;], [&quot;防詐騙、小糾紛怎麼處理&quot;, &quot;防詐騙、小糾紛怎麼處理 常見詐騙怎麼識破、被騙打哪支、小錢糾紛有哪些低成本管道。 防詐 法律&quot;, &quot;a/scam-1&quot;, &quot;百科&quot;], [&quot;網購七天鑑賞期與退貨&quot;, &quot;網購七天鑑賞期與退貨 網購有 7 天鑑賞期可無條件退，但有 7 種商品不適用，先搞懂再買。 網購 退貨 消費者權益&quot;, &quot;a/online-shopping-1&quot;, &quot;百科&quot;], [&quot;帳號被盜、個資外洩怎麼辦&quot;, &quot;帳號被盜、個資外洩怎麼辦 帳號被盜、個資外洩，第一時間怎麼止損——改密碼、開兩步驟、通知止付。 帳號安全 個資 防詐&quot;, &quot;a/account-security-1&quot;, &quot;百科&quot;], [&quot;手機掉了、被偷怎麼辦&quot;, &quot;手機掉了、被偷怎麼辦 手機不見的黃金處理順序——遠端鎖定、SIM 掛失、App 止付、報案。 手機遺失 資安 防詐&quot;, &quot;a/lost-phone-1&quot;, &quot;百科&quot;], [&quot;半年一次健保免費洗牙&quot;, &quot;半年一次健保免費洗牙 多久沒洗牙了？健保給的額度別放著過期。 免費醫療 健康 全年齡&quot;, &quot;a/benefit-1&quot;, &quot;百科&quot;], [&quot;30 歲開始免費成人健檢&quot;, &quot;30 歲開始免費成人健檢 到了該健檢的年紀，其實不用自己花錢做。 免費醫療 健康 30歲以上&quot;, &quot;a/benefit-2&quot;, &quot;百科&quot;], [&quot;15-45 歲每人 3 次免費諮商&quot;, &quot;15-45 歲每人 3 次免費諮商 心情卡關想找人聊聊？這筆諮商費政府出。 免費醫療 心理健康 15-45歲&quot;, &quot;a/benefit-3&quot;, &quot;百科&quot;], [&quot;25 歲起免費子宮頸抹片&quot;, &quot;25 歲起免費子宮頸抹片 十分鐘就做完的檢查，換一整年的安心。 免費醫療 健康 女性 30歲以上&quot;, &quot;a/benefit-4&quot;, &quot;百科&quot;], [&quot;39-79 歲終身一次免費肝炎篩檢&quot;, &quot;39-79 歲終身一次免費肝炎篩檢 不確定自己有沒有肝炎帶原？抽一次血就知道。 免費醫療 健康 40歲以上&quot;, &quot;a/benefit-5&quot;, &quot;百科&quot;], [&quot;45 歲起兩年一次大腸癌篩檢&quot;, &quot;45 歲起兩年一次大腸癌篩檢 不用上檢查台，領個採便管在家就能完成。 免費醫療 健康 40歲以上&quot;, &quot;a/benefit-6&quot;, &quot;百科&quot;], [&quot;公費流感疫苗用完為止全民開放&quot;, &quot;公費流感疫苗用完為止全民開放 每年猶豫要不要自費打流感疫苗？現在不用糾結了。 免費醫療 疫苗&quot;, &quot;a/benefit-7&quot;, &quot;百科&quot;], [&quot;勞工 5 年一次公司付錢健檢&quot;, &quot;勞工 5 年一次公司付錢健檢 定期健檢的錢其實該公司出，還能請公假去做。 免費醫療 在職勞工&quot;, &quot;a/benefit-8&quot;, &quot;百科&quot;], [&quot;勞保住院第 4 天就能領傷病給付&quot;, &quot;勞保住院第 4 天就能領傷病給付 住院沒收入心很慌？勞保會幫你補上一部分薪水。 政府補助 醫療 勞保&quot;, &quot;a/benefit-9&quot;, &quot;百科&quot;], [&quot;租金補貼最高月領 1.4 萬&quot;, &quot;租金補貼最高月領 1.4 萬 房租壓力大？這筆補貼整年都收件，線上就能辦。 政府補助 租屋 18-40歲&quot;, &quot;a/benefit-10&quot;, &quot;百科&quot;], [&quot;租金可當特別扣除額 18 萬省稅&quot;, &quot;租金可當特別扣除額 18 萬省稅 租屋族報稅別忘了這條，留好單據就能省幾千塊。 稅務優惠 租屋 報稅&quot;, &quot;a/benefit-11&quot;, &quot;百科&quot;], [&quot;產業人才投資方案 3 年 10 萬&quot;, &quot;產業人才投資方案 3 年 10 萬 上班族想進修又心疼學費？政府幫你出八成。 政府補助 學習 在職勞工&quot;, &quot;a/benefit-12&quot;, &quot;百科&quot;], [&quot;失業給付最多領 6 個月&quot;, &quot;失業給付最多領 6 個月 突然被資遣別慌，這筆給付能撐你找下一份工作。 政府補助 失業 勞保&quot;, &quot;a/benefit-13&quot;, &quot;百科&quot;], [&quot;青年跨域就業 4 種補助金&quot;, &quot;青年跨域就業 4 種補助金 到外地找工作開銷不小，交通搬家租屋都有得補。 政府補助 就業 18-29歲&quot;, &quot;a/benefit-14&quot;, &quot;百科&quot;], [&quot;新鮮人求職最高領 4.8 萬&quot;, &quot;新鮮人求職最高領 4.8 萬 剛畢業還沒著落？求職空窗期其實有津貼可領。 政府補助 就業 新鮮人&quot;, &quot;a/benefit-15&quot;, &quot;百科&quot;], [&quot;勞退自提 6% 退休金翻倍&quot;, &quot;勞退自提 6% 退休金翻倍 薪水先扣一筆進退休金，省稅又逼自己存錢。 稅務優惠 退休 勞保&quot;, &quot;a/benefit-16&quot;, &quot;百科&quot;], [&quot;勞保生育給付一次領 2 個月薪&quot;, &quot;勞保生育給付一次領 2 個月薪 準備迎接寶寶？這筆勞保給付 5 年內都能申請。 政府補助 生育 勞保&quot;, &quot;a/benefit-17&quot;, &quot;百科&quot;], [&quot;2026 起生育給付保底 10 萬&quot;, &quot;2026 起生育給付保底 10 萬 投保薪資不高也別擔心，差額政府自動補上。 政府補助 生育 2026新制&quot;, &quot;a/benefit-18&quot;, &quot;百科&quot;], [&quot;扶養 60 歲以上父母每人扣 9.7 萬&quot;, &quot;扶養 60 歲以上父母每人扣 9.7 萬 有在奉養爸媽？報稅時記得把他們列進來。 稅務優惠 報稅 扶養&quot;, &quot;a/benefit-19&quot;, &quot;百科&quot;], [&quot;捐款抵稅上限綜所總額 20%&quot;, &quot;捐款抵稅上限綜所總額 20% 平常有捐款習慣？報稅列舉出來能少繳一點。 稅務優惠 報稅 公益&quot;, &quot;a/benefit-20&quot;, &quot;百科&quot;], [&quot;圖書館借書證一證 3 用：電子書、論文期刊&quot;, &quot;圖書館借書證一證 3 用：電子書、論文期刊 辦一張借書證只要五分鐘，在家就能借遍全台。 免費學習 閱讀 圖書館&quot;, &quot;a/benefit-21&quot;, &quot;百科&quot;], [&quot;磨課師 MOOCs 免費上台大課&quot;, &quot;磨課師 MOOCs 免費上台大課 想旁聽大學課程不用人脈，打開網頁就能上。 免費學習 學習&quot;, &quot;a/benefit-24&quot;, &quot;百科&quot;], [&quot;文化幣 13-22 歲每年 1200 點&quot;, &quot;文化幣 13-22 歲每年 1200 點 還在年齡內就別浪費，看展買書的錢國家出。 生活便利 文化 13-22歲&quot;, &quot;a/benefit-26&quot;, &quot;百科&quot;], [&quot;TPASS 基北北桃月票 1200 吃到飽&quot;, &quot;TPASS 基北北桃月票 1200 吃到飽 每天通勤跨雙北？算下來月票大概率直接回本。 生活便利 交通 通勤&quot;, &quot;a/benefit-27&quot;, &quot;百科&quot;], [&quot;YouBike 前 30 分鐘雙北免費&quot;, &quot;YouBike 前 30 分鐘雙北免費 捷運站到公司那最後一段路，騎車其實不用錢。 生活便利 交通 雙北&quot;, &quot;a/benefit-28&quot;, &quot;百科&quot;], [&quot;台電節電獎勵 1 度省 0.6 元&quot;, &quot;台電節電獎勵 1 度省 0.6 元 電費想再省一點？先上台電網站登錄再說。 政府補助 省錢 住宅&quot;, &quot;a/benefit-29&quot;, &quot;百科&quot;], [&quot;iTaiwan 政府熱點免費 wifi 直接連&quot;, &quot;iTaiwan 政府熱點免費 wifi 直接連 在外面沒網路的時候，找找這個熱點就能撐一下。 生活便利 上網&quot;, &quot;a/benefit-30&quot;, &quot;百科&quot;], [&quot;電子戶籍謄本線上申辦免費&quot;, &quot;電子戶籍謄本線上申辦免費 臨時要戶籍謄本？不用請假跑戶政，在家就能辦。 隱藏小撇步 戶政&quot;, &quot;a/benefit-31&quot;, &quot;百科&quot;], [&quot;青年安心成家貸款最高 1000 萬&quot;, &quot;青年安心成家貸款最高 1000 萬 想買第一間房，先看看利率比較低的這條路。 政府補助 購屋 18-45歲&quot;, &quot;a/benefit-32&quot;, &quot;百科&quot;], [&quot;青年創業貸款最高 1200 萬低利&quot;, &quot;青年創業貸款最高 1200 萬低利 創業起步最缺資金，這筆低利貸款可以先研究。 政府補助 創業 18-45歲&quot;, &quot;a/benefit-33&quot;, &quot;百科&quot;], [&quot;台鐵 TR-PASS 學生版 5 日 800 元&quot;, &quot;台鐵 TR-PASS 學生版 5 日 800 元 學生想環島，這張票大概是最省的搭法。 生活便利 旅遊 學生&quot;, &quot;a/benefit-34&quot;, &quot;百科&quot;], [&quot;寵物登記＋絕育補助全台對照&quot;, &quot;寵物登記＋絕育補助全台對照 家裡毛孩晶片打了沒？新規定和補助一次看懂。 政府補助 寵物&quot;, &quot;a/benefit-35&quot;, &quot;百科&quot;], [&quot;雙北生育獎勵金完整對照&quot;, &quot;雙北生育獎勵金完整對照 住雙北準備生寶寶？這筆獎勵金有申請期限。 政府補助 生育 雙北&quot;, &quot;a/benefit-36&quot;, &quot;百科&quot;], [&quot;法扶電話諮詢免費問律師&quot;, &quot;法扶電話諮詢免費問律師 遇到糾紛想問律師又怕貴？先打這支專線就好。 隱藏小撇步 法律&quot;, &quot;a/benefit-38&quot;, &quot;百科&quot;], [&quot;18-35 的 HPV 疫苗：公費＋自費怎麼選&quot;, &quot;18-35 的 HPV 疫苗：公費＋自費怎麼選 錯過公費年齡也沒關係，先搞懂補打划不划算。 免費醫療 疫苗 HPV 自費&quot;, &quot;a/benefit-39&quot;, &quot;百科&quot;], [&quot;運動幣 500 元抽籤領 打球游泳添裝備&quot;, &quot;運動幣 500 元抽籤領 打球游泳添裝備 健身上課的錢想省一點？先去登記碰碰運氣。 政府補助 運動 16-22歲 青年&quot;, &quot;a/benefit-41&quot;, &quot;百科&quot;], [&quot;社宅申請：青年單身/新婚優先&quot;, &quot;社宅申請：青年單身/新婚優先 房租太貴想喘口氣？社宅租金打折還住得久。 政府補助 租屋 社宅 18-40歲&quot;, &quot;a/benefit-42&quot;, &quot;百科&quot;], [&quot;電動機車補助 經濟部+縣市加碼&quot;, &quot;電動機車補助 經濟部+縣市加碼 想換電動機車？中央加縣市的補助疊起來不少。 政府補助 交通 電動機車 通勤&quot;, &quot;a/benefit-43&quot;, &quot;百科&quot;], [&quot;青年就業領航 3 年存 36 萬&quot;, &quot;青年就業領航 3 年存 36 萬 畢業先工作不升學？政府每月幫你存一筆錢。 政府補助 就業 高中職畢業 18-22歲&quot;, &quot;a/benefit-44&quot;, &quot;百科&quot;], [&quot;公共托嬰／準公共化補助&quot;, &quot;公共托嬰／準公共化補助 小孩要送托了？兩種補助差很多，先弄懂再選。 政府補助 育兒 托嬰 已婚&quot;, &quot;a/benefit-45&quot;, &quot;百科&quot;]]"><div class="tv-results"></div></div></section><section class="tv-pane" data-pane="我的"><div class="tv-view on" data-view="mine"><div class="ph-title">我的</div><div class="tv-me"><img src="assets/app-icon.png" alt=""><div><strong>其實是地瓜的胡蘿蔔君</strong><span>獲得 67 個讚</span></div></div><div class="tv-card"><strong>App 導覽</strong><span>三分鐘看完這本手冊怎麼用</span></div><div class="tv-card"><strong>看你是哪種大人</strong><span>15 題小測驗・5 分鐘</span></div><div class="tv-label">我的活動</div><div class="sb-row"><span>我的投稿</span><b>›</b></div><div class="sb-row"><span>收藏</span><b>›</b></div><div class="tv-label">通知設定</div><div class="tv-toggle"><div><strong>貼文通知</strong><span>有人回應、按讚你的內容，或投稿審核有結果</span></div><button type="button" class="tv-switch on" data-switch="貼文通知" aria-label="貼文通知"></button></div><div class="tv-toggle"><div><strong>每日一學</strong><span>每天 12:00 推一則小知識</span></div><button type="button" class="tv-switch on" data-switch="每日一學" aria-label="每日一學"></button></div><div class="tv-toggle"><div><strong>當季食材</strong><span>每天 18:00 推一種食材＋好處</span></div><button type="button" class="tv-switch" data-switch="當季食材" aria-label="當季食材"></button></div><div class="tv-toggle"><div><strong>生活挑戰</strong><span>提醒挑選任務與已安排的日期</span></div><button type="button" class="tv-switch on" data-switch="生活挑戰" aria-label="生活挑戰"></button></div></div></section></div><div class="ph-tabs tv-tabs"><button type="button" data-tab="首頁" class="">首頁</button><button type="button" data-tab="社群" class="">社群</button><button type="button" data-tab="生活" class="on">生活</button><button type="button" data-tab="百科" class="">百科</button><button type="button" data-tab="我的" class="">我的</button></div></div></div><p class="sc-note">功能示意・會自己播放，點一下就換你操作</p></div></div></div></div></section>
+<div class="marquee" aria-label="主題"><div class="marquee-row"><a href="topics/moving">租屋搬家</a><a href="topics/home">下廚與家事</a><a href="topics/first-job">第一份工作</a><a href="topics/money">錢與保險</a><a href="topics/tax">報稅</a><a href="topics/health">看醫生與健康</a><a href="topics/documents">證件與政府</a><a href="topics/travel">出國與交通</a><a href="topics/safety">防災急救</a><a href="topics/etiquette">人情禮俗</a><a href="features#tools">新手福利包</a><a href="topics/moving">租屋搬家</a><a href="topics/home">下廚與家事</a><a href="topics/first-job">第一份工作</a><a href="topics/money">錢與保險</a><a href="topics/tax">報稅</a><a href="topics/health">看醫生與健康</a><a href="topics/documents">證件與政府</a><a href="topics/travel">出國與交通</a><a href="topics/safety">防災急救</a><a href="topics/etiquette">人情禮俗</a><a href="features#tools">新手福利包</a></div><div class="marquee-row rev"><a href="features#tools">提醒管家</a><a href="features#tools">人生訂閱</a><a href="features#tools">準備清單</a><a href="features#tools">挑地方</a><a href="features#tools">紙本在哪</a><a href="features#tools">單位換算</a><a href="features#tools">垃圾分類</a><a href="features#tools">洗滌標籤</a><a href="features#tools">拜拜供品</a><a href="features#tools">紅包計算機</a><a href="features#tools">緊急電話</a><a href="features#tools">災害 SOP</a><a href="features#tools">提醒管家</a><a href="features#tools">人生訂閱</a><a href="features#tools">準備清單</a><a href="features#tools">挑地方</a><a href="features#tools">紙本在哪</a><a href="features#tools">單位換算</a><a href="features#tools">垃圾分類</a><a href="features#tools">洗滌標籤</a><a href="features#tools">拜拜供品</a><a href="features#tools">紅包計算機</a><a href="features#tools">緊急電話</a><a href="features#tools">災害 SOP</a></div></div>
+<section class="sc-band"><div class="sc-in"><div class="stats" data-stagger><div class="stat"><b data-count="112">112</b><span>篇百科文章</span></div><div class="stat"><b data-count="843">843</b><span>則社群討論</span></div><div class="stat"><b data-count="138">138</b><span>則每日一學</span></div><div class="stat"><b data-count="13">13</b><span>個生活工具</span></div></div></div></section>
+<section class="sc-band tint"><div class="sc-in sc-split flip"><div class="sc-copy" data-reveal><p class="sc-eyebrow">這個月的挑戰</p><h2>生活，不只剩待辦事項</h2><p class="sc-lead">在「生活」分頁挑選每月挑戰：與家人、情人、朋友，還有自己。完成後留下一張照片或一句話，累積成年度回顧。</p><ul class="sc-points"><li>挑選內建挑戰，也能自訂任務</li><li>安排日期，放進生活月曆</li><li>完成後留下照片與記憶</li></ul></div><div data-reveal><div class="sc-stage"><div class="sc-card"><div class="ph" data-demo="challenge"><div class="ph-screen"><div class="ph-status">9:41</div><div class="ph-body"><div class="ph-title">這個月的挑戰</div><div data-groups="{&quot;與家人&quot;: [[&quot;陪家人好好吃一頓飯&quot;, &quot;特別留一段時間給彼此&quot;], [&quot;和家人好好通話一次&quot;, &quot;不只問吃飽了沒&quot;]], &quot;與情人&quot;: [[&quot;盛裝打扮，認真約會一次&quot;, &quot;像剛認識時一樣期待這一天&quot;], [&quot;在家安排一場約會&quot;, &quot;不出門，也能認真相處&quot;]], &quot;與朋友&quot;: [[&quot;約一位很久沒見的朋友見面&quot;, &quot;重新接回一段想念的關係&quot;], [&quot;和一位老朋友交換最近的三件事&quot;, &quot;不用硬聊很久，從近況開始&quot;], [&quot;參加一場感興趣的小型活動&quot;, &quot;到一個可能認識新朋友的地方&quot;]], &quot;與自己&quot;: [[&quot;挑戰一道沒做過的料理&quot;, &quot;為日常加一點新鮮感&quot;], [&quot;安排一場自己的藝文約會&quot;, &quot;認真陪自己喜歡一件事&quot;], [&quot;嘗試一件一直想學的事&quot;, &quot;把「有一天」排進這個月&quot;]]}"><div class="ph-sec"><div class="ph-sec-h">我的挑戰<small class="ch-count">0/0</small></div><div class="ch-prog"><i></i></div><div class="ch-mine"></div></div><div class="ch-seg"><button type="button" data-g="與家人">與家人</button><button type="button" data-g="與情人">與情人</button><button type="button" data-g="與朋友">與朋友</button><button type="button" data-g="與自己">與自己</button></div><div class="ch-pool"></div></div></div><div class="ph-tabs" aria-hidden="true"><span class="">首頁</span><span class="">社群</span><span class="on">生活</span><span class="">百科</span><span class="">我的</span></div></div></div><p class="sc-note">功能示意・會自己播放，點一下就換你操作</p></div></div></div></div></section>
+<section class="sc-band"><div class="sc-in sc-split"><div class="sc-copy" data-reveal><p class="sc-eyebrow">大人工具箱</p><h2>生活工具，真的拿來用</h2><p class="sc-lead">搬家、出國前一項一項確認，看房時比一比，重要文件拍起來收好。工具箱可調整順序，隱藏不常用的工具。</p><ul class="sc-points"><li>準備清單：出發前一項一項勾</li><li>挑地方：比一比再決定</li><li>紙本在哪：拍起來就不會忘</li></ul></div><div data-reveal><div class="sc-stage"><div class="sc-card"><div class="ph" data-demo="toolbox"><div class="ph-screen"><div class="ph-status">9:41</div><div class="ph-body"><div class="ph-title">大人工具箱</div><div class="tb-views"><div class="tb-home"><div class="tb-grid"><button type="button" class="tb-tool"><strong>新手福利包</strong><span>能領的補助 / 免費資源</span></button><button type="button" class="tb-tool"><strong>提醒管家</strong><span>重要日期幫你記</span></button><button type="button" class="tb-tool"><strong>人生訂閱</strong><span>固定支出與續約日</span></button><button type="button" class="tb-tool live"><strong>準備清單</strong><span>出發前一項一項勾</span></button><button type="button" class="tb-tool"><strong>挑地方</strong><span>比一比再決定</span></button><button type="button" class="tb-tool"><strong>紙本在哪</strong><span>拍起來就不會忘</span></button><button type="button" class="tb-tool"><strong>單位換算</strong><span>坪 / 公分 / 杯 / 度</span></button><button type="button" class="tb-tool"><strong>垃圾分類</strong><span>這個要丟哪</span></button><button type="button" class="tb-tool"><strong>洗滌標籤</strong><span>衣服標籤符號</span></button><button type="button" class="tb-tool"><strong>拜拜供品</strong><span>拜什麼 / 幾炷香</span></button><button type="button" class="tb-tool"><strong>紅包計算機</strong><span>包多少不失禮</span></button><button type="button" class="tb-tool"><strong>緊急電話</strong><span>報案 / 求助一鍵撥</span></button><button type="button" class="tb-tool"><strong>災害 SOP</strong><span>災害發生怎麼辦</span></button></div><p class="tb-hint">點「準備清單」試試看</p></div><div class="tb-list"><button type="button" class="tb-back">‹ 大人工具箱</button><div class="ph-sec-h">租屋搬家<small class="tb-count"></small></div><div class="ch-prog"><i></i></div><div class="tb-phase">搬家前</div><div class="tb-item"><span class="chk"></span><div><strong>通知房東退租 / 搬遷日期</strong><span>確認合約上的提前通知天數</span></div></div><div class="tb-item"><span class="chk"></span><div><strong>找搬家公司比價（至少3家）</strong><span>確認是否含樓層費、拆裝費</span></div></div><div class="tb-item"><span class="chk"></span><div><strong>整理打包、斷捨離</strong><span>不要的東西可捐贈或二手賣出</span></div></div><div class="tb-item"><span class="chk"></span><div><strong>預約斷水電瓦斯</strong><span>通常提前3-5個工作天申請</span></div></div><div class="tb-phase">搬家當天</div><div class="tb-item"><span class="chk"></span><div><strong>檢查舊屋所有空間</strong><span>抽屜、陽台、儲藏室都要看</span></div></div><div class="tb-item"><span class="chk"></span><div><strong>拍照存證（舊屋狀況）</strong><span>退租時作為無損壞證明</span></div></div><div class="tb-item"><span class="chk"></span><div><strong>記錄水電表度數</strong><span>拍照留存，避免帳單糾紛</span></div></div><div class="tb-phase">搬家後</div><div class="tb-item"><span class="chk"></span><div><strong>遷戶籍（遷入 30 日內）</strong><span>法定義務，逾期可罰；帶雙證件到戶政事務所辦</span></div></div><div class="tb-item"><span class="chk"></span><div><strong>更新地址</strong><span>銀行、信用卡、訂閱服務、網購常用地址</span></div></div></div></div></div><div class="ph-tabs" aria-hidden="true"><span class="">首頁</span><span class="">社群</span><span class="on">生活</span><span class="">百科</span><span class="">我的</span></div></div></div><p class="sc-note">功能示意・會自己播放，點一下就換你操作</p></div></div></div></div></section>
+<section class="sc-band tint"><div class="sc-in"><div class="sc-sec-head" data-reveal><h2>一支 App，把大人生活排整齊</h2><p>花費、提醒、清單、回顧都看得到；百科與大家關心的主題一起整理。</p></div><div class="bento"><div class="tile b-4" data-reveal><p class="t-eyebrow">人生訂閱・支出分析</p><h3>每個月固定要付多少，先看清楚</h3><p>記下金額、扣款日與取消期限，查看每月預估負擔和已記錄支出。</p><div class="tile-flex"><div class="metric-row"><div><small>本月預計扣款</small><b>NT$<span data-count="2178">2,178</span></b></div><div><small>必要支出</small><b>NT$<span data-count="699">699</span></b></div><div><small>串流訂閱</small><b>NT$<span data-count="390">390</span></b></div></div><svg class="donut grow" viewBox="0 0 100 100" width="120" height="120" role="img" aria-label="支出分析"><circle cx="50" cy="50" r="40" fill="none" stroke="#F1ECE8" stroke-width="16"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#E8856B" stroke-width="16" stroke-dasharray="0 251.33" stroke-dashoffset="-0.00" data-dash="115.28 136.05" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#F2B880" stroke-width="16" stroke-dasharray="0 251.33" stroke-dashoffset="-115.28" data-dash="69.12 182.21" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#8CC5B4" stroke-width="16" stroke-dasharray="0 251.33" stroke-dashoffset="-184.40" data-dash="45.00 206.32" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#8FB8DE" stroke-width="16" stroke-dasharray="0 251.33" stroke-dashoffset="-229.40" data-dash="11.54 239.79" transform="rotate(-90 50 50)"/><circle class="seg" cx="50" cy="50" r="40" fill="none" stroke="#C3A6E0" stroke-width="16" stroke-dasharray="0 251.33" stroke-dashoffset="-240.94" data-dash="10.39 240.94" transform="rotate(-90 50 50)"/></svg><div class="legend"><span><i style="background:#E8856B"></i>生活　NT$999</span><span><i style="background:#F2B880"></i>電信　NT$599</span><span><i style="background:#8CC5B4"></i>影音　NT$390</span><span><i style="background:#8FB8DE"></i>保險　NT$100</span><span><i style="background:#C3A6E0"></i>雲端　NT$90</span></div></div><p class="t-note">功能示意，數字為範例</p></div><div class="tile b-2" data-reveal><p class="t-eyebrow">年度回顧</p><h3>這一年做過的事</h3><p>完成的挑戰留下照片與一句話，累積成年度回顧。</p><div class="pixels"><i class="mid" style="transition-delay:0.000s"></i><i class="on" style="transition-delay:0.012s"></i><i class="" style="transition-delay:0.024s"></i><i class="mid" style="transition-delay:0.036s"></i><i class="on" style="transition-delay:0.048s"></i><i class="" style="transition-delay:0.060s"></i><i class="mid" style="transition-delay:0.072s"></i><i class="" style="transition-delay:0.084s"></i><i class="on" style="transition-delay:0.096s"></i><i class="mid" style="transition-delay:0.108s"></i><i class="" style="transition-delay:0.120s"></i><i class="on" style="transition-delay:0.132s"></i><i class="mid" style="transition-delay:0.144s"></i><i class="" style="transition-delay:0.156s"></i><i class="" style="transition-delay:0.168s"></i><i class="on" style="transition-delay:0.180s"></i><i class="" style="transition-delay:0.192s"></i><i class="" style="transition-delay:0.204s"></i><i class="on" style="transition-delay:0.216s"></i><i class="" style="transition-delay:0.228s"></i><i class="" style="transition-delay:0.240s"></i><i class="mid" style="transition-delay:0.252s"></i><i class="on" style="transition-delay:0.264s"></i><i class="" style="transition-delay:0.276s"></i><i class="mid" style="transition-delay:0.288s"></i><i class="on" style="transition-delay:0.300s"></i><i class="" style="transition-delay:0.312s"></i><i class="mid" style="transition-delay:0.324s"></i><i class="" style="transition-delay:0.336s"></i><i class="on" style="transition-delay:0.348s"></i><i class="mid" style="transition-delay:0.360s"></i><i class="" style="transition-delay:0.372s"></i><i class="on" style="transition-delay:0.384s"></i><i class="mid" style="transition-delay:0.396s"></i><i class="" style="transition-delay:0.408s"></i><i class="" style="transition-delay:0.420s"></i><i class="on" style="transition-delay:0.432s"></i><i class="" style="transition-delay:0.444s"></i><i class="" style="transition-delay:0.456s"></i><i class="on" style="transition-delay:0.468s"></i><i class="" style="transition-delay:0.480s"></i><i class="" style="transition-delay:0.492s"></i><i class="mid" style="transition-delay:0.504s"></i><i class="on" style="transition-delay:0.516s"></i><i class="" style="transition-delay:0.528s"></i><i class="mid" style="transition-delay:0.540s"></i><i class="on" style="transition-delay:0.552s"></i><i class="" style="transition-delay:0.564s"></i></div><div class="pixels-legend"><span>1 月</span><span>6 月</span><span>12 月</span></div><p class="t-note">功能示意</p></div><div class="tile b-3" data-reveal><p class="t-eyebrow">準備清單</p><h3>出發前一項一項勾</h3><div class="tile-flex"><div class="ring"><svg class="grow" viewBox="0 0 110 110" width="110" height="110"><circle cx="55" cy="55" r="46" fill="none" stroke="#F3ECE6" stroke-width="12"/><circle class="seg" cx="55" cy="55" r="46" fill="none" stroke="#E8856B" stroke-width="12" stroke-linecap="round" stroke-dasharray="289.03" style="stroke-dashoffset:289.03" data-offset="120.43"/></svg><b>7/12</b></div><div class="mini-list"><div><span>通知房東退租 / 搬遷日期</span><em>完成</em></div><div><span>預約斷水電瓦斯</span><em>完成</em></div><div><span>遷戶籍（遷入 30 日內）</span><em>待辦</em></div></div></div><p class="t-note">功能示意</p></div><div class="tile b-3" data-reveal><p class="t-eyebrow">提醒管家</p><h3>重要日期幫你記</h3><div class="mini-list"><div><span>洗牙</span><em>每半年一次</em></div><div><span>成人健檢</span><em>30–39歲每5年</em></div><div><span>機車排氣定期檢驗</span><em>每年一次</em></div></div><p>可依固定日期提醒，或完成後重新計算下一次。</p></div><div class="tile b-3" data-reveal><p class="t-eyebrow">百科</p><h3><span data-count="112">112</span> 篇白話生活文章</h3><ol class="ranking-chart"><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/housing">居家生活</a><span class="ranking-count"><span data-count="16">16</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:100.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/money">金錢與保險</a><span class="ranking-count"><span data-count="12">12</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:75.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/workplace">工作與創業</a><span class="ranking-count"><span data-count="10">10</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:62.50%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/etiquette">人際與禮俗</a><span class="ranking-count"><span data-count="8">8</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:50.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/gov">證件與政府</a><span class="ranking-count"><span data-count="8">8</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:50.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/medical">醫療健康</a><span class="ranking-count"><span data-count="7">7</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:43.75%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/traffic">交通與旅遊</a><span class="ranking-count"><span data-count="7">7</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:43.75%"></span></span></li><li class="ranking-row"><div class="ranking-line"><a class="ranking-label" href="c/digital">數位與防詐</a><span class="ranking-count"><span data-count="4">4</span> 篇</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:25.00%"></span></span></li></ol></div><div class="tile b-3" data-reveal><p class="t-eyebrow">大家想搞懂什麼</p><h3>依問卷與留言的許願次數</h3><ol class="ranking-chart" data-ranking-chart><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">理財／投資／稅務</span><span class="ranking-count"><span data-count="4868">4,868</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:100.00%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">菜市場／料理</span><span class="ranking-count"><span data-count="1284">1,284</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:26.38%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">保險／醫療</span><span class="ranking-count"><span data-count="1062">1,062</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:21.82%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">工作／職場</span><span class="ranking-count"><span data-count="879">879</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:18.06%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">租屋／買房／搬家</span><span class="ranking-count"><span data-count="793">793</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:16.29%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">拜拜／禮俗</span><span class="ranking-count"><span data-count="571">571</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:11.73%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">感情／人際</span><span class="ranking-count"><span data-count="562">562</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:11.54%"></span></span></li><li class="ranking-row"><div class="ranking-line"><span class="ranking-label">生活家務</span><span class="ranking-count"><span data-count="424">424</span> 次許願</span></div><span class="ranking-track"><span class="ranking-fill" style="--bar-width:8.71%"></span></span></li></ol></div></div></div></section>
+<section class="sc-band"><div class="sc-in sc-split flip"><div class="sc-copy" data-reveal><p class="sc-eyebrow">百科</p><h2>不懂的大人事，找得到答案</h2><p class="sc-lead">金錢與保險、醫療健康、居家生活、工作與創業……用白話寫的生活文章，依分類或關鍵字找需要的內容。</p><form class="sc-search" action="search" method="get" role="search"><input type="search" name="q" placeholder="搜尋報稅、租屋、勞健保…" aria-label="搜尋全站"><button type="submit">搜尋</button></form></div><div class="sc-stage"><div class="sc-reads" data-stagger><a class="sc-read" href="a/life-6"><strong>下廚省力小撇步</strong><span>下廚總有些卡手的小地方，學會幾招就順多了。</span></a><a class="sc-read" href="a/money-2"><strong>信用卡入門：年費、循環利率、最低應繳</strong><span>第一張信用卡別亂辦，這幾個地雷先搞懂再刷。</span></a><a class="sc-read" href="a/money-7"><strong>日常省錢眉角</strong><span>省錢不用刻意省吃儉用，這些小地方留意一下就能少花。</span></a><a class="sc-read" href="a/invest-1"><strong>投資入門：開戶、ETF、定期定額</strong><span>想開始投資但不知從哪起步？開戶到買進的基本概念一次看懂。</span></a></div></div></div></section>
+<section class="sc-band tint"><div class="sc-in"><div class="sc-sec-head" data-reveal><h2>遇到這些事的時候</h2><p>相關的文章和工具整理在一起。</p></div><div class="sc-topics" data-stagger><a class="sc-topic" href="topics/moving"><strong>租屋搬家</strong><span>看房、押金、租約、租金補貼</span></a><a class="sc-topic" href="topics/home"><strong>下廚與家事</strong><span>煮飯、挑菜、保鮮、清潔修繕</span></a><a class="sc-topic" href="topics/first-job"><strong>第一份工作</strong><span>求職、加班費、離職、勞基法</span></a><a class="sc-topic" href="topics/money"><strong>錢與保險</strong><span>理財、報稅、保險、勞退</span></a><a class="sc-topic" href="topics/tax"><strong>報稅</strong><span>申報、扣除額、牌照稅</span></a><a class="sc-topic" href="topics/health"><strong>看醫生與健康</strong><span>看病、健檢、牙科、急救</span></a><a class="sc-topic" href="topics/documents"><strong>證件與政府</strong><span>身分證、護照、戶籍、監理</span></a><a class="sc-topic" href="topics/travel"><strong>出國與交通</strong><span>通勤、出國、大眾運輸、車禍</span></a><a class="sc-topic" href="topics/safety"><strong>防災急救</strong><span>颱風、地震、急救、詐騙</span></a><a class="sc-topic" href="topics/etiquette"><strong>人情禮俗</strong><span>紅包、節慶、拜拜、婚喪</span></a></div></div></section>
+<section class="sc-band"><div class="sc-in"><div class="sc-sec-head" data-reveal><h2>現在合作中</h2></div><div class="sc-promo" data-reveal><a class="cat-card featured promo-featured" href="group-buy/67bb4129-b04a-4552-8815-f21b30bb286c"><div class="cover-wrap"><img class="cover" src="https://ezdlslagivrgwtbvpimf.supabase.co/storage/v1/object/public/announcement_images/draft/67BB4129-B04A-4552-8815-F21B30BB286C/cover-B18DF544-F74D-490C-8296-49DA4EECB6B4.jpg" alt="站長推薦：《呀沙係・引力》"><span class="feat-flag">進行中</span></div><div class="cc-body"><h3>站長推薦：《呀沙係・引力》</h3><div class="cc-sub">嗨大家～這次的合作對象是我自己！哈哈哈！</div></div></a></div><div class="sc-promo-actions"><a class="sc-btn" href="https://line.me/ti/g2/NvF1VXHWjhHNu6-Hb4txJ6zZb8oQ2tIlmVDk7Q" rel="noopener">加入 LINE 社群</a><a class="sc-btn outline" href="mailto:tonyonier99@gmail.com?subject=%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%EF%BD%9C%E5%90%88%E4%BD%9C%E6%B4%BD%E8%A9%A2&amp;body=%E5%97%A8%EF%BC%8C%E6%88%91%E6%83%B3%E8%B7%9F%E5%88%9D%E7%B4%9A%E5%A4%A7%E4%BA%BA%E6%89%8B%E5%86%8A%E8%AB%87%E5%90%88%E4%BD%9C%EF%BC%9A%0A%0A%E3%83%BB%E5%93%81%E7%89%8C%EF%BC%8F%E5%95%86%E5%93%81%EF%BC%9A%0A%E3%83%BB%E6%83%B3%E5%90%88%E4%BD%9C%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A%0A%E3%83%BB%E6%83%B3%E6%89%BE%E6%88%91%E8%81%8A%E8%81%8A%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A%0A">合作邀約</a></div></div></section>
+<section class="sc-final" data-reveal><div class="sc-sec-head"><h2>第一次當大人，不用一次就會。<br>先從一件生活小事開始。</h2></div><div class="sc-actions"><a class="sc-btn" data-store="ios" href="https://apps.apple.com/app/apple-store/id6763735472?pt=128418142&ct=Website&mt=8" rel="noopener">iPhone 下載</a><a class="sc-btn outline" data-store="android" href="https://play.google.com/store/apps/details?id=com.paperclip.adultingguide" rel="noopener">Android 下載</a></div></section><script>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(d) { var y = d.getFullYear() !== new Date().getFullYear() ? d.getFullYear() + ' 年 ' : ''; return y + (d.getMonth() + 1) + ' 月 ' + d.getDate() + ' 日'; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  document.querySelectorAll('[data-tour]').forEach(function (ph) {
+    function $(sel) { return ph.querySelector(sel); }
+    function $$(sel) { return Array.prototype.slice.call(ph.querySelectorAll(sel)); }
+    var roots = $$('.tv-pane').map(function (p) { return p.querySelector('.tv-view'); }), stopped = false;
+    function tap(el) {
+      var screen = ph.querySelector('.ph-screen'), r = el.getBoundingClientRect(), s = screen.getBoundingClientRect(), dot = document.createElement('span');
+      dot.className = 'tap'; dot.style.left = (r.left - s.left + r.width / 2) + 'px'; dot.style.top = (r.top - s.top + r.height / 2) + 'px';
+      screen.appendChild(dot); setTimeout(function () { dot.remove(); }, 700);
+    }
+    function showTab(name) {
+      $$('.tv-tabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === name); });
+      $$('.tv-pane').forEach(function (p) { p.classList.toggle('on', p.dataset.pane === name); });
+    }
+    function topView(pane) { var on = pane.querySelectorAll('.tv-view.on'); return on[on.length - 1]; }
+    function donut(open) { $$('[data-view="subs"] circle.seg').forEach(function (c) { c.setAttribute('stroke-dasharray', open ? c.dataset.dash : '0 251.33'); }); }
+    function push(id) {
+      var v = $('.tv-view[data-view="' + id + '"]'); if (!v) return;
+      var cur = topView(v.closest('.tv-pane')); if (cur === v) return;
+      cur.classList.add('under'); v.scrollTop = 0; v.classList.add('on');
+      if (id === 'subs') setTimeout(function () { donut(true); }, 250);
+    }
+    function pop(from) { var v = from.closest('.tv-view'); v.classList.remove('on'); var cur = topView(v.closest('.tv-pane')); if (cur) cur.classList.remove('under'); }
+    // 生活月曆
+    var box = $('[data-cal]'), sample = JSON.parse(box.dataset.cal), now = new Date(), byDay = {};
+    var y = now.getFullYear(), m = now.getMonth(), first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
+    var grid = box.querySelector('.cal-grid'), list = box.querySelector('.cal-list');
+    box.querySelector('.cal-month').textContent = y + ' 年 ' + (m + 1) + ' 月';
+    sample.forEach(function (s) { if (s[0] <= days) (byDay[s[0]] = byDay[s[0]] || []).push(s); });
+    for (var i = 0; i < first; i++) grid.insertAdjacentHTML('beforeend', '<span></span>');
+    for (var d = 1; d <= days; d++) grid.insertAdjacentHTML('beforeend', '<button type="button" class="cal-day' + (byDay[d] ? ' dot' : '') + (d === now.getDate() ? ' today' : '') + '" data-d="' + d + '">' + d + '</button>');
+    function showDay(day) {
+      grid.querySelectorAll('.cal-day').forEach(function (b) { b.classList.toggle('sel', +b.dataset.d === day); });
+      var items = byDay[day] || [];
+      list.innerHTML = items.length ? items.map(function (s) { return '<div class="cal-item"><span>' + s[1] + '</span><em>' + s[2] + '</em></div>'; }).join('') : '<div class="cal-empty">這天沒有提醒</div>';
+    }
+    var startDay = byDay[now.getDate()] ? now.getDate() : (sample.filter(function (s) { return s[0] >= now.getDate(); })[0] || sample[0])[0];
+    // 挑戰、提醒管家
+    var chks = $$('.tv-pane[data-pane="生活"] .ch-card .chk'), chkStart = chks.map(function (c) { return c.classList.contains('done'); });
+    function setChk(c, done) { c.classList.toggle('done', done); c.parentNode.querySelector('strong').classList.toggle('done', done);
+      var n = chks.filter(function (x) { return x.classList.contains('done'); }).length; $('.tv-chcount').textContent = n + '/' + chks.length; }
+    var toast = $('.rm-toast'), rms = $$('.rm-item');
+    function setNext(it, dt) { it.querySelector('.rm-next').textContent = '下次：' + fmt(dt); }
+    function initReminders() { rms.forEach(function (it) { var dt = new Date(); dt.setDate(dt.getDate() + +it.dataset.days); setNext(it, dt); }); toast.classList.remove('on'); }
+    function doneReminder(btn) {
+      var it = btn.closest('.rm-item'), dt = new Date(); dt.setMonth(dt.getMonth() + +it.dataset.months); setNext(it, dt);
+      var b = it.querySelector('.rm-next'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
+      toast.textContent = '已完成「' + it.querySelector('strong').textContent + '」，從今天重新算到 ' + fmt(dt); toast.classList.add('on');
+    }
+    // 社群、搜尋
+    function seg(name) {
+      $$('[data-seg]').forEach(function (b) { b.classList.toggle('on', b.dataset.seg === name); });
+      $$('.cm-list').forEach(function (l) { l.classList.toggle('on', l.dataset.list === name); });
+      var s = $('.tv-seg-search'); if (s) s.textContent = name === 'tips' ? '搜尋秘技...' : '搜尋發問...';
+    }
+    var input = $('.tv-input'), results = $('.tv-results'), index = JSON.parse(input.dataset.index);
+    function search() {
+      var q = input.value.trim().toLowerCase(); if (!q) { results.innerHTML = ''; return; }
+      var hits = index.filter(function (r) { return r[1].toLowerCase().indexOf(q) >= 0; }).slice(0, 6);
+      results.innerHTML = hits.length ? hits.map(function (r, n) { return '<a href="' + r[2] + '" style="animation-delay:' + (n * 0.05) + 's"><em>' + r[3] + '</em>' + esc(r[0]) + '</a>'; }).join('')
+        : '<div class="tv-empty">試試其他關鍵字，例如：報稅、租屋、健檢</div>';
+    }
+    input.addEventListener('input', search);
+    // 當季尚青：依今天的月份顯示 App 內建的當季水果與蔬菜
+    var seasonBtn = $('[data-season]');
+    if (seasonBtn) {
+      var sd = JSON.parse(seasonBtn.dataset.season), mon = new Date().getMonth() + 1, cur = sd.months[String(mon)];
+      var icon = function (n) { var it = sd.items[n]; return it && it[0] ? '<img src="assets/produce/' + encodeURIComponent(it[0]) + '.png" alt="">' : ''; };
+      var rows = function (names) { return names.map(function (n) { var it = sd.items[n] || ['', '', ''];
+        return '<div class="tv-produce">' + icon(n) + '<div><strong>' + esc(n) + '</strong><span>' + esc(it[1]) + '</span><em>' + esc(it[2]) + '</em></div></div>'; }).join(''); };
+      // 橫幅：水果、蔬菜兩張輪播（App 每 8 秒換一張，這裡縮短讓訪客看得到兩張），底部疊上食材名稱
+      var slides = seasonBtn.querySelectorAll('img'), cap = seasonBtn.querySelector('.tv-season-cap'), slide = 0;
+      var caps = cur ? [cur.fruits.join(' · '), cur.vegetables.join(' · ')] : ['', ''];
+      slides[0].src = 'assets/seasonal/banner_fruit_' + mon + '.png'; slides[1].src = 'assets/seasonal/banner_veg_' + mon + '.png';
+      var showSlide = function (n) { slide = n; slides[0].classList.toggle('on', n === 0); slides[1].classList.toggle('on', n === 1); cap.textContent = caps[n]; };
+      showSlide(0);
+      if (!reduce) setInterval(function () { showSlide(1 - slide); }, 3500);
+      $('.tv-season-list').innerHTML = cur ? '<div class="tv-label">水果</div>' + rows(cur.fruits) + '<div class="tv-label">蔬菜</div>' + rows(cur.vegetables) : '';
+    }
+    var switches = $$('[data-switch]'), switchStart = switches.map(function (b) { return b.classList.contains('on'); });
+    function typeText(text) { var n = 0; input.value = ''; search(); (function next() { if (stopped) return; input.value = text.slice(0, ++n); search(); if (n < text.length) setTimeout(next, 280); })(); }
+    ph.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-tab],[data-push],.tv-back,.cal-day,.chk,.rm-done,[data-seg],[data-switch]'); if (!t) return;
+      if (t.dataset.tab) showTab(t.dataset.tab);
+      else if (t.dataset.push) push(t.dataset.push);
+      else if (t.classList.contains('tv-back')) pop(t);
+      else if (t.classList.contains('cal-day')) showDay(+t.dataset.d);
+      else if (t.classList.contains('chk')) setChk(t, !t.classList.contains('done'));
+      else if (t.classList.contains('rm-done')) doneReminder(t);
+      else if (t.dataset.seg) seg(t.dataset.seg);
+      else if (t.dataset.switch) t.classList.toggle('on');
+    });
+    function reset() {
+      $$('.tv-view').forEach(function (v) { v.classList.remove('under'); if (roots.indexOf(v) < 0) v.classList.remove('on'); v.scrollTop = 0; });
+      showTab('生活'); showDay(startDay); chks.forEach(function (c, n) { setChk(c, chkStart[n]); }); initReminders(); seg('tips');
+      input.value = ''; search(); donut(false); switches.forEach(function (b, n) { b.classList.toggle('on', switchStart[n]); });
+    }
+    reset();
+    // 自動導覽：生活 → 百科 → 社群 → 首頁搜尋，繞一圈重來；訪客一碰就停
+    function at(sel) { return function () { return $(sel); }; }
+    function wait() { return null; }
+    var steps = [at('.cal-day.dot:not(.sel)'), at('.tv-pane[data-pane="生活"] .chk:not(.done)'), at('[data-push="reminder"]'), at('.rm-item .rm-done'), wait,
+      at('[data-view="reminder"] .tv-back'), at('[data-push="subs"]'), wait, at('[data-view="subs"] .tv-back'),
+      at('[data-tab="百科"]'), at('[data-push="cat"]'), at('[data-push="art"]'), wait, at('[data-view="art"] .tv-back'), at('[data-view="cat"] .tv-back'),
+      at('[data-tab="社群"]'), at('[data-seg="asks"]'), at('[data-push="post"]'), wait, at('[data-view="post"] .tv-back'),
+      at('[data-tab="首頁"]'), at('[data-push="season"]'), wait, at('[data-view="season"] .tv-back'),
+      at('[data-push="search"]'), function () { typeText('報稅'); return null; }, wait, wait, at('[data-view="search"] .tv-back'),
+      at('[data-tab="我的"]'), at('[data-switch="當季食材"]'), wait];
+    var k = 0, timer = null;
+    ph.addEventListener('pointerdown', function () { stopped = true; clearTimeout(timer); }, { once: true });
+    if (reduce || !('IntersectionObserver' in window)) return;
+    function reveal(t) {
+      var v = t.closest('.tv-view'); if (!v) return false;
+      var r = t.getBoundingClientRect(), vr = v.getBoundingClientRect();
+      if (r.top >= vr.top + 8 && r.bottom <= vr.bottom - 8) return false;
+      v.scrollTo({ top: v.scrollTop + r.top - vr.top - vr.height / 2 + r.height / 2, behavior: 'smooth' }); return true;
+    }
+    function run() {
+      if (stopped) return;
+      if (k === steps.length) { reset(); k = 0; timer = setTimeout(run, 1600); return; }
+      var t = steps[k](); k++;
+      if (t) setTimeout(function () { if (stopped) return; tap(t); setTimeout(function () { if (!stopped) t.click(); }, 220); }, reveal(t) ? 480 : 0);
+      timer = setTimeout(run, t ? 1500 : 1300);
+    }
+    var seen = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting && !stopped && !timer) timer = setTimeout(run, 900); }); }, { threshold: 0.5 });
+    seen.observe(ph);
+  });
+})();
+</script>
 </main>
 <footer class="site"><div class="wrap">
   <nav class="foot-nav">
@@ -491,6 +1102,175 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
   }, { threshold: 0.25 });
   charts.forEach(function (chart) { observer.observe(chart); });
 })();
+</script>
+<script>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(n) {
+    var target = +n.dataset.count;
+    if (reduce) { n.textContent = target.toLocaleString(); return; }
+    var t0 = performance.now(), dur = 1300;
+    (function step(t) { var p = Math.min(1, (t - t0) / dur); n.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString();
+      if (p < 1) requestAnimationFrame(step); })(t0);
+  }
+  function fire(el) {
+    el.querySelectorAll('[data-count]').forEach(countUp);
+    el.querySelectorAll('.ranking-chart').forEach(function (c) { c.classList.add('is-visible'); });
+    el.querySelectorAll('svg.grow circle.seg').forEach(function (c) {
+      if (c.dataset.dash) c.setAttribute('stroke-dasharray', c.dataset.dash); if (c.dataset.offset) c.style.strokeDashoffset = c.dataset.offset; });
+  }
+  var targets = Array.prototype.slice.call(document.querySelectorAll('[data-reveal], [data-stagger]'));
+  function show(el) { if (el.classList.contains('in')) return; el.classList.add('in'); fire(el); }
+  if (reduce || !('IntersectionObserver' in window)) { targets.forEach(show); return; }
+  var answered = false;
+  var io = new IntersectionObserver(function (entries) {
+    answered = true;
+    entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+  targets.forEach(function (el) { io.observe(el); });
+  // 保險：畫面內的直接顯示、捲動時再檢查一次；偵測一直沒回應（少數環境）就全部顯示，內容不會永遠藏著
+  function sweep() { var h = window.innerHeight; targets.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < h * 0.95 && r.bottom > 0) show(el); }); }
+  var queued = false;
+  window.addEventListener('scroll', function () { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; sweep(); }); }, { passive: true });
+  sweep();
+  setTimeout(function () { if (!answered) targets.forEach(show); }, 1500);
+})();
+</script><script>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tap(el) {
+    var screen = el.closest('.ph-screen'); if (!screen) return;
+    var r = el.getBoundingClientRect(), s = screen.getBoundingClientRect(), dot = document.createElement('span');
+    dot.className = 'tap'; dot.style.left = (r.left - s.left + r.width / 2) + 'px'; dot.style.top = (r.top - s.top + r.height / 2) + 'px';
+    screen.appendChild(dot); setTimeout(function () { dot.remove(); }, 700);
+  }
+  function grow(svg) { svg.querySelectorAll('circle.seg').forEach(function (c) { c.setAttribute('stroke-dasharray', c.dataset.dash); }); }
+  function fmt(d) { var y = d.getFullYear() !== new Date().getFullYear() ? d.getFullYear() + ' 年 ' : ''; return y + (d.getMonth() + 1) + ' 月 ' + d.getDate() + ' 日'; }
+  var demos = {
+    calendar: function (root) {
+      var box = root.querySelector('[data-cal]'), sample = JSON.parse(box.dataset.cal), now = new Date();
+      var y = now.getFullYear(), m = now.getMonth(), first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
+      var grid = box.querySelector('.cal-grid'), list = box.querySelector('.cal-list'), byDay = {};
+      box.querySelector('.cal-month').textContent = y + ' 年 ' + (m + 1) + ' 月';
+      sample.forEach(function (s) { if (s[0] <= days) (byDay[s[0]] = byDay[s[0]] || []).push(s); });
+      for (var i = 0; i < first; i++) grid.insertAdjacentHTML('beforeend', '<span></span>');
+      for (var d = 1; d <= days; d++) grid.insertAdjacentHTML('beforeend', '<button type="button" class="cal-day' +
+        (byDay[d] ? ' dot' : '') + (d === now.getDate() ? ' today' : '') + '" data-d="' + d + '">' + d + '</button>');
+      function show(day) {
+        grid.querySelectorAll('.cal-day').forEach(function (b) { b.classList.toggle('sel', +b.dataset.d === day); });
+        var items = byDay[day] || [];
+        list.innerHTML = items.length ? items.map(function (s) { return '<div class="cal-item"><span>' + s[1] + '</span><em>' + s[2] + '</em></div>'; }).join('')
+          : '<div class="cal-empty">這天沒有提醒</div>';
+      }
+      grid.addEventListener('click', function (e) { var b = e.target.closest('.cal-day'); if (b) show(+b.dataset.d); });
+      var start = byDay[now.getDate()] ? now.getDate() : (sample.filter(function (s) { return s[0] >= now.getDate(); })[0] || sample[0])[0];
+      show(start);
+      var seq = sample.map(function (s) { return function () { return grid.querySelector('[data-d="' + s[0] + '"]'); }; });
+      return { reset: function () { show(start); }, steps: seq };
+    },
+    challenge: function (root) {
+      var box = root.querySelector('[data-groups]'), groups = JSON.parse(box.dataset.groups), names = Object.keys(groups);
+      var mine = [], current = names[0], fresh = -1;
+      var seg = box.querySelector('.ch-seg'), pool = box.querySelector('.ch-pool'), mineBox = box.querySelector('.ch-mine');
+      function render() {
+        seg.querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', b.dataset.g === current); });
+        pool.innerHTML = groups[current].map(function (c, i) {
+          var added = mine.some(function (x) { return x.t === c[0]; });
+          return '<div class="ch-card" style="animation-delay:' + (i * 0.05) + 's"><div><strong>' + c[0] + '</strong><span>' + c[1] + '</span></div>' +
+            '<button type="button" class="ch-add" data-t="' + c[0] + '"' + (added ? ' disabled>已加入' : '>加入') + '</button></div>'; }).join('');
+        var done = mine.filter(function (x) { return x.done; }).length;
+        box.querySelector('.ch-count').textContent = done + '/' + mine.length;
+        box.querySelector('.ch-prog i').style.width = mine.length ? (100 * done / mine.length) + '%' : '0';
+        mineBox.innerHTML = mine.length ? mine.map(function (x, i) {
+          return '<div class="ch-card' + (i === fresh ? ' new' : '') + '"><button type="button" class="chk' + (x.done ? ' done' : '') + '" data-i="' + i + '" aria-label="完成"></button>' +
+            '<div><strong class="' + (x.done ? 'done' : '') + '">' + x.t + '</strong><span>' + x.g + '</span></div></div>'; }).join('')
+          : '<div class="ch-empty">從下面挑幾件想做的事</div>';
+        fresh = -1;
+      }
+      box.addEventListener('click', function (e) {
+        var g = e.target.closest('.ch-seg button'), add = e.target.closest('.ch-add'), chk = e.target.closest('.chk');
+        if (g) current = g.dataset.g;
+        if (add && !add.disabled) { mine.push({ t: add.dataset.t, g: current, done: false }); fresh = mine.length - 1; }
+        if (chk) mine[+chk.dataset.i].done = !mine[+chk.dataset.i].done;
+        render();
+      });
+      render();
+      function q(sel) { return function () { return box.querySelector(sel); }; }
+      return {
+        reset: function () { mine = []; current = names[0]; render(); },
+        steps: [q('.ch-pool .ch-add'), q('.ch-seg [data-g="' + names[2] + '"]'), q('.ch-pool .ch-add'), q('.ch-mine .chk'),
+                q('.ch-seg [data-g="' + names[3] + '"]'), q('.ch-pool .ch-add'), function () { return box.querySelectorAll('.ch-mine .chk')[2]; }]
+      };
+    },
+    toolbox: function (root) {
+      var views = root.querySelector('.tb-views'), hint = root.querySelector('.tb-hint'), list = root.querySelector('.tb-list');
+      function update() {
+        var all = list.querySelectorAll('.tb-item'), done = list.querySelectorAll('.tb-item.done');
+        list.querySelector('.tb-count').textContent = '已完成 ' + done.length + '/' + all.length;
+        list.querySelector('.ch-prog i').style.width = (100 * done.length / all.length) + '%';
+      }
+      root.addEventListener('click', function (e) {
+        var tool = e.target.closest('.tb-tool'), back = e.target.closest('.tb-back'), item = e.target.closest('.tb-item');
+        if (tool && tool.classList.contains('live')) { views.classList.add('open'); root.querySelector('.ph-body').scrollTop = 0; }
+        else if (tool) hint.textContent = '「' + tool.querySelector('strong').textContent + '」請到 App 裡使用';
+        if (back) { views.classList.remove('open'); hint.textContent = ''; }
+        if (item) { item.classList.toggle('done'); item.querySelector('.chk').classList.toggle('done'); update(); }
+      });
+      update();
+      function nth(i) { return function () { return list.querySelectorAll('.tb-item')[i]; }; }
+      return {
+        reset: function () { list.querySelectorAll('.done').forEach(function (n) { n.classList.remove('done'); }); views.classList.remove('open'); update(); },
+        steps: [function () { return root.querySelector('.tb-tool.live'); }, nth(0), nth(1), nth(2), nth(4), function () { return root.querySelector('.tb-back'); }]
+      };
+    },
+    reminder: function (root) {
+      var toast = root.querySelector('.rm-toast'), items = root.querySelectorAll('.rm-item');
+      function setNext(it, d) { it._next = d; var b = it.querySelector('.rm-next'); b.textContent = '下次：' + fmt(d); }
+      function init() { var now = new Date(); items.forEach(function (it) { var d = new Date(now); d.setDate(d.getDate() + +it.dataset.days); setNext(it, d); }); toast.classList.remove('on'); }
+      root.addEventListener('click', function (e) {
+        var btn = e.target.closest('.rm-done'); if (!btn) return;
+        var it = btn.closest('.rm-item'), d = new Date(); d.setMonth(d.getMonth() + +it.dataset.months); setNext(it, d);
+        var b = it.querySelector('.rm-next'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
+        toast.textContent = '已完成「' + it.querySelector('strong').textContent + '」，從今天重新算到 ' + fmt(d); toast.classList.add('on');
+      });
+      init();
+      return { reset: init, steps: [function () { return items[0].querySelector('.rm-done'); }, function () { return items[2].querySelector('.rm-done'); }] };
+    },
+    subscription: function (root) {
+      var panel = root.querySelector('.sb-analytics'), btn = root.querySelector('.sb-toggle'), svg = panel.querySelector('svg');
+      function set(open) { panel.classList.toggle('open', open); btn.textContent = open ? '支出分析 ▴' : '支出分析 ▾';
+        if (open) setTimeout(function () { grow(svg); }, 120); else svg.querySelectorAll('circle.seg').forEach(function (c) { c.setAttribute('stroke-dasharray', '0 251.33'); }); }
+      btn.addEventListener('click', function () { set(!panel.classList.contains('open')); });
+      function wait() { return null; }
+      // 展開後多停兩拍讓甜甜圈長完、看得清楚，再收起重來
+      return { reset: function () { set(false); }, steps: [function () { return btn; }, wait, wait] };
+    }
+  };
+  document.querySelectorAll('.ph[data-demo]').forEach(function (ph) {
+    var make = demos[ph.dataset.demo]; if (!make) return;
+    var api = make(ph), stopped = false, k = 0, timer = null;
+    ph.addEventListener('pointerdown', function () { stopped = true; clearTimeout(timer); }, { once: true });
+    if (reduce || !('IntersectionObserver' in window)) return;
+    // 照順序點一輪，點完重設再從頭；訪客一碰就停
+    function run() {
+      if (stopped) return;
+      if (k === api.steps.length) { api.reset(); k = 0; timer = setTimeout(run, 1600); return; }
+      var target = api.steps[k](); k++;
+      if (target) { tap(target); setTimeout(function () { if (!stopped) target.click(); }, 220); }
+      timer = setTimeout(run, 1500);
+    }
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting && !stopped && !timer) timer = setTimeout(run, 900); });
+    }, { threshold: 0.55 });
+    seen.observe(ph);
+  });
+})();
+</script><script>
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('a[data-store]');
+  if (!link || typeof gtag !== 'function') return;
+  gtag('event', 'download_click', { store: link.dataset.store, source_page: location.pathname });
+});
 </script>
 </body>
 </html>
