@@ -437,40 +437,65 @@ footer.site { border-top:1px solid var(--line); padding:1.6rem 0 2.8rem;
 <div class="wrap">
 <div class="article-head about">
 <h1>隱私權政策</h1>
-<p class="foot-legal" style="margin-bottom:1.4rem">App 名稱：初級大人手冊（AdultingGuide）｜iOS／Android｜最後更新：2026-09-22</p>
+<p class="foot-legal" style="margin-bottom:1.4rem">App 名稱：初級大人手冊（AdultingGuide）｜iOS／Android｜最後更新：2026-10-13</p>
 
-<p>我們重視你的隱私。本政策說明「初級大人手冊」蒐集哪些資料、如何使用，以及你的權利。</p>
+<p>我們重視你的隱私。本政策說明「初級大人手冊」蒐集哪些資料、如何使用、如何刪除，以及你的權利。</p>
 
 <h2>一、我們蒐集的資料</h2>
 <ul>
-  <li><strong>帳號資料</strong>：iOS 使用 Apple 登入、Android 使用 Google 登入時，我們會儲存帳號唯一識別碼及登入服務提供的 Email（若有）。這些資料用於識別你的內容與跨裝置同步。</li>
-  <li><strong>你建立的內容</strong>：暱稱、投稿（秘技／發問）、回答、留言、收藏、按讚、檢舉、封鎖設定與頭貼。其中投稿、回答、留言、暱稱、頭貼會公開顯示於社群；部分內容可能以原樣（含暱稱）公開顯示於本服務的官方網站。</li>
-  <li><strong>推播資料</strong>：若你允許通知，Android 會使用 Firebase Cloud Messaging 裝置權杖傳送推播；iOS 使用 Apple 的推播服務。</li>
-  <li><strong>生活工具與同步資料</strong>：登入後，你在提醒管家、人生訂閱、準備清單、挑地方、重要資料夾、生活挑戰與回顧等功能建立的項目、狀態、日期、備註及設定，會儲存在 Supabase，讓同一帳號可在裝置間同步。未登入時，部分資料可能只暫存在裝置上。</li>
-  <li><strong>私人照片與文件</strong>：你主動加入「生活挑戰與回顧」、「重要資料夾」或「挑地方」的照片時，登入狀態下會上傳到只有該帳號可存取的私人 Supabase Storage；App 也可能保留本機快取，以便顯示與離線使用。這些照片不會公開顯示於社群或官方網站。</li>
-  <li><strong>行事曆資料</strong>：你允許行事曆權限並使用同步功能時，App 會在裝置的系統行事曆建立、更新或刪除由本 App 管理的提醒事件。App 不會將你原本行事曆中的其他事件上傳到我們的伺服器。</li>
-  <li><strong>App 使用統計</strong>：iOS 與 Android 都將 App 開啟、分頁瀏覽、文章瀏覽、登入完成與通知點擊等低敏行為先經 Supabase，再送到 Google Analytics。只傳送雜湊後的安裝識別值，不包含姓名、Email、帳號 ID、推播權杖、廣告 ID 或內容全文。iOS 切換期間仍可能由 TelemetryDeck 收到舊版事件，驗證完成後會移除。</li>
+  <li><strong>帳號資料</strong>：iOS 使用 Apple 登入、Android 使用 Google 登入時，我們會儲存帳號唯一識別碼，以及登入服務提供的 Email（若有；Apple 登入時可能是 Apple 提供的轉發地址）。Google 登入時，Google 帳號提供的基本資料（例如顯示名稱）可能也會一併保存在帳號資料中。這些資料用於識別你的內容與跨裝置同步。</li>
+  <li><strong>匿名身分</strong>：不登入也能使用 App。此時 App 會自動建立一個匿名身分，只有隨機識別碼，沒有姓名或 Email。以匿名身分使用時建立的資料（例如生活工具資料、照片、收藏、按讚、頭貼與暱稱），同樣依這個匿名身分儲存在雲端；刪除方式見「四、資料與帳戶刪除」。</li>
+  <li><strong>暱稱</strong>：登入時如果你還沒有暱稱，登入服務提供的名稱（Apple 提供的姓名、Google 的帳號顯示名稱）會成為你的預設暱稱，並公開顯示在你的社群內容上。你可以隨時在「我的」頁修改暱稱。</li>
+  <li><strong>你建立的內容</strong>：暱稱、投稿（秘技／發問）、回答、留言、收藏、按讚、檢舉、封鎖設定與頭貼，以及你在投稿、回答或留言附上的圖片。其中投稿、回答、留言、暱稱、頭貼與附加圖片會公開顯示於社群；部分內容可能以原樣（含暱稱）公開顯示於本服務的官方網站。</li>
+  <li><strong>連結預覽</strong>：你在投稿、回答或留言貼上網址時，我們的伺服器會擷取該網頁的標題、說明與縮圖網址，存放在你的內容中一併顯示；其他人看到這張預覽卡時，縮圖會直接從該網站載入，該網站可能因此取得對方的 IP 位址。</li>
+  <li><strong>首次設定與測驗資料</strong>：你在首次使用時選擇的地區、工作狀態與興趣，以及「大人等級測驗」的等級、總分與各項分數，會儲存在你的個人資料中；登入帳號後，換裝置或重新安裝時可以還原，不必重填。使用「使用回饋」寄信時，信件內容會預先帶入你選的地區與身分狀態，寄出前可自行修改。</li>
+  <li><strong>推播資料</strong>：若你允許通知，iOS 會使用 Apple 的推播服務、Android 會使用 Firebase Cloud Messaging 傳送推播。這支裝置的推播權杖會與你的帳號（或匿名身分）連結並儲存在 Supabase。</li>
+  <li><strong>生活工具與同步資料</strong>：你在提醒管家、人生訂閱、準備清單、挑地方、紙本在哪、緊急聯絡人、生活挑戰與回顧等功能建立的項目、狀態、日期、金額、備註及設定，會儲存在 Supabase，讓同一帳號可在裝置間同步。其中包含你自己輸入的資料，例如人生訂閱的名稱、金額、扣款日期與價格紀錄，緊急聯絡人的姓名與電話，以及「紙本在哪」記錄的持有人、文件編號、存放地點與聯絡人資料。以匿名身分使用時也一樣；離線或尚未完成同步時，資料會先暫存在裝置上。</li>
+  <li><strong>私人照片與文件</strong>：你主動加入「生活挑戰與回顧」、「紙本在哪」或「挑地方」的照片，會上傳到受帳號權限控管、其他使用者無法讀取的私人 Supabase Storage（不是端對端加密）；App 也可能保留本機快取，以便顯示與離線使用。這些照片不會公開顯示於社群或官方網站。</li>
+  <li><strong>行事曆資料</strong>：你允許行事曆權限並使用同步功能時，iOS 版會在裝置的系統行事曆建立、更新或刪除由本 App 管理的提醒事件；Android 版則在你授權後，於你的 Google 日曆建立並更新本 App 專用的日曆與其中的提醒事件，授權範圍只限由本 App 建立的日曆，並把這本日曆的識別碼記在你的帳號資料中，方便重新安裝後找回。App 不會將你原本行事曆中的其他事件上傳到我們的伺服器。</li>
+  <li><strong>App 使用統計與診斷</strong>：iOS 與 Android 會記錄 App 開啟、分頁與文章瀏覽、公告曝光與點擊、工具與生活挑戰的使用（只記項目代碼與是否附照片或備註，不含內容）、登入完成與通知點擊、搜尋的範圍與有無結果（不含關鍵字），以及當機、卡頓、資源使用異常與啟動逾時等診斷事件的種類與次數（不含呼叫堆疊或內容），先傳到 Supabase，再轉送到 Google Analytics。事件另帶 App 版本、平台與工作階段識別碼。另外，收藏、按讚、投稿等動作會以不含帳號與內容的彙總計數事件送到 Google Analytics。</li>
+  <li><strong>安裝識別碼</strong>：每個安裝會產生一組隨機的安裝識別碼，只以雜湊值傳送，用來把同一個安裝的事件串在一起。它不含姓名、Email、帳號 ID、推播權杖、廣告 ID 或內容全文；登出或換帳號時不會更換，iOS 因為存放在系統鑰匙圈，重新安裝 App 後也可能沿用同一組。上述使用統計與診斷事件在資料庫中沒有帳號 ID 欄位，不會直接連到你的帳號。</li>
   <li><strong>網站使用統計</strong>：網站使用 Google Analytics 4（GA4）與 GoatCounter 了解頁面瀏覽、內容成效與網站使用情形。我們不主動將姓名、Email 或其他個人識別資訊送入分析工具；GA4 可能使用 Cookie 或類似技術，Google 會依其<a href="https://policies.google.com/technologies/partner-sites?hl=zh-TW" rel="noopener">隱私權政策</a>處理資料。</li>
 </ul>
+<p>我們不使用相機與麥克風，不讀取通訊錄與裝置位置，也不使用廣告識別碼；照片只會讀取你主動選取的那幾張。</p>
 
 <h2>二、資料如何被使用</h2>
-<p>僅用於提供與維運 App 功能：顯示你的內容、同步生活工具資料、建立你要求的行事曆事件、提供社群互動及改善體驗。我們<strong>不</strong>販售或分享你的個人資料給第三方做行銷、<strong>不</strong>跨 App 追蹤你、<strong>不</strong>投放第三方廣告。</p>
+<p>僅用於提供與維運 App 功能：顯示你的內容、還原你的首次設定與測驗結果、同步生活工具資料、建立你要求的行事曆事件、傳送你允許的通知、提供社群互動，以及了解功能的使用情形以改善體驗。站長會為了審核內容、處理檢舉與維運服務，在後台存取必要的資料。我們<strong>不</strong>販售或分享你的個人資料給第三方做行銷、<strong>不</strong>跨 App 追蹤你、<strong>不</strong>使用廣告聯播網，也<strong>不</strong>依你的個人資料投放廣告；App 內的合作、團購與廣告公告由我們人工挑選刊登，不依個人資料客製。</p>
 
 <h2>三、第三方服務</h2>
 <ul>
-  <li><strong>Supabase</strong>：提供帳號驗證、資料庫、Edge Functions 與檔案儲存（存放帳號、社群內容、頭貼、生活工具同步資料及你主動上傳的私人照片）。</li>
-  <li><strong>Apple Sign in with Apple／Google OAuth</strong>：提供 iOS／Android 登入。</li>
-  <li><strong>Firebase Cloud Messaging（Android）與 Apple 推播服務（iOS）</strong>：傳送通知。</li>
-  <li><strong>Google Analytics</strong>：接收經 Supabase 轉送的匿名、彙總 App 使用分析。</li>
-  <li><strong>TelemetryDeck（iOS，過渡期間）</strong>：舊版匿名使用分析。</li>
+  <li><strong>Supabase</strong>：提供帳號驗證、資料庫、Edge Functions 與檔案儲存（存放帳號、社群內容、頭貼、生活工具同步資料及你主動上傳的照片）。</li>
+  <li><strong>Sign in with Apple／Google 登入</strong>：提供 iOS／Android 登入。</li>
+  <li><strong>Apple 推播服務（iOS）與 Firebase Cloud Messaging（Android）</strong>：傳送通知。</li>
+  <li><strong>iCloud（iOS）</strong>：部分設定（例如暱稱、首次設定）會透過你自己的 iCloud 鍵值儲存，在同一個 Apple ID 的裝置間同步，依 Apple 的條款與隱私政策處理。</li>
+  <li><strong>Google Analytics</strong>：接收經 Supabase 轉送、不含姓名、Email 與帳號 ID 的 App 使用分析與診斷次數。</li>
+  <li><strong>Google 日曆（Android）</strong>：你授權後，App 才會在你的 Google 日曆建立與更新本 App 的提醒日曆。</li>
+  <li><strong>Apple 地圖（iOS）與 Google 地圖（Android）</strong>：顯示地圖畫面，App 不會取得你的裝置位置。</li>
   <li><strong>Google Analytics 4（GA4）與 GoatCounter</strong>：網站流量與內容成效分析。</li>
 </ul>
+<p>以上服務的伺服器可能位於台灣境外。資料在 App 與伺服器之間以 TLS 加密傳輸。</p>
 
 <h2>四、資料與帳戶刪除</h2>
 <ul>
-  <li><strong>刪除帳戶與關聯資料</strong>：iOS／Android 均可在 App 內「我的 → 刪除帳號」提出刪除。這會刪除帳戶、登入識別資料、個人資料、投稿、回答、留言、收藏、按讚、頭貼、推播裝置權杖、生活工具同步資料，以及生活挑戰、重要資料夾與挑地方所上傳的私人照片，刪除後不可復原。</li>
-  <li><strong>刪除部分資料</strong>：可在 App 內刪除自己可管理的投稿、收藏等內容；若要撤回回答、留言或移除網站上的特定內容，請寄信至下方 Email，並提供登入 Email 或使用者 ID 與要刪除的內容。</li>
-  <li><strong>處理時間與保留</strong>：刪除申請會在 30 日內處理。除法律或資安義務要求外，不會額外保留已刪除的帳戶資料；依法必須保留的紀錄僅保留必要期間。</li>
+  <li><strong>刪除帳戶與關聯資料</strong>：iOS／Android 均可在 App 內「我的」頁最下方的「危險區」點「刪除帳號」提出刪除。這會刪除帳戶、登入識別資料、個人資料（暱稱、地區、工作狀態、興趣、測驗結果）、投稿（別人在你的投稿底下的回答、留言與按讚會一起消失）、回答、留言、收藏、按讚、檢舉與封鎖設定、通知紀錄、頭貼與社群圖片、推播裝置權杖、生活工具同步資料，以及生活挑戰、紙本在哪與挑地方所上傳的私人照片；這台裝置上屬於這個帳號的本機資料（例如工具資料與照片）也會一併清除。刪除後不可復原。</li>
+  <li><strong>以 Apple 登入的帳號</strong>：在 iOS 按下刪除後，會請你再以 Apple 驗證一次，用來一併撤銷本 App 的 Apple 登入授權；這次的驗證碼只用於撤銷，不會被保存。若你取消驗證、驗證失敗或撤銷沒有成功，帳號仍可刪除，之後可到 iPhone「設定」的 Apple 帳號頁面，自行停止本 App 使用 Apple 登入。Android 的 Google 登入不會由 App 代為撤銷，需要時可到你的 Google 帳戶設定自行管理。</li>
+  <li><strong>匿名身分的資料</strong>：沒有登入時，可在「我的」頁最下方的「危險區」點「刪除我的資料」，永久刪除這個匿名身分存在雲端的資料，並清除這支手機上的那一份；刪除後 App 會換成新的匿名身分。登出、刪除 App 或換手機，都不會自動刪除雲端資料；匿名身分登出後也無法再登入找回。我們目前不會自動清理長期未使用的匿名身分，若要清除，請在登出或刪除 App 之前先使用「刪除我的資料」。</li>
+  <li><strong>網頁說明</strong>：完整的刪除步驟與範圍，也可在網頁查看：<a href="https://adultingguide.tw/delete-account">刪除帳號與資料</a>。</li>
+</ul>
+<p><strong>刪除後仍會保留的資料</strong></p>
+<ul>
+  <li><strong>App 使用統計與診斷事件</strong>：以雜湊後的安裝識別值保存，資料庫中沒有帳號 ID 欄位、不會直接連到你的帳號，因此不會隨帳號刪除，也無法依帳號找出並刪除；目前沒有設定固定的自動清除期限。已送到 Google Analytics 的資料依 Google 的政策處理。</li>
+  <li><strong>別人針對你的內容提出的檢舉紀錄</strong>：主要是檢舉人填寫的原因與時間。你自己提出的檢舉則會刪除。</li>
+  <li><strong>刪除作業紀錄</strong>：只有帳號識別碼雜湊值、狀態與時間，讓刪除作業可以安全重試並確認已完成。</li>
+  <li><strong>備份與系統紀錄</strong>：資料庫備份與服務商的系統紀錄中，可能仍含有已刪除的資料，直到備份被刪除或紀錄到期。</li>
+  <li><strong>行事曆中已建立的事件</strong>：由 App 在 iOS 系統行事曆或 Android 的 Google 日曆建立的提醒事件，不一定會隨帳號刪除而移除，需要時請自行到日曆刪除；Android 的 Google 日曆授權也請自行到 Google 帳戶設定移除。</li>
+  <li><strong>官方網站、網站版本紀錄與他人保存的副本</strong>：官方網站上的對應內容會在下一次網站更新時移除（網站更新是人工作業，不是即時）；網站過去的版本紀錄，以及已被搜尋引擎或他人保存的副本，不在我們控制範圍內。</li>
+</ul>
+<p><strong>其他刪除相關說明</strong></p>
+<ul>
+  <li><strong>刪除部分資料</strong>：可在 App 內刪除自己可管理的投稿、收藏等內容；若要撤回回答、留言或移除網站上的特定內容，請寄信至下方 Email，並提供登入 Email、暱稱與要刪除的內容。</li>
+  <li><strong>無法使用 App 時</strong>：如果無法在 App 內操作（例如手機遺失，或已刪除 App 而無法登入），請寄信至下方 Email，主旨寫「刪除帳號」，並提供登入本 App 使用的 Email 與登入方式（Apple 或 Google）。匿名身分沒有 Email，我們無法單憑描述辨認哪些資料屬於你。</li>
+  <li><strong>處理時間與保留</strong>：透過寄信提出的刪除申請會在 30 日內處理。除上列「刪除後仍會保留的資料」與法律或資安義務要求外，不會額外保留已刪除的帳戶資料；依法必須保留的紀錄僅保留必要期間。</li>
   <li><strong>檢舉與封鎖</strong>：可檢舉不當內容、封鎖其他使用者。</li>
 </ul>
 
