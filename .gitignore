@@ -7,6 +7,8 @@ build_site.py
 *.json
 # 例外：站內搜尋索引（僅公開的標題／摘要／網址，需被服務；不含金鑰）
 !search-index.json
+# 例外：搜尋頁的百科內文索引（1.5 新搜尋用；只有已公開的文章內文，需被服務；不含金鑰）
+!search-body.json
 *.env
 .env*
 *.pem

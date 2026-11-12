@@ -2,6 +2,19 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
+<script>
+(function () {
+  try {
+    var p = new URLSearchParams(location.search), q = p.get('q');
+    window.__agSearchQ = q || ((history.state && history.state.agq) || '');
+    if (p.has('q')) {
+      p.delete('q');
+      var s = p.toString();
+      history.replaceState({ agq: q || '' }, '', location.pathname + (s ? '?' + s : '') + location.hash);
+    }
+  } catch (e) { window.__agSearchQ = ''; }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6763735472">
 <title>搜尋｜初級大人手冊</title>
@@ -847,32 +860,137 @@ a.ranking-label { color:var(--ink); } a.ranking-label:hover { color:var(--orange
   <nav class="site-nav"><a href="features" class="">功能</a><a href="wiki" class="on">百科</a><a href="community/" class="">社群</a><a href="group-buy/" class="">合作</a><a href="picks" class="">島嶼地圖</a><a href="updates" class="">更新日誌</a><a href="feedback" class="">回報／建議</a></nav><a class="nav-cta" href="download">下載 App</a>
 </div></header>
 <main>
-<section class="pagehead"><div class="sc-in"><div class="head-narrow" data-reveal><h1>搜尋</h1><p class="lead">同時搜尋百科文章與社群討論。</p><div class="sc-search"><input id="q" class="search-box" type="search" placeholder="輸入關鍵字，例如：報稅、租屋、勞健保" autofocus></div><div class="chips lite" aria-label="從情境找"><a href="topics/moving">租屋搬家</a><a href="topics/home">下廚與家事</a><a href="topics/first-job">第一份工作</a><a href="topics/money">錢與保險</a><a href="topics/tax">報稅</a><a href="topics/health">看醫生與健康</a><a href="topics/documents">證件與政府</a><a href="topics/travel">出國與交通</a><a href="topics/safety">防災急救</a><a href="topics/etiquette">人情禮俗</a></div></div></div></section><div class="sc-in"><div class="reading about"><div id="results" class="search-results"></div></div></div>
-<script>
-(function(){
-  var idx=[], q=document.getElementById('q'), out=document.getElementById('results');
-  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  function render(list){
-    if(!q.value.trim()){out.innerHTML='';return;}
-    if(!list.length){out.innerHTML='<p class="search-hint">找不到相關內容，換個關鍵字試試。</p>';return;}
-    out.innerHTML=list.slice(0,40).map(function(r){
-      return '<a href="'+r.u+'"><span class="r-kind">'+esc(r.k)+'</span><span class="r-title">'+esc(r.t)+'</span><div class="r-sum">'+esc(r.d)+'</div></a>';
-    }).join('');
-  }
-  function search(){
-    var s=q.value.trim().toLowerCase();
-    if(!s){render([]);return;}
-    render(idx.filter(function(r){return (r.t+' '+r.d).toLowerCase().indexOf(s)>=0;}));
-  }
-  q.addEventListener('input',search);
-  fetch('/search-index.json').then(function(r){return r.json();}).then(function(d){
-    idx=d;
-    var p=new URLSearchParams(location.search).get('q');
-    if(p){q.value=p;}
-    search();
-  }).catch(function(){out.innerHTML='<p class="search-hint">搜尋索引載入失敗，請重新整理。</p>';});
-})();
-</script>
+<style>
+.mz-head { padding-bottom:1.2rem; }
+.mz-headrow { display:flex; flex-wrap:wrap; gap:1rem 2rem; align-items:center; justify-content:space-between; }
+.mz-headrow h1 { margin:0; }
+.mz-headrow .sc-search { flex:1 1 320px; max-width:440px; margin:0; }
+.sc-search button { white-space:nowrap; }
+.v5-hot { display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; margin-top:.9rem; }
+.v5-hot > span { flex:none; white-space:nowrap; font-size:.8rem; color:var(--sub); font-weight:700; margin-right:.2rem; }
+.v5-hot a { font-size:.88rem; padding:.3rem .8rem; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--ink);
+            text-decoration:none; font-weight:600; }
+.v5-hot a:hover { border-color:var(--orange); color:var(--orange); }
+.v5-hot[hidden] { display:none; }
+.mz-lead { display:grid; grid-template-columns:3fr 2fr; gap:1.4rem; margin-top:1.2rem; }
+.mz-hero { display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:24px; overflow:hidden;
+           text-decoration:none; color:var(--ink); box-shadow:0 10px 30px rgba(120,70,40,.06); }
+.mz-hero:hover { text-decoration:none; border-color:var(--orange); }
+.mz-hero img { width:100%; flex:1; min-height:200px; object-fit:cover; display:block; }
+.mz-hero div { padding:1.4rem 1.6rem 1.6rem; }
+.mz-hero small, .mz-rank small, .v4-feat small, .v4-others small { display:block; font-size:.8rem; font-weight:800; color:var(--orange); letter-spacing:.06em; }
+.mz-hero h2 { font-size:1.75rem; line-height:1.35; font-weight:700; margin:.4rem 0 .5rem; text-wrap:balance; }
+.mz-hero p { color:var(--sub); line-height:1.7; margin:0 0 .8rem; }
+.mz-hero em, .v4-all { font-style:normal; font-weight:800; color:var(--orange); font-size:.92rem; text-decoration:none; }
+.mz-rank { background:#fff; border:1px solid var(--line); border-radius:24px; padding:1.4rem 1.5rem; min-width:0; }
+.mz-rank h2 { font-size:1.3rem; font-weight:800; margin:.2rem 0 .4rem; color:var(--ink); }
+.mz-rank ol { list-style:none; margin:0; padding:0; }
+.mz-rank li a { display:flex; gap:1rem; align-items:baseline; padding:.8rem 0; border-bottom:1px solid var(--line); text-decoration:none; }
+.mz-rank li:last-child a { border-bottom:0; }
+.mz-rank i { font-style:normal; font-size:1.7rem; font-weight:700; color:var(--coral); width:1.4rem; line-height:1; font-variant-numeric:tabular-nums; }
+.mz-rank b { display:block; font-weight:400; color:var(--ink); font-size:1.02rem; line-height:1.45; }
+.mz-rank span { font-size:.8rem; color:var(--sub); }
+.mz-blocks { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.4rem; }
+.mz-blk { border-radius:20px; padding:1.2rem 1.3rem; text-decoration:none; display:flex; flex-direction:column; gap:.3rem; min-height:6rem; }
+.mz-blk:hover { text-decoration:none; transform:translateY(-2px); }
+.mz-blk strong { font-size:1.15rem; font-weight:800; }
+.mz-blk span { font-size:.9rem; opacity:.85; }
+.mz-blk.b1 { background:#D46A4E; color:#fff; } .mz-blk.b2 { background:#FBE3D6; color:var(--ink); } .mz-blk.b3 { background:#E8EEDF; color:var(--ink); }
+.v4-cats { background:#fff; border:1px solid var(--line); border-radius:24px; padding:1.2rem 1.4rem 1.5rem; margin-top:1rem;
+           box-shadow:0 10px 30px rgba(120,70,40,.05); }
+.v4-chips { display:flex; gap:.5rem; overflow-x:auto; scrollbar-width:none; padding-bottom:1.1rem; }
+.v4-chips::-webkit-scrollbar { display:none; }
+.v4-chips button { flex:none; border:1.5px solid var(--line); background:#fff; border-radius:999px; padding:.45rem 1rem; font:inherit;
+                   font-size:.92rem; font-weight:400; color:var(--sub); cursor:pointer; }
+.v4-chips button.on { font-weight:600; background:var(--orange); border-color:var(--orange); color:#fff; }
+.v5-allc { flex:none; align-self:center; font-size:.92rem; font-weight:700; color:var(--orange); text-decoration:none; padding:.45rem .6rem; white-space:nowrap; }
+.v4-pane { display:grid; grid-template-columns:1fr 1.15fr; gap:1.6rem; align-items:start; }
+.v4-pane[hidden] { display:none; }
+.v4-pimg { display:block; text-decoration:none; }
+.v4-pimg img { width:100%; border-radius:16px; display:block; }
+.v4-pimg span { display:block; margin-top:.6rem; font-size:.85rem; color:var(--sub); }
+.v4-plead { display:block; text-decoration:none; padding-bottom:.9rem; border-bottom:1px solid var(--line); }
+.v4-plead b { display:block; font-size:1.3rem; font-weight:600; color:var(--ink); line-height:1.45; }
+.v4-plead span { display:block; color:var(--sub); line-height:1.7; margin-top:.4rem; }
+.v4-ptext ul { list-style:none; margin:0 0 1rem; padding:0; }
+.v4-ptext li a { display:block; padding:.75rem 0; border-bottom:1px solid var(--line); color:var(--ink); font-weight:400; text-decoration:none; }
+.v4-topic { display:grid; grid-template-columns:1.5fr 1fr; gap:1.4rem; margin-top:1rem; }
+.v4-feat { background:var(--cream); border-radius:24px; padding:1.5rem 1.6rem; min-width:0; }
+.v4-feat h3 { font-size:1.5rem; font-weight:600; color:var(--ink); margin:.3rem 0 .3rem; }
+.v4-feat p { color:var(--sub); margin:0 0 .8rem; }
+.v4-feat ol { margin:0 0 1rem; padding-left:1.2rem; }
+.v4-feat li { padding:.45rem 0; } .v4-feat li::marker { color:var(--orange); font-weight:600; }
+.v4-feat li a { color:var(--ink); font-weight:400; text-decoration:none; }
+.v4-others { background:#fff; border:1px solid var(--line); border-radius:24px; padding:1.3rem 1.4rem; min-width:0; }
+.v4-others a { display:flex; justify-content:space-between; align-items:center; gap:.8rem; padding:.8rem 0; border-bottom:1px solid var(--line); text-decoration:none; }
+.v4-others a:last-child { border-bottom:0; }
+.v4-others b { color:var(--ink); font-size:1rem; font-weight:600; } .v4-others span { flex:none; color:var(--orange); font-size:.85rem; font-weight:700; }
+.v5-bottom { display:block; text-align:center; margin:2.2rem 0 .6rem; font-weight:800; color:var(--orange); text-decoration:none; }
+/* 2026-11-13 站長「字太大」：百科首頁照 App 選定的 A 縮一號（卡片標題與清單縮小、行距收緊）；
+   官網看得比手機遠，數值比 App 大約 1px。只作用在百科首頁的元件，文章頁不受影響。 */
+/* 同日站長「百科要跟其他頁對齊」：區塊標題改回官網全站 .sec-title 的大小（1.4rem 粗），App 維持 A 的小字標題。 */
+.mz-rank h2 { font-size:1.4rem; font-weight:800; color:var(--ink); margin:.1rem 0 .4rem; }
+.mz-hero h2 { font-size:1.3rem; line-height:1.4; } .mz-hero p { font-size:.95rem; line-height:1.65; }
+.mz-hero em, .v4-all { font-size:.85rem; font-weight:700; }
+.mz-rank li a { padding:.65rem 0; } .mz-rank i { font-size:1.1rem; width:1.1rem; } .mz-rank b { font-size:.95rem; font-weight:500; line-height:1.5; }
+.mz-blk strong { font-size:1rem; } .mz-blk span { font-size:.85rem; }
+.v4-chips button { font-size:.85rem; padding:.4rem .9rem; } .v5-allc { font-size:.85rem; font-weight:600; }
+.v4-plead b { font-size:1.05rem; line-height:1.5; } .v4-plead span { font-size:.88rem; line-height:1.6; }
+.v4-ptext li a { font-size:.95rem; line-height:1.55; padding:.65rem 0; }
+.v4-feat h3 { font-size:1.05rem; } .v4-feat p { font-size:.88rem; } .v4-feat li { padding:.35rem 0; font-size:.95rem; line-height:1.55; }
+.v4-others b { font-size:.95rem; font-weight:500; } .v4-others span { font-size:.82rem; }
+/* 2026-11-13 站長：分類鈕太長被切在右邊 → 電腦版換行排兩列；手機寬度維持左右滑（不然會疊成三、四列） */
+@media (min-width:861px) { .v4-chips { flex-wrap:wrap; overflow:visible; row-gap:.5rem; } }
+.fb-pair { display:grid; gap:18px; }
+@media (min-width:900px) {
+  .fb-pair { grid-template-columns:1fr 1fr; }
+  .fb-pair .feature-banner { grid-template-columns:1fr; }
+  .fb-pair .feature-banner img { min-height:0; height:auto; aspect-ratio:780/320; }
+}
+.back-eyebrow a { color:inherit; text-decoration:none; }
+.newbie-list .card small::before { content:attr(data-cat); color:var(--orange); font-weight:800; }
+.s5-form { max-width:640px !important; }
+.s5-sum { color:var(--sub); font-size:.92rem; margin:1.2rem 0 .4rem; }
+.s5-grp { margin-top:1.4rem; }
+.s5-grp h2 { font-size:1.15rem; font-weight:800; color:var(--ink); margin:0 0 .7rem; }
+.s5-grp h2 span { color:var(--sub); font-weight:600; font-size:.9rem; margin-left:.4rem; }
+.s5-list { display:grid; gap:.7rem; }
+.s5-card { display:block; background:#fff; border:1px solid var(--line); border-radius:18px; padding:1rem 1.2rem; text-decoration:none; min-width:0; }
+.s5-card:hover { text-decoration:none; border-color:var(--orange); }
+.s5-card small { font-size:.75rem; font-weight:800; color:var(--orange); }
+.s5-card b { display:block; font-size:1.05rem; color:var(--ink); line-height:1.45; margin:.2rem 0 .3rem; overflow-wrap:anywhere; }
+.s5-card p { margin:0; color:var(--sub); font-size:.9rem; line-height:1.6; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+             overflow:hidden; overflow-wrap:anywhere; }
+.s5-card mark, .s5-sum mark { background:#FFE3D8; color:inherit; border-radius:3px; padding:0 1px; }
+.s5-zero { display:grid; gap:1.2rem; margin-top:1.2rem; }
+.s5-box { background:#fff; border:1px solid var(--line); border-radius:22px; padding:1.3rem 1.4rem; min-width:0; }
+.s5-box h2 { font-size:1.15rem; font-weight:600; color:var(--ink); margin:0 0 .5rem; overflow-wrap:anywhere; }
+.s5-box p { color:var(--sub); margin:0; line-height:1.7; }
+.s5-box ol { margin:.3rem 0 0; padding-left:1.2rem; } .s5-box li { padding:.45rem 0; }
+.s5-box li a { color:var(--ink); font-weight:400; text-decoration:none; }
+.s5-box li::marker { color:var(--orange); font-weight:700; }
+.s5-wish { background:var(--cream); border:0; }
+.s5-wish a.btn { display:inline-block; margin-top:.8rem; background:var(--orange); color:#fff; font-weight:800; padding:.6rem 1.2rem; border-radius:12px; text-decoration:none; }
+@media (max-width:860px) {
+  .mz-lead, .v4-topic, .v4-pane { grid-template-columns:1fr; }
+  .mz-blocks { grid-template-columns:1fr; }
+  .v4-pane { gap:1rem; }
+  .v4-pimg img { max-height:120px; object-fit:cover; }
+  .mz-headrow .sc-search { flex:1 1 100%; max-width:none; }
+  .v5-hot { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+  .v5-hot::-webkit-scrollbar { display:none; }
+  .v5-hot a { flex:none; }
+}
+@media (max-width:520px) {
+  .mz-hero h2 { font-size:1.12rem; }
+  .mz-hero img { min-height:0; max-height:150px; }
+  .v4-cats { padding:1rem 1rem 1.2rem; }
+  .mz-blocks { gap:.6rem; }
+  .mz-blk { min-height:0; padding:.9rem 1.1rem; flex-direction:row; align-items:baseline; justify-content:space-between; gap:.8rem; }
+  .mz-blk strong { font-size:1.02rem; white-space:nowrap; }
+  .mz-blk span { font-size:.82rem; text-align:right; }
+}
+</style><section class="pagehead mz-head"><div class="sc-in"><p class="sc-eyebrow">搜尋</p><form class="sc-search s5-form" action="search" method="get" role="search"><input id="q" type="search" name="q" placeholder="試試：押金" aria-label="搜尋全站" autocomplete="off"><button type="submit">搜尋</button></form><div class="v5-hot"><span>常見搜尋</span><a href="search?q=%E6%8A%BC%E9%87%91" data-ga-block="hot_search" data-ga-pos="1">押金</a><a href="search?q=%E5%8A%A0%E7%8F%AD%E8%B2%BB" data-ga-block="hot_search" data-ga-pos="2">加班費</a><a href="search?q=%E7%9C%8B%E5%93%AA%E7%A7%91" data-ga-block="hot_search" data-ga-pos="3">看哪科</a><a href="search?q=%E5%A0%B1%E7%A8%85" data-ga-block="hot_search" data-ga-pos="4">報稅</a><a href="search?q=%E5%81%A5%E4%BF%9D%E5%8D%A1" data-ga-block="hot_search" data-ga-pos="5">健保卡</a><a href="search?q=%E5%8B%9E%E4%BF%9D" data-ga-block="hot_search" data-ga-pos="6_plus">勞保</a><a href="search?q=%E4%BF%A1%E7%94%A8%E5%8D%A1" data-ga-block="hot_search" data-ga-pos="6_plus">信用卡</a><a href="search?q=%E7%89%B9%E4%BC%91" data-ga-block="hot_search" data-ga-pos="6_plus">特休</a><a href="search?q=%E7%A7%9F%E5%B1%8B" data-ga-block="hot_search" data-ga-pos="6_plus">租屋</a><a href="search?q=%E9%98%B2%E8%A9%90%E9%A8%99" data-ga-block="hot_search" data-ga-pos="6_plus">防詐騙</a></div></div></section><div class="sc-in"><div id="results" aria-live="polite"></div></div><script>window.AG_SEARCH_DATA = {"version": 3, "rules": {"length_unit": "unicode_code_point", "normalize": {"steps": ["nfkc", "lowercase", "variants"], "variants": [["臺", "台"], ["税", "稅"], ["身份證", "身分證"], ["霉", "黴"], ["汙", "污"], ["裏", "裡"]]}, "separators": [" ", "\t", "\n", "\r", "　", ",", "，", "。", "．", ".", "、", "？", "?", "！", "!", "：", ":", "；", ";", "／", "/", "\\", "|", "(", ")", "（", "）", "「", "」", "『", "』", "【", "】", "[", "]", "-", "－", "–", "—", "~", "～", "#", "＃", "\"", "'", "“", "”", "‘", "’", "…", "⋯", "·", "・"], "fillers": ["請問", "是不是", "要不要", "有沒有", "怎麼辦", "怎麼樣", "怎麼", "如何", "什麼", "為什麼", "可以", "應該", "嗎", "呢", "吧", "的", "了", "要", "該"], "filler_min_part_length": 4, "slice_min_length": 3, "slice_size": 2, "atomic_run_chars": "abcdefghijklmnopqrstuvwxyz0123456789", "atomic_run_min_length": 2, "stop_grams": ["可以", "什麼", "怎麼", "要繳", "我要", "有沒", "沒有", "一下", "這個", "那個", "的話", "時候", "需要", "想要", "到底", "為什", "是不", "可不", "能不", "如何", "哪裡", "哪些", "怎樣", "該怎", "麼辦", "出社", "社會", "第一", "一次", "大人", "知道", "了解", "想問", "請問", "有關", "關於", "方面", "之類", "等等", "還有", "以及", "或是", "一些", "這些", "那些", "東西", "處理", "注意", "事項", "不能", "能放", "幹嘛", "要幹", "繳什", "麼稅"], "synonym_groups": [["蒜", "蒜頭", "大蒜"], ["蔥", "青蔥"], ["薑", "生薑", "嫩薑", "老薑"], ["爸", "爸爸", "父親"], ["媽", "媽媽", "母親"], ["爸媽", "父母", "雙親"], ["看醫生", "看診", "就醫", "掛號"], ["健保", "健康保險", "全民健保"], ["勞保", "勞工保險"], ["勞退", "退休金", "退休"], ["所得稅", "綜所稅", "報稅"], ["地震", "地震包"], ["颱風", "颱風假", "強風豪雨"], ["租屋", "租房", "房客"], ["房東", "包租公", "包租婆"], ["車禍", "交通事故", "撞車", "擦撞"], ["搬家", "搬遷"], ["健檢", "健康檢查", "體檢"], ["洗牙", "牙結石", "牙齒清潔"], ["諮商", "心理諮商", "心輔"], ["免費", "0 元", "零元", "不用錢"], ["補助", "津貼", "獎勵金"], ["購屋", "買房", "首購"], ["創業", "開公司", "開店"], ["生育", "生小孩", "生子", "生產"], ["投保", "保險"], ["薪水", "月薪", "工資", "薪資"], ["離職", "辭職"], ["失業", "失業給付"], ["疫苗", "打針", "接種"], ["寵物", "貓", "狗", "毛小孩"], ["停電", "斷電"], ["天然氣", "瓦斯"], ["電子書", "圖書館", "借書"], ["wifi", "上網", "無線網路"], ["youbike", "ubike", "公共自行車"], ["tpass", "月票", "通勤票"], ["報稅", "所得稅", "綜所稅", "繳稅", "要繳什麼稅", "繳什麼稅", "報稅期限", "繳稅期限"], ["買股票", "股票怎麼買", "股票要繳什麼稅", "證交稅", "證券交易稅", "開戶", "券商", "證券戶"], ["紅包", "紅包包多少", "包多少", "紅包行情"], ["拜拜", "拜拜順序", "拜拜時間", "拜地基主", "地基主", "祭祖", "供品", "燒金紙"], ["垃圾", "垃圾車", "垃圾分類", "回收", "大型家具回收", "資源回收"], ["食物保存", "食材保存", "保鮮", "放多久", "會壞"], ["挑菜", "挑蔬菜", "選菜", "水果怎麼挑", "水果怎麼看新鮮", "挑水果"], ["失業", "失業給付", "失業補助", "領嘸錢", "非自願離職"], ["身分證掉了", "身分證遺失", "證件遺失", "補發"], ["遷戶籍", "遷入", "遷徙", "戶口"], ["冷氣漏水", "冷氣不冷", "冷氣濾網", "洗冷氣"], ["水管", "水龍頭", "止洩帶", "通馬桶", "馬桶堵住"], ["肩頸痛", "腰痠", "腰痠背痛", "久坐"], ["叫救護車", "救護車", "119", "打119"], ["網購退貨", "退貨", "七天鑑賞", "鑑賞期", "退款"], ["敘薪", "薪資", "薪水", "月薪", "薪水單", "敘薪單"], ["房貸", "房屋貸款", "頭期款", "頭期"], ["空污", "排氣定檢", "驗車", "定檢"], ["緊急預備金", "存錢", "緊急備用金"], ["信用分數", "信用卡", "聯徵", "信用"], ["換錢", "換匯", "換外幣"], ["雙倍薪", "加倍", "國定假日", "加倍發給"], ["果蠅", "蚊蟲", "小黑蚊"], ["承攬", "接案", "外包"], ["機票", "搭飛機", "登機"], ["入戶籍", "戶籍", "遷入"], ["發票", "電子發票", "載具"], ["欠費", "沒繳", "欠繳", "補繳"], ["押金", "保證金"], ["高鐵", "台鐵", "火車"], ["補貼", "補助", "津貼"], ["電燈", "燈泡", "燈管"], ["婚宴", "婚禮", "喜宴"], ["污點", "污漬", "髒污"], ["發黴", "黴", "除黴"], ["機車", "摩托車", "強制險"]], "synonym_weight": 0.5, "field_weights": {"title": 10, "tags": 6, "summary": 4, "category": 3, "daily_title": 4, "content": 1}, "strong_fields": ["title", "tags", "summary", "category", "daily_title"], "content_fields": ["content", "eligibility", "how_to", "application_window"], "category_title_separators": ["與", "、"], "all_tokens_bonus": 20, "fallback_min_ratio": 0.5, "fallback_to_single_token": true, "tie_break": ["score_desc", "category_order", "article_order"], "hot_searches": ["押金", "加班費", "看哪科", "報稅", "健保卡", "勞保", "信用卡", "特休", "租屋", "防詐騙"], "placeholder_examples": ["押金", "看哪科", "勞保", "報稅", "加班費"], "miss_log": {"max_length": 30, "drop_if_digit_run_at_least": 3, "drop_if_contains": ["@"], "scopes": ["encyclopedia", "all"]}, "community": {"fields": ["title", "tags", "author_name", "content"], "field_weights": {"title": 8, "tags": 1, "author_name": 1, "content": 1}, "answer_bonus_max": 5, "max_query_code_points": 100, "fallback_to_single_token": false, "fallback_min_tokens": 3, "vocab_sources": ["synonyms", "hot_searches"], "app_list_order": "selected_sort", "ranked_order": ["score_desc", "newest_first"], "mixed_page_strict_when_wiki_full_match": true}, "web_promo": {"fields": ["title", "body"], "index_fields": {"title": "t", "body": "d"}, "field_weights": {"title": 8, "body": 1}, "tokens_from": "wiki_search", "fallback_to_single_token": true, "strict_when_wiki_full_match": true}}, "popular": [{"u": "/a/med-6", "t": "身體小毛病自救"}, {"u": "/a/life-8", "t": "居家清潔妙招"}, {"u": "/a/money-2", "t": "信用卡入門：年費、循環利率、最低應繳"}, {"u": "/a/money-7", "t": "日常省錢眉角"}, {"u": "/a/invest-1", "t": "投資入門：開戶、ETF、定期定額"}], "copy": {"zeroTitle": "找不到「{query}」", "zeroTip": "試試拆短一點、換個說法，例如「押金」比「房東不還押金怎麼辦」好找。", "popularTitle": "大家都在看", "wishTitle": "沒找到？許願這題", "wishBody": "告訴我們你想知道什麼，我們會優先補上。", "wishButton": "我要許願", "strong": ["符合", "{count} 篇"], "weak": ["內文有提到", "{count} 篇"], "community": ["社群", "{count} 則"], "promo": ["合作", "{count} 則"], "postMore": "只列前 {count} 則"}, "postLimit": 20, "missLog": null};</script><script type="module" src="/search-page.js"></script>
 </main>
 <footer class="site"><div class="wrap">
   <nav class="foot-nav">
