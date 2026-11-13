@@ -107,3 +107,9 @@ export function createWebSearch(engine, rules, entries, bodies) {
 export const bucketCount = (n) => (n <= 0 ? '0' : n === 1 ? '1' : n <= 5 ? '2_5' : n <= 20 ? '6_20' : '21_plus')
 export const bucketLen = (n) => (n <= 1 ? '1' : n === 2 ? '2' : n === 3 ? '3' : n <= 6 ? '4_6' : '7_plus')
 export const bucketRank = (n) => (n <= 3 ? String(n) : n <= 10 ? '4_10' : '11_plus')
+
+/**
+ * 刪字（AE1 v10 definitions.search_session.deleting，站長 2026-11-13 照建議）：新字串是已結算那串的前綴、比較短＝保留刪之前那串字的狀態，
+ * 不換成剩下的字；字被刪光仍送 abandon（送的是刪之前那串字）、打新字（不是前綴縮短）才換。同 App SearchSessionTracker。
+ */
+export const isDeletingFrom = (settledQuery, q) => Boolean(q && settledQuery) && q.length < settledQuery.length && settledQuery.startsWith(q)

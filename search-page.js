@@ -3,9 +3,11 @@
 // 常見搜尋只在輸入框（去掉前後空白）是空的時候顯示，打了字就收起、清空再出現（照 App WikiSearchResultsPage；站長第五次裁決第 10 項）。
 // 一次搜尋只送一筆（AE1 definitions.search_session）：點結果、零結果頁點大家都在看或許願、清空輸入、離開頁面（pagehide／切到背景）
 // 時送這次最後一個不在組字中的狀態；改字、點常見搜尋（＝開始新的一次）、按搜尋鍵都不算結束；同一串字從結果返回後不重送。
+// 刪字（AE1 v11 search_session.deleting）：放棄送刪之前已結算那串字（state），其他結束動作送畫面上那串字與它的結果（onScreen）；
+// 返回還原用的 history 一律存畫面上的字（事件口徑與畫面狀態分開存，ACCEPTANCE-E3 二-2）。
 // 搜不到的字（SR1 rules.miss_log）：只有產生網站時給了公開 anon key（D.missLog）才送，送前用 SR1 參考實作 missLogTerm 過濾。
 import * as engine from '/search-rules-engine.js'
-import { bucketCount, bucketLen, bucketRank, createWebSearch } from '/search-web.js'
+import { bucketCount, bucketLen, bucketRank, createWebSearch, isDeletingFrom } from '/search-web.js'
 
 const D = window.AG_SEARCH_DATA
 const input = document.getElementById('q')
@@ -13,7 +15,8 @@ const out = document.getElementById('results')
 const form = document.querySelector('.s5-form')
 const hot = document.querySelector('.v5-hot')
 let search = null
-let state = { q: '', r: null, sent: true }
+let state = { q: '', r: null, sent: true }   // 這次搜尋已結算那串字（刪字不覆蓋；放棄送它）
+let onScreen = { q: '', r: null }   // 畫面上那串字與它的結果（點結果、零結果動作送它；返回還原它）
 let timer = null
 let composing = false
 
@@ -43,15 +46,16 @@ function logMiss(q) {
 }
 
 function send(outcome, rank) {
-  if (state.sent || !state.q || !state.r) return
-  state.sent = true
-  remember(state.q, state.q)
-  if (!state.r.total) logMiss(state.q)
+  const s = outcome === 'abandon' ? state : onScreen
+  if (state.sent || !s.q || !s.r) return
+  state = { ...s, sent: true }
+  remember(onScreen.q, onScreen.q)
+  if (!s.r.total) logMiss(s.q)
   if (typeof window.gtag !== 'function') return
-  const r = state.r
+  const r = s.r
   const params = {
     scope: 'all', has_result: r.total ? 'true' : 'false', result_bucket: bucketCount(r.total), match_mode: r.mode,
-    query_len_bucket: bucketLen([...state.q].length), outcome,
+    query_len_bucket: bucketLen([...s.q].length), outcome,
   }
   if (rank) params.tapped_rank = bucketRank(rank)
   window.gtag('event', 'search_complete', params)
@@ -89,15 +93,19 @@ function render() {
   syncHot()
   if (composing) return
   const q = input.value.trim()
-  if (q !== state.q) {
+  // 刪字：保留刪之前那串字的狀態（AE1 search_session.deleting，放棄時送它）；畫面與 onScreen 跟著剩下那串字。
+  const deleting = !state.sent && Boolean(state.r) && isDeletingFrom(state.q, q)
+  if (q !== state.q && !deleting) {
     if (!q) send('abandon')
     state = { q, r: null, sent: Boolean(q) && history.state?.agsent === q }
   }
   remember(q, state.sent ? q : '')
+  onScreen = { q, r: null }
   if (!q) { out.innerHTML = ''; return }
   if (!search) { out.innerHTML = '<p class="s5-sum">搜尋中…</p>'; return }
   const r = search.search(q)
-  state.r = r
+  onScreen = { q, r }
+  if (!deleting) state.r = r
   if (!r.total) { out.innerHTML = zero(q); return }
   const words = r.tokens.map((t) => t.text)
   const shown = words.length && words.join('') !== q.toLowerCase() ? `（找的是：${words.map(esc).join('、')}）` : ''
